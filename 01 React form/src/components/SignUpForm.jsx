@@ -3,8 +3,6 @@ import styles from "./Form.module.css";
 import { useEffect, useState } from "react";
 
 function SignUpForm() {
-  const [signUp, setSignUp] = useState(false);
-
   const [name, setName] = useState("");
   const [errorName, setErrorName] = useState("");
   const [familyName, setFamilyName] = useState("");
@@ -12,7 +10,7 @@ function SignUpForm() {
   const [email, setEmail] = useState("");
   const [errorEmail, setErrorEmail] = useState("");
   const [confirmEmail, setConfirmEmail] = useState("");
-  const [errorConfirmedEmail, errorSetConfirmedEmail] = useState("");
+  const [errorConfirmedEmail, setErrorConfirmedEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorPassword, setErrorPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -57,17 +55,28 @@ function SignUpForm() {
       setErrorEmail("Fill this field with your email");
     }
     if (confirmEmail === "") {
-      errorSetConfirmedEmail(
+      setErrorConfirmedEmail(
         "Fill this field with your email and make sure both emails match"
       );
     }
-    if (password === "") {
-      setErrorPassword("Fill this field with a password");
+    if (email !== confirmEmail) {
+      setErrorConfirmedEmail("Emails don't match");
+      return;
+    }
+    if (password === "" || password.length < 6) {
+      setErrorPassword(
+        "Fill this field with a password and make sure it's at least 6 characters long"
+      );
+      return;
     }
     if (confirmPassword === "") {
       setErrorConfirmedPassword(
         "Fill this field with a password and make sure both passwords match "
       );
+    }
+    if (confirmPassword !== password) {
+      setErrorConfirmedPassword("Password don't match");
+      return;
     }
 
     if (isAnyFieldMissing()) {
@@ -75,7 +84,6 @@ function SignUpForm() {
     }
 
     if (!isAnyFieldMissing()) {
-      setSignUp(true);
       setShow(true);
     }
   }
