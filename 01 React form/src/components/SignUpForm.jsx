@@ -1,6 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Form.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function SignUpForm() {
   const [signUp, setSignUp] = useState(false);
@@ -18,6 +18,8 @@ function SignUpForm() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errorConfirmedPassword, setErrorConfirmedPassword] = useState("");
 
+  const [show, setShow] = useState(false);
+
   const navigate = useNavigate();
 
   function isAnyFieldMissing() {
@@ -30,6 +32,17 @@ function SignUpForm() {
       !confirmPassword
     );
   }
+
+  useEffect(() => {
+    if (show) {
+      const timer = setTimeout(() => {
+        setShow(false);
+        navigate("/");
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [show, navigate]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -60,85 +73,91 @@ function SignUpForm() {
     if (isAnyFieldMissing()) {
       return;
     }
-    setSignUp(true);
-    navigate("/");
+
+    if (!isAnyFieldMissing()) {
+      setSignUp(true);
+      setShow(true);
+    }
   }
 
   return (
-    <div className={styles.mainContainer}>
-      <form className={styles.formContainer} onSubmit={handleSubmit}>
-        <label htmlFor="firstName">First Name</label>
-        <input
-          type="text"
-          value={name}
-          onChange={e => {
-            setName(e.target.value);
-          }}
-        />
-        {errorName && <p className={styles.errormessage}>{errorName}</p>}
+    <>
+      <div className={styles.mainContainer}>
+        <form className={styles.formContainer} onSubmit={handleSubmit}>
+          <label htmlFor="firstName">First Name</label>
+          <input
+            type="text"
+            value={name}
+            onChange={e => {
+              setName(e.target.value);
+            }}
+          />
+          {errorName && <p className={styles.errormessage}>{errorName}</p>}
 
-        <label htmlFor="surname">Family Name</label>
-        <input
-          type="text"
-          value={familyName}
-          onChange={e => {
-            setFamilyName(e.target.value);
-          }}
-        />
-        {errorFamilyName && (
-          <p className={styles.errormessage}>{errorFamilyName}</p>
-        )}
+          <label htmlFor="surname">Family Name</label>
+          <input
+            type="text"
+            value={familyName}
+            onChange={e => {
+              setFamilyName(e.target.value);
+            }}
+          />
+          {errorFamilyName && (
+            <p className={styles.errormessage}>{errorFamilyName}</p>
+          )}
 
-        <label htmlFor="email">Your Email</label>
-        <input
-          type="email"
-          value={email}
-          onChange={e => {
-            setEmail(e.target.value);
-          }}
-        />
-        {errorEmail && <p className={styles.errormessage}>{errorEmail}</p>}
+          <label htmlFor="email">Your Email</label>
+          <input
+            type="email"
+            value={email}
+            onChange={e => {
+              setEmail(e.target.value);
+            }}
+          />
+          {errorEmail && <p className={styles.errormessage}>{errorEmail}</p>}
 
-        <label htmlFor="email">Confirm Email</label>
-        <input
-          type="email"
-          value={confirmEmail}
-          onChange={e => {
-            setConfirmEmail(e.target.value);
-          }}
-        />
-        {errorConfirmedEmail && (
-          <p className={styles.errormessage}>{errorConfirmedEmail}</p>
-        )}
+          <label htmlFor="email">Confirm Email</label>
+          <input
+            type="email"
+            value={confirmEmail}
+            onChange={e => {
+              setConfirmEmail(e.target.value);
+            }}
+          />
+          {errorConfirmedEmail && (
+            <p className={styles.errormessage}>{errorConfirmedEmail}</p>
+          )}
 
-        <label htmlFor="password">Enter Password</label>
-        <input
-          type="password"
-          value={password}
-          onChange={e => {
-            setPassword(e.target.value);
-          }}
-        />
-        {errorPassword && (
-          <p className={styles.errormessage}>{errorPassword}</p>
-        )}
+          <label htmlFor="password">Enter Password</label>
+          <input
+            type="password"
+            value={password}
+            onChange={e => {
+              setPassword(e.target.value);
+            }}
+          />
+          {errorPassword && (
+            <p className={styles.errormessage}>{errorPassword}</p>
+          )}
 
-        <label htmlFor="password">Confirm Password</label>
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={e => {
-            setConfirmPassword(e.target.value);
-          }}
-        />
-        {errorConfirmedPassword && (
-          <p className={styles.errormessage}>{errorConfirmedPassword}</p>
-        )}
+          <label htmlFor="password">Confirm Password</label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={e => {
+              setConfirmPassword(e.target.value);
+            }}
+          />
+          {errorConfirmedPassword && (
+            <p className={styles.errormessage}>{errorConfirmedPassword}</p>
+          )}
 
-        <button type="submit">Sign Up</button>
-        <Link to="/">Go back</Link>
-      </form>
-    </div>
+          <button type="submit">Sign Up</button>
+          <Link to="/">Go back</Link>
+        </form>
+      </div>
+      {show && <p className={styles.successMessage}>Success!</p>}
+    </>
   );
 }
 
