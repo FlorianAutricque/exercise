@@ -90,7 +90,7 @@ function SignUpForm() {
 
   return (
     <>
-      <div className={styles.mainContainer}>
+      <div className={styles.secondaryContainer}>
         <form className={styles.formContainer} onSubmit={handleSubmit}>
           <label htmlFor="firstName">First Name</label>
           <input

@@ -30,11 +30,15 @@ function SignInForm() {
               <input type="password" required />
             </form>
             <span>
-              <p>Not registered yet?</p>
+              <p>Not registered yet?</p> &nbsp;
               <Link to="/signup">Sign up</Link>
             </span>
           </div>
-          <button type="submit" onClick={handleShow}>
+          <button
+            type="submit"
+            onClick={handleShow}
+            className={styles.signButton}
+          >
             Sign In
           </button>
         </div>
