@@ -11,28 +11,33 @@ function SignInForm() {
   }
 
   return (
-    <div className={styles.mainContainer}>
+    <div>
       {show ? (
         <>
-          <p>Welcome!</p>
-          <button onClick={handleShow}>Go back</button>
+          <div className={styles.secondaryContainer}>
+            <p>Welcome!</p>
+            <button onClick={handleShow}>Go back</button>
+          </div>
         </>
       ) : (
-        <>
-          <form className={styles.formContainer} onSubmit={handleShow}>
-            <label htmlFor="email">Your Email</label>
-            <input type="email" required />
+        <div className={styles.mainContainer}>
+          <div className={styles.secondaryContainer}>
+            <form className={styles.formContainer}>
+              <label htmlFor="email">Your Email</label>
+              <input type="email" required />
 
-            <label htmlFor="password">Password</label>
-            <input type="password" required />
-
-            <button type="submit">Sign In</button>
-          </form>
-          <span>
-            <p>Not registered yet ?</p>
-            <Link to="/signup"> Sign up </Link>
-          </span>
-        </>
+              <label htmlFor="password">Password</label>
+              <input type="password" required />
+            </form>
+            <span>
+              <p>Not registered yet?</p>
+              <Link to="/signup">Sign up</Link>
+            </span>
+          </div>
+          <button type="submit" onClick={handleShow}>
+            Sign In
+          </button>
+        </div>
       )}
     </div>
   );
