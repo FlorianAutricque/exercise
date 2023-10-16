@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import styles from "./Form.module.css";
+import styles from "./SignUpForm.module.css";
 import { useEffect, useState } from "react";
 
 function SignUpForm() {

@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
-import styles from "./Form.module.css";
+import styles from "./SignInForm.module.css";
 import { useState } from "react";
+
+import { MdAccountCircle } from "react-icons/md";
+import { AiFillUnlock } from "react-icons/ai";
+import { FaUserAstronaut } from "react-icons/fa";
 
 function SignInForm() {
   const [show, setShow] = useState(false);
@@ -14,24 +18,34 @@ function SignInForm() {
     <div>
       {show ? (
         <>
-          <div className={styles.secondaryContainer}>
+          <div className={styles.sucessMessageLogin}>
             <p>Welcome!</p>
-            <button onClick={handleShow}>Go back</button>
+            <button onClick={handleShow} className={styles.buttonGoBack}>
+              Go back
+            </button>
           </div>
         </>
       ) : (
         <div className={styles.mainContainer}>
+          <FaUserAstronaut size={90} className={styles.mainIcon} />
           <div className={styles.secondaryContainer}>
             <form className={styles.formContainer}>
-              <label htmlFor="email">Your Email</label>
-              <input type="email" required />
-
-              <label htmlFor="password">Password</label>
-              <input type="password" required />
+              <span>
+                <label htmlFor="email" className={styles.icons}>
+                  <MdAccountCircle size={30} />
+                </label>
+                <input type="email" placeholder="Email ID" required />
+              </span>
+              <span>
+                <label htmlFor="password" className={styles.icons}>
+                  <AiFillUnlock size={30} />
+                </label>
+                <input type="password" placeholder="Password" required />
+              </span>
             </form>
 
             <span>
-              <label>Remember me &nbsp;</label>
+              <label>Remember me </label>
               <input type="checkbox" />
               <p>Not registered yet?</p> &nbsp;
               <Link to="/signup">Sign up</Link>
@@ -42,7 +56,7 @@ function SignInForm() {
             onClick={handleShow}
             className={styles.signButton}
           >
-            Sign In
+            SIGN IN
           </button>
         </div>
       )}
