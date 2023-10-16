@@ -8,10 +8,24 @@ import { FaUserAstronaut } from "react-icons/fa";
 
 function SignInForm() {
   const [show, setShow] = useState(false);
+  const [email, setEmail] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
 
   function handleShow(e) {
     e.preventDefault();
-    setShow(show => !show);
+
+    if (email !== "" && password !== "" && password.length >= 6) {
+      setShow(show => !show);
+      setErrorEmail("");
+      setErrorPassword("");
+    }
+    if (email === "") {
+      setErrorEmail("Please provide your email");
+    } else {
+      setErrorPassword("Please prove a password longer than 6 characters");
+    }
   }
 
   return (
@@ -34,14 +48,30 @@ function SignInForm() {
                 <label htmlFor="email" className={styles.icons}>
                   <MdAccountCircle size={30} />
                 </label>
-                <input type="email" placeholder="Email ID" required />
+                <input
+                  type="email"
+                  placeholder="Email ID"
+                  onChange={e => setEmail(e.target.value)}
+                  required
+                />
               </span>
+              {errorEmail && (
+                <p className={styles.errorMessage}>{errorEmail}</p>
+              )}
               <span>
                 <label htmlFor="password" className={styles.icons}>
                   <AiFillUnlock size={30} />
                 </label>
-                <input type="password" placeholder="Password" required />
+                <input
+                  type="password"
+                  placeholder="Password"
+                  onChange={e => setPassword(e.target.value)}
+                  required
+                />
               </span>
+              {errorPassword && (
+                <p className={styles.errorMessage}>{errorPassword}</p>
+              )}
             </form>
 
             <span>
