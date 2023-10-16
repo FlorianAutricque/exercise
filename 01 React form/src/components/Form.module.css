@@ -25,6 +25,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.secondaryContainer input[type="checkbox"] {
+  transform: scale(0.8);
+  margin-right: 50px;
 }
 
 .formContainer {

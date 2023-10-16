@@ -29,7 +29,10 @@ function SignInForm() {
               <label htmlFor="password">Password</label>
               <input type="password" required />
             </form>
+
             <span>
+              <label>Remember me &nbsp;</label>
+              <input type="checkbox" />
               <p>Not registered yet?</p> &nbsp;
               <Link to="/signup">Sign up</Link>
             </span>
