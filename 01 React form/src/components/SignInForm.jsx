@@ -16,15 +16,14 @@ function SignInForm() {
   function handleShow(e) {
     e.preventDefault();
 
-    if (email !== "" && password !== "" && password.length >= 6) {
+    if (email === "" || !email.includes("@")) {
+      setErrorEmail("Please provide a valid email");
+    } else if (password === "" || password.length < 6) {
+      setErrorPassword("Please provide a password with at least 6 characters");
+    } else {
       setShow(show => !show);
       setErrorEmail("");
       setErrorPassword("");
-    }
-    if (email === "") {
-      setErrorEmail("Please provide your email");
-    } else {
-      setErrorPassword("Please prove a password longer than 6 characters");
     }
   }
 
@@ -40,55 +39,61 @@ function SignInForm() {
           </div>
         </>
       ) : (
-        <div className={styles.mainContainer}>
-          <FaUserAstronaut size={90} className={styles.mainIcon} />
-          <div className={styles.secondaryContainer}>
-            <form className={styles.formContainer}>
-              <span>
-                <label htmlFor="email" className={styles.icons}>
-                  <MdAccountCircle size={30} />
-                </label>
-                <input
-                  type="email"
-                  placeholder="Email ID"
-                  onChange={e => setEmail(e.target.value)}
-                  required
-                />
-              </span>
-              {errorEmail && (
-                <p className={styles.errorMessage}>{errorEmail}</p>
-              )}
-              <span>
-                <label htmlFor="password" className={styles.icons}>
-                  <AiFillUnlock size={30} />
-                </label>
-                <input
-                  type="password"
-                  placeholder="Password"
-                  onChange={e => setPassword(e.target.value)}
-                  required
-                />
-              </span>
-              {errorPassword && (
-                <p className={styles.errorMessage}>{errorPassword}</p>
-              )}
-            </form>
+        <>
+          <div className={`${styles.space} ${styles.stars1}`}></div>
+          <div className={`${styles.space} ${styles.stars2}`}></div>
+          <div className={`${styles.space} ${styles.stars3}`}></div>
+          <div className={`${styles.space} ${styles.stars4}`}></div>
+          <div className={styles.mainContainer}>
+            <FaUserAstronaut size={90} className={styles.mainIcon} />
+            <div className={styles.secondaryContainer}>
+              <form className={styles.formContainer} onSubmit={handleShow}>
+                <span>
+                  <label htmlFor="email" className={styles.icons}>
+                    <MdAccountCircle size={30} />
+                  </label>
+                  <input
+                    type="email"
+                    placeholder="Email ID"
+                    onChange={e => setEmail(e.target.value)}
+                    required
+                  />
+                </span>
+                {errorEmail && (
+                  <p className={styles.errorMessage}>{errorEmail}</p>
+                )}
+                <span>
+                  <label htmlFor="password" className={styles.icons}>
+                    <AiFillUnlock size={30} />
+                  </label>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    onChange={e => setPassword(e.target.value)}
+                    required
+                  />
+                </span>
+                {errorPassword && (
+                  <p className={styles.errorMessage}>{errorPassword}</p>
+                )}
+              </form>
 
-            <span>
-              <label>Remember me </label>
-              <input type="checkbox" />
-              <p>Not registered yet?</p> &nbsp;
-              <Link to="/signup">Sign up</Link>
-            </span>
+              <span>
+                <label>Remember me </label>
+                <input type="checkbox" />
+                <p>Not registered yet?</p> &nbsp;
+                <Link to="/signup">Sign up</Link>
+              </span>
+            </div>
+            <button
+              type="submit"
+              onClick={handleShow}
+              className={styles.signButton}
+            >
+              SIGN IN
+            </button>
           </div>
-          <button
-            type="submit"
-            onClick={handleShow}
-            className={styles.signButton}
-          >
-            SIGN IN
-          </button>
-        </div>
+        </>
       )}
     </div>
   );
