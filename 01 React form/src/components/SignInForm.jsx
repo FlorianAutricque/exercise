@@ -4,7 +4,10 @@ import { useState } from "react";
 
 import { MdAccountCircle } from "react-icons/md";
 import { AiFillUnlock } from "react-icons/ai";
-import { FaUserAstronaut } from "react-icons/fa";
+import BackgroundStars from "./BackgroundStars";
+import Button from "./Button";
+import WelcomeMessage from "./WelcomeMessage";
+import MainIcon from "./MainIcon";
 
 function SignInForm() {
   const [show, setShow] = useState(false);
@@ -31,22 +34,13 @@ function SignInForm() {
     <div id="background-wrapper">
       <div>
         {show ? (
-          <>
-            <div className={styles.sucessMessageLogin}>
-              <p>Welcome!</p>
-              <button onClick={handleShow} className={styles.buttonGoBack}>
-                Go back
-              </button>
-            </div>
-          </>
+          <WelcomeMessage onClick={handleShow} />
         ) : (
           <>
-            <div className={`${styles.space} ${styles.stars1}`}></div>
-            <div className={`${styles.space} ${styles.stars2}`}></div>
-            <div className={`${styles.space} ${styles.stars3}`}></div>
-            <div className={`${styles.space} ${styles.stars4}`}></div>
+            <BackgroundStars />
             <div className={styles.mainContainer}>
-              <FaUserAstronaut size={90} className={styles.mainIcon} />
+              <MainIcon />
+
               <div className={styles.secondaryContainer}>
                 <form className={styles.formContainer} onSubmit={handleShow}>
                   <span>
@@ -63,6 +57,7 @@ function SignInForm() {
                   {errorEmail && (
                     <p className={styles.errorMessage}>{errorEmail}</p>
                   )}
+
                   <span>
                     <label htmlFor="password" className={styles.icons}>
                       <AiFillUnlock size={30} />
@@ -86,13 +81,8 @@ function SignInForm() {
                   <Link to="/signup">Sign up</Link>
                 </span>
               </div>
-              <button
-                type="submit"
-                onClick={handleShow}
-                className={styles.signButton}
-              >
-                SIGN IN
-              </button>
+
+              <Button onClick={handleShow}>SIGN IN</Button>
             </div>
           </>
         )}

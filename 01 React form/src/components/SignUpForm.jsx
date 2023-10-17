@@ -7,7 +7,9 @@ import { RiUserUnfollowFill } from "react-icons/ri";
 import { MdError } from "react-icons/md";
 import { ImMail4 } from "react-icons/im";
 import { AiFillUnlock } from "react-icons/ai";
-import { FaUserAstronaut } from "react-icons/fa";
+import BackgroundStars from "./BackgroundStars";
+import Button from "./Button";
+import MainIcon from "./MainIcon";
 
 function SignUpForm() {
   const [name, setName] = useState("");
@@ -51,8 +53,8 @@ function SignUpForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log("password:", password);
-    console.log("confirmPassword:", confirmPassword);
+    setErrorPassword("");
+    setErrorConfirmedPassword("");
 
     if (name === "") {
       setErrorName("Add your first name");
@@ -60,7 +62,7 @@ function SignUpForm() {
     if (familyName === "") {
       setErrorFamilyName("Add your family name");
     }
-    if (email === "") {
+    if (email === "" || !email.includes("@")) {
       setErrorEmail("Fill this field with your email");
     }
     if (confirmEmail === "") {
@@ -71,6 +73,10 @@ function SignUpForm() {
     if (email !== confirmEmail) {
       setErrorConfirmedEmail("Emails don't match");
       return;
+    }
+    if (email && email.includes("@") && email === confirmEmail) {
+      setErrorEmail("");
+      setErrorConfirmedEmail("");
     }
     if (password === "" || password.length < 6) {
       setErrorPassword("Password should be at least 6 characters long");
@@ -97,8 +103,12 @@ function SignUpForm() {
 
   return (
     <div id="background-wrapper">
+      <BackgroundStars />
+      {show && <div className={styles.blurOverlay}></div>}
+
       <div className={styles.mainContainer}>
-        <FaUserAstronaut size={90} className={styles.mainIcon} />
+        <MainIcon />
+
         <div className={styles.secondaryContainer}>
           <form className={styles.formContainer}>
             <Link to="/" className={styles.arrowBack}>
@@ -143,9 +153,13 @@ function SignUpForm() {
             </div>
 
             <div className={styles.firstnameFullname}>
-              {errorName && <p className={styles.errormessage}>{errorName}</p>}
+              {errorName && (
+                <p className={styles.errormessage}>{name ? "" : errorName}</p>
+              )}
               {errorFamilyName && (
-                <p className={styles.errormessage}>{errorFamilyName}</p>
+                <p className={styles.errormessage}>
+                  {familyName ? "" : errorFamilyName}
+                </p>
               )}
             </div>
 
@@ -184,6 +198,7 @@ function SignUpForm() {
             {errorConfirmedEmail && (
               <p className={styles.errormessage}>{errorConfirmedEmail}</p>
             )}
+
             <span>
               <label htmlFor="password" className={styles.icons}>
                 {errorPassword ? (
@@ -227,13 +242,10 @@ function SignUpForm() {
             )}
           </form>
         </div>
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          className={styles.signButton}
-        >
-          CREATE ACCOUNT
-        </button>
+
+        <Button onClick={handleSubmit}>CREATE ACCOUNT</Button>
+
+        {show && <div className={styles.successMessage}>ACCOUNT CREATED</div>}
       </div>
     </div>
   );

@@ -1,0 +1,22 @@
+.Button {
+  /* margin-top: 20rem; */
+  margin: auto;
+  width: 30%;
+  height: 45px;
+  border-radius: 0 0 20px 20px;
+  z-index: 1;
+  background-color: rgba(215, 210, 210, 0.653);
+  color: white;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.Button:focus {
+  outline: 2px solid #007bff;
+}
+
+.Button:hover {
+  transform: scale(1.02);
+  transition: 300ms;
+}
