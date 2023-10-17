@@ -2,6 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import styles from "./SignUpForm.module.css";
 import { useEffect, useState } from "react";
 
+import { RiUserReceivedFill } from "react-icons/ri";
+import { RiUserUnfollowFill } from "react-icons/ri";
+import { MdError } from "react-icons/md";
+import { ImMail4 } from "react-icons/im";
+import { AiFillUnlock } from "react-icons/ai";
+import { FaUserAstronaut } from "react-icons/fa";
+
 function SignUpForm() {
   const [name, setName] = useState("");
   const [errorName, setErrorName] = useState("");
@@ -44,12 +51,14 @@ function SignUpForm() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    console.log("password:", password);
+    console.log("confirmPassword:", confirmPassword);
 
     if (name === "") {
-      setErrorName("Fill this field with your first name");
+      setErrorName("Add your first name");
     }
     if (familyName === "") {
-      setErrorFamilyName("Fill this field with your family name");
+      setErrorFamilyName("Add your family name");
     }
     if (email === "") {
       setErrorEmail("Fill this field with your email");
@@ -64,18 +73,16 @@ function SignUpForm() {
       return;
     }
     if (password === "" || password.length < 6) {
-      setErrorPassword(
-        "Fill this field with a password and make sure it's at least 6 characters long"
-      );
+      setErrorPassword("Password should be at least 6 characters long");
       return;
     }
     if (confirmPassword === "") {
       setErrorConfirmedPassword(
-        "Fill this field with a password and make sure both passwords match "
+        "Password should be at least 6 characters long"
       );
     }
     if (confirmPassword !== password) {
-      setErrorConfirmedPassword("Password don't match");
+      setErrorConfirmedPassword("Passwords don't match");
       return;
     }
 
@@ -89,83 +96,146 @@ function SignUpForm() {
   }
 
   return (
-    <>
-      <div className={styles.secondaryContainer}>
-        <form className={styles.formContainer} onSubmit={handleSubmit}>
-          <label htmlFor="firstName">First Name</label>
-          <input
-            type="text"
-            value={name}
-            onChange={e => {
-              setName(e.target.value);
-            }}
-          />
-          {errorName && <p className={styles.errormessage}>{errorName}</p>}
+    <div id="background-wrapper">
+      <div className={styles.mainContainer}>
+        <FaUserAstronaut size={90} className={styles.mainIcon} />
+        <div className={styles.secondaryContainer}>
+          <form className={styles.formContainer}>
+            <Link to="/" className={styles.arrowBack}>
+              &larr;
+            </Link>
+            <div className={styles.firstnameFullname}>
+              <span>
+                <label htmlFor="firstName" className={styles.icons}>
+                  {errorName ? (
+                    <RiUserUnfollowFill size={30} />
+                  ) : (
+                    <RiUserReceivedFill size={30} />
+                  )}
+                </label>
+                <input
+                  type="text"
+                  value={name}
+                  onChange={e => {
+                    setName(e.target.value);
+                  }}
+                  placeholder="First Name"
+                />
+              </span>
 
-          <label htmlFor="surname">Family Name</label>
-          <input
-            type="text"
-            value={familyName}
-            onChange={e => {
-              setFamilyName(e.target.value);
-            }}
-          />
-          {errorFamilyName && (
-            <p className={styles.errormessage}>{errorFamilyName}</p>
-          )}
+              <span>
+                <label htmlFor="surname" className={styles.icons}>
+                  {errorFamilyName ? (
+                    <RiUserUnfollowFill size={30} />
+                  ) : (
+                    <RiUserReceivedFill size={30} />
+                  )}
+                </label>
+                <input
+                  type="text"
+                  value={familyName}
+                  onChange={e => {
+                    setFamilyName(e.target.value);
+                  }}
+                  placeholder="Family Name"
+                />
+              </span>
+            </div>
 
-          <label htmlFor="email">Your Email</label>
-          <input
-            type="email"
-            value={email}
-            onChange={e => {
-              setEmail(e.target.value);
-            }}
-          />
-          {errorEmail && <p className={styles.errormessage}>{errorEmail}</p>}
+            <div className={styles.firstnameFullname}>
+              {errorName && <p className={styles.errormessage}>{errorName}</p>}
+              {errorFamilyName && (
+                <p className={styles.errormessage}>{errorFamilyName}</p>
+              )}
+            </div>
 
-          <label htmlFor="email">Confirm Email</label>
-          <input
-            type="email"
-            value={confirmEmail}
-            onChange={e => {
-              setConfirmEmail(e.target.value);
-            }}
-          />
-          {errorConfirmedEmail && (
-            <p className={styles.errormessage}>{errorConfirmedEmail}</p>
-          )}
+            <span>
+              <label htmlFor="email" className={styles.icons}>
+                {errorEmail ? <MdError size={30} /> : <ImMail4 size={30} />}
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={e => {
+                  setEmail(e.target.value);
+                }}
+                placeholder="Your Email"
+              />
+            </span>
+            {errorEmail && <p className={styles.errormessage}>{errorEmail}</p>}
 
-          <label htmlFor="password">Enter Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={e => {
-              setPassword(e.target.value);
-            }}
-          />
-          {errorPassword && (
-            <p className={styles.errormessage}>{errorPassword}</p>
-          )}
+            <span>
+              <label htmlFor="email" className={styles.icons}>
+                {errorConfirmedEmail ? (
+                  <MdError size={30} />
+                ) : (
+                  <ImMail4 size={30} />
+                )}
+              </label>
+              <input
+                type="email"
+                value={confirmEmail}
+                onChange={e => {
+                  setConfirmEmail(e.target.value);
+                }}
+                placeholder="Confirm your Email"
+              />
+            </span>
+            {errorConfirmedEmail && (
+              <p className={styles.errormessage}>{errorConfirmedEmail}</p>
+            )}
+            <span>
+              <label htmlFor="password" className={styles.icons}>
+                {errorPassword ? (
+                  <MdError size={30} />
+                ) : (
+                  <AiFillUnlock size={30} />
+                )}
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={e => {
+                  setPassword(e.target.value);
+                }}
+                placeholder="Enter Password"
+              />
+            </span>
+            {errorPassword && (
+              <p className={styles.errormessage}>{errorPassword}</p>
+            )}
 
-          <label htmlFor="password">Confirm Password</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={e => {
-              setConfirmPassword(e.target.value);
-            }}
-          />
-          {errorConfirmedPassword && (
-            <p className={styles.errormessage}>{errorConfirmedPassword}</p>
-          )}
-
-          <button type="submit">Sign Up</button>
-          <Link to="/">Go back</Link>
-        </form>
+            <span>
+              <label htmlFor="password" className={styles.icons}>
+                {errorPassword ? (
+                  <MdError size={30} />
+                ) : (
+                  <AiFillUnlock size={30} />
+                )}
+              </label>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={e => {
+                  setConfirmPassword(e.target.value);
+                }}
+                placeholder="Confirm Password"
+              />
+            </span>
+            {errorConfirmedPassword && (
+              <p className={styles.errormessage}>{errorConfirmedPassword}</p>
+            )}
+          </form>
+        </div>
+        <button
+          type="submit"
+          onClick={handleSubmit}
+          className={styles.signButton}
+        >
+          CREATE ACCOUNT
+        </button>
       </div>
-      {show && <p className={styles.successMessage}>Success!</p>}
-    </>
+    </div>
   );
 }
 

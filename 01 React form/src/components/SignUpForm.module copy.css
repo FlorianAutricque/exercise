@@ -1,0 +1,118 @@
+.errormessage {
+  color: red;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.mainContainerSignUP {
+  /* overflow-y: auto; */
+  /* max-height: 80vh; */
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+}
+
+.mainIcon {
+  background-color: #1557a3;
+  border-radius: 50%;
+  padding: 1rem;
+  margin-bottom: -50px;
+  z-index: 1;
+}
+
+/* .successMessage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: black;
+  padding: 20px;
+  border: solid 1px black;
+  border-radius: 5px;
+  background-color: white;
+} */
+
+.signButtonContainer {
+  /* position: fixed;
+  top: 75px;
+  width: 100%;
+  display: flex;
+  justify-content: center; */
+  display: flex;
+  justify-content: center;
+  margin-top: 25rem; /* Adjust as needed */
+}
+
+.signButton {
+  /* margin-top: 25.5rem;
+  margin-bottom: 1rem;  */
+  width: 35%;
+  height: 45px;
+  border-radius: 0 0 20px 20px;
+  background-color: rgba(215, 210, 210, 0.653);
+  color: white;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  /* position: fixed; */
+}
+.signButton:focus {
+  outline: 2px solid #007bff;
+}
+
+.signButton:hover {
+  transform: scale(1.02);
+  transition: 300ms;
+}
+
+.secondaryContainer {
+  background-color: rgb(215, 210, 210);
+  border-radius: 25px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* gap: 1rem; */
+  width: 40%;
+  box-shadow: 0px 10px 5px #1557a39a;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.secondaryContainer span {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.formContainer > span > input {
+  width: 23rem;
+}
+
+.icons {
+  background-color: #1557a3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: auto;
+  width: 50%;
+  margin-top: 4rem;
+  /* height: 50vh; */
+}
+
+.firstnameFullname {
+  display: flex;
+  gap: 1rem;
+}

@@ -78,7 +78,7 @@ input {
 }
 
 .signButton:focus {
-  outline: 2px solid #007bff; /* Add a blue outline when focused */
+  outline: 2px solid #007bff;
 }
 
 .signButton:hover {

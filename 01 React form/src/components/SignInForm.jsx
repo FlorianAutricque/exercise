@@ -28,73 +28,75 @@ function SignInForm() {
   }
 
   return (
-    <div>
-      {show ? (
-        <>
-          <div className={styles.sucessMessageLogin}>
-            <p>Welcome!</p>
-            <button onClick={handleShow} className={styles.buttonGoBack}>
-              Go back
-            </button>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className={`${styles.space} ${styles.stars1}`}></div>
-          <div className={`${styles.space} ${styles.stars2}`}></div>
-          <div className={`${styles.space} ${styles.stars3}`}></div>
-          <div className={`${styles.space} ${styles.stars4}`}></div>
-          <div className={styles.mainContainer}>
-            <FaUserAstronaut size={90} className={styles.mainIcon} />
-            <div className={styles.secondaryContainer}>
-              <form className={styles.formContainer} onSubmit={handleShow}>
-                <span>
-                  <label htmlFor="email" className={styles.icons}>
-                    <MdAccountCircle size={30} />
-                  </label>
-                  <input
-                    type="email"
-                    placeholder="Email ID"
-                    onChange={e => setEmail(e.target.value)}
-                    required
-                  />
-                </span>
-                {errorEmail && (
-                  <p className={styles.errorMessage}>{errorEmail}</p>
-                )}
-                <span>
-                  <label htmlFor="password" className={styles.icons}>
-                    <AiFillUnlock size={30} />
-                  </label>
-                  <input
-                    type="password"
-                    placeholder="Password"
-                    onChange={e => setPassword(e.target.value)}
-                    required
-                  />
-                </span>
-                {errorPassword && (
-                  <p className={styles.errorMessage}>{errorPassword}</p>
-                )}
-              </form>
-
-              <span>
-                <label>Remember me </label>
-                <input type="checkbox" />
-                <p>Not registered yet?</p> &nbsp;
-                <Link to="/signup">Sign up</Link>
-              </span>
+    <div id="background-wrapper">
+      <div>
+        {show ? (
+          <>
+            <div className={styles.sucessMessageLogin}>
+              <p>Welcome!</p>
+              <button onClick={handleShow} className={styles.buttonGoBack}>
+                Go back
+              </button>
             </div>
-            <button
-              type="submit"
-              onClick={handleShow}
-              className={styles.signButton}
-            >
-              SIGN IN
-            </button>
-          </div>
-        </>
-      )}
+          </>
+        ) : (
+          <>
+            <div className={`${styles.space} ${styles.stars1}`}></div>
+            <div className={`${styles.space} ${styles.stars2}`}></div>
+            <div className={`${styles.space} ${styles.stars3}`}></div>
+            <div className={`${styles.space} ${styles.stars4}`}></div>
+            <div className={styles.mainContainer}>
+              <FaUserAstronaut size={90} className={styles.mainIcon} />
+              <div className={styles.secondaryContainer}>
+                <form className={styles.formContainer} onSubmit={handleShow}>
+                  <span>
+                    <label htmlFor="email" className={styles.icons}>
+                      <MdAccountCircle size={30} />
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="Email ID"
+                      onChange={e => setEmail(e.target.value)}
+                      required
+                    />
+                  </span>
+                  {errorEmail && (
+                    <p className={styles.errorMessage}>{errorEmail}</p>
+                  )}
+                  <span>
+                    <label htmlFor="password" className={styles.icons}>
+                      <AiFillUnlock size={30} />
+                    </label>
+                    <input
+                      type="password"
+                      placeholder="Password"
+                      onChange={e => setPassword(e.target.value)}
+                      required
+                    />
+                  </span>
+                  {errorPassword && (
+                    <p className={styles.errorMessage}>{errorPassword}</p>
+                  )}
+                </form>
+
+                <span>
+                  <label>Remember me </label>
+                  <input type="checkbox" />
+                  <p>Not registered yet?</p> &nbsp;
+                  <Link to="/signup">Sign up</Link>
+                </span>
+              </div>
+              <button
+                type="submit"
+                onClick={handleShow}
+                className={styles.signButton}
+              >
+                SIGN IN
+              </button>
+            </div>
+          </>
+        )}
+      </div>
     </div>
   );
 }
