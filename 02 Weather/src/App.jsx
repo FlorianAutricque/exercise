@@ -40,6 +40,8 @@ function App() {
     fetchData();
   }, [location]);
 
+  // const { time, temperature_2m_max, temperature_2m_min, weathercode } = weather;
+
   return (
     <div>
       <h1>Weather {location}</h1>
@@ -51,9 +53,22 @@ function App() {
 
       {isLoading && <p>Loading...</p>}
 
-      {weather && weather.temperature_2m_max && (
-        <p>Max Temperature: {Math.max(...weather.temperature_2m_max)}°C</p>
-      )}
+      {weather &&
+        weather.temperature_2m_max &&
+        weather.weathercode &&
+        weather.temperature_2m_min &&
+        weather.temperature_2m_max.map((max, index) => (
+          <>
+            <p key={index}>
+              Max Temperature for {weather.time[index]}: {max}°C
+            </p>
+            <p>
+              WC:
+              {weather.weathercode[index]}
+            </p>
+            <p>min: {weather.temperature_2m_min[index]}C</p>
+          </>
+        ))}
     </div>
   );
 }
