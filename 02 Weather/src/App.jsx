@@ -23,6 +23,8 @@ function App() {
             `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=${timezone}`
           );
 
+          //use google places api to fetch image from location
+
           const weatherData = await weatherRes.json();
 
           setWeather(weatherData.daily);
