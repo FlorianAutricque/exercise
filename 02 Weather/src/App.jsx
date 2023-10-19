@@ -60,8 +60,8 @@ function App() {
         weather.weathercode &&
         weather.temperature_2m_min &&
         weather.temperature_2m_max.map((max, index) => (
-          <>
-            <p key={index}>
+          <div key={index}>
+            <p>
               Max Temperature for {weather.time[index]}: {max}°C
             </p>
             <p>
@@ -69,7 +69,7 @@ function App() {
               {weather.weathercode[index]}
             </p>
             <p>min: {weather.temperature_2m_min[index]}C</p>
-          </>
+          </div>
         ))}
     </div>
   );
