@@ -1,11 +1,18 @@
+/* .mainContainerWeather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+} */
+
 .containerWeather {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
-
   width: 80%;
-  background-color: #3641568f;
+  background-color: #364156cc;
+  color: white;
 }
 
 .x {
@@ -19,19 +26,25 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   width: 90%;
+  position: relative;
 }
 
 .mainContainer img {
   width: 80%;
+  max-width: 100%;
 }
 
-.mainContainerWeather {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+.contentWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.containerWeather {
+  position: absolute;
+  bottom: 0;
+
+  z-index: 1;
 }
 
 .containerEachDay {

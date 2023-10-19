@@ -88,8 +88,8 @@ function App() {
 
   async function fetchImages(location) {
     try {
-      // const query = location;
-      const query = "paris";
+      const query = location;
+      // const query = "paris";
       const apiUrl = `https://api.unsplash.com/search/photos?query=${query}`;
 
       const response = await fetch(apiUrl, {
@@ -126,58 +126,62 @@ function App() {
 
       <div className={styles.x}>
         <div className={styles.mainContainer}>
-          {isLoading ? (
-            <p>Loading...</p>
-          ) : images.length > 0 ? (
-            <img src={images[0].urls.regular} alt={images[0].description} />
-          ) : (
-            <p>No images found.</p>
-          )}
+          <div className={styles.contentWrapper}>
+            {isLoading ? (
+              <p>Loading...</p>
+            ) : images.length > 0 ? (
+              <img src={images[0].urls.regular} alt={images[0].description} />
+            ) : (
+              <p>No images found.</p>
+            )}
 
-          <div className={styles.mainContainerWeather}>
-            <div className={styles.containerWeather}>
-              <div>
+            <div className={styles.mainContainerWeather}>
+              <div className={styles.containerWeather}>
+                <div>
+                  {weather &&
+                    weather.temperature_2m_max &&
+                    weather.weathercode &&
+                    weather.temperature_2m_min && (
+                      <div key={0} className={styles.containerFirstDay}>
+                        {/* <p className={styles.today}>Today:</p> */}
+                        <div className={styles.firstDay}>
+                          <p>
+                            WC: {getWeatherIcon(weather.weathercode[0], 50)}
+                          </p>
+                          <div className={styles.firstDayDateTemp}>
+                            <p> {formatDay(weather.time[0])}</p>
+                            <span>
+                              <p> {weather.temperature_2m_min[0]}°C - </p>
+                              <p>&nbsp;{weather.temperature_2m_max[0]}°C</p>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                </div>
+
                 {weather &&
                   weather.temperature_2m_max &&
                   weather.weathercode &&
-                  weather.temperature_2m_min && (
-                    <div key={0} className={styles.containerFirstDay}>
-                      {/* <p className={styles.today}>Today:</p> */}
-                      <div className={styles.firstDay}>
-                        <p>WC: {getWeatherIcon(weather.weathercode[0], 50)}</p>
-                        <div className={styles.firstDayDateTemp}>
-                          <p> {formatDay(weather.time[0])}</p>
-                          <span>
-                            <p> {weather.temperature_2m_min[0]}°C - </p>
-                            <p>&nbsp;{weather.temperature_2m_max[0]}°C</p>
-                          </span>
-                        </div>
+                  weather.temperature_2m_min &&
+                  weather.temperature_2m_max.map((max, index) => {
+                    if (index === 0) {
+                      return null;
+                    }
+                    return (
+                      <div key={index} className={styles.containerEachDay}>
+                        <p>{formatDay(weather.time[index])}</p>
+                        <p>
+                          WC: {getWeatherIcon(weather.weathercode[index], 30)}
+                        </p>
+                        <span>
+                          <p>{weather.temperature_2m_min[index]}°C -</p>
+                          <p>&nbsp;{max}°C</p>
+                        </span>
                       </div>
-                    </div>
-                  )}
+                    );
+                  })}
               </div>
-
-              {weather &&
-                weather.temperature_2m_max &&
-                weather.weathercode &&
-                weather.temperature_2m_min &&
-                weather.temperature_2m_max.map((max, index) => {
-                  if (index === 0) {
-                    return null;
-                  }
-                  return (
-                    <div key={index} className={styles.containerEachDay}>
-                      <p>{formatDay(weather.time[index])}</p>
-                      <p>
-                        WC: {getWeatherIcon(weather.weathercode[index], 30)}
-                      </p>
-                      <span>
-                        <p>{weather.temperature_2m_min[index]}°C -</p>
-                        <p>&nbsp;{max}°C</p>
-                      </span>
-                    </div>
-                  );
-                })}
             </div>
           </div>
         </div>
