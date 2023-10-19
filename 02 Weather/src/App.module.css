@@ -3,9 +3,35 @@
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  /* margin-right: 15rem; */
-  /* margin-left: 15rem; */
+
+  width: 80%;
   background-color: #3641568f;
+}
+
+.x {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  width: 90%;
+}
+
+.mainContainer img {
+  width: 80%;
+}
+
+.mainContainerWeather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .containerEachDay {
@@ -16,6 +42,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: smaller;
 }
 
 .containerFirstDay {
