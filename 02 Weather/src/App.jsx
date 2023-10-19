@@ -3,9 +3,7 @@ import { useState, useEffect } from "react";
 function CityImages() {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const accessKey = import.meta.env.VITE_API_KEY;
-  // const accessKey = "ynmV5qtX3xGG1RKS8136bMIme_5pMEMwRVAyVpuBp-g";
-  console.log(accessKey);
+  const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
 
   useEffect(() => {
     fetchImages();
@@ -22,6 +20,7 @@ function CityImages() {
     })
       .then(response => response.json())
       .then(data => {
+        console.log(data);
         setImages(data.results);
         setLoading(false);
       })
