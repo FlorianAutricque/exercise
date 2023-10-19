@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
 
+function formatDay(dateStr) {
+  return new Intl.DateTimeFormat("en", {
+    day: "numeric",
+    month: "short",
+    weekday: "short",
+  }).format(new Date(dateStr));
+}
+
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [location, setLocation] = useState("");
@@ -71,7 +79,8 @@ function App() {
 
   return (
     <div>
-      <h1>Weather {location}</h1>
+      <h1>Weather {location.charAt(0).toUpperCase() + location.slice(1)}</h1>
+
       <input
         type="text"
         value={location}
@@ -86,11 +95,10 @@ function App() {
         weather.temperature_2m_min &&
         weather.temperature_2m_max.map((max, index) => (
           <div key={index}>
-            <p>
-              Max Temperature for {weather.time[index]}: {max}°C
-            </p>
+            <p>{formatDay(weather.time[index])}</p>
+            <p>Max: {max}°C</p>
+            <p>Min: {weather.temperature_2m_min[index]}°C</p>
             <p>WC: {weather.weathercode[index]}</p>
-            <p>min: {weather.temperature_2m_min[index]}C</p>
           </div>
         ))}
 
