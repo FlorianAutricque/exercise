@@ -1,4 +1,3 @@
-import FormatDay from "../helpers/FormatDay";
 import GetWeatherIcon from "../helpers/GetWeatherIcon";
 
 import styles from "./FirstDay.module.css";
@@ -16,9 +15,7 @@ function FirstDay({ weather }) {
               <p>{GetWeatherIcon(weather.weathercode[0], 50)}</p>
 
               <div className={styles.firstDayDateTemp}>
-                <p className={styles.day}>
-                  {FormatDay(weather.time[0]).toUpperCase()}
-                </p>
+                <p className={styles.day}>TODAY</p>
                 <span>
                   <p> {Math.round(weather.temperature_2m_min[0])}°C - </p>
                   <p>&nbsp;{Math.round(weather.temperature_2m_max[0])}°C</p>

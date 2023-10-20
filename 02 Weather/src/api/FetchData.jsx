@@ -5,10 +5,12 @@ import Input from "../components/Input";
 import Image from "../components/Image";
 import FirstDay from "../components/FirstDay";
 import RestOfWeek from "../components/RestOfWeek";
+import Title from "../components/Title";
+import Infos from "../components/Infos";
 
 function FetchData() {
   const [isLoading, setIsLoading] = useState(false);
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState("paris");
   const [weather, setWeather] = useState({});
   const [images, setImages] = useState([]);
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
@@ -51,8 +53,8 @@ function FetchData() {
 
   async function fetchImages(location) {
     try {
-      // const query = location;
-      const query = "paris";
+      const query = location;
+      // const query = "paris";
       const apiUrl = `https://api.unsplash.com/search/photos?query=${query}`;
 
       const response = await fetch(apiUrl, {
@@ -76,13 +78,12 @@ function FetchData() {
   }
   return (
     <div>
-      <h1>Weather {location.charAt(0).toUpperCase() + location.slice(1)}</h1>
-
-      <Input location={location} setLocation={setLocation} />
-
       {isLoading && <p>Loading...</p>}
       <div className={styles.x}>
         <div className={styles.mainContainer}>
+          <Infos weather={weather} />
+          <Title location={location} />
+          <Input location={location} setLocation={setLocation} />
           <div className={styles.contentWrapper}>
             <Image isLoading={isLoading} images={images} />
 
