@@ -19,3 +19,9 @@
 .firstDayDateTemp {
   text-align: center;
 }
+
+.day {
+  background-color: #343841ef;
+  border-radius: 10px;
+  padding: 4px;
+}

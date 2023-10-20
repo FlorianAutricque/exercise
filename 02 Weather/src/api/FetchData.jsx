@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import FormatDay from "../helpers/FormatDay";
-import GetWeatherIcon from "../helpers/GetWeatherIcon";
 
 import styles from "../App.module.css";
 import Input from "../components/Input";
@@ -88,12 +86,10 @@ function FetchData() {
           <div className={styles.contentWrapper}>
             <Image isLoading={isLoading} images={images} />
 
-            <div className={styles.mainContainerWeather}>
-              <div className={styles.containerWeather}>
-                <FirstDay weather={weather} />
+            <div className={styles.containerWeather}>
+              <FirstDay weather={weather} />
 
-                <RestOfWeek weather={weather} />
-              </div>
+              <RestOfWeek weather={weather} />
             </div>
           </div>
         </div>

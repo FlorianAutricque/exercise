@@ -16,10 +16,12 @@ function FirstDay({ weather }) {
               <p>{GetWeatherIcon(weather.weathercode[0], 50)}</p>
 
               <div className={styles.firstDayDateTemp}>
-                <p> {FormatDay(weather.time[0])}</p>
+                <p className={styles.day}>
+                  {FormatDay(weather.time[0]).toUpperCase()}
+                </p>
                 <span>
-                  <p> {weather.temperature_2m_min[0]}°C - </p>
-                  <p>&nbsp;{weather.temperature_2m_max[0]}°C</p>
+                  <p> {Math.round(weather.temperature_2m_min[0])}°C - </p>
+                  <p>&nbsp;{Math.round(weather.temperature_2m_max[0])}°C</p>
                 </span>
               </div>
             </div>
