@@ -1,0 +1,21 @@
+.containerFirstDay {
+  /* background-color: red; */
+}
+
+.firstDay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.firstDay span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.firstDayDateTemp {
+  text-align: center;
+}

@@ -47,39 +47,6 @@
   z-index: 1;
 }
 
-.containerEachDay {
-  text-align: center;
-}
-
-.containerEachDay span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: smaller;
-}
-
-.containerFirstDay {
-  /* background-color: red; */
-}
-
-.firstDay {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
-  gap: 1rem;
-}
-
-.firstDay span {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.firstDayDateTemp {
-  text-align: center;
-}
-
 .today {
   text-align: center;
   margin-top: 1rem;

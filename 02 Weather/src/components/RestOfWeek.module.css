@@ -1,0 +1,10 @@
+.containerEachDay {
+  text-align: center;
+}
+
+.containerEachDay span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: smaller;
+}
