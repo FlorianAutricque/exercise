@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
-import styles from "../App.module.css";
+import styles from "./FetchData.module.css";
+
 import Input from "../components/Input";
 import Image from "../components/Image";
 import FirstDay from "../components/FirstDay";
@@ -81,11 +82,15 @@ function FetchData() {
       {isLoading && <p>Loading...</p>}
       <div className={styles.x}>
         <div className={styles.mainContainer}>
-          <Infos weather={weather} />
+          {/* <Infos weather={weather} />
           <Title location={location} />
-          <Input location={location} setLocation={setLocation} />
+          <Input location={location} setLocation={setLocation} /> */}
           <div className={styles.contentWrapper}>
-            <Image isLoading={isLoading} images={images} />
+            <Image
+              className={styles.image}
+              isLoading={isLoading}
+              images={images}
+            />
 
             <div className={styles.containerWeather}>
               <FirstDay weather={weather} />
