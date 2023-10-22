@@ -1,26 +1,4 @@
 .x {
-  /* display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; */
-
-  /* position: relative; */
-}
-
-/* .containerWeather { */
-/* position: absolute; */
-/* bottom: 0;
-  width: 55%;
-
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #364156cc;
-  color: white;
-} */
-
-.x {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,13 +13,31 @@
   justify-content: center;
   align-items: center;
   bottom: 0;
-  width: 60%;
-  left: 50%; /* Center the container horizontally */
-  transform: translateX(-50%); /* Center horizontally */
+  width: 70%;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #364156cc;
   color: white;
+  gap: 1rem;
 }
 
 .y {
+  position: relative;
+}
+
+.topContainer {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  top: -25px;
+  z-index: 1;
+  width: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 11rem;
+}
+
+.z {
   position: relative;
 }

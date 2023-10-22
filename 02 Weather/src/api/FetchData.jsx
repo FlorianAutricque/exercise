@@ -52,37 +52,6 @@ function FetchData() {
     fetchData();
   }, [location]);
 
-  // async function fetchImages(location) {
-  //   try {
-  //     const query = location;
-  //     const apiUrl = `https://api.unsplash.com/search/photos?query=${query}&per_page=100`; // Adjust per_page as needed
-
-  //     const response = await fetch(apiUrl, {
-  //       headers: {
-  //         Authorization: `Client-ID ${accessKey}`,
-  //       },
-  //     });
-
-  //     if (response.ok) {
-  //       const data = await response.json();
-
-  //       // Filter images with a height less than or equal to 300px
-  //       const filteredImages = data.results.filter(image => {
-  //         const minHeight = 800; // Adjust as needed
-  //         return image.height ? image.height <= minHeight : true;
-  //       });
-
-  //       setImages(filteredImages);
-  //     } else {
-  //       console.error("Error fetching images:", response.statusText);
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching images:", error);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // }
-
   async function fetchImages(location) {
     try {
       const query = location;
@@ -114,9 +83,15 @@ function FetchData() {
       {isLoading && <p>Loading...</p>}
       <div className={styles.x}>
         <div className={styles.mainContainer}>
-          {/* <Infos weather={weather} />
-          <Title location={location} /> */}
-          <Input location={location} setLocation={setLocation} />
+          <div className={styles.z}>
+            <div className={styles.topContainer}>
+              <Infos weather={weather} />
+              <div>
+                <Title location={location} />
+                <Input location={location} setLocation={setLocation} />
+              </div>
+            </div>
+          </div>
           <div className={styles.y}>
             <div className={styles.contentWrapper}>
               <Image

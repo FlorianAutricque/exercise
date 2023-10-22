@@ -34,7 +34,7 @@ function Infos({ weather }) {
     <>
       <div className={styles.infos}>
         <p>{localTime}</p>
-        {FormatDay2(weather.time[0]).toUpperCase()}
+        <span>{FormatDay2(weather.time[0]).toUpperCase()}</span>
       </div>
     </>
   );

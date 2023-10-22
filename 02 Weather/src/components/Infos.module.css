@@ -1,12 +1,17 @@
 .infos {
-  position: relative;
-  top: 210px;
-  left: -225px;
   color: white;
   text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
 }
 
 .infos p {
   font-size: 3rem;
-  margin-bottom: 0;
+  margin-bottom: 1rem;
+}
+
+.infos span {
+  margin-left: 6px;
 }
