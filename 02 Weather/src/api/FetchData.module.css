@@ -1,27 +1,47 @@
-/* Assuming your styles are defined as CSS modules, as indicated by the use of `styles.x`, `styles.mainContainer`, etc. */
+.x {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
 
-/* Container for the whole content */
+  /* position: relative; */
+}
+
+/* .containerWeather { */
+/* position: absolute; */
+/* bottom: 0;
+  width: 55%;
+
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #364156cc;
+  color: white;
+} */
+
 .x {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center horizontally */
-  justify-content: center; /* Center vertically */
-
-  position: relative; /* Needed for positioning .containerWeather */
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
 }
 
-/* Container for the images */
 .containerWeather {
   position: absolute;
-  bottom: 0; /* Stick to the bottom of the parent container */
-  width: 80%;
   display: flex;
-  justify-content: space-between; /* Optional, adjust based on your needs */
-  align-items: center; /* Vertically center the content inside .containerWeather */
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  width: 60%;
+  left: 50%; /* Center the container horizontally */
+  transform: translateX(-50%); /* Center horizontally */
   background-color: #364156cc;
   color: white;
 }
 
-/* Add other styles as needed for .FirstDay and .RestOfWeek */
-
-/* Style for the image */
+.y {
+  position: relative;
+}

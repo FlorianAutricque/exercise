@@ -1,16 +1,18 @@
 .image {
   width: 60%;
 
-  height: auto;
-
   margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  max-width: 100%;
 
+  display: block;
   box-shadow: 0 0 50px rgba(0, 0, 0, 0.696);
 }
 
 .containerImage {
-  padding: 4rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.image img {
+  margin-top: 3rem;
 }

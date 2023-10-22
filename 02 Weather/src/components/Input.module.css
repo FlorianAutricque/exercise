@@ -4,4 +4,5 @@
   left: 200px;
   background-color: #34384191;
   border: none;
+  z-index: 1;
 }
