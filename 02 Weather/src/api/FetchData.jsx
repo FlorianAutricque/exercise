@@ -8,6 +8,7 @@ import FirstDay from "../components/FirstDay";
 import RestOfWeek from "../components/RestOfWeek";
 import Title from "../components/Title";
 import Infos from "../components/Infos";
+import Spinner from "../components/Spinner";
 
 function FetchData() {
   const [isLoading, setIsLoading] = useState(false);
@@ -80,10 +81,11 @@ function FetchData() {
 
   return (
     <div>
-      {isLoading && <p>Loading...</p>}
-      <div className={styles.x}>
-        <div className={styles.mainContainer}>
-          <div className={styles.z}>
+      {isLoading && <Spinner />}
+
+      <div className={styles.mainContainer}>
+        <div>
+          <div className={styles.mainContainerTop}>
             <div className={styles.topContainer}>
               <Infos weather={weather} />
               <div>
@@ -92,7 +94,7 @@ function FetchData() {
               </div>
             </div>
           </div>
-          <div className={styles.y}>
+          <div className={styles.mainContainerImageWeather}>
             <div className={styles.contentWrapper}>
               <Image
                 className={styles.image}

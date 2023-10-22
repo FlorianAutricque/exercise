@@ -1,10 +1,11 @@
 import styles from "./Image.module.css";
+import Spinner from "./Spinner";
 
 function Image({ isLoading, images }) {
   return (
     <div className={styles.containerImage}>
       {isLoading ? (
-        <p>Loading...</p>
+        <Spinner />
       ) : images.length > 0 ? (
         <img
           className={styles.image}
@@ -12,7 +13,7 @@ function Image({ isLoading, images }) {
           alt={images[0].description}
         />
       ) : (
-        ""
+        "No image found, try another location"
       )}
     </div>
   );

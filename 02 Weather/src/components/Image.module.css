@@ -1,13 +1,9 @@
 .image {
   width: 100%;
-
   margin: auto;
-
   max-width: 100%;
   max-height: none;
-
   display: block;
-
   object-fit: cover;
   z-index: 1;
 }
