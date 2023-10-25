@@ -1,0 +1,16 @@
+.topContainer {
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  top: -25px;
+  z-index: 1;
+  width: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 11rem;
+}
+
+.mainContainerTop {
+  position: relative;
+}

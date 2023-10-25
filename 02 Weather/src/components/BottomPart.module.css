@@ -1,0 +1,13 @@
+.containerWeather {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  width: 70%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #364156cc;
+  color: white;
+  gap: 1rem;
+}

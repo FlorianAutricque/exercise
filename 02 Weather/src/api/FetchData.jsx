@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 
 import styles from "./FetchData.module.css";
 
-import Input from "../components/Input";
 import Image from "../components/Image";
 import FirstDay from "../components/FirstDay";
 import RestOfWeek from "../components/RestOfWeek";
-import Title from "../components/Title";
-import Infos from "../components/Infos";
+
 import Spinner from "../components/Spinner";
+import TopPart from "../components/TopPart";
+import BottomPart from "../components/BottomPart";
 
 function FetchData() {
   const [isLoading, setIsLoading] = useState(false);
@@ -85,28 +85,21 @@ function FetchData() {
 
       <div className={styles.mainContainer}>
         <div>
-          <div className={styles.mainContainerTop}>
-            <div className={styles.topContainer}>
-              <Infos weather={weather} />
-              <div>
-                <Title location={location} />
-                <Input location={location} setLocation={setLocation} />
-              </div>
-            </div>
-          </div>
+          <TopPart
+            weather={weather}
+            location={location}
+            setLocation={setLocation}
+          />
           <div className={styles.mainContainerImageWeather}>
-            <div className={styles.contentWrapper}>
+            <div>
               <Image
                 className={styles.image}
                 isLoading={isLoading}
                 images={images}
               />
             </div>
-            <div className={styles.containerWeather}>
-              <FirstDay weather={weather} />
 
-              <RestOfWeek weather={weather} />
-            </div>
+            <BottomPart weather={weather} />
           </div>
         </div>
       </div>
