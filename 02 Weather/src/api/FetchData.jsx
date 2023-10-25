@@ -1,14 +1,7 @@
 import { useEffect, useState } from "react";
 
-import styles from "./FetchData.module.css";
-
-import Image from "../components/Image";
-import FirstDay from "../components/FirstDay";
-import RestOfWeek from "../components/RestOfWeek";
-
 import Spinner from "../components/Spinner";
-import TopPart from "../components/TopPart";
-import BottomPart from "../components/BottomPart";
+import MainPage from "../page/MainPage";
 
 function FetchData() {
   const [isLoading, setIsLoading] = useState(false);
@@ -67,7 +60,7 @@ function FetchData() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+
         setImages(data.results);
       } else {
         console.error("Error fetching images:", response.statusText);
@@ -83,26 +76,13 @@ function FetchData() {
     <div>
       {isLoading && <Spinner />}
 
-      <div className={styles.mainContainer}>
-        <div>
-          <TopPart
-            weather={weather}
-            location={location}
-            setLocation={setLocation}
-          />
-          <div className={styles.mainContainerImageWeather}>
-            <div>
-              <Image
-                className={styles.image}
-                isLoading={isLoading}
-                images={images}
-              />
-            </div>
-
-            <BottomPart weather={weather} />
-          </div>
-        </div>
-      </div>
+      <MainPage
+        weather={weather}
+        setLocation={setLocation}
+        images={images}
+        isLoading={isLoading}
+        location={location}
+      />
     </div>
   );
 }
