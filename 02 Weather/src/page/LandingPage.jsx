@@ -7,9 +7,17 @@ import styles2 from "../components/Image.module.css";
 
 import image from "../img/landingPage.jpg";
 
-function LandingPage({ weather, setLocation, location, onClick }) {
+function LandingPage({
+  weather,
+  setLocation,
+  location,
+  images,
+  isLoading,
+  onClick,
+}) {
   return (
     <div className={styles.mainContainer}>
+      <button onClick={onClick}>button</button>
       <div>
         <TopPart
           weather={weather}

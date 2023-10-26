@@ -81,19 +81,21 @@ function FetchData() {
 
   return (
     <div>
-      {show && <LandingPage />}
+      <LandingPage onClick={handleShow} />
 
       {isLoading && <Spinner />}
 
       <button onClick={handleShow}>button</button>
 
-      <MainPage
-        weather={weather}
-        setLocation={setLocation}
-        images={images}
-        isLoading={isLoading}
-        location={location}
-      />
+      {show && (
+        <MainPage
+          weather={weather}
+          setLocation={setLocation}
+          images={images}
+          isLoading={isLoading}
+          location={location}
+        />
+      )}
     </div>
   );
 }
