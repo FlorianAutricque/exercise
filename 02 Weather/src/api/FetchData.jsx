@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import Spinner from "../components/Spinner";
 import MainPage from "../page/MainPage";
+import LandingPage from "../page/LandingPage";
 
 function FetchData() {
   const [isLoading, setIsLoading] = useState(false);
@@ -9,6 +10,12 @@ function FetchData() {
   const [weather, setWeather] = useState({});
   const [images, setImages] = useState([]);
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
+
+  const [show, setShow] = useState(false);
+
+  function handleShow() {
+    setShow(!show);
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -74,7 +81,11 @@ function FetchData() {
 
   return (
     <div>
+      {show && <LandingPage />}
+
       {isLoading && <Spinner />}
+
+      <button onClick={handleShow}>button</button>
 
       <MainPage
         weather={weather}
