@@ -1,10 +1,10 @@
 import styles from "./Input.module.css";
 
 function Input({ location, setLocation, onSubmitLocation }) {
-  const handleFormSubmit = e => {
+  function handleFormSubmit(e) {
     e.preventDefault();
     onSubmitLocation(location);
-  };
+  }
   return (
     <form onSubmit={handleFormSubmit}>
       <input
@@ -14,7 +14,6 @@ function Input({ location, setLocation, onSubmitLocation }) {
         placeholder="Enter location"
         className={styles.input}
       />
-      <button type="submit">Submit</button>
     </form>
   );
 }

@@ -13,19 +13,14 @@ function FetchData() {
 
   const [show, setShow] = useState(false);
 
-  const onSubmitLocation = enteredLocation => {
+  function onSubmitLocation(enteredLocation) {
     setLocation(enteredLocation);
     setShow(true);
-  };
+  }
 
   // function handleShow() {
   //   setShow(show => !show);
   // }
-
-  useEffect(() => {
-    setLocation(localStorage.getItem("location") || "");
-  }, []);
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -60,7 +55,6 @@ function FetchData() {
     }
 
     fetchData();
-    localStorage.setItem("location", location);
   }, [location]);
 
   async function fetchImages(location) {
@@ -100,6 +94,7 @@ function FetchData() {
           setLocation={setLocation}
           images={images}
           isLoading={isLoading}
+          location={location}
         />
       ) : (
         <LandingPage

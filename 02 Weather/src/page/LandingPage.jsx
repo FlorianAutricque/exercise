@@ -6,6 +6,7 @@ import styles from "./MainPage.module.css";
 import styles2 from "./LandingPage.module.css";
 
 import image from "../img/landingPage.jpg";
+import Input from "../components/Input";
 
 function LandingPage({
   weather,
@@ -19,7 +20,7 @@ function LandingPage({
   return (
     <div className={styles.mainContainer}>
       <div>
-        <TopPart
+        <Input
           weather={weather}
           location={location}
           setLocation={setLocation}
