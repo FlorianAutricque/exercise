@@ -14,6 +14,7 @@ function LandingPage({
   images,
   isLoading,
   onClick,
+  onSubmitLocation,
 }) {
   return (
     <div className={styles.mainContainer}>
@@ -22,6 +23,7 @@ function LandingPage({
           weather={weather}
           location={location}
           setLocation={setLocation}
+          onSubmitLocation={onSubmitLocation}
         />
         <div className={styles.mainContainerImageWeather}>
           <div>

@@ -6,16 +6,25 @@ import LandingPage from "../page/LandingPage";
 
 function FetchData() {
   const [isLoading, setIsLoading] = useState(false);
-  const [location, setLocation] = useState("paris");
+  const [location, setLocation] = useState("");
   const [weather, setWeather] = useState({});
   const [images, setImages] = useState([]);
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
 
   const [show, setShow] = useState(false);
 
-  function handleShow() {
-    setShow(show => !show);
-  }
+  const onSubmitLocation = enteredLocation => {
+    setLocation(enteredLocation);
+    setShow(true);
+  };
+
+  // function handleShow() {
+  //   setShow(show => !show);
+  // }
+
+  useEffect(() => {
+    setLocation(localStorage.getItem("location") || "");
+  }, []);
 
   useEffect(() => {
     async function fetchData() {
@@ -51,6 +60,7 @@ function FetchData() {
     }
 
     fetchData();
+    localStorage.setItem("location", location);
   }, [location]);
 
   async function fetchImages(location) {
@@ -82,7 +92,7 @@ function FetchData() {
   return (
     <div>
       {isLoading && <Spinner />}
-      <button onClick={handleShow}>button</button>
+      {/* <button onClick={handleShow}>button</button> */}
 
       {show ? (
         <MainPage
@@ -90,10 +100,13 @@ function FetchData() {
           setLocation={setLocation}
           images={images}
           isLoading={isLoading}
-          location={location}
         />
       ) : (
-        <LandingPage onClick={handleShow} />
+        <LandingPage
+          location={location}
+          setLocation={setLocation}
+          onSubmitLocation={onSubmitLocation}
+        />
       )}
     </div>
   );
