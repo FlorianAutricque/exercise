@@ -4,7 +4,14 @@ import BottomPart from "../components/BottomPart";
 
 import styles from "./MainPage.module.css";
 
-function MainPage({ weather, setLocation, images, isLoading, location }) {
+function MainPage({
+  weather,
+  setLocation,
+  images,
+  isLoading,
+  location,
+  onClick,
+}) {
   return (
     <div className={styles.mainContainer}>
       <div>

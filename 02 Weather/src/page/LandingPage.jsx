@@ -3,7 +3,7 @@ import TopPart from "../components/TopPart";
 import BottomPart from "../components/BottomPart";
 
 import styles from "./MainPage.module.css";
-import styles2 from "../components/Image.module.css";
+import styles2 from "./LandingPage.module.css";
 
 import image from "../img/landingPage.jpg";
 
@@ -17,7 +17,6 @@ function LandingPage({
 }) {
   return (
     <div className={styles.mainContainer}>
-      <button onClick={onClick}>button</button>
       <div>
         <TopPart
           weather={weather}
@@ -29,7 +28,7 @@ function LandingPage({
             <img
               src={image}
               alt="landing page image"
-              className={styles2.image}
+              className={styles2.imageLandingPage}
             />
           </div>
         </div>

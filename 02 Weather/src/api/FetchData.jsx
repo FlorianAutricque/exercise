@@ -14,7 +14,7 @@ function FetchData() {
   const [show, setShow] = useState(false);
 
   function handleShow() {
-    setShow(!show);
+    setShow(show => !show);
   }
 
   useEffect(() => {
@@ -81,13 +81,10 @@ function FetchData() {
 
   return (
     <div>
-      <LandingPage onClick={handleShow} />
-
       {isLoading && <Spinner />}
-
       <button onClick={handleShow}>button</button>
 
-      {show && (
+      {show ? (
         <MainPage
           weather={weather}
           setLocation={setLocation}
@@ -95,6 +92,8 @@ function FetchData() {
           isLoading={isLoading}
           location={location}
         />
+      ) : (
+        <LandingPage onClick={handleShow} />
       )}
     </div>
   );
