@@ -49,7 +49,7 @@ function FetchData() {
   async function fetchImages(location) {
     try {
       const query = location;
-      // const query = "new y";
+
       const apiUrl = `https://api.unsplash.com/search/photos?query=${query}`;
 
       const response = await fetch(apiUrl, {
