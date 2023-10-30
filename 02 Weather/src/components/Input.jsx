@@ -4,7 +4,7 @@ function Input({ location, setLocation }) {
   return (
     <input
       type="text"
-      value={location}
+      // value={location}
       onChange={e => setLocation(e.target.value)}
       placeholder="Enter location"
       className={styles.input}

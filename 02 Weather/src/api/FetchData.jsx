@@ -2,14 +2,25 @@ import { useEffect, useState } from "react";
 
 import Spinner from "../components/Spinner";
 import MainPage from "../page/MainPage";
+import LandingPage from "../page/LandingPage";
 
 function FetchData() {
   const [isLoading, setIsLoading] = useState(false);
-  const [location, setLocation] = useState("paris");
+  const [location, setLocation] = useState("");
   const [weather, setWeather] = useState({});
   const [images, setImages] = useState([]);
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
 
+  const [show, setShow] = useState(false);
+
+  function onSubmitLocation(enteredLocation) {
+    setLocation(enteredLocation);
+    setShow(true);
+  }
+
+  // function handleShow() {
+  //   setShow(show => !show);
+  // }
   useEffect(() => {
     async function fetchData() {
       try {
@@ -76,13 +87,21 @@ function FetchData() {
     <div>
       {isLoading && <Spinner />}
 
-      <MainPage
-        weather={weather}
-        setLocation={setLocation}
-        images={images}
-        isLoading={isLoading}
-        location={location}
-      />
+      {show ? (
+        <MainPage
+          weather={weather}
+          setLocation={setLocation}
+          images={images}
+          isLoading={isLoading}
+          location={location}
+        />
+      ) : (
+        <LandingPage
+          location={location}
+          setLocation={setLocation}
+          onSubmitLocation={onSubmitLocation}
+        />
+      )}
     </div>
   );
 }
