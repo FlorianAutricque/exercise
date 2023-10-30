@@ -17,15 +17,23 @@ function LandingPage({
   onClick,
   onSubmitLocation,
 }) {
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    onSubmitLocation(location);
+  }
+
   return (
     <div className={styles.mainContainer}>
       <div>
-        <Input
-          weather={weather}
-          location={location}
-          setLocation={setLocation}
-          onSubmitLocation={onSubmitLocation}
-        />
+        <form onSubmit={handleFormSubmit}>
+          <input
+            type="text"
+            value={location}
+            onChange={e => setLocation(e.target.value)}
+            placeholder="Enter location"
+            className={styles.input}
+          />
+        </form>
         <div className={styles.mainContainerImageWeather}>
           <div>
             <img

@@ -86,7 +86,6 @@ function FetchData() {
   return (
     <div>
       {isLoading && <Spinner />}
-      {/* <button onClick={handleShow}>button</button> */}
 
       {show ? (
         <MainPage
