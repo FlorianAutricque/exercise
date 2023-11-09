@@ -18,6 +18,7 @@ function LandingPage({ setLocation, location, onSubmitLocation }) {
             alt="landing page image"
             className={styles2.imageLandingPage}
           />
+
           <form onSubmit={handleFormSubmit} className={styles2.inputForm}>
             <p>Check the weather, anywhere in the world!</p>
             <input
