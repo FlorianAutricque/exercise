@@ -85,14 +85,14 @@ function FetchData() {
 
   return (
     <div>
-      {isLoading && <Spinner />}
+      {/* {isLoading && <Spinner />} */}
 
       {show ? (
         <MainPage
           weather={weather}
           setLocation={setLocation}
           images={images}
-          isLoading={isLoading}
+          // isLoading={isLoading}
           location={location}
         />
       ) : (
