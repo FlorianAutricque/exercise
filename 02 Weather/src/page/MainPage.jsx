@@ -3,28 +3,33 @@ import TopPart from "../components/TopPart";
 import BottomPart from "../components/BottomPart";
 
 import styles from "./MainPage.module.css";
+import Spinner from "../components/Spinner";
 
 function MainPage({ weather, setLocation, images, isLoading, location }) {
   return (
     <div className={styles.mainContainer}>
-      <div>
-        <TopPart
-          weather={weather}
-          location={location}
-          setLocation={setLocation}
-        />
-        <div className={styles.mainContainerImageWeather}>
-          <div>
-            <Image
-              className={styles.image}
-              isLoading={isLoading}
-              images={images}
-            />
-          </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div>
+          <TopPart
+            weather={weather}
+            location={location}
+            setLocation={setLocation}
+          />
+          <div className={styles.mainContainerImageWeather}>
+            <div>
+              <Image
+                className={styles.image}
+                isLoading={isLoading}
+                images={images}
+              />
+            </div>
 
-          <BottomPart weather={weather} />
+            <BottomPart weather={weather} />
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

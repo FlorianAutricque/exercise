@@ -13,7 +13,7 @@ function Image({ isLoading, images }) {
           alt={images[0].description}
         />
       ) : (
-        "No image found, try another location"
+        <p className={styles.errorText}>Nothing found, try another location</p>
       )}
     </div>
   );

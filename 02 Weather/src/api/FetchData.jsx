@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import Spinner from "../components/Spinner";
 import MainPage from "../page/MainPage";
 import LandingPage from "../page/LandingPage";
 
@@ -85,14 +84,12 @@ function FetchData() {
 
   return (
     <div>
-      {/* {isLoading && <Spinner />} */}
-
       {show ? (
         <MainPage
           weather={weather}
           setLocation={setLocation}
           images={images}
-          // isLoading={isLoading}
+          isLoading={isLoading}
           location={location}
         />
       ) : (
