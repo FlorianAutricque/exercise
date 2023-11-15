@@ -5,7 +5,14 @@ import BottomPart from "../components/BottomPart";
 import styles from "./MainPage.module.css";
 import Spinner from "../components/Spinner";
 
-function MainPage({ weather, setLocation, images, isLoading, location }) {
+function MainPage({
+  weather,
+  setLocation,
+  images,
+  isLoading,
+  location,
+  onSubmitLocation,
+}) {
   return (
     <div className={styles.mainContainer}>
       {isLoading ? (
@@ -16,6 +23,7 @@ function MainPage({ weather, setLocation, images, isLoading, location }) {
             weather={weather}
             location={location}
             setLocation={setLocation}
+            onSubmitLocation={onSubmitLocation}
           />
           <div className={styles.mainContainerImageWeather}>
             <div>

@@ -9,3 +9,10 @@
   text-align: center;
   border: 1px solid white;
 }
+
+.inputContainer {
+  position: fixed;
+  top: 114px;
+  right: 15px;
+  height: 2rem;
+}

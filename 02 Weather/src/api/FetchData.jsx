@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
 import MainPage from "../page/MainPage";
 import LandingPage from "../page/LandingPage";
 
@@ -12,49 +11,38 @@ function FetchData() {
 
   const [show, setShow] = useState(false);
 
-  function onSubmitLocation(enteredLocation) {
-    setLocation(enteredLocation);
-    setShow(true);
-  }
+  async function fetchData() {
+    try {
+      setIsLoading(true);
 
-  // function handleShow() {
-  //   setShow(show => !show);
-  // }
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        setIsLoading(true);
-        if (location.length >= 4) {
-          const res = await fetch(
-            `https://geocoding-api.open-meteo.com/v1/search?name=${location}`
-          );
-          const data = await res.json();
+      if (location.length >= 4) {
+        const res = await fetch(
+          `https://geocoding-api.open-meteo.com/v1/search?name=${location}`
+        );
+        const data = await res.json();
 
-          if (!data.results) throw new Error("Location not found");
+        if (!data.results) throw new Error("Location not found");
 
-          const { latitude, longitude, timezone } = data.results[0];
+        const { latitude, longitude, timezone } = data.results[0];
 
-          const weatherRes = await fetch(
-            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=${timezone}`
-          );
+        const weatherRes = await fetch(
+          `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=${timezone}`
+        );
 
-          const weatherData = await weatherRes.json();
+        const weatherData = await weatherRes.json();
 
-          setWeather(weatherData.daily);
+        setWeather(weatherData.daily);
 
-          fetchImages(location);
-        } else {
-          setWeather({});
-        }
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setIsLoading(false);
+        fetchImages(location);
+      } else {
+        setWeather({});
       }
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
     }
-
-    fetchData();
-  }, [location]);
+  }
 
   async function fetchImages(location) {
     try {
@@ -82,6 +70,12 @@ function FetchData() {
     }
   }
 
+  function onSubmitLocation(enteredLocation) {
+    setLocation(enteredLocation);
+    setShow(true);
+    fetchData();
+  }
+
   return (
     <div>
       {show ? (
@@ -91,6 +85,7 @@ function FetchData() {
           images={images}
           isLoading={isLoading}
           location={location}
+          onSubmitLocation={onSubmitLocation}
         />
       ) : (
         <LandingPage
