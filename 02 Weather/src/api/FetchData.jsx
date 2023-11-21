@@ -39,6 +39,7 @@ function FetchData() {
       }
     } catch (error) {
       console.error(error);
+      setLocation("");
     } finally {
       setIsLoading(false);
     }
@@ -72,6 +73,8 @@ function FetchData() {
 
   function onSubmitLocation(enteredLocation) {
     setLocation(enteredLocation);
+    console.log("Location after setting:", location);
+
     setShow(true);
     fetchData();
   }

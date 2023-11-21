@@ -13,6 +13,8 @@ function MainPage({
   location,
   onSubmitLocation,
 }) {
+  console.log("Location in MainPage:", location);
+
   return (
     <div className={styles.mainContainer}>
       {isLoading ? (
@@ -34,7 +36,13 @@ function MainPage({
               />
             </div>
 
-            <BottomPart weather={weather} />
+            {location ? (
+              <BottomPart weather={weather} />
+            ) : (
+              <p className={styles.containerError}>
+                Location not found, try another one
+              </p>
+            )}
           </div>
         </div>
       )}

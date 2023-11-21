@@ -10,3 +10,17 @@
 .mainContainerImageWeather {
   position: relative;
 }
+
+.containerError {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  width: 70%;
+  height: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #364156cc;
+  color: red;
+}
