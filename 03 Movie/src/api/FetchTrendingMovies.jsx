@@ -7,6 +7,8 @@ function FetchTrendingMovies() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
+
   useEffect(() => {
     async function fetchTrendingMovies() {
       try {
@@ -16,8 +18,7 @@ function FetchTrendingMovies() {
           method: "GET",
           headers: {
             accept: "application/json",
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NDU2ZTIyZDBjYTcwMmIzMWI3YWNiNjMyNWFhMWM3MiIsInN1YiI6IjY1NzBlMGY3YjIzNGI5MDEzYTIzZWQwMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lniqLGF4PTDCR9PYwdm1dm7EQrh99qZQWFzn8Bn7ur4",
+            Authorization: `Bearer ${accessKey}`,
           },
         };
 
