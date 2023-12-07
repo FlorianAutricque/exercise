@@ -5,7 +5,7 @@ import FetchTrendingMovies from "./api/FetchTrendingMovies";
 function App() {
   return (
     <>
-      {/* <FetchAllMovies /> */}
+      <FetchAllMovies />
       {/* <FetchTrendingMovies /> */}
       <FetchMoviesGenre />
     </>

@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-
-//NEED NEW API URL TO BE ABLE TOO ACCESS MORE MOVIES TO FETCH BY GENRE
+import React, { useEffect, useState } from "react";
 
 function FetchMoviesGenre() {
   const [genreMovies, setGenreMovies] = useState([]);
@@ -22,16 +20,22 @@ function FetchMoviesGenre() {
           },
         };
 
-        const res = await fetch(
-          "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=2",
-          options
-        );
+        const allPages = [];
 
-        if (!res.ok) throw new Error("Network response error");
+        for (let page = 1; page <= 10; page++) {
+          const res = await fetch(
+            `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}`,
+            options
+          );
 
-        const data = await res.json();
-        console.log(data.results);
-        setGenreMovies(data.results);
+          if (!res.ok) throw new Error("Network response error");
+
+          const data = await res.json();
+          console.log(data);
+          allPages.push(...data.results);
+        }
+
+        setGenreMovies(allPages);
       } catch (error) {
         setError(error);
       } finally {
@@ -40,27 +44,31 @@ function FetchMoviesGenre() {
     }
 
     fetchMoviesGenre();
-  }, []);
+  }, [accessKey]);
 
   return (
     <div>
-      {genreMovies.length === 0 ? (
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>Error: {error.message}</p>
+      ) : genreMovies.length === 0 ? (
         <p>No movies found for this genre</p>
       ) : (
         <ul>
-          {genreMovies.map(movie => (
-            <li key={movie.id}>
-              {movie.genre_ids.includes(14) ? (
-                <>
+          {genreMovies
+            .filter(movie => movie.genre_ids.includes(28))
+            .map(movie => (
+              <React.Fragment key={movie.id}>
+                <li key={movie.id}>
                   <p key={movie.title}>{movie.title}</p>
                   <img
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                     alt={movie.title}
                   />
-                </>
-              ) : null}
-            </li>
-          ))}
+                </li>
+              </React.Fragment>
+            ))}
         </ul>
       )}
     </div>

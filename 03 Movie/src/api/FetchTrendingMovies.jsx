@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 
-//api key tmdb = 9456e22d0ca702b31b7acb6325aa1c72
-
 function FetchTrendingMovies() {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,8 +28,8 @@ function FetchTrendingMovies() {
         if (!res.ok) throw new Error("Network response error");
 
         const data = await res.json();
-        console.log(data.results.slice(0, 10));
-        setTrendingMovies(data.results.slice(0, 10));
+        console.log(data.results);
+        setTrendingMovies(data.results);
       } catch (error) {
         setError(error);
       } finally {
@@ -40,11 +38,15 @@ function FetchTrendingMovies() {
     }
 
     fetchTrendingMovies();
-  }, []);
+  }, [accessKey]);
 
   return (
     <div>
-      {trendingMovies.length === 0 ? (
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>Error: {error.message}</p>
+      ) : trendingMovies.length === 0 ? (
         <p>No trending movies found</p>
       ) : (
         <ul>
