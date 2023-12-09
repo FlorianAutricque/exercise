@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Searchbar from "../components/Searchbar";
-import ListMoviesSearched from "../components/ListMoviesSearched";
+import ListMoviesSearched from "../api/FetchAllMovies";
 
 function MovieSearchContainer() {
   const [searchValue, setSearchValue] = useState("");

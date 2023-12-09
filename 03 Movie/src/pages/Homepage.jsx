@@ -1,13 +1,17 @@
-import FetchAllMovies from "../api/FetchAllMovies";
+import React from "react";
+import MovieSearchContainer from "./MovieSearchContainer";
 import FetchMoviesGenre from "../api/FetchMoviesGenre";
-import FetchTrendingMovies from "../api/FetchTrendingMovies";
 
 function Homepage() {
+  const genres = [28, 12, 16];
+
   return (
     <div>
-      <FetchAllMovies />
-      {/* <FetchTrendingMovies /> */}
-      {/* <FetchMoviesGenre /> */}
+      <h1>Hello Chicko</h1>
+      <MovieSearchContainer />
+      {genres.map(genre => (
+        <FetchMoviesGenre key={genre} x={genre} />
+      ))}
     </div>
   );
 }

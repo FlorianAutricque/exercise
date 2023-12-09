@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-function ListMoviesSearched({ searchValue }) {
+function FetchAllMovies() {
   const [movie, setMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [query, setQuery] = useState("");
 
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
 
@@ -21,7 +22,7 @@ function ListMoviesSearched({ searchValue }) {
         };
 
         const res = await fetch(
-          `https://api.themoviedb.org/3/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=1`,
+          `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`,
           options
         );
 
@@ -38,9 +39,16 @@ function ListMoviesSearched({ searchValue }) {
     }
 
     fetchAllMovies();
-  }, [accessKey, searchValue]);
+  }, [query, accessKey]);
+
   return (
     <div>
+      <input
+        type="text"
+        value={query}
+        onChange={e => setQuery(e.target.value)}
+      />
+
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -69,4 +77,4 @@ function ListMoviesSearched({ searchValue }) {
   );
 }
 
-export default ListMoviesSearched;
+export default FetchAllMovies;

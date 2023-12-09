@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function FetchMoviesGenre() {
+function FetchMoviesGenre({ x }) {
   const [genreMovies, setGenreMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -46,6 +46,18 @@ function FetchMoviesGenre() {
     fetchMoviesGenre();
   }, [accessKey]);
 
+  let genre;
+
+  if (x === 28) {
+    genre = "action";
+  }
+  if (x === 12) {
+    genre = "adventure";
+  }
+  if (x === 16) {
+    genre = "animation";
+  }
+
   return (
     <div>
       {isLoading ? (
@@ -56,8 +68,9 @@ function FetchMoviesGenre() {
         <p>No movies found for this genre</p>
       ) : (
         <ul>
+          <p>genre: {genre}</p>
           {genreMovies
-            .filter(movie => movie.genre_ids.includes(28))
+            .filter(movie => movie.genre_ids.includes(x))
             .map(movie => (
               <React.Fragment key={movie.id}>
                 <li key={movie.id}>
