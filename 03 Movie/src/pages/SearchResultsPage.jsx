@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import ListMoviesSearched from "../api/FetchAllMovies";
+import ListMoviesSearched from "../api/ListMoviesSearched";
 
 function SearchResultsPage() {
   const location = useLocation();
@@ -8,7 +8,6 @@ function SearchResultsPage() {
 
   return (
     <div>
-      <h2>Search Results</h2>
       <ListMoviesSearched searchValue={searchValue} />
     </div>
   );

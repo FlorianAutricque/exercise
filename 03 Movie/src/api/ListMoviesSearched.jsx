@@ -49,14 +49,24 @@ function ListMoviesSearched({ searchValue }) {
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : (
-        <div className={styles.containerMovies}>
-          {movie.map(movie => (
-            //Fragment to conditionally render both li and img only when the poster_path is not null
-            <React.Fragment key={movie.id}>
-              {movie.poster_path !== null && <MovieCard movie={movie} />}
-            </React.Fragment>
-          ))}
-        </div>
+        <>
+          {searchValue ? (
+            <h2>
+              List of movies for{" "}
+              {searchValue.charAt(0).toUpperCase() + searchValue.slice(1)}
+            </h2>
+          ) : (
+            ""
+          )}
+          <div className={styles.containerMovies}>
+            {movie.map(movie => (
+              //Fragment to conditionally render both li and img only when the poster_path is not null
+              <React.Fragment key={movie.id}>
+                {movie.poster_path !== null && <MovieCard movie={movie} />}
+              </React.Fragment>
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

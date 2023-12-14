@@ -78,7 +78,7 @@ function FetchMoviesGenre({ x }) {
       ) : (
         <div>
           <p>genre: {genre}</p>
-          <div className={styles.containerMovies}>
+          <div>
             <Slider responsive={responsive} autoSlide={4000}>
               {genreMovies
                 .filter(movie => movie.genre_ids.includes(x))
