@@ -1,0 +1,5 @@
+.containerGenreBar {
+  color: white;
+  display: flex;
+  gap: 3rem;
+}

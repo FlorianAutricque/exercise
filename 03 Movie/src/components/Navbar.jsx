@@ -10,13 +10,11 @@ function Navbar() {
       <ul className={styles.navbarItems}>
         <li className={styles.logo}>
           <NavLink to="/">
-            <a href="https://fontmeme.com/netflix-font/">
-              <img
-                src="https://fontmeme.com/permalink/231214/21f2ad003e9fee319bec8b6434772889.png"
-                alt="netflix-font"
-                border="0"
-              />
-            </a>
+            <img
+              src="https://fontmeme.com/permalink/231214/21f2ad003e9fee319bec8b6434772889.png"
+              alt="netflix-font"
+              border="0"
+            />
           </NavLink>
         </li>
 

@@ -1,0 +1,21 @@
+.button {
+  background-color: #45454593;
+  list-style-type: none;
+  width: 8rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.button a {
+  text-decoration: none;
+  color: white;
+  background-color: #302f32;
+}
+
+.button:hover {
+  transform: scale(1.07);
+}

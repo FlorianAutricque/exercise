@@ -67,7 +67,7 @@ function FetchTrendingMovies() {
             &nbsp;Trending Movies
           </h2>
 
-          <Slider responsive={responsive} autoSlide={40000} showDots={false}>
+          <Slider responsive={responsive} autoSlide={4000} showDots={false}>
             {trendingMovies.map(movie => (
               <React.Fragment key={movie.id}>
                 <div className={styles.moviesInsideCarousel}>

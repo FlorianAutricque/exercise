@@ -1,4 +1,3 @@
-// SingleMovie.js
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
@@ -9,7 +8,6 @@ function SingleMovie() {
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
 
   useEffect(() => {
-    // Fetch movie details using the id from the URL
     const fetchMovieDetails = async () => {
       try {
         const options = {
@@ -44,7 +42,6 @@ function SingleMovie() {
       {movie ? (
         <div>
           <h2>{movie.title}</h2>
-          {/* Add other movie details as needed */}
         </div>
       ) : (
         <p>Loading...</p>
