@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from "react";
+import MovieCard from "../components/MovieCard";
+import styles from "./MoviesContainerStyle.module.css";
+
+import Slider from "react-styled-carousel";
 
 function FetchMoviesGenre({ x }) {
   const [genreMovies, setGenreMovies] = useState([]);
@@ -6,6 +10,11 @@ function FetchMoviesGenre({ x }) {
   const [error, setError] = useState("");
 
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
+
+  const responsive = [
+    { breakPoint: 1280, cardsToShow: 5 },
+    { breakPoint: 760, cardsToShow: 2 },
+  ];
 
   useEffect(() => {
     async function fetchMoviesGenre() {
@@ -69,19 +78,17 @@ function FetchMoviesGenre({ x }) {
       ) : (
         <ul>
           <p>genre: {genre}</p>
-          {genreMovies
-            .filter(movie => movie.genre_ids.includes(x))
-            .map(movie => (
-              <React.Fragment key={movie.id}>
-                <li key={movie.id}>
-                  <p key={movie.title}>{movie.title}</p>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                  />
-                </li>
-              </React.Fragment>
-            ))}
+          <div className={styles.containerMovies}>
+            <Slider responsive={responsive} autoSlide={4000}>
+              {genreMovies
+                .filter(movie => movie.genre_ids.includes(x))
+                .map(movie => (
+                  <React.Fragment key={movie.id}>
+                    <MovieCard movie={movie} />
+                  </React.Fragment>
+                ))}
+            </Slider>
+          </div>
         </ul>
       )}
     </div>

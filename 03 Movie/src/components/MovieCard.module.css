@@ -1,0 +1,13 @@
+.movieCardContainer {
+  list-style-type: none;
+  /* background-color: red; */
+  /* width: 13%; */
+}
+
+.movieCardContainer img {
+  height: 17rem;
+}
+.movieCardContainer p {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
