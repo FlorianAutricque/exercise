@@ -1,5 +1,19 @@
 .containerMovies {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 1rem;
+  gap: 0.8rem;
+}
+
+.trendingMovies {
+  display: flex;
+  align-items: center;
+}
+
+.containerTrending {
+  overflow: visible;
+  /* background-color: red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto, 0;
 }

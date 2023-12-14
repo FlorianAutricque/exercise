@@ -7,10 +7,9 @@ function Homepage() {
 
   return (
     <div>
-      <h1>Hello Chicko</h1>
-      <MovieSearchContainer />
       <FetchTrendingMovies />
 
+      <MovieSearchContainer />
       {genres.map(genre => (
         <FetchMoviesGenre key={genre} x={genre} />
       ))}

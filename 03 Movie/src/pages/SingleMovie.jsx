@@ -1,5 +1,5 @@
 // SingleMovie.js
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function SingleMovie() {
@@ -37,7 +37,7 @@ function SingleMovie() {
     };
 
     fetchMovieDetails();
-  }, [id]);
+  }, [id, accessKey]);
 
   return (
     <div>

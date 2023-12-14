@@ -3,6 +3,10 @@ import MovieCard from "../components/MovieCard";
 
 import Slider from "react-styled-carousel";
 
+import { IoMdTrendingUp } from "react-icons/io";
+
+import styles from "./MoviesContainerStyle.module.css";
+
 function FetchTrendingMovies() {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -58,8 +62,11 @@ function FetchTrendingMovies() {
         <p>No trending movies found</p>
       ) : (
         <>
-          <h2>Trending Movies</h2>
-          <Slider responsive={responsive} autoSlide={4000}>
+          <h2 className={styles.trendingMovies}>
+            <IoMdTrendingUp />
+            &nbsp;Trending Movies
+          </h2>
+          <Slider responsive={responsive} autoSlide={40000} showDots={false}>
             {trendingMovies.map(movie => (
               <React.Fragment key={movie.id}>
                 <MovieCard movie={movie} />

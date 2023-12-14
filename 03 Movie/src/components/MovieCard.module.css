@@ -1,13 +1,30 @@
 .movieCardContainer {
   list-style-type: none;
-  /* background-color: red; */
-  /* width: 13%; */
+  width: 78%;
 }
 
 .movieCardContainer img {
   height: 17rem;
+  border-radius: 4px;
 }
+
 .movieCardContainer p {
-  margin-top: 0;
+  margin-top: 0.2rem;
   margin-bottom: 0.5rem;
+}
+
+.movieCardContainer a {
+  text-decoration: none;
+  color: white;
+}
+
+.dateRatingAdd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #5e5e5f;
+}
+
+.ratingMovie {
+  color: #deb04d;
 }

@@ -2,3 +2,11 @@ body {
   margin-left: 2rem;
   margin-right: 2rem;
 }
+
+* {
+  background-color: #151419;
+}
+
+h2 {
+  color: white;
+}

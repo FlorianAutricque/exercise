@@ -3,6 +3,8 @@ import MovieCard from "../components/MovieCard";
 
 import Slider from "react-styled-carousel";
 
+import styles from "./MoviesContainerStyle.module.css";
+
 function FetchMoviesGenre({ x }) {
   const [genreMovies, setGenreMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
