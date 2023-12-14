@@ -6,19 +6,29 @@ import styles from "./Navbar.module.css";
 
 function Navbar() {
   return (
-    <div className={styles.container}>
+    <div className={styles.navbarContainer}>
       <ul className={styles.navbarItems}>
-        <li>
-          <NavLink to="/">Movie App</NavLink>
+        <li className={styles.logo}>
+          <NavLink to="/">
+            <a href="https://fontmeme.com/netflix-font/">
+              <img
+                src="https://fontmeme.com/permalink/231214/21f2ad003e9fee319bec8b6434772889.png"
+                alt="netflix-font"
+                border="0"
+              />
+            </a>
+          </NavLink>
         </li>
 
-        <li>
-          <NavLink to="/watchlist">Watchlist</NavLink>
-        </li>
+        <div className={styles.navbarSearchWatchlist}>
+          <li className={styles.watchlist}>
+            <NavLink to="/watchlist">Watchlist</NavLink>
+          </li>
 
-        <li>
-          <Searchbar />
-        </li>
+          <li>
+            <Searchbar />
+          </li>
+        </div>
       </ul>
     </div>
   );

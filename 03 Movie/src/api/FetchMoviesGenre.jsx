@@ -93,7 +93,9 @@ function FetchMoviesGenre({ x }) {
                   <div key={pairIndex}>
                     {pair.map(movie => (
                       <React.Fragment key={movie.id}>
-                        <MovieCard movie={movie} />
+                        <div className={styles.moviesInsideCarousel}>
+                          <MovieCard movie={movie} />
+                        </div>
                       </React.Fragment>
                     ))}
                   </div>

@@ -1,0 +1,15 @@
+.searchbarHomepage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.containerSearchHomepage {
+  padding: 3rem;
+}
+
+.containerSearchHomepage p {
+  text-align: center;
+  color: white;
+  letter-spacing: 2px;
+}

@@ -2,6 +2,27 @@
   list-style: none;
 
   display: flex;
-  justify-content: space-around;
-  padding: 10px;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 10px; */
+  /* background-color: red; */
+  border-bottom: 2px solid black;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.navbarSearchWatchlist {
+  display: flex;
+  gap: 5rem;
+}
+
+.logo a img {
+  text-decoration: none;
+  height: 2rem;
+}
+
+.watchlist a {
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 2px;
 }

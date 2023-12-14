@@ -1,15 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaSearch } from "react-icons/fa";
+
+import styles from "./Searchbar.module.css";
+
+import { IoSearch } from "react-icons/io5";
 
 function Searchbar({ onSearch }) {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
-  const [show, setShow] = useState(true);
-
-  function handleShow() {
-    setShow(!show);
-  }
 
   function handleChange(e) {
     e.preventDefault();
@@ -20,24 +18,24 @@ function Searchbar({ onSearch }) {
 
   return (
     <div>
-      {/* {show && (
-        <button onClick={handleShow}>
-          <FaSearch />
-        </button>
-      )} */}
-      {/* {!show && ( */}
-
       <form onSubmit={handleChange}>
-        <input
-          type="text"
-          value={value}
-          onChange={e => setValue(e.target.value)}
-        />
-        <button type="submit">
-          <FaSearch />
-        </button>
+        <>
+          <div className={styles.searchbox}>
+            <button type="submit" className={styles.btnSearch}>
+              <i>
+                <IoSearch className={styles.searchIcon} />
+              </i>
+            </button>
+            <input
+              type="text"
+              className={styles.inputSearch}
+              placeholder="Search a Movie..."
+              value={value}
+              onChange={e => setValue(e.target.value)}
+            />
+          </div>
+        </>
       </form>
-      {/* )} */}
     </div>
   );
 }

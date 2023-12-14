@@ -5,6 +5,7 @@
 
 .movieCardContainer img {
   height: 17rem;
+  width: 12rem;
   border-radius: 4px;
 }
 

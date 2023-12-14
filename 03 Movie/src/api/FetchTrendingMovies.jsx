@@ -66,10 +66,13 @@ function FetchTrendingMovies() {
             <IoMdTrendingUp />
             &nbsp;Trending Movies
           </h2>
+
           <Slider responsive={responsive} autoSlide={40000} showDots={false}>
             {trendingMovies.map(movie => (
               <React.Fragment key={movie.id}>
-                <MovieCard movie={movie} />
+                <div className={styles.moviesInsideCarousel}>
+                  <MovieCard movie={movie} />
+                </div>
               </React.Fragment>
             ))}
           </Slider>
