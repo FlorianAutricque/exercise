@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import MovieCard from "../components/MovieCard";
+
+import styles from "./MoviesContainerStyle.module.css";
 
 function ListMoviesSearched({ searchValue }) {
   const [movie, setMovie] = useState([]);
@@ -46,22 +49,14 @@ function ListMoviesSearched({ searchValue }) {
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : (
-        <ul>
+        <div className={styles.containerMovies}>
           {movie.map(movie => (
             //Fragment to conditionally render both li and img only when the poster_path is not null
             <React.Fragment key={movie.id}>
-              {movie.poster_path !== null && (
-                <>
-                  <li>{movie.title}</li>
-                  <img
-                    alt={movie.title}
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  />
-                </>
-              )}
+              {movie.poster_path !== null && <MovieCard movie={movie} />}
             </React.Fragment>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

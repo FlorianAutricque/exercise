@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import MovieCard from "../components/MovieCard";
+
+import Slider from "react-styled-carousel";
 
 function FetchTrendingMovies() {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -6,6 +9,11 @@ function FetchTrendingMovies() {
   const [error, setError] = useState("");
 
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
+
+  const responsive = [
+    { breakPoint: 1280, cardsToShow: 5 },
+    { breakPoint: 760, cardsToShow: 2 },
+  ];
 
   useEffect(() => {
     async function fetchTrendingMovies() {
@@ -49,17 +57,16 @@ function FetchTrendingMovies() {
       ) : trendingMovies.length === 0 ? (
         <p>No trending movies found</p>
       ) : (
-        <ul>
-          {trendingMovies.map(movie => (
-            <li key={movie.id}>
-              {movie.title}
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-              />
-            </li>
-          ))}
-        </ul>
+        <>
+          <h2>Trending Movies</h2>
+          <Slider responsive={responsive} autoSlide={4000}>
+            {trendingMovies.map(movie => (
+              <React.Fragment key={movie.id}>
+                <MovieCard movie={movie} />
+              </React.Fragment>
+            ))}
+          </Slider>
+        </>
       )}
     </div>
   );

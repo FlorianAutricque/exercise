@@ -11,8 +11,10 @@ function Searchbar({ onSearch }) {
     setShow(!show);
   }
 
-  function handleChange() {
+  function handleChange(e) {
+    e.preventDefault();
     navigate(`/searched-movies?query=${encodeURIComponent(value)}`);
+
     onSearch(value);
   }
 
@@ -24,16 +26,17 @@ function Searchbar({ onSearch }) {
         </button>
       )} */}
       {/* {!show && ( */}
-      <>
+
+      <form onSubmit={handleChange}>
         <input
           type="text"
           value={value}
           onChange={e => setValue(e.target.value)}
         />
-        <button onClick={handleChange}>
+        <button type="submit">
           <FaSearch />
         </button>
-      </>
+      </form>
       {/* )} */}
     </div>
   );

@@ -76,20 +76,30 @@ function FetchMoviesGenre({ x }) {
       ) : genreMovies.length === 0 ? (
         <p>No movies found for this genre</p>
       ) : (
-        <ul>
+        <div>
           <p>genre: {genre}</p>
           <div className={styles.containerMovies}>
             <Slider responsive={responsive} autoSlide={4000}>
               {genreMovies
                 .filter(movie => movie.genre_ids.includes(x))
-                .map(movie => (
-                  <React.Fragment key={movie.id}>
-                    <MovieCard movie={movie} />
-                  </React.Fragment>
+                .reduce((pairs, movie, index, array) => {
+                  if (index % 2 === 0) {
+                    pairs.push(array.slice(index, index + 2));
+                  }
+                  return pairs;
+                }, [])
+                .map((pair, pairIndex) => (
+                  <div key={pairIndex}>
+                    {pair.map(movie => (
+                      <React.Fragment key={movie.id}>
+                        <MovieCard movie={movie} />
+                      </React.Fragment>
+                    ))}
+                  </div>
                 ))}
             </Slider>
           </div>
-        </ul>
+        </div>
       )}
     </div>
   );
