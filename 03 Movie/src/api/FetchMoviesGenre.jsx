@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
-import styles from "./MoviesContainerStyle.module.css";
 
 import Slider from "react-styled-carousel";
 

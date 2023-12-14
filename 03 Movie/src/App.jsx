@@ -3,8 +3,9 @@ import Homepage from "./pages/Homepage";
 import Watchlist from "./pages/Watchlist";
 import PageNotFound from "./pages/PageNotFound";
 import Navbar from "./components/Navbar";
-import MovieSearchContainer from "./pages/MovieSearchContainer";
+
 import SearchResultsPage from "./pages/SearchResultsPage";
+import SingleMovie from "./pages/SingleMovie";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
           <Route path="watchlist" element={<Watchlist />} />
 
           <Route path="searched-movies" element={<SearchResultsPage />} />
+
+          <Route path="movie/:id" element={<SingleMovie />} />
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
