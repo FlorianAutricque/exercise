@@ -16,7 +16,7 @@ function MovieCard({ movie }) {
 
   return (
     <div className={styles.movieCardContainer}>
-      <NavLink key={movie.id} to={`movie/${movie.id}`}>
+      <NavLink key={movie.id} to={`/movie/${movie.id}`}>
         <li key={movie.id}>
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

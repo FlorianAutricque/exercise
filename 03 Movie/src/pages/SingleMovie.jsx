@@ -41,7 +41,11 @@ function SingleMovie() {
     <div>
       {movie ? (
         <div>
-          <h2>{movie.title}</h2>
+          <h2>{movie.title} hello</h2>
+          <img
+            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+            alt={movie.title}
+          />
         </div>
       ) : (
         <p>Loading...</p>
