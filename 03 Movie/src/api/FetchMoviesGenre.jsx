@@ -33,16 +33,16 @@ function FetchMoviesGenre({ x }) {
 
         const allPages = [];
 
-        for (let page = 1; page <= 10; page++) {
+        for (let page = 1; page <= 4; page++) {
           const res = await fetch(
-            `https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}`,
+            `https://api.themoviedb.org/3/discover/movie?language=en-US&with_genres=${x}&page=${page}`,
             options
           );
 
           if (!res.ok) throw new Error("Network response error");
 
           const data = await res.json();
-          console.log(data);
+
           allPages.push(...data.results);
         }
 
@@ -55,27 +55,34 @@ function FetchMoviesGenre({ x }) {
     }
 
     fetchMoviesGenre();
-  }, [accessKey]);
+  }, [accessKey, x]);
 
-  let genre;
-  let idGenreScroll;
+  const genreMappings = {
+    28: "action",
+    12: "adventure",
+    16: "animation",
+    35: "comedy",
+    80: "crime",
+    99: "documentary",
+    18: "drama",
+    10751: "family",
+    14: "fantasy",
+    36: "history",
+    27: "horror",
+    10402: "music",
+    9648: "mystery",
+    10749: "romance",
+    878: "science Fiction",
+    10770: "TV movie",
+    53: "thriller",
+    10752: "war",
+    37: "western",
+  };
 
-  if (x === 28) {
-    genre = "action";
-    idGenreScroll = "action";
-  }
-  if (x === 12) {
-    genre = "adventure";
-    idGenreScroll = "adventure";
-  }
-  if (x === 10752) {
-    genre = "war";
-    idGenreScroll = "war";
-  }
-  if (x === 16) {
-    genre = "animation";
-    idGenreScroll = "animation";
-  }
+  const defaultGenre = "unknown";
+
+  const genre = genreMappings[x] || defaultGenre;
+  const idGenreScroll = genre.toLowerCase();
 
   return (
     <div>
@@ -90,25 +97,15 @@ function FetchMoviesGenre({ x }) {
           <div id={idGenreScroll}>
             <GenreTitle genre={genre} />
             <div>
-              <Slider responsive={responsive} autoSlide={4000}>
+              <Slider responsive={responsive} autoSlide={4000} showDots={false}>
                 {genreMovies
                   .filter(movie => movie.genre_ids.includes(x))
-                  .reduce((pairs, movie, index, array) => {
-                    if (index % 2 === 0) {
-                      pairs.push(array.slice(index, index + 2));
-                    }
-                    return pairs;
-                  }, [])
-                  .map((pair, pairIndex) => (
-                    <div key={pairIndex}>
-                      {pair.map(movie => (
-                        <React.Fragment key={movie.id}>
-                          <div className={styles.moviesInsideCarousel}>
-                            <MovieCard movie={movie} />
-                          </div>
-                        </React.Fragment>
-                      ))}
-                    </div>
+                  .map(movie => (
+                    <React.Fragment key={movie.id}>
+                      <div className={styles.moviesInsideCarousel}>
+                        <MovieCard movie={movie} />
+                      </div>
+                    </React.Fragment>
                   ))}
               </Slider>
             </div>

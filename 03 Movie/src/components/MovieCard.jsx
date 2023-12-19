@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import styles from "./MovieCard.module.css";
 
-import { FaStar } from "react-icons/fa";
 import { IoMdAddCircleOutline } from "react-icons/io";
+import VoteAverage from "./VoteAverage";
 
 function truncateString(str, maxLength) {
   if (str.length > maxLength) {
@@ -25,16 +25,12 @@ function MovieCard({ movie }) {
           <p key={truncatedTitle}>{truncatedTitle}</p>
 
           <span className={styles.dateRatingAdd}>
-            {movie.release_date.slice(0, 4)}
+            {movie.release_date ? movie.release_date.slice(0, 4) : ""}
 
             <div className={styles.dateRatingAdd}>
               <IoMdAddCircleOutline />
               &nbsp; &nbsp;
-              <div className={styles.ratingMovie}>
-                <FaStar size={14} />
-                &nbsp;
-                {parseFloat(movie.vote_average).toFixed(1)}
-              </div>
+              <VoteAverage movie={movie} />
             </div>
           </span>
         </li>

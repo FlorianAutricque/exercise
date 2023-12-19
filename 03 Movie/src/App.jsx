@@ -6,7 +6,6 @@ import Navbar from "./components/Navbar";
 
 import SearchResultsPage from "./pages/SearchResultsPage";
 import SingleMovie from "./pages/SingleMovie";
-// import MovieDetailAfterSearch from "./pages/MovieDetailAfterSearch";
 
 function App() {
   return (
@@ -20,7 +19,6 @@ function App() {
           <Route path="searched-movies" element={<SearchResultsPage />} />
 
           <Route path="movie/:id" element={<SingleMovie />} />
-          {/* <Route path="movie/:movieId" element={<MovieDetailAfterSearch />} /> */}
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
