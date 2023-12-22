@@ -1,3 +1,7 @@
+.mainContainer {
+  background-color: #151419;
+}
+
 .containerMovies {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -7,6 +11,7 @@
 .trendingMovies {
   display: flex;
   align-items: center;
+  margin-top: 28rem;
 }
 
 .containerTrending {

@@ -1,10 +1,12 @@
 body {
   margin-left: 2rem;
   margin-right: 2rem;
+  color: white;
+  background-color: #151419;
 }
 
 * {
-  background-color: #151419;
+  /* background-color: #151419; */
 }
 
 h2 {

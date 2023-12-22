@@ -4,12 +4,14 @@ import FetchTrendingMovies from "../api/FetchTrendingMovies";
 
 import styles from "./Homepage.module.css";
 import GenreBar from "../components/GenreBar";
+import Header from "../components/Header";
 
 function Homepage() {
   const genres = [28, 12, 16, 10752];
 
   return (
     <div>
+      <Header isHomepage={true} />
       <FetchTrendingMovies />
 
       <div className={styles.containerSearchHomepage}>

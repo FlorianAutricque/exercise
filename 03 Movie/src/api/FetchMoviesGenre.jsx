@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 
-import Slider from "react-styled-carousel";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
 
 import styles from "./MoviesContainerStyle.module.css";
 import GenreTitle from "../components/GenreTitle";
@@ -13,10 +14,23 @@ function FetchMoviesGenre({ x }) {
 
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
 
-  const responsive = [
-    { breakPoint: 1280, cardsToShow: 5 },
-    { breakPoint: 760, cardsToShow: 2 },
-  ];
+  const responsive = {
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 5,
+      slidesToSlide: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+      slidesToSlide: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+      slidesToSlide: 1,
+    },
+  };
 
   useEffect(() => {
     async function fetchMoviesGenre() {
@@ -97,7 +111,12 @@ function FetchMoviesGenre({ x }) {
           <div id={idGenreScroll}>
             <GenreTitle genre={genre} />
             <div>
-              <Slider responsive={responsive} autoSlide={4000} showDots={false}>
+              <Carousel
+                responsive={responsive}
+                autoPlay={true}
+                autoPlaySpeed={5000}
+                infinite={true}
+              >
                 {genreMovies
                   .filter(movie => movie.genre_ids.includes(x))
                   .map(movie => (
@@ -107,7 +126,7 @@ function FetchMoviesGenre({ x }) {
                       </div>
                     </React.Fragment>
                   ))}
-              </Slider>
+              </Carousel>
             </div>
           </div>
         </div>
