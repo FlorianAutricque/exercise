@@ -7,6 +7,8 @@ import "react-multi-carousel/lib/styles.css";
 import styles from "./MoviesContainerStyle.module.css";
 import GenreTitle from "../components/GenreTitle";
 
+import { FaRegArrowAltCircleUp } from "react-icons/fa";
+
 function FetchMoviesGenre({ x }) {
   const [genreMovies, setGenreMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -86,7 +88,7 @@ function FetchMoviesGenre({ x }) {
     10402: "music",
     9648: "mystery",
     10749: "romance",
-    878: "science Fiction",
+    878: "sci-fi",
     10770: "TV movie",
     53: "thriller",
     10752: "war",
@@ -97,6 +99,13 @@ function FetchMoviesGenre({ x }) {
 
   const genre = genreMappings[x] || defaultGenre;
   const idGenreScroll = genre.toLowerCase();
+
+  function handleUp() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
 
   return (
     <div>
@@ -118,7 +127,9 @@ function FetchMoviesGenre({ x }) {
                 infinite={true}
               >
                 {genreMovies
-                  .filter(movie => movie.genre_ids.includes(x))
+                  .filter(
+                    movie => movie.genre_ids && movie.genre_ids.includes(x)
+                  )
                   .map(movie => (
                     <React.Fragment key={movie.id}>
                       <div className={styles.moviesInsideCarousel}>
@@ -129,6 +140,9 @@ function FetchMoviesGenre({ x }) {
               </Carousel>
             </div>
           </div>
+          <button onClick={handleUp} className={styles.btnUp}>
+            <FaRegArrowAltCircleUp size={25} color="white" />
+          </button>
         </div>
       )}
     </div>

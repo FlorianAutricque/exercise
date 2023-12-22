@@ -7,7 +7,6 @@ import styles from "./MoviesContainerStyle.module.css";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import Header from "../components/Header";
 
 function FetchTrendingMovies() {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -55,7 +54,7 @@ function FetchTrendingMovies() {
         if (!res.ok) throw new Error("Network response error");
 
         const data = await res.json();
-        console.log(data.results);
+
         setTrendingMovies(data.results);
       } catch (error) {
         setError(error);
@@ -76,8 +75,7 @@ function FetchTrendingMovies() {
       ) : trendingMovies.length === 0 ? (
         <p>No trending movies found</p>
       ) : (
-        <div className={styles.mainContainer}>
-          {/* {trendingMovies[0] && <Header movie={trendingMovies[0]} />} */}
+        <>
           <h2 className={styles.trendingMovies}>
             <IoMdTrendingUp />
             &nbsp;Trending Movies
@@ -97,7 +95,7 @@ function FetchTrendingMovies() {
               </React.Fragment>
             ))}
           </Carousel>
-        </div>
+        </>
       )}
     </div>
   );
