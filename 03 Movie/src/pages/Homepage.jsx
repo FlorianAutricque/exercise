@@ -36,12 +36,14 @@ function Homepage() {
         </div>
         <GenreBar onGenreSelect={handleGenreSelect} handleShow={handleShow} />
       </div>
-      {showSelection && selectedGenre && (
+      {showSelection && selectedGenre ? (
         <FetchMoviesGenre
           key={selectedGenre}
           x={selectedGenre}
           genre={selectedGenre}
         />
+      ) : (
+        ""
       )}
       {genres.map(genre => (
         <FetchMoviesGenre key={genre} x={genre} genre={genre} />

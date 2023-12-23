@@ -5,28 +5,13 @@ import FormatDay from "../helpers/FormatDay";
 import VoteAverage from "../components/VoteAverage";
 import FetchMoviesGenre from "../api/FetchMoviesGenre";
 
-import { BsBookmarkPlus } from "react-icons/bs";
-import { BsBookmarkCheck } from "react-icons/bs";
-import { addToWatchlist, removeFromWatchlist } from "../helpers/WatchlistUtils";
+import AddMovieWatchlist from "../components/AddMovieWatchlist";
 
 function SingleMovie() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
-  const [add, setAdd] = useState(true);
 
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
-
-  function handleAddWatchlist() {
-    if (add === true) {
-      addToWatchlist(movie);
-      alert("added");
-    } else {
-      removeFromWatchlist(movie);
-      alert("removed");
-    }
-
-    setAdd(add => !add);
-  }
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -100,15 +85,7 @@ function SingleMovie() {
         <p>Loading...</p>
       )}
 
-      {add ? (
-        <button onClick={handleAddWatchlist}>
-          <BsBookmarkPlus size={30} color="white" />
-        </button>
-      ) : (
-        <button onClick={handleAddWatchlist}>
-          <BsBookmarkCheck size={30} color="white" />
-        </button>
-      )}
+      <AddMovieWatchlist movie={movie} size={30} />
     </div>
   );
 }

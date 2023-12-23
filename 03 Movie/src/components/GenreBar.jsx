@@ -36,6 +36,9 @@ function GenreBar({ onGenreSelect, handleShow }) {
           onChange={handleSelectChange}
           value={selectedGenre}
         >
+          <option value="" disabled selected hidden>
+            Select a Genre
+          </option>
           <option value={35}>Comedy</option>
           <option value={80}>Crime</option>
           <option value={99}>Documentary</option>

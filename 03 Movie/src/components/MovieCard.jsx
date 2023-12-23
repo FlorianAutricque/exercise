@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 import styles from "./MovieCard.module.css";
 
-import { IoMdAddCircleOutline } from "react-icons/io";
 import VoteAverage from "./VoteAverage";
+import AddMovieWatchlist from "./AddMovieWatchlist";
 
 function truncateString(str, maxLength) {
   if (str.length > maxLength) {
@@ -28,7 +28,7 @@ function MovieCard({ movie }) {
             {movie.release_date ? movie.release_date.slice(0, 4) : ""}
 
             <div className={styles.dateRatingAdd}>
-              <IoMdAddCircleOutline />
+              <AddMovieWatchlist movie={movie} size={14} />
               &nbsp; &nbsp;
               <VoteAverage movie={movie} />
             </div>
