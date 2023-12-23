@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 import FormatDay from "../helpers/FormatDay";
 import VoteAverage from "../components/VoteAverage";
 import FetchMoviesGenre from "../api/FetchMoviesGenre";
 
 import AddMovieWatchlist from "../components/AddMovieWatchlist";
+
+import styles from "./SingleMovie.module.css";
+import MovieGenreSingleMovie from "../components/MovieGenreSingleMovie";
 
 function SingleMovie() {
   const { id } = useParams();
@@ -48,27 +51,42 @@ function SingleMovie() {
     <div>
       {movie ? (
         <div>
-          <h2>{movie.title} hello</h2>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-          />
-          <p>{movie.overview}</p>
-          <p>{FormatDay(movie.release_date)}</p>
-          <VoteAverage movie={movie} />
-          {movie.genres && movie.genres.length > 0 ? (
-            <ul>
-              {movie.genres.map(genre => (
-                <li key={genre.id}>{genre.name}</li>
-              ))}
-            </ul>
-          ) : movie.genre ? (
-            <p>{movie.genre.name}</p>
-          ) : (
-            <p>No genre information available</p>
-          )}
+          <div className={styles.movieContainer}>
+            <div>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                className={styles.img}
+              />
+              <div className={styles.addVoteUnderPoster}></div>
+            </div>
+            <div>
+              <h2>{movie.title}</h2>
+              <p>{FormatDay(movie.release_date)}</p>
+              <span className={styles.voteGenre}>
+                <VoteAverage movie={movie} /> |
+                <MovieGenreSingleMovie movie={movie} />
+              </span>
+              <h2>Synopsis</h2>
+              <p>{movie.overview}</p>
+              <div className={styles.linkAdd}>
+                <div className={styles.addBtn}>
+                  <AddMovieWatchlist movie={movie} size={20}>
+                    Watchlist
+                  </AddMovieWatchlist>
+                </div>
+                <Link
+                  to={`https://www.youtube.com/results?search_query=${movie.title}+trailer`}
+                  target="_blank"
+                  className={styles.linkToTrailer}
+                >
+                  Trailer
+                </Link>
+              </div>
+            </div>
+          </div>
 
-          <p>Movies with the same genre</p>
+          <h2>Movies of similar genre</h2>
           {movie.genres && movie.genres.length > 0 ? (
             movie.genres.map(genre => (
               <>
@@ -84,8 +102,6 @@ function SingleMovie() {
       ) : (
         <p>Loading...</p>
       )}
-
-      <AddMovieWatchlist movie={movie} size={30} />
     </div>
   );
 }

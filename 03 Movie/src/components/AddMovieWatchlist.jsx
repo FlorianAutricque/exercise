@@ -6,7 +6,7 @@ import { BsBookmarkCheck } from "react-icons/bs";
 
 import styles from "./AddMovieWatchlist.module.css";
 
-function AddMovieWatchlist({ movie, size }) {
+function AddMovieWatchlist({ movie, size, children }) {
   const [add, setAdd] = useState(true);
   function handleAddWatchlist(e) {
     e.preventDefault();
@@ -24,10 +24,12 @@ function AddMovieWatchlist({ movie, size }) {
     <div>
       {add ? (
         <button onClick={handleAddWatchlist} className={styles.btn}>
+          {children}
           <BsBookmarkPlus size={size} color="white" />
         </button>
       ) : (
         <button onClick={handleAddWatchlist} className={styles.btn}>
+          {children}
           <BsBookmarkCheck size={size} color="green" />
         </button>
       )}
