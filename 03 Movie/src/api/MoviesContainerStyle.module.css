@@ -1,7 +1,7 @@
 .containerMovies {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  gap: 0.8rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1.5rem;
 }
 
 .trendingMovies {

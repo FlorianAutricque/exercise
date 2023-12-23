@@ -11,7 +11,7 @@ function truncateString(str, maxLength) {
   return str;
 }
 
-function MovieCard({ movie }) {
+function MovieCard({ movie, watchlist }) {
   const truncatedTitle = truncateString(movie.title, 21);
 
   function handleClick() {
@@ -23,25 +23,63 @@ function MovieCard({ movie }) {
 
   return (
     <div className={styles.movieCardContainer}>
-      <NavLink key={movie.id} to={`/movie/${movie.id}`}>
-        <li key={movie.id} onClick={handleClick}>
-          <img
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-          />
-          <p key={truncatedTitle}>{truncatedTitle}</p>
+      {watchlist ? (
+        <>
+          <div className={styles.x}>
+            <NavLink key={movie.id} to={`/movie/${movie.id}`}>
+              <li key={movie.id}>
+                <div onClick={handleClick}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    alt={movie.title}
+                  />
+                  <p key={truncatedTitle}>{truncatedTitle}</p>
+                </div>
+              </li>
+            </NavLink>
+            <div className={styles.cardBelow}>
+              <span className={styles.dateRatingAdd}>
+                {movie.release_date ? movie.release_date.slice(0, 4) : ""}
 
-          <span className={styles.dateRatingAdd}>
-            {movie.release_date ? movie.release_date.slice(0, 4) : ""}
-
-            <div className={styles.dateRatingAdd}>
-              <AddMovieWatchlist movie={movie} size={14} />
-              &nbsp; &nbsp;
-              <VoteAverage movie={movie} />
+                <div className={styles.dateRatingAdd}>
+                  {watchlist ? (
+                    ""
+                  ) : (
+                    <AddMovieWatchlist movie={movie} size={14} />
+                  )}
+                  &nbsp; &nbsp;
+                  <VoteAverage movie={movie} />
+                </div>
+              </span>
             </div>
-          </span>
-        </li>
-      </NavLink>
+          </div>
+        </>
+      ) : (
+        <>
+          <NavLink key={movie.id} to={`/movie/${movie.id}`}>
+            <li key={movie.id}>
+              <div onClick={handleClick}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                />
+                <p key={truncatedTitle}>{truncatedTitle}</p>
+              </div>
+            </li>
+          </NavLink>
+          <div className={styles.cardBelow}>
+            <span className={styles.dateRatingAdd}>
+              {movie.release_date ? movie.release_date.slice(0, 4) : ""}
+
+              <div className={styles.dateRatingAdd}>
+                {watchlist ? "" : <AddMovieWatchlist movie={movie} size={14} />}
+                &nbsp; &nbsp;
+                <VoteAverage movie={movie} />
+              </div>
+            </span>
+          </div>
+        </>
+      )}
     </div>
   );
 }

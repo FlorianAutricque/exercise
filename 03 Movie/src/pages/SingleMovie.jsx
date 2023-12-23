@@ -70,7 +70,7 @@ function SingleMovie() {
               {movie.overview ? (
                 <>
                   <h2>Synopsis</h2>
-                  <p>{movie.overview}</p>
+                  <p className={styles.overview}>{movie.overview}</p>
                 </>
               ) : (
                 ""

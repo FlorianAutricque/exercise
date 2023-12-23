@@ -1,5 +1,3 @@
-// AddMovieWatchlist.js
-
 import { useState, useEffect } from "react";
 import {
   addToWatchlist,
@@ -17,27 +15,25 @@ function AddMovieWatchlist({ movie, size, children }) {
     isInWatchlist(movie.id)
   );
 
-  useEffect(() => {
-    setIsInWatchlistState(isInWatchlist(movie.id));
-  }, [movie.id]);
-
-  function handleAddWatchlist(e) {
-    e.preventDefault();
+  function handleToggleWatchlist() {
     if (isInWatchlistState) {
       removeFromWatchlist(movie.id);
       alert("removed");
     } else {
       addToWatchlist(movie);
-      alert("added");
     }
 
     setIsInWatchlistState(!isInWatchlistState);
   }
 
+  useEffect(() => {
+    setIsInWatchlistState(isInWatchlist(movie.id));
+  }, [movie.id]);
+
   return (
     <div>
       <button
-        onClick={handleAddWatchlist}
+        onClick={handleToggleWatchlist}
         className={`${styles.btn} ${
           isInWatchlistState ? styles.addedToWatchlist : ""
         }`}

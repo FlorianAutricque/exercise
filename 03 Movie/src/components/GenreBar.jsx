@@ -32,7 +32,7 @@ function GenreBar({ onGenreSelect, handleShow }) {
         <Button type={"thriller"}>Thriller</Button>
         <Button type={"sci-fi"}>Science Fiction</Button>
         <select
-          className={styles2.button}
+          className={`${styles2.button} ${styles.btnSelect}`}
           onChange={handleSelectChange}
           value={selectedGenre}
         >

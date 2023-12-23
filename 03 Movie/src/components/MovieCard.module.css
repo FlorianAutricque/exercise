@@ -29,3 +29,11 @@
 .ratingMovie {
   color: #deb04d;
 }
+
+.cardBelow {
+  width: 11.8rem;
+}
+
+.x:hover {
+  transform: scale(1.02);
+}

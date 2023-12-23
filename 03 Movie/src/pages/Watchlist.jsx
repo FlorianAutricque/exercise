@@ -3,6 +3,8 @@ import { getWatchlist, removeFromWatchlist } from "../helpers/WatchlistUtils";
 import { BsBookmarkDash } from "react-icons/bs";
 
 import styles2 from "../components/AddMovieWatchlist.module.css";
+import styles from "./Watchlist.module.css";
+import MovieCard from "../components/MovieCard";
 
 function Watchlist() {
   const [watchlist, setWatchlist] = useState(getWatchlist());
@@ -14,12 +16,12 @@ function Watchlist() {
   }
 
   return (
-    <div>
-      <h2>Watchlist</h2>
-      <ul>
+    <>
+      <h2>Your Watchlist</h2>
+      <ul className={styles.container}>
         {watchlist.map(movie => (
           <li key={movie.id}>
-            {movie.title}{" "}
+            <MovieCard movie={movie} watchlist={watchlist} />
             <button
               onClick={() => handleRemove(movie.id)}
               className={styles2.btn}
@@ -29,7 +31,7 @@ function Watchlist() {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 }
 
