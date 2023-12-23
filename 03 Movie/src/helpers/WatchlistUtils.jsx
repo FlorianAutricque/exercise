@@ -14,3 +14,8 @@ export function removeFromWatchlist(movieId) {
   const updatedWatchlist = watchlist.filter(movie => movie.id !== movieId);
   localStorage.setItem("watchlist", JSON.stringify(updatedWatchlist));
 }
+
+export function isInWatchlist(movieId) {
+  const watchlist = getWatchlist();
+  return watchlist.some(movie => movie.id === movieId);
+}

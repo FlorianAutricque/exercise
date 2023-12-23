@@ -67,8 +67,14 @@ function SingleMovie() {
                 <VoteAverage movie={movie} /> |
                 <MovieGenreSingleMovie movie={movie} />
               </span>
-              <h2>Synopsis</h2>
-              <p>{movie.overview}</p>
+              {movie.overview ? (
+                <>
+                  <h2>Synopsis</h2>
+                  <p>{movie.overview}</p>
+                </>
+              ) : (
+                ""
+              )}
               <div className={styles.linkAdd}>
                 <div className={styles.addBtn}>
                   <AddMovieWatchlist movie={movie} size={20}>
@@ -86,7 +92,7 @@ function SingleMovie() {
             </div>
           </div>
 
-          <h2>Movies of similar genre</h2>
+          <h2 className={styles.textSimilarGenre}>Movies of similar genre</h2>
           {movie.genres && movie.genres.length > 0 ? (
             movie.genres.map(genre => (
               <>

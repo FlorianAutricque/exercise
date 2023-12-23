@@ -14,10 +14,17 @@ function truncateString(str, maxLength) {
 function MovieCard({ movie }) {
   const truncatedTitle = truncateString(movie.title, 21);
 
+  function handleClick() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
+
   return (
     <div className={styles.movieCardContainer}>
       <NavLink key={movie.id} to={`/movie/${movie.id}`}>
-        <li key={movie.id}>
+        <li key={movie.id} onClick={handleClick}>
           <img
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}

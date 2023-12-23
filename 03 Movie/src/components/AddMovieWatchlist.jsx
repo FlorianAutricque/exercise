@@ -1,5 +1,11 @@
-import { useState } from "react";
-import { addToWatchlist, removeFromWatchlist } from "../helpers/WatchlistUtils";
+// AddMovieWatchlist.js
+
+import { useState, useEffect } from "react";
+import {
+  addToWatchlist,
+  removeFromWatchlist,
+  isInWatchlist,
+} from "../helpers/WatchlistUtils";
 
 import { BsBookmarkPlus } from "react-icons/bs";
 import { BsBookmarkCheck } from "react-icons/bs";
@@ -7,32 +13,42 @@ import { BsBookmarkCheck } from "react-icons/bs";
 import styles from "./AddMovieWatchlist.module.css";
 
 function AddMovieWatchlist({ movie, size, children }) {
-  const [add, setAdd] = useState(true);
+  const [isInWatchlistState, setIsInWatchlistState] = useState(
+    isInWatchlist(movie.id)
+  );
+
+  useEffect(() => {
+    setIsInWatchlistState(isInWatchlist(movie.id));
+  }, [movie.id]);
+
   function handleAddWatchlist(e) {
     e.preventDefault();
-    if (add === true) {
+    if (isInWatchlistState) {
+      removeFromWatchlist(movie.id);
+      alert("removed");
+    } else {
       addToWatchlist(movie);
       alert("added");
-    } else {
-      removeFromWatchlist(movie);
-      alert("removed");
     }
 
-    setAdd(add => !add);
+    setIsInWatchlistState(!isInWatchlistState);
   }
+
   return (
     <div>
-      {add ? (
-        <button onClick={handleAddWatchlist} className={styles.btn}>
-          {children}
-          <BsBookmarkPlus size={size} color="white" />
-        </button>
-      ) : (
-        <button onClick={handleAddWatchlist} className={styles.btn}>
-          {children}
+      <button
+        onClick={handleAddWatchlist}
+        className={`${styles.btn} ${
+          isInWatchlistState ? styles.addedToWatchlist : ""
+        }`}
+      >
+        {children}
+        {isInWatchlistState ? (
           <BsBookmarkCheck size={size} color="green" />
-        </button>
-      )}
+        ) : (
+          <BsBookmarkPlus size={size} color="white" />
+        )}
+      </button>
     </div>
   );
 }
