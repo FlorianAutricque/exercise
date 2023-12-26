@@ -2,13 +2,13 @@ import { NavLink } from "react-router-dom";
 import styles from "./MovieCard.module.css";
 
 import VoteAverage from "./VoteAverage";
-import AddMovieWatchlist from "./AddMovieWatchlist";
+import AddSerieWatchlist from "./AddSerieWatchlist";
 
 function truncateString(str, maxLength) {
-  if (str.length > maxLength) {
-    return str.slice(0, maxLength - 3) + "...";
-  }
-  return str;
+  // if (str.length > maxLength) {
+  //   return str.slice(0, maxLength - 3) + "...";
+  // }
+  // return str;
 }
 
 function SerieCard({ serie, watchlist }) {
@@ -32,19 +32,22 @@ function SerieCard({ serie, watchlist }) {
                 alt={serie.name}
               />
               <p key={truncatedTitle}>{truncatedTitle}</p>
+              <p>{serie.name}</p>
             </div>
           </NavLink>
-          {/* <div className={styles.cardBelow}>
+          <div className={styles.cardBelow}>
             <span className={styles.dateRatingAdd}>
-              {movie.release_date ? movie.release_date.slice(0, 4) : ""}
+              {serie.first_air_date
+                ? serie.first_air_date.slice(0, 4)
+                : "No date"}
 
               <div className={styles.dateRatingAdd}>
-                {watchlist ? "" : <AddMovieWatchlist serie={serie} size={14} />}
+                {watchlist ? "" : <AddSerieWatchlist serie={serie} size={14} />}
                 &nbsp; &nbsp;
-                <VoteAverage movie={movie} />
+                <VoteAverage serie={serie} />
               </div>
             </span>
-          </div> */}
+          </div>{" "}
         </div>
       </>
     </div>

@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import FormatDay from "../helpers/FormatDay";
 import VoteAverage from "../components/VoteAverage";
 
-import AddMovieWatchlist from "../components/AddMovieWatchlist";
+import AddSerieWatchlist from "../components/AddSerieWatchlist";
 
 import styles from "./SingleMovie.module.css";
 import MovieGenreSingleMovie from "../components/MovieGenreSingleMovie";
@@ -62,7 +62,11 @@ function SingleSerie() {
             </div>
             <div>
               <h2>{serie.name}</h2>
-
+              <p>
+                {serie.first_air_date
+                  ? FormatDay(serie.first_air_date)
+                  : "No release date available"}
+              </p>
               <span className={styles.voteGenre}>
                 <VoteAverage serie={serie} /> |
                 <MovieGenreSingleMovie serie={serie} />
@@ -78,9 +82,9 @@ function SingleSerie() {
 
               <div className={styles.linkAdd}>
                 <div className={styles.addBtn}>
-                  {/* <AddMovieWatchlist movie={movie} size={20}> */}
-                  Watchlist
-                  {/* </AddMovieWatchlist> */}
+                  <AddSerieWatchlist serie={serie} size={20}>
+                    Watchlist
+                  </AddSerieWatchlist>
                 </div>
                 <Link
                   to={`https://www.youtube.com/results?search_query=${serie.name}+trailer`}

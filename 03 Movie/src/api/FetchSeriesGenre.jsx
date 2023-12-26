@@ -51,7 +51,6 @@ function FetchSeriesGenre({ defaultGenre }) {
 
         for (let page = 1; page <= 4; page++) {
           const res = await fetch(
-            // `https://api.themoviedb.org/3/discover/movie?language=en-US&with_genres=${defaultGenre}&page=${page}`,
             `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${defaultGenre}`,
             options
           );
