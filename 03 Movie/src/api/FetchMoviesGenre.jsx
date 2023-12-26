@@ -118,7 +118,14 @@ function FetchMoviesGenre({ defaultGenre }) {
       ) : (
         <div>
           <div id={idGenreScroll}>
-            <GenreTitle genre={genre} />
+            <span className={styles.titleBtnUpContainer}>
+              <GenreTitle genre={genre} />
+              &nbsp;&nbsp;&nbsp;
+              <button onClick={handleUp} className={styles.btnUp}>
+                <FaRegArrowAltCircleUp size={25} color="white" />
+              </button>
+            </span>
+
             <div>
               <Carousel
                 responsive={responsive}
@@ -141,9 +148,6 @@ function FetchMoviesGenre({ defaultGenre }) {
               </Carousel>
             </div>
           </div>
-          <button onClick={handleUp} className={styles.btnUp}>
-            <FaRegArrowAltCircleUp size={25} color="white" />
-          </button>
         </div>
       )}
     </div>

@@ -1,5 +1,6 @@
 import MovieSearchContainer from "./MovieSearchContainer";
 import FetchMoviesGenre from "../api/FetchMoviesGenre";
+import FetchSeriesGenre from "../api/FetchSeriesGenre";
 import FetchTrendingMovies from "../api/FetchTrendingMovies";
 import FetchTrendingSeries from "../api/FetchTrendingSeries";
 
@@ -12,11 +13,14 @@ import MovieSerieSelection from "../components/MovieSerieSelection";
 
 function Homepage() {
   const genres = [28, 12, 16, 18, 53, 878, 10752];
+  const genresSerie = [10759, 16, 35, 80, 99, 18, 10751];
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [showSelection, setShowSelection] = useState(false);
   const [showMovie, setShowMovie] = useState(true);
   const [showSerie, setShowSerie] = useState(false);
   const [active, setActive] = useState("movie");
+
+  const [selectedGenreSerie, setSelectedGenreSerie] = useState(null);
 
   function handleShow() {
     setShowSelection(true);
@@ -25,6 +29,12 @@ function Homepage() {
   function handleGenreSelect(genre) {
     const selectedGenre = parseInt(genre, 10);
     setSelectedGenre(selectedGenre);
+  }
+
+  function handleGenreSelectSerie(genre) {
+    const selectedGenreSerie = parseInt(genre, 10);
+    setSelectedGenreSerie(selectedGenreSerie);
+    console.log(typeof selectedGenreSerie);
   }
 
   function handleShowMovie() {
@@ -50,31 +60,69 @@ function Homepage() {
         handleShowSerie={handleShowSerie}
       />
 
-      <div className={styles.containerSearchHomepage}>
-        <p>
-          Lost in options? Search for your favorite movie instantly or Select a
-          Genre
-        </p>
-        <div className={styles.searchbarHomepage}>
-          <MovieSearchContainer />
-        </div>
-        <GenreBar onGenreSelect={handleGenreSelect} handleShow={handleShow} />
-      </div>
-      {showMovie && <FetchTrendingMovies />}
-      {showSerie && <FetchTrendingSeries />}
-
-      {showSelection && selectedGenre ? (
-        <FetchMoviesGenre
-          key={selectedGenre}
-          defaultGenre={selectedGenre}
-          genre={selectedGenre}
-        />
-      ) : (
-        ""
+      {showSerie && (
+        <>
+          <div className={styles.containerSearchHomepage}>
+            <p>
+              Lost in options? Search for your favorite serie instantly or
+              Select a Genre
+            </p>
+            <div className={styles.searchbarHomepage}>
+              <MovieSearchContainer />
+            </div>
+            <GenreBar
+              onGenreSelect={handleGenreSelectSerie}
+              handleShow={handleShow}
+              showSerie={showSerie}
+            />
+          </div>
+          <FetchTrendingSeries />
+          {showSelection && selectedGenreSerie ? (
+            <FetchSeriesGenre
+              key={selectedGenreSerie}
+              defaultGenre={selectedGenreSerie}
+              genre={selectedGenreSerie}
+            />
+          ) : (
+            ""
+          )}
+          {genresSerie.map(genre => (
+            <FetchSeriesGenre key={genre} defaultGenre={genre} genre={genre} />
+          ))}
+        </>
       )}
-      {genres.map(genre => (
-        <FetchMoviesGenre key={genre} defaultGenre={genre} genre={genre} />
-      ))}
+
+      {showMovie && (
+        <>
+          <div className={styles.containerSearchHomepage}>
+            <p>
+              Lost in options? Search for your favorite movie instantly or
+              Select a Genre
+            </p>
+            <div className={styles.searchbarHomepage}>
+              <MovieSearchContainer />
+            </div>
+            <GenreBar
+              onGenreSelect={handleGenreSelect}
+              handleShow={handleShow}
+              showMovie={showMovie}
+            />
+          </div>
+          <FetchTrendingMovies />
+          {showSelection && selectedGenre ? (
+            <FetchMoviesGenre
+              key={selectedGenre}
+              defaultGenre={selectedGenre}
+              genre={selectedGenre}
+            />
+          ) : (
+            ""
+          )}
+          {genres.map(genre => (
+            <FetchMoviesGenre key={genre} defaultGenre={genre} genre={genre} />
+          ))}
+        </>
+      )}
     </div>
   );
 }

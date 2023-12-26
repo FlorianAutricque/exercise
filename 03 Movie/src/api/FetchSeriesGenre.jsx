@@ -95,7 +95,7 @@ function FetchSeriesGenre({ defaultGenre }) {
   const unknownGenre = "unknown";
 
   const genre = genreMappings[defaultGenre] || unknownGenre;
-  const idGenreScroll = genre.toLowerCase();
+  const idGenreScrollWSerie = genre;
 
   function handleUp() {
     window.scrollTo({
@@ -111,11 +111,17 @@ function FetchSeriesGenre({ defaultGenre }) {
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : genreSeries.length === 0 ? (
-        <p>No movies found for this genre</p>
+        <p>No series found for this genre</p>
       ) : (
         <div>
-          <div id={idGenreScroll}>
-            <GenreTitle genre={genre} />
+          <div id={idGenreScrollWSerie}>
+            <span className={styles.titleBtnUpContainer}>
+              <GenreTitle genre={genre} serie={genreSeries} />
+              &nbsp;&nbsp;&nbsp;
+              <button onClick={handleUp} className={styles.btnUp}>
+                <FaRegArrowAltCircleUp size={25} color="white" />
+              </button>
+            </span>
             <div>
               <Carousel
                 responsive={responsive}
@@ -138,9 +144,6 @@ function FetchSeriesGenre({ defaultGenre }) {
               </Carousel>
             </div>
           </div>
-          <button onClick={handleUp} className={styles.btnUp}>
-            <FaRegArrowAltCircleUp size={25} color="white" />
-          </button>
         </div>
       )}
     </div>

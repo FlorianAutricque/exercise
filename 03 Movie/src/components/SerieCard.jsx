@@ -38,7 +38,7 @@ function SerieCard({ serie, watchlist }) {
             <span className={styles.dateRatingAdd}>
               {serie.first_air_date
                 ? serie.first_air_date.slice(0, 4)
-                : "No date"}
+                : "Coming soon"}
 
               <div className={styles.dateRatingAdd}>
                 {watchlist ? "" : <AddSerieWatchlist serie={serie} size={14} />}
