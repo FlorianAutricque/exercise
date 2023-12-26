@@ -1,6 +1,7 @@
 import MovieSearchContainer from "./MovieSearchContainer";
 import FetchMoviesGenre from "../api/FetchMoviesGenre";
 import FetchTrendingMovies from "../api/FetchTrendingMovies";
+import FetchTrendingSeries from "../api/FetchTrendingSeries";
 
 import styles from "./Homepage.module.css";
 import GenreBar from "../components/GenreBar";
@@ -11,6 +12,8 @@ function Homepage() {
   const genres = [28, 12, 16, 18, 53, 878, 10752];
   const [selectedGenre, setSelectedGenre] = useState(null);
   const [showSelection, setShowSelection] = useState(false);
+  const [showMovie, setShowMovie] = useState(true);
+  const [showSerie, setShowSerie] = useState(false);
 
   function handleShow() {
     setShowSelection(true);
@@ -21,10 +24,25 @@ function Homepage() {
     setSelectedGenre(selectedGenre);
   }
 
+  function handleShowMovie() {
+    setShowMovie(true);
+    setShowSerie(false);
+  }
+
+  function handleShowSerie() {
+    setShowSerie(true);
+    setShowMovie(false);
+  }
+
   return (
     <div>
       <Header isHomepage={true} />
-      <FetchTrendingMovies />
+
+      <button onClick={handleShowMovie}>movie</button>
+      <button onClick={handleShowSerie}>serie</button>
+
+      {showMovie && <FetchTrendingMovies />}
+      {showSerie && <FetchTrendingSeries />}
 
       <div className={styles.containerSearchHomepage}>
         <p>
