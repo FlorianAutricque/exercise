@@ -10,6 +10,9 @@ import styles3 from "../components/Button.module.css";
 import MovieCard from "../components/MovieCard";
 import SerieCard from "../components/SerieCard";
 
+import { BiMoviePlay } from "react-icons/bi";
+import { BiCameraMovie } from "react-icons/bi";
+
 function Watchlist() {
   const [watchlist, setWatchlist] = useState(getWatchlist());
   console.log(watchlist);
@@ -42,8 +45,10 @@ function Watchlist() {
   }
   return (
     <>
-      <h2>Your Watchlist</h2>
-      <p>Movies</p>
+      <h2 className={styles.seriesMovies}>Your Watchlist</h2>
+      <h3>
+        <BiMoviePlay /> &nbsp;Movies
+      </h3>
       <ul className={styles.container}>
         {movies.map(movie => (
           <li key={movie.id}>
@@ -65,7 +70,10 @@ function Watchlist() {
           </li>
         ))}
       </ul>
-      <p>Series</p>
+      <h3>
+        <BiCameraMovie />
+        &nbsp;Series
+      </h3>
       <ul className={styles.container}>
         {series.map(serie => (
           <li key={serie.id}>
