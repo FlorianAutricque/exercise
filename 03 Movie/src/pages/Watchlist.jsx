@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { getWatchlist, removeFromWatchlist } from "../helpers/WatchlistUtils";
-import { BsBookmarkDash } from "react-icons/bs";
-
 import styles2 from "../components/AddMovieWatchlist.module.css";
 import styles from "./Watchlist.module.css";
+import styles3 from "../components/Button.module.css";
 import MovieCard from "../components/MovieCard";
 
 function Watchlist() {
   const [watchlist, setWatchlist] = useState(getWatchlist());
+  const [hoveredMovieId, setHoveredMovieId] = useState(null);
 
   function handleRemove(movieId) {
     removeFromWatchlist(movieId);
@@ -21,13 +21,21 @@ function Watchlist() {
       <ul className={styles.container}>
         {watchlist.map(movie => (
           <li key={movie.id}>
-            <MovieCard movie={movie} watchlist={watchlist} />
-            <button
-              onClick={() => handleRemove(movie.id)}
-              className={styles2.btn}
+            <div
+              onMouseOver={() => setHoveredMovieId(movie.id)}
+              onMouseOut={() => setHoveredMovieId(null)}
+              className={styles.movieCardContainer}
             >
-              <BsBookmarkDash size={30} color="white" />
-            </button>
+              <MovieCard movie={movie} watchlist={watchlist} />
+              {hoveredMovieId === movie.id && (
+                <button
+                  onClick={() => handleRemove(movie.id)}
+                  className={`${styles2.btn} ${styles.removeWatchlist} ${styles3.button}`}
+                >
+                  Remove
+                </button>
+              )}
+            </div>
           </li>
         ))}
       </ul>

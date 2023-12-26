@@ -7,3 +7,14 @@
 .container li {
   list-style-type: none;
 }
+
+.removeWatchlist {
+  position: relative;
+  bottom: 12rem;
+  left: 2rem;
+  z-index: 1000;
+}
+
+.movieCardContainer {
+  position: relative;
+}

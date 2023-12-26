@@ -25,18 +25,18 @@ function MovieCard({ movie, watchlist }) {
     <div className={styles.movieCardContainer}>
       {watchlist ? (
         <>
-          <div className={styles.x}>
-            <NavLink key={movie.id} to={`/movie/${movie.id}`}>
-              <li key={movie.id}>
-                <div onClick={handleClick}>
-                  <img
-                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                    alt={movie.title}
-                  />
-                  <p key={truncatedTitle}>{truncatedTitle}</p>
-                </div>
-              </li>
-            </NavLink>
+          <div className={`${styles.containerMovie}`}>
+            {/* <NavLink key={movie.id} to={`/movie/${movie.id}`}> */}
+            <li key={movie.id}>
+              <div onClick={handleClick}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                />
+                <p key={truncatedTitle}>{truncatedTitle}</p>
+              </div>
+            </li>
+            {/* </NavLink> */}
             <div className={styles.cardBelow}>
               <span className={styles.dateRatingAdd}>
                 {movie.release_date ? movie.release_date.slice(0, 4) : ""}
