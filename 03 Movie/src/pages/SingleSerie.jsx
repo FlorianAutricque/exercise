@@ -3,12 +3,12 @@ import { Link, useParams } from "react-router-dom";
 
 import FormatDay from "../helpers/FormatDay";
 import VoteAverage from "../components/VoteAverage";
-import FetchMoviesGenre from "../api/FetchMoviesGenre";
 
 import AddMovieWatchlist from "../components/AddMovieWatchlist";
 
 import styles from "./SingleMovie.module.css";
 import MovieGenreSingleMovie from "../components/MovieGenreSingleMovie";
+import FetchSeriesGenre from "../api/FetchSeriesGenre";
 
 function SingleSerie() {
   const { id } = useParams();
@@ -96,13 +96,16 @@ function SingleSerie() {
           <h2 className={styles.textSimilarGenre}>Movies of similar genre</h2>
           {serie.genres && serie.genres.length > 0 ? (
             serie.genres.map((genre, index) => (
-              <p key={index}>{genre.name}</p>
-
-              // <FetchMoviesGenre key={genre.id} x={genre.id} />
+              <FetchSeriesGenre
+                key={`${genre.id}-${index}`}
+                defaultGenre={genre.id}
+              />
             ))
-          ) : serie.genres ? (
-            // <FetchMoviesGenre x={serie.genres[0].id} />
-            <p>{serie.genres[0].name}</p>
+          ) : serie.genre ? (
+            <FetchSeriesGenre
+              key={`${serie.genres.id}-single`}
+              defaultGenre={serie.genres.id}
+            />
           ) : (
             <p>No genre information available</p>
           )}

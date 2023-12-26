@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import MovieCard from "../components/MovieCard";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -8,9 +7,10 @@ import styles from "./MoviesContainerStyle.module.css";
 import GenreTitle from "../components/GenreTitle";
 
 import { FaRegArrowAltCircleUp } from "react-icons/fa";
+import SerieCard from "../components/SerieCard";
 
-function FetchMoviesGenre({ defaultGenre }) {
-  const [genreMovies, setGenreMovies] = useState([]);
+function FetchSeriesGenre({ defaultGenre }) {
+  const [genreSeries, setGenreSeries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -35,7 +35,7 @@ function FetchMoviesGenre({ defaultGenre }) {
   };
 
   useEffect(() => {
-    async function fetchMoviesGenre() {
+    async function fetchSeriesGenre() {
       try {
         setIsLoading(true);
 
@@ -51,7 +51,8 @@ function FetchMoviesGenre({ defaultGenre }) {
 
         for (let page = 1; page <= 4; page++) {
           const res = await fetch(
-            `https://api.themoviedb.org/3/discover/movie?language=en-US&with_genres=${defaultGenre}&page=${page}`,
+            // `https://api.themoviedb.org/3/discover/movie?language=en-US&with_genres=${defaultGenre}&page=${page}`,
+            `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${defaultGenre}`,
             options
           );
 
@@ -62,7 +63,7 @@ function FetchMoviesGenre({ defaultGenre }) {
           allPages.push(...data.results);
         }
 
-        setGenreMovies(allPages);
+        setGenreSeries(allPages);
       } catch (error) {
         setError(error);
       } finally {
@@ -70,34 +71,31 @@ function FetchMoviesGenre({ defaultGenre }) {
       }
     }
 
-    fetchMoviesGenre();
+    fetchSeriesGenre();
   }, [accessKey, defaultGenre]);
 
   const genreMappings = {
-    28: "action",
-    12: "adventure",
-    16: "animation",
-    35: "comedy",
-    80: "crime",
-    99: "documentary",
-    18: "drama",
-    10751: "family",
-    14: "fantasy",
-    36: "history",
-    27: "horror",
-    10402: "music",
-    9648: "mystery",
-    10749: "romance",
-    878: "sci-fi",
-    10770: "TV movie",
-    53: "thriller",
-    10752: "war",
-    37: "western",
+    10759: "Action & Adventure",
+    16: "Animation",
+    35: "Comedy",
+    80: "Crime",
+    99: "Documentary",
+    18: "Drama",
+    10751: "Family",
+    10762: "Kids",
+    9648: "Mystery",
+    10763: "News",
+    10764: "Reality",
+    10765: "Sci-Fi & Fantasy",
+    10766: "Soap",
+    10767: "Talk",
+    10768: "War & Politics",
+    37: "Western",
   };
 
-  const genreUnknown = "unknown";
+  const unknownGenre = "unknown";
 
-  const genre = genreMappings[defaultGenre] || genreUnknown;
+  const genre = genreMappings[defaultGenre] || unknownGenre;
   const idGenreScroll = genre.toLowerCase();
 
   function handleUp() {
@@ -113,7 +111,7 @@ function FetchMoviesGenre({ defaultGenre }) {
         <p>Loading...</p>
       ) : error ? (
         <p>Error: {error.message}</p>
-      ) : genreMovies.length === 0 ? (
+      ) : genreSeries.length === 0 ? (
         <p>No movies found for this genre</p>
       ) : (
         <div>
@@ -126,15 +124,15 @@ function FetchMoviesGenre({ defaultGenre }) {
                 autoPlaySpeed={5000}
                 infinite={true}
               >
-                {genreMovies
+                {genreSeries
                   .filter(
-                    movie =>
-                      movie.genre_ids && movie.genre_ids.includes(defaultGenre)
+                    serie =>
+                      serie.genre_ids && serie.genre_ids.includes(defaultGenre)
                   )
-                  .map(movie => (
-                    <React.Fragment key={movie.id}>
+                  .map(serie => (
+                    <React.Fragment key={serie.id}>
                       <div className={styles.moviesInsideCarousel}>
-                        <MovieCard movie={movie} />
+                        <SerieCard serie={serie} />
                       </div>
                     </React.Fragment>
                   ))}
@@ -150,4 +148,4 @@ function FetchMoviesGenre({ defaultGenre }) {
   );
 }
 
-export default FetchMoviesGenre;
+export default FetchSeriesGenre;

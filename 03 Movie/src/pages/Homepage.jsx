@@ -57,7 +57,7 @@ function Homepage() {
       {showSelection && selectedGenre ? (
         <FetchMoviesGenre
           key={selectedGenre}
-          x={selectedGenre}
+          defaultGenre={selectedGenre}
           genre={selectedGenre}
         />
       ) : (

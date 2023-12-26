@@ -27,7 +27,7 @@ function MovieCard({ movie, watchlist }) {
         <>
           <div className={`${styles.containerMovie}`}>
             {/* <NavLink key={movie.id} to={`/movie/${movie.id}`}> */}
-            <li key={movie.id}>
+            <div key={movie.id}>
               <div onClick={handleClick}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -35,7 +35,7 @@ function MovieCard({ movie, watchlist }) {
                 />
                 <p key={truncatedTitle}>{truncatedTitle}</p>
               </div>
-            </li>
+            </div>
             {/* </NavLink> */}
             <div className={styles.cardBelow}>
               <span className={styles.dateRatingAdd}>
@@ -57,15 +57,13 @@ function MovieCard({ movie, watchlist }) {
       ) : (
         <>
           <NavLink key={movie.id} to={`/movie/${movie.id}`}>
-            <li key={movie.id}>
-              <div onClick={handleClick}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                />
-                <p key={truncatedTitle}>{truncatedTitle}</p>
-              </div>
-            </li>
+            <div onClick={handleClick}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+              />
+              <p key={truncatedTitle}>{truncatedTitle}</p>
+            </div>
           </NavLink>
           <div className={styles.cardBelow}>
             <span className={styles.dateRatingAdd}>

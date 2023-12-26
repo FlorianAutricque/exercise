@@ -96,11 +96,11 @@ function SingleMovie() {
           {movie.genres && movie.genres.length > 0 ? (
             movie.genres.map(genre => (
               <>
-                <FetchMoviesGenre key={genre.id} x={genre.id} />
+                <FetchMoviesGenre key={genre.id} defaultGenre={genre.id} />
               </>
             ))
           ) : movie.genre ? (
-            <FetchMoviesGenre x={movie.genre.id} />
+            <FetchMoviesGenre defaultGenre={movie.genre.id} />
           ) : (
             <p>No genre information available</p>
           )}

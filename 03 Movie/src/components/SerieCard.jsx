@@ -26,15 +26,13 @@ function SerieCard({ serie, watchlist }) {
       <>
         <div className={`${styles.containerMovie}`}>
           <NavLink key={serie.id} to={`/serie/${serie.id}`}>
-            <li key={serie.id}>
-              <div onClick={handleClick}>
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`}
-                  alt={serie.name}
-                />
-                <p key={truncatedTitle}>{truncatedTitle}</p>
-              </div>
-            </li>
+            <div onClick={handleClick}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`}
+                alt={serie.name}
+              />
+              <p key={truncatedTitle}>{truncatedTitle}</p>
+            </div>
           </NavLink>
           {/* <div className={styles.cardBelow}>
             <span className={styles.dateRatingAdd}>
