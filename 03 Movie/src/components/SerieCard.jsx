@@ -5,10 +5,10 @@ import VoteAverage from "./VoteAverage";
 import AddSerieWatchlist from "./AddSerieWatchlist";
 
 function truncateString(str, maxLength) {
-  // if (str.length > maxLength) {
-  //   return str.slice(0, maxLength - 3) + "...";
-  // }
-  // return str;
+  if (str.length > maxLength) {
+    return str.slice(0, maxLength - 3) + "...";
+  }
+  return str;
 }
 
 function SerieCard({ serie, watchlist }) {
@@ -32,7 +32,6 @@ function SerieCard({ serie, watchlist }) {
                 alt={serie.name}
               />
               <p key={truncatedTitle}>{truncatedTitle}</p>
-              <p>{serie.name}</p>
             </div>
           </NavLink>
           <div className={styles.cardBelow}>

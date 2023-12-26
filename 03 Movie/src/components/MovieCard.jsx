@@ -5,10 +5,10 @@ import VoteAverage from "./VoteAverage";
 import AddMovieWatchlist from "./AddMovieWatchlist";
 
 function truncateString(str, maxLength) {
-  // if (str.length > maxLength) {
-  //   return str.slice(0, maxLength - 3) + "...";
-  // }
-  // return str;
+  if (str.length > maxLength) {
+    return str.slice(0, maxLength - 3) + "...";
+  }
+  return str;
 }
 
 function MovieCard({ movie, watchlist }) {
@@ -34,7 +34,6 @@ function MovieCard({ movie, watchlist }) {
                   alt={movie.title}
                 />
                 <p key={truncatedTitle}>{truncatedTitle}</p>
-                <p>{movie.title}</p>
               </div>
             </div>
             {/* </NavLink> */}
