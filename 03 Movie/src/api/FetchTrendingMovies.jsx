@@ -87,7 +87,7 @@ function FetchTrendingMovies() {
             autoPlaySpeed={5000}
             infinite={true}
             removeArrowOnDeviceType={["tablet", "mobile"]}
-            centerMode={true}
+            // centerMode={true}
           >
             {trendingMovies.map(movie => (
               <React.Fragment key={movie.id}>
