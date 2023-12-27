@@ -62,6 +62,7 @@ function Homepage() {
 
       {showSerie && (
         <>
+          <FetchTrendingSeries />
           <div className={styles.containerSearchHomepage}>
             <p>
               Lost in options? Search for your favorite serie instantly or
@@ -76,7 +77,6 @@ function Homepage() {
               showSerie={showSerie}
             />
           </div>
-          <FetchTrendingSeries />
           {showSelection && selectedGenreSerie ? (
             <FetchSeriesGenre
               key={selectedGenreSerie}
@@ -94,6 +94,7 @@ function Homepage() {
 
       {showMovie && (
         <>
+          <FetchTrendingMovies />
           <div className={styles.containerSearchHomepage}>
             <p>
               Lost in options? Search for your favorite movie instantly or
@@ -108,7 +109,6 @@ function Homepage() {
               showMovie={showMovie}
             />
           </div>
-          <FetchTrendingMovies />
           {showSelection && selectedGenre ? (
             <FetchMoviesGenre
               key={selectedGenre}

@@ -87,6 +87,8 @@ function FetchTrendingSeries() {
             autoPlay={true}
             autoPlaySpeed={5000}
             infinite={true}
+            removeArrowOnDeviceType={["tablet", "mobile"]}
+            centerMode={true}
           >
             {trendingSeries.map(serie => (
               <React.Fragment key={serie.id}>

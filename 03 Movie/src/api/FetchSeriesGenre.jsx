@@ -128,6 +128,8 @@ function FetchSeriesGenre({ defaultGenre }) {
                 autoPlay={true}
                 autoPlaySpeed={5000}
                 infinite={true}
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+                centerMode={true}
               >
                 {genreSeries
                   .filter(

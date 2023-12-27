@@ -132,6 +132,8 @@ function FetchMoviesGenre({ defaultGenre }) {
                 autoPlay={true}
                 autoPlaySpeed={5000}
                 infinite={true}
+                removeArrowOnDeviceType={["tablet", "mobile"]}
+                centerMode={true}
               >
                 {genreMovies
                   .filter(
