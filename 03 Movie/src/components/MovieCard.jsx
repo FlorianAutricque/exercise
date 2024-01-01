@@ -19,6 +19,8 @@ function MovieCard({ movie, watchlist }) {
     ? truncateString(movie.title || movie.name, 21)
     : "";
 
+  const date = movie.release_date || movie.first_air_date;
+
   function handleClick() {
     window.scrollTo({
       top: 0,
@@ -39,13 +41,12 @@ function MovieCard({ movie, watchlist }) {
                   alt={movie.title}
                 />
                 <p key={truncatedTitle}>{truncatedTitle}</p>
-                <p>{movie.title}</p>
               </div>
             </div>
             {/* </NavLink> */}
             <div className={styles.cardBelow}>
               <span className={styles.dateRatingAdd}>
-                {movie.release_date ? movie.release_date.slice(0, 4) : ""}
+                {date ? date.slice(0, 4) : ""}
 
                 <div className={styles.dateRatingAdd}>
                   {watchlist ? (
