@@ -1,20 +1,24 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import styles from "./Searchbar.module.css";
-
 import { IoSearch } from "react-icons/io5";
 
-function Searchbar({ onSearch }) {
+function Searchbar({ onSearch, mediaType }) {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
 
   function handleChange(e) {
     e.preventDefault();
-    navigate(`/searched-movies?query=${encodeURIComponent(value)}`);
 
+    {
+      mediaType === "movie"
+        ? navigate(`/searched-movies?query=${encodeURIComponent(value)}`)
+        : navigate(`/searched-series?query=${encodeURIComponent(value)}`);
+    }
     onSearch(value);
   }
+
+  // &mediaType=${mediaType}
 
   return (
     <div>
@@ -29,7 +33,9 @@ function Searchbar({ onSearch }) {
             <input
               type="text"
               className={styles.inputSearch}
-              placeholder="Search a Movie..."
+              placeholder={`Search a ${
+                mediaType === "tv" ? "Serie" : "Movie"
+              }...`}
               value={value}
               onChange={e => setValue(e.target.value)}
             />

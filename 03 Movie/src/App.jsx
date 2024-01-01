@@ -4,10 +4,11 @@ import Watchlist from "./pages/Watchlist";
 import PageNotFound from "./pages/PageNotFound";
 import Navbar from "./components/Navbar";
 
-import SearchResultsPage from "./pages/SearchResultsPage";
 import SingleMovie from "./pages/SingleMovie";
 import SingleSerie from "./pages/SingleSerie";
 import Footer from "./components/Footer";
+import SearchResultsPageMovie from "./pages/SearchResultsPageMovie";
+import SearchResultsPageSerie from "./pages/SearchResultsPageSerie";
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path="watchlist" element={<Watchlist />} />
 
-          <Route path="searched-movies" element={<SearchResultsPage />} />
+          <Route path="searched-movies" element={<SearchResultsPageMovie />} />
+          <Route path="searched-series" element={<SearchResultsPageSerie />} />
 
           <Route path="movie/:id" element={<SingleMovie />} />
           <Route path="serie/:id" element={<SingleSerie />} />

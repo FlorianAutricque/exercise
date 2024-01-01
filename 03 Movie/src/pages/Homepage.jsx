@@ -50,6 +50,8 @@ function Homepage() {
     setShowMovie(false);
   }
 
+  let mediaType;
+  mediaType = showSerie ? "tv" : "movie";
   return (
     <div>
       <Header isHomepage={true} />
@@ -69,7 +71,7 @@ function Homepage() {
               Select a Genre
             </p>
             <div className={styles.searchbarHomepage}>
-              <MovieSearchContainer />
+              {showSerie && <MovieSearchContainer mediaType="tv" />}
             </div>
             <GenreBar
               onGenreSelect={handleGenreSelectSerie}
@@ -101,7 +103,8 @@ function Homepage() {
               Select a Genre
             </p>
             <div className={styles.searchbarHomepage}>
-              <MovieSearchContainer />
+              <MovieSearchContainer mediaType={mediaType} />
+              {/* {console.log("media movie", mediaType)} */}
             </div>
             <GenreBar
               onGenreSelect={handleGenreSelect}

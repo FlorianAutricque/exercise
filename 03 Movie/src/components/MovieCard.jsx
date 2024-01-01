@@ -5,14 +5,19 @@ import VoteAverage from "./VoteAverage";
 import AddMovieWatchlist from "./AddMovieWatchlist";
 
 function truncateString(str, maxLength) {
-  // if (str.length > maxLength) {
-  //   return str.slice(0, maxLength - 3) + "...";
-  // }
-  // return str;
+  if (str) {
+    if (str.length > maxLength) {
+      return str.slice(0, maxLength - 3) + "...";
+    }
+    return str;
+  }
+  return "";
 }
 
 function MovieCard({ movie, watchlist }) {
-  const truncatedTitle = truncateString(movie.title, 21);
+  const truncatedTitle = movie
+    ? truncateString(movie.title || movie.name, 21)
+    : "";
 
   function handleClick() {
     window.scrollTo({
@@ -34,6 +39,7 @@ function MovieCard({ movie, watchlist }) {
                   alt={movie.title}
                 />
                 <p key={truncatedTitle}>{truncatedTitle}</p>
+                <p>{movie.title}</p>
               </div>
             </div>
             {/* </NavLink> */}

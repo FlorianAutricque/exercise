@@ -3,15 +3,15 @@ import MovieCard from "../components/MovieCard";
 
 import styles from "./MoviesContainerStyle.module.css";
 
-function ListMoviesSearched({ searchValue, mediaType }) {
-  const [movie, setMovie] = useState([]);
+function ListSeriesSearched({ searchValue, mediaType }) {
+  const [serie, setSerie] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
 
   useEffect(() => {
-    async function fetchAllMovies() {
+    async function fetchAllSeries() {
       try {
         setIsLoading(true);
 
@@ -24,9 +24,9 @@ function ListMoviesSearched({ searchValue, mediaType }) {
         };
 
         const res = await fetch(
-          `https://api.themoviedb.org/3/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=1`,
+          // `https://api.themoviedb.org/3/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=1`,
           // `https://api.themoviedb.org/3/search/${mediaType}?query=${searchValue}&include_adult=false&language=en-US&page=1`,
-          // `https://api.themoviedb.org/3/search/tv?query=${searchValue}&include_adult=false&language=en-US&page=1`,
+          `https://api.themoviedb.org/3/search/tv?query=${searchValue}&include_adult=false&language=en-US&page=1`,
           // `https://api.themoviedb.org/3/search/multi?query=${searchValue}&include_adult=false&language=en-US&page=1`,
 
           options
@@ -36,7 +36,7 @@ function ListMoviesSearched({ searchValue, mediaType }) {
 
         const data = await res.json();
 
-        setMovie(data.results);
+        setSerie(data.results);
       } catch (error) {
         setError(error);
       } finally {
@@ -44,7 +44,7 @@ function ListMoviesSearched({ searchValue, mediaType }) {
       }
     }
 
-    fetchAllMovies();
+    fetchAllSeries();
   }, [accessKey, searchValue, mediaType]);
   return (
     <div>
@@ -56,17 +56,17 @@ function ListMoviesSearched({ searchValue, mediaType }) {
         <>
           {searchValue ? (
             <h2>
-              List of movies for{" "}
+              List of series for{" "}
               {searchValue.charAt(0).toUpperCase() + searchValue.slice(1)}
             </h2>
           ) : (
             ""
           )}
           <div className={styles.containerMovies}>
-            {movie.map(movie => (
+            {serie.map(serie => (
               //Fragment to conditionally render both li and img only when the poster_path is not null
-              <React.Fragment key={movie.id}>
-                {movie.poster_path !== null && <MovieCard movie={movie} />}
+              <React.Fragment key={serie.id}>
+                {serie.poster_path !== null && <MovieCard movie={serie} />}
               </React.Fragment>
             ))}
           </div>
@@ -76,4 +76,4 @@ function ListMoviesSearched({ searchValue, mediaType }) {
   );
 }
 
-export default ListMoviesSearched;
+export default ListSeriesSearched;
