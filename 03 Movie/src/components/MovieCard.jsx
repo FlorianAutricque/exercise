@@ -62,7 +62,10 @@ function MovieCard({ movie, watchlist }) {
         </>
       ) : (
         <>
-          <NavLink key={movie.id} to={`/movie/${movie.id}`}>
+          <NavLink
+            key={movie.id}
+            to={movie.title ? `/movie/${movie.id}` : `/serie/${movie.id}`}
+          >
             <div onClick={handleClick}>
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
