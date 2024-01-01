@@ -15,7 +15,6 @@ import { BiCameraMovie } from "react-icons/bi";
 
 function Watchlist() {
   const [watchlist, setWatchlist] = useState(getWatchlist());
-  console.log(watchlist);
 
   const [hoveredMovieId, setHoveredMovieId] = useState(null);
   const [hoveredSerieId, setHoveredSerieId] = useState(null);

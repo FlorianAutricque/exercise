@@ -34,21 +34,21 @@ function Homepage() {
   function handleGenreSelectSerie(genre) {
     const selectedGenreSerie = parseInt(genre, 10);
     setSelectedGenreSerie(selectedGenreSerie);
-    console.log(typeof selectedGenreSerie);
   }
 
   function handleShowMovie() {
     setActive("movie");
+
     setShowMovie(true);
     setShowSerie(false);
   }
 
   function handleShowSerie() {
     setActive("serie");
+
     setShowSerie(true);
     setShowMovie(false);
   }
-  console.log(selectedGenre);
 
   return (
     <div>

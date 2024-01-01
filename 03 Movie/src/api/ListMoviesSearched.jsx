@@ -3,7 +3,7 @@ import MovieCard from "../components/MovieCard";
 
 import styles from "./MoviesContainerStyle.module.css";
 
-function ListMoviesSearched({ searchValue }) {
+function ListMoviesSearched({ searchValue, mediaType }) {
   const [movie, setMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -25,6 +25,10 @@ function ListMoviesSearched({ searchValue }) {
 
         const res = await fetch(
           `https://api.themoviedb.org/3/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=1`,
+          // `https://api.themoviedb.org/3/search/${mediaType}?query=${searchValue}&include_adult=false&language=en-US&page=1`,
+          // `https://api.themoviedb.org/3/search/tv?query=${searchValue}&include_adult=false&language=en-US&page=1`,
+          // `https://api.themoviedb.org/3/search/multi?query=${searchValue}&include_adult=false&language=en-US&page=1`,
+
           options
         );
 
@@ -33,6 +37,7 @@ function ListMoviesSearched({ searchValue }) {
         const data = await res.json();
 
         setMovie(data.results);
+        console.log(data.results);
       } catch (error) {
         setError(error);
       } finally {
@@ -41,7 +46,7 @@ function ListMoviesSearched({ searchValue }) {
     }
 
     fetchAllMovies();
-  }, [accessKey, searchValue]);
+  }, [accessKey, searchValue, mediaType]);
   return (
     <div>
       {isLoading ? (

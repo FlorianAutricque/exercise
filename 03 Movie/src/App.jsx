@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import SearchResultsPage from "./pages/SearchResultsPage";
 import SingleMovie from "./pages/SingleMovie";
 import SingleSerie from "./pages/SingleSerie";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
+        {/* <Footer /> */}
       </BrowserRouter>
     </>
   );
