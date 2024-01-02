@@ -77,7 +77,7 @@ function MovieCard({ movie, watchlist }) {
           </NavLink>
           <div className={styles.cardBelow}>
             <span className={styles.dateRatingAdd}>
-              {movie.release_date ? movie.release_date.slice(0, 4) : ""}
+              {date ? date.slice(0, 4) : ""}
 
               <div className={styles.dateRatingAdd}>
                 {watchlist ? "" : <AddMovieWatchlist movie={movie} size={14} />}

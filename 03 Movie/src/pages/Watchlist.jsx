@@ -19,8 +19,10 @@ function Watchlist() {
   const [hoveredMovieId, setHoveredMovieId] = useState(null);
   const [hoveredSerieId, setHoveredSerieId] = useState(null);
 
+  console.log(watchlist);
+
   const movies = watchlist.filter(
-    item => !item.media_type || item.media_type !== "tv"
+    item => !item.media_type || (item.media_type !== "tv" && item.title)
   );
 
   const series = watchlist.filter(
@@ -28,8 +30,13 @@ function Watchlist() {
       item.media_type === "tv" ||
       (item.media_type !== "tv" &&
         item.first_air_date &&
-        item.last_air_date === null)
+        item.last_air_date === null &&
+        item.name)
   );
+
+  // const movies = watchlist.filter(item => item.media_type === "movie");
+
+  // const series = watchlist.filter(item => item.media_type === "tv");
 
   function handleRemove(movieId) {
     removeFromWatchlist(movieId);

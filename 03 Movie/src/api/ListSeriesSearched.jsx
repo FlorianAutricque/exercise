@@ -37,6 +37,7 @@ function ListSeriesSearched({ searchValue, mediaType }) {
         const data = await res.json();
 
         setSerie(data.results);
+        console.log(data.results);
       } catch (error) {
         setError(error);
       } finally {
