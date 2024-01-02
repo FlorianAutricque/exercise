@@ -3,7 +3,7 @@ import MovieCard from "../components/MovieCard";
 
 import styles from "./MoviesContainerStyle.module.css";
 
-function ListSeriesSearched({ searchValue, mediaType }) {
+function ListAllSearch({ searchValue, mediaType }) {
   const [serie, setSerie] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -11,7 +11,7 @@ function ListSeriesSearched({ searchValue, mediaType }) {
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
 
   useEffect(() => {
-    async function fetchAllSeries() {
+    async function fetchAll() {
       try {
         setIsLoading(true);
 
@@ -26,8 +26,8 @@ function ListSeriesSearched({ searchValue, mediaType }) {
         const res = await fetch(
           // `https://api.themoviedb.org/3/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=1`,
           // `https://api.themoviedb.org/3/search/${mediaType}?query=${searchValue}&include_adult=false&language=en-US&page=1`,
-          `https://api.themoviedb.org/3/search/tv?query=${searchValue}&include_adult=false&language=en-US&page=1`,
-          // `https://api.themoviedb.org/3/search/multi?query=${searchValue}&include_adult=false&language=en-US&page=1`,
+          // `https://api.themoviedb.org/3/search/tv?query=${searchValue}&include_adult=false&language=en-US&page=1`,
+          `https://api.themoviedb.org/3/search/multi?query=${searchValue}&include_adult=false&language=en-US&page=1`,
 
           options
         );
@@ -37,6 +37,7 @@ function ListSeriesSearched({ searchValue, mediaType }) {
         const data = await res.json();
 
         setSerie(data.results);
+        console.log(data.results);
       } catch (error) {
         setError(error);
       } finally {
@@ -44,7 +45,7 @@ function ListSeriesSearched({ searchValue, mediaType }) {
       }
     }
 
-    fetchAllSeries();
+    fetchAll();
   }, [accessKey, searchValue, mediaType]);
   return (
     <div>
@@ -56,7 +57,7 @@ function ListSeriesSearched({ searchValue, mediaType }) {
         <>
           {searchValue ? (
             <h2>
-              List of series for{" "}
+              List for your research:{" "}
               {searchValue.charAt(0).toUpperCase() + searchValue.slice(1)}
             </h2>
           ) : (
@@ -76,4 +77,4 @@ function ListSeriesSearched({ searchValue, mediaType }) {
   );
 }
 
-export default ListSeriesSearched;
+export default ListAllSearch;

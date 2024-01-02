@@ -9,6 +9,7 @@ import SingleSerie from "./pages/SingleSerie";
 import Footer from "./components/Footer";
 import SearchResultsPageMovie from "./pages/SearchResultsPageMovie";
 import SearchResultsPageSerie from "./pages/SearchResultsPageSerie";
+import SearchResultsPageAll from "./pages/SearchResultsPageAll";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
 
           <Route path="searched-movies" element={<SearchResultsPageMovie />} />
           <Route path="searched-series" element={<SearchResultsPageSerie />} />
+          <Route path="searched-all" element={<SearchResultsPageAll />} />
 
           <Route path="movie/:id" element={<SingleMovie />} />
           <Route path="serie/:id" element={<SingleSerie />} />

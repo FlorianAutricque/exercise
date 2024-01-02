@@ -43,10 +43,6 @@ function Watchlist() {
       (item.first_air_date && item.name && item.first_air_date)
   );
 
-  // const movies = watchlist.filter(item => item.media_type === "movie");
-
-  // const series = watchlist.filter(item => item.media_type === "tv");
-
   function handleRemove(movieId) {
     removeFromWatchlist(movieId);
     setWatchlist(getWatchlist());
