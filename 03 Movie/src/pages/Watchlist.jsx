@@ -22,16 +22,25 @@ function Watchlist() {
   console.log(watchlist);
 
   const movies = watchlist.filter(
-    item => !item.media_type || (item.media_type !== "tv" && item.title)
+    item =>
+      item.media_type === "movie" ||
+      (item.media_type !== "tv" && item.title && item.release_date)
   );
+
+  // const series = watchlist.filter(
+  //   item =>
+  //     item.media_type === "tv" ||
+  //     (item.media_type !== "tv" &&
+  //       item.first_air_date &&
+  //       item.last_air_date === null &&
+  //       item.name &&
+  //       item.first_air_date)
+  // );
 
   const series = watchlist.filter(
     item =>
       item.media_type === "tv" ||
-      (item.media_type !== "tv" &&
-        item.first_air_date &&
-        item.last_air_date === null &&
-        item.name)
+      (item.first_air_date && item.name && item.first_air_date)
   );
 
   // const movies = watchlist.filter(item => item.media_type === "movie");
