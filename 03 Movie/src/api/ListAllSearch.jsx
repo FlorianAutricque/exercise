@@ -47,6 +47,7 @@ function ListAllSearch({ searchValue, mediaType }) {
 
     fetchAll();
   }, [accessKey, searchValue, mediaType]);
+
   return (
     <div>
       {isLoading ? (
@@ -64,12 +65,16 @@ function ListAllSearch({ searchValue, mediaType }) {
             ""
           )}
           <div className={styles.containerMovies}>
-            {serie.map(serie => (
-              //Fragment to conditionally render both li and img only when the poster_path is not null
-              <React.Fragment key={serie.id}>
-                {serie.poster_path !== null && <MovieCard movie={serie} />}
-              </React.Fragment>
-            ))}
+            {serie
+              .filter(
+                item =>
+                  item.poster_path !== null && item.media_type !== "person"
+              )
+              .map(serie => (
+                <React.Fragment key={serie.id}>
+                  <MovieCard movie={serie} />
+                </React.Fragment>
+              ))}
           </div>
         </>
       )}
