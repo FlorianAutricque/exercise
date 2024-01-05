@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 
-import { FaStar } from "react-icons/fa";
-
 import styles from "./MoviesContainerStyle.module.css";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import MovieCard from "../components/MovieCard";
+import SerieCard from "../components/SerieCard";
+import { FaStar } from "react-icons/fa";
 
-function FetchTopRatedMovie() {
-  const [topRatedMovie, setTopRatedMovie] = useState([]);
+function FetchTopRatedSerie() {
+  const [topRatedSerie, setTopRatedSerie] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -35,7 +34,7 @@ function FetchTopRatedMovie() {
   };
 
   useEffect(() => {
-    async function FetchTopRatedMovie() {
+    async function FetchTopRatedSerie() {
       try {
         setIsLoading(true);
 
@@ -48,7 +47,7 @@ function FetchTopRatedMovie() {
         };
 
         const res = await fetch(
-          "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
+          "https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1",
           options
         );
 
@@ -57,7 +56,7 @@ function FetchTopRatedMovie() {
         const data = await res.json();
         console.log(data.results);
 
-        setTopRatedMovie(data.results);
+        setTopRatedSerie(data.results);
       } catch (error) {
         setError(error);
       } finally {
@@ -65,7 +64,7 @@ function FetchTopRatedMovie() {
       }
     }
 
-    FetchTopRatedMovie();
+    FetchTopRatedSerie();
   }, [accessKey]);
 
   return (
@@ -74,13 +73,13 @@ function FetchTopRatedMovie() {
         <p>Loading...</p>
       ) : error ? (
         <p>Error: {error.message}</p>
-      ) : topRatedMovie.length === 0 ? (
-        <p>No top rated movies found</p>
+      ) : topRatedSerie.length === 0 ? (
+        <p>No top rated series found</p>
       ) : (
         <>
           <h2 className={styles.trendingMovies}>
             <FaStar />
-            &nbsp;Top Rated Movies
+            &nbsp;Top Rated Series
           </h2>
 
           <Carousel
@@ -91,10 +90,10 @@ function FetchTopRatedMovie() {
             removeArrowOnDeviceType={["tablet", "mobile"]}
             // centerMode={true}
           >
-            {topRatedMovie.map(movie => (
-              <React.Fragment key={movie.id}>
-                <div className={styles.moviesInsideCarousel}>
-                  <MovieCard movie={movie} />
+            {topRatedSerie.map(serie => (
+              <React.Fragment key={serie.id}>
+                <div className={styles.seriesInsideCarousel}>
+                  <SerieCard serie={serie} />
                 </div>
               </React.Fragment>
             ))}
@@ -105,4 +104,4 @@ function FetchTopRatedMovie() {
   );
 }
 
-export default FetchTopRatedMovie;
+export default FetchTopRatedSerie;

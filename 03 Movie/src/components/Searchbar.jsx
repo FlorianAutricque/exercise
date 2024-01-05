@@ -18,8 +18,6 @@ function Searchbar({ onSearch, mediaType }) {
     onSearch(value);
   }
 
-  // &mediaType=${mediaType}
-
   return (
     <div>
       <form onSubmit={handleChange}>

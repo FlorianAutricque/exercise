@@ -11,6 +11,7 @@ import { useState } from "react";
 
 import MovieSerieSelection from "../components/MovieSerieSelection";
 import FetchTopRatedMovie from "../api/FetchTopRatedMovie";
+import FetchTopRatedSerie from "../api/FetchTopRatedSerie";
 
 function Homepage() {
   const genres = [28, 12, 16, 18, 53, 878, 10752];
@@ -66,6 +67,7 @@ function Homepage() {
       {showSerie && (
         <>
           <FetchTrendingSeries />
+          <FetchTopRatedSerie />
 
           <div className={styles.containerSearchHomepage}>
             <p>
