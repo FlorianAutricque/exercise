@@ -8,6 +8,7 @@ import FormatDay from "../helpers/FormatDay";
 
 import { Link } from "react-router-dom";
 import AddMovieWatchlist from "./AddMovieWatchlist";
+import Spinner from "./Spinner";
 
 function Header({ isHomepage }) {
   const [imageHeader, setImageHeader] = useState([]);
@@ -55,9 +56,9 @@ function Header({ isHomepage }) {
 
   return (
     <div>
-      <div className={styles.x}>
+      <div>
         {isLoading ? (
-          <p>Loading...</p>
+          <Spinner />
         ) : error ? (
           <p>Error: {error.message}</p>
         ) : (
