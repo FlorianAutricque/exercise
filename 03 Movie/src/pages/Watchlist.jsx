@@ -13,8 +13,6 @@ import SerieCard from "../components/SerieCard";
 import { BiMoviePlay } from "react-icons/bi";
 import { BiCameraMovie } from "react-icons/bi";
 
-// import { ToastContainer, toast } from "react-toastify";
-
 import { toast } from "react-hot-toast";
 
 function Watchlist() {
@@ -22,8 +20,6 @@ function Watchlist() {
 
   const [hoveredMovieId, setHoveredMovieId] = useState(null);
   const [hoveredSerieId, setHoveredSerieId] = useState(null);
-
-  console.log(watchlist);
 
   const movies = watchlist.filter(
     item =>
@@ -40,15 +36,14 @@ function Watchlist() {
   function handleRemove(movieId) {
     removeFromWatchlist(movieId);
     setWatchlist(getWatchlist());
-    // alert("Removed");
-    // notify();
+
     toast.error("Movie removed from watchlist");
   }
 
   function handleRemoveSerie(serieId) {
     removeFromWatchlistSerie(serieId);
     setWatchlist(getWatchlist());
-    // alert("Removed");
+
     toast.error("Serie removed from watchlist");
   }
   return (

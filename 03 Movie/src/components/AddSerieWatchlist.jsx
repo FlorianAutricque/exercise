@@ -10,6 +10,8 @@ import { BsBookmarkCheck } from "react-icons/bs";
 
 import styles from "./AddMovieWatchlist.module.css";
 
+import { toast } from "react-hot-toast";
+
 function AddSerieWatchlist({ serie, size, children }) {
   const [isInWatchlistState, setIsInWatchlistState] = useState(
     isInWatchlistSerie(serie.id)
@@ -18,9 +20,10 @@ function AddSerieWatchlist({ serie, size, children }) {
   function handleToggleWatchlist() {
     if (isInWatchlistState) {
       removeFromWatchlistSerie(serie.id);
-      alert("removed");
+      toast.error("Serie removed from watchlist");
     } else {
       addToWatchlistSerie(serie);
+      toast.success("Serie added to watchlist");
     }
 
     setIsInWatchlistState(!isInWatchlistState);
