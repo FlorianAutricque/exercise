@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 
 import styles from "./MoviesContainerStyle.module.css";
+import Spinner from "../components/Spinner";
 
 function ListMoviesSearched({ searchValue, mediaType }) {
   const [movie, setMovie] = useState([]);
@@ -49,7 +50,7 @@ function ListMoviesSearched({ searchValue, mediaType }) {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <Spinner />
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : (

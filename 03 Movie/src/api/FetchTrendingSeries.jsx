@@ -7,6 +7,7 @@ import styles from "./MoviesContainerStyle.module.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import SerieCard from "../components/SerieCard";
+import Spinner from "../components/Spinner";
 
 function FetchTrendingSeries() {
   const [trendingSeries, setTrendingSeries] = useState([]);
@@ -69,7 +70,7 @@ function FetchTrendingSeries() {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <Spinner />
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : trendingSeries.length === 0 ? (

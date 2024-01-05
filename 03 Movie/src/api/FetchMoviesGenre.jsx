@@ -8,6 +8,7 @@ import styles from "./MoviesContainerStyle.module.css";
 import GenreTitle from "../components/GenreTitle";
 
 import { FaRegArrowAltCircleUp } from "react-icons/fa";
+import Spinner from "../components/Spinner";
 
 function FetchMoviesGenre({ defaultGenre }) {
   const [genreMovies, setGenreMovies] = useState([]);
@@ -110,7 +111,7 @@ function FetchMoviesGenre({ defaultGenre }) {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <Spinner />
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : genreMovies.length === 0 ? (

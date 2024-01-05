@@ -8,6 +8,7 @@ import GenreTitle from "../components/GenreTitle";
 
 import { FaRegArrowAltCircleUp } from "react-icons/fa";
 import SerieCard from "../components/SerieCard";
+import Spinner from "../components/Spinner";
 
 function FetchSeriesGenre({ defaultGenre }) {
   const [genreSeries, setGenreSeries] = useState([]);
@@ -107,7 +108,7 @@ function FetchSeriesGenre({ defaultGenre }) {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <Spinner />
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : genreSeries.length === 0 ? (

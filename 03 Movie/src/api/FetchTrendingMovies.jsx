@@ -7,6 +7,7 @@ import styles from "./MoviesContainerStyle.module.css";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import Spinner from "../components/Spinner";
 
 function FetchTrendingMovies() {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -69,7 +70,7 @@ function FetchTrendingMovies() {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <Spinner />
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : trendingMovies.length === 0 ? (

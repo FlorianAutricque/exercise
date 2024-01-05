@@ -8,6 +8,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import MovieCard from "../components/MovieCard";
+import Spinner from "../components/Spinner";
 
 function FetchTopRatedMovie() {
   const [topRatedMovie, setTopRatedMovie] = useState([]);
@@ -71,7 +72,7 @@ function FetchTopRatedMovie() {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <Spinner />
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : topRatedMovie.length === 0 ? (

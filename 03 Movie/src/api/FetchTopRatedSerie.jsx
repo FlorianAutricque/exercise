@@ -7,6 +7,7 @@ import "react-multi-carousel/lib/styles.css";
 
 import SerieCard from "../components/SerieCard";
 import { FaStar } from "react-icons/fa";
+import Spinner from "../components/Spinner";
 
 function FetchTopRatedSerie() {
   const [topRatedSerie, setTopRatedSerie] = useState([]);
@@ -70,7 +71,7 @@ function FetchTopRatedSerie() {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <Spinner />
       ) : error ? (
         <p>Error: {error.message}</p>
       ) : topRatedSerie.length === 0 ? (
