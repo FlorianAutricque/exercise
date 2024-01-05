@@ -13,6 +13,10 @@ import SerieCard from "../components/SerieCard";
 import { BiMoviePlay } from "react-icons/bi";
 import { BiCameraMovie } from "react-icons/bi";
 
+// import { ToastContainer, toast } from "react-toastify";
+
+import { toast } from "react-hot-toast";
+
 function Watchlist() {
   const [watchlist, setWatchlist] = useState(getWatchlist());
 
@@ -27,16 +31,6 @@ function Watchlist() {
       (item.media_type !== "tv" && item.title && item.release_date)
   );
 
-  // const series = watchlist.filter(
-  //   item =>
-  //     item.media_type === "tv" ||
-  //     (item.media_type !== "tv" &&
-  //       item.first_air_date &&
-  //       item.last_air_date === null &&
-  //       item.name &&
-  //       item.first_air_date)
-  // );
-
   const series = watchlist.filter(
     item =>
       item.media_type === "tv" ||
@@ -46,13 +40,16 @@ function Watchlist() {
   function handleRemove(movieId) {
     removeFromWatchlist(movieId);
     setWatchlist(getWatchlist());
-    alert("Removed");
+    // alert("Removed");
+    // notify();
+    toast.error("Movie removed from watchlist");
   }
 
   function handleRemoveSerie(serieId) {
     removeFromWatchlistSerie(serieId);
     setWatchlist(getWatchlist());
-    alert("Removed");
+    // alert("Removed");
+    toast.error("Serie removed from watchlist");
   }
   return (
     <>
