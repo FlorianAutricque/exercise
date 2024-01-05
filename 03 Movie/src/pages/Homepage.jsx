@@ -96,7 +96,15 @@ function Homepage() {
 
       {showMovie && (
         <>
+          {/* <Header isHomepage={true} />
+          <MovieSerieSelection
+            active={active}
+            handleShowMovie={handleShowMovie}
+            handleShowSerie={handleShowSerie}
+          /> */}
+          {/* {movie.name} */}
           <FetchTrendingMovies />
+
           <div className={styles.containerSearchHomepage}>
             <p>
               Lost in options? Search for your favorite movie instantly or
