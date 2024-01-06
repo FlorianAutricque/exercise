@@ -70,18 +70,19 @@ function Homepage() {
           <FetchTopRatedSerie />
 
           <div className={styles.containerSearchHomepage}>
-            <p>
-              Lost in options? Search for your favorite serie instantly or
+            <p className={styles.text}>
+              Lost in options? Search for your favorite Serie instantly or
               Select a Genre
             </p>
-            <div className={styles.searchbarHomepage}>
-              {showSerie && <MovieSearchContainer mediaType="tv" />}
-            </div>
+
             <GenreBar
               onGenreSelect={handleGenreSelectSerie}
               handleShow={handleShow}
               showSerie={showSerie}
             />
+            <div className={styles.searchbarHomepage}>
+              {showSerie && <MovieSearchContainer mediaType="tv" />}
+            </div>
           </div>
           {showSelection && selectedGenreSerie ? (
             <FetchSeriesGenre
@@ -100,29 +101,21 @@ function Homepage() {
 
       {showMovie && (
         <>
-          {/* <Header isHomepage={true} />
-          <MovieSerieSelection
-            active={active}
-            handleShowMovie={handleShowMovie}
-            handleShowSerie={handleShowSerie}
-          /> */}
-          {/* {movie.name} */}
           <FetchTrendingMovies />
           <FetchTopRatedMovie />
           <div className={styles.containerSearchHomepage}>
-            <p>
-              Lost in options? Search for your favorite movie instantly or
+            <p className={styles.text}>
+              Lost in options? Search for your favorite Movie instantly or
               Select a Genre
             </p>
-            <div className={styles.searchbarHomepage}>
-              <MovieSearchContainer mediaType={mediaType} />
-              {/* {console.log("media movie", mediaType)} */}
-            </div>
             <GenreBar
               onGenreSelect={handleGenreSelect}
               handleShow={handleShow}
               showMovie={showMovie}
             />
+            <div className={styles.searchbarHomepage}>
+              <MovieSearchContainer mediaType={mediaType} />
+            </div>
           </div>
           {showSelection && selectedGenre ? (
             <FetchMoviesGenre

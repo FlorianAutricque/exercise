@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 2rem;
 }
 
 .containerSearchHomepage {
@@ -12,4 +13,11 @@
   text-align: center;
   color: white;
   letter-spacing: 2px;
+}
+
+.text {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  margin: 2rem;
+  padding: 2rem;
 }
