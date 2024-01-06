@@ -52,52 +52,64 @@ function Watchlist() {
       <h3>
         <BiMoviePlay /> &nbsp;Movies
       </h3>
-      <ul className={styles.container}>
-        {movies.map(movie => (
-          <li key={movie.id}>
-            <div
-              onMouseOver={() => setHoveredMovieId(movie.id)}
-              onMouseOut={() => setHoveredMovieId(null)}
-              className={styles.movieCardContainer}
-            >
-              <MovieCard movie={movie} watchlist={watchlist} />
-              {hoveredMovieId === movie.id && (
-                <button
-                  onClick={() => handleRemove(movie.id)}
-                  className={`${styles2.btn} ${styles.removeWatchlist} ${styles3.button}`}
-                >
-                  Remove
-                </button>
-              )}
-            </div>
-          </li>
-        ))}
-      </ul>
+      {movies.length > 0 ? (
+        <ul className={styles.container}>
+          {movies.map(movie => (
+            <li key={movie.id}>
+              <div
+                onMouseOver={() => setHoveredMovieId(movie.id)}
+                onMouseOut={() => setHoveredMovieId(null)}
+                className={styles.movieCardContainer}
+              >
+                <MovieCard movie={movie} watchlist={watchlist} />
+                {hoveredMovieId === movie.id && (
+                  <button
+                    onClick={() => handleRemove(movie.id)}
+                    className={`${styles2.btn} ${styles.removeWatchlist} ${styles3.button}`}
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className={styles.textWatchlist}>
+          Add some movies to your watchlist
+        </p>
+      )}
       <h3>
         <BiCameraMovie />
         &nbsp;Series
       </h3>
-      <ul className={styles.container}>
-        {series.map(serie => (
-          <li key={serie.id}>
-            <div
-              onMouseOver={() => setHoveredSerieId(serie.id)}
-              onMouseOut={() => setHoveredSerieId(null)}
-              className={styles.movieCardContainer}
-            >
-              <SerieCard serie={serie} watchlist={watchlist} />
-              {hoveredSerieId === serie.id && (
-                <button
-                  onClick={() => handleRemoveSerie(serie.id)}
-                  className={`${styles2.btn} ${styles.removeWatchlist} ${styles3.button}`}
-                >
-                  Remove
-                </button>
-              )}
-            </div>
-          </li>
-        ))}
-      </ul>
+      {series.length > 0 ? (
+        <ul className={styles.container}>
+          {series.map(serie => (
+            <li key={serie.id}>
+              <div
+                onMouseOver={() => setHoveredSerieId(serie.id)}
+                onMouseOut={() => setHoveredSerieId(null)}
+                className={styles.movieCardContainer}
+              >
+                <SerieCard serie={serie} watchlist={watchlist} />
+                {hoveredSerieId === serie.id && (
+                  <button
+                    onClick={() => handleRemoveSerie(serie.id)}
+                    className={`${styles2.btn} ${styles.removeWatchlist} ${styles3.button}`}
+                  >
+                    Remove
+                  </button>
+                )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p className={styles.textWatchlist}>
+          Add some series to your watchlist
+        </p>
+      )}
     </>
   );
 }
