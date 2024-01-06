@@ -9,7 +9,7 @@
 }
 
 .removeWatchlist {
-  position: relative;
+  position: absolute;
   bottom: 12rem;
   left: 2rem;
   z-index: 1000;
