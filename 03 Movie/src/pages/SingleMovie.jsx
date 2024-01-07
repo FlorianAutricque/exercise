@@ -9,6 +9,7 @@ import AddMovieWatchlist from "../components/AddMovieWatchlist";
 
 import styles from "./SingleMovie.module.css";
 import MovieGenreSingleMovie from "../components/MovieGenreSingleMovie";
+import Modal from "../components/Modal";
 
 function SingleMovie() {
   const { id } = useParams();
@@ -80,13 +81,15 @@ function SingleMovie() {
                   Watchlist
                 </AddMovieWatchlist>
 
-                <Link
+                {/* <Link
                   to={`https://www.youtube.com/results?search_query=${movie.title}+trailer`}
                   target="_blank"
                   className={styles.linkToTrailer}
                 >
                   Trailer
-                </Link>
+                </Link> */}
+
+                <Modal queryTrailer={movie.title} />
               </div>
             </div>
           </div>

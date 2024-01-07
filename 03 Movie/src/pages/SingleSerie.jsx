@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 
 import FormatDay from "../helpers/FormatDay";
 import VoteAverage from "../components/VoteAverage";
@@ -9,6 +9,7 @@ import AddSerieWatchlist from "../components/AddSerieWatchlist";
 import styles from "./SingleMovie.module.css";
 import MovieGenreSingleMovie from "../components/MovieGenreSingleMovie";
 import FetchSeriesGenre from "../api/FetchSeriesGenre";
+import Modal from "../components/Modal";
 
 function SingleSerie() {
   const { id } = useParams();
@@ -86,13 +87,15 @@ function SingleSerie() {
                     Watchlist
                   </AddSerieWatchlist>
                 </div>
-                <Link
+                <Modal queryTrailer={serie.name} />
+
+                {/* <Link
                   to={`https://www.youtube.com/results?search_query=${serie.name}+trailer`}
                   target="_blank"
                   className={styles.linkToTrailer}
                 >
                   Trailer
-                </Link>
+                </Link> */}
               </div>
             </div>
           </div>

@@ -1,0 +1,48 @@
+.modalContainer {
+  /* display: none; */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 3rem;
+}
+
+.youtubeFrame iframe {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+.linkToTrailer {
+  text-decoration: none;
+  color: white;
+  background-color: #c63534;
+  list-style-type: none;
+  width: 8rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  cursor: pointer;
+  border: none;
+}
+
+.linkToTrailer:hover {
+  transform: scale(1.07);
+  transition: 0.2s;
+}

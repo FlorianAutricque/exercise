@@ -53,3 +53,22 @@
   align-items: center;
   margin-top: 19rem;
 }
+
+.linkToTrailer {
+  text-decoration: none;
+  color: white;
+  background-color: #c63534;
+  list-style-type: none;
+  width: 8rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.linkToTrailer:hover {
+  transform: scale(1.07);
+  transition: 0.2s;
+}

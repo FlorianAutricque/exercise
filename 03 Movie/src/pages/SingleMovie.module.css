@@ -25,7 +25,7 @@
   gap: 1rem;
 }
 
-.linkToTrailer {
+/* .linkToTrailer {
   text-decoration: none;
   color: white;
   background-color: #c63534;
@@ -42,7 +42,7 @@
 .linkToTrailer:hover {
   transform: scale(1.07);
   transition: 0.2s;
-}
+} */
 
 .linkAdd {
   display: flex;

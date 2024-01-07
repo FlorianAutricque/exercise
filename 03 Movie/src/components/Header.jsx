@@ -6,9 +6,10 @@ import VoteAverage from "./VoteAverage";
 
 import FormatDay from "../helpers/FormatDay";
 
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import AddMovieWatchlist from "./AddMovieWatchlist";
 import Spinner from "./Spinner";
+import Modal from "./Modal";
 
 function Header({ isHomepage }) {
   const [imageHeader, setImageHeader] = useState([]);
@@ -95,13 +96,21 @@ function Header({ isHomepage }) {
                 Watchlist
               </AddMovieWatchlist>
             </div>
-            <Link
+
+            <NavLink
+              key={imageHeader.id}
+              to={imageHeader.title ? `/movie/${imageHeader.id}` : ""}
+              className={styles.linkToTrailer}
+            >
+              More infos
+            </NavLink>
+            {/* <Link
               to={`https://www.youtube.com/results?search_query=${imageHeader.title}+trailer`}
               target="_blank"
               className={styles2.linkToTrailer}
             >
               Trailer
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>

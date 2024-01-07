@@ -11,7 +11,7 @@ function truncateString(str, maxLength) {
   return str;
 }
 
-function SerieCard({ serie, watchlist, style }) {
+function SerieCard({ serie, watchlist }) {
   const truncatedTitle = truncateString(serie.name, 21);
 
   function handleClick() {
@@ -23,7 +23,40 @@ function SerieCard({ serie, watchlist, style }) {
 
   return (
     <div className={styles.movieCardContainer}>
-      <>
+      {watchlist ? (
+        <div className={`${styles.containerMovie}`}>
+          {/* <NavLink key={serie.id} to={`/serie/${serie.id}`}> */}
+          <div onClick={handleClick}>
+            <img
+              src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`}
+              alt={serie.name}
+            />
+            <p key={truncatedTitle}>{truncatedTitle}</p>
+          </div>
+          {/* </NavLink> */}
+          <div className={styles.cardBelow}>
+            <span className={styles.dateRatingAdd}>
+              {serie.first_air_date
+                ? serie.first_air_date.slice(0, 4)
+                : "Coming soon"}
+
+              <div className={styles.dateRatingAdd}>
+                {watchlist ? (
+                  ""
+                ) : (
+                  <AddSerieWatchlist
+                    serie={serie}
+                    size={14}
+                    style={"btnIcon"}
+                  />
+                )}
+                &nbsp; &nbsp;
+                <VoteAverage serie={serie} />
+              </div>
+            </span>
+          </div>{" "}
+        </div>
+      ) : (
         <div className={`${styles.containerMovie}`}>
           <NavLink key={serie.id} to={`/serie/${serie.id}`}>
             <div onClick={handleClick}>
@@ -56,7 +89,7 @@ function SerieCard({ serie, watchlist, style }) {
             </span>
           </div>{" "}
         </div>
-      </>
+      )}
     </div>
   );
 }

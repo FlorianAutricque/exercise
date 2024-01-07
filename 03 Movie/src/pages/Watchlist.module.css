@@ -19,6 +19,15 @@
   position: relative;
 }
 
+.movieCardContainer:hover {
+  transform: scale(1.02);
+  transition: 0.2s;
+}
+
+.movieCardContainer img:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.221);
+}
+
 .seriesMovies {
   text-align: center;
 }
