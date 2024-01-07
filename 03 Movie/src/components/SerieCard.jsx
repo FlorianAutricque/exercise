@@ -11,7 +11,7 @@ function truncateString(str, maxLength) {
   return str;
 }
 
-function SerieCard({ serie, watchlist }) {
+function SerieCard({ serie, watchlist, style }) {
   const truncatedTitle = truncateString(serie.name, 21);
 
   function handleClick() {
@@ -41,7 +41,15 @@ function SerieCard({ serie, watchlist }) {
                 : "Coming soon"}
 
               <div className={styles.dateRatingAdd}>
-                {watchlist ? "" : <AddSerieWatchlist serie={serie} size={14} />}
+                {watchlist ? (
+                  ""
+                ) : (
+                  <AddSerieWatchlist
+                    serie={serie}
+                    size={14}
+                    style={"btnIcon"}
+                  />
+                )}
                 &nbsp; &nbsp;
                 <VoteAverage serie={serie} />
               </div>

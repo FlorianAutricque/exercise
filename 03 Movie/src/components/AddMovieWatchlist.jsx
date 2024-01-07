@@ -12,7 +12,7 @@ import styles from "./AddMovieWatchlist.module.css";
 
 import { toast } from "react-hot-toast";
 
-function AddMovieWatchlist({ movie, size, children }) {
+function AddMovieWatchlist({ movie, size, children, style }) {
   const [isInWatchlistState, setIsInWatchlistState] = useState(
     isInWatchlist(movie.id)
   );
@@ -35,21 +35,19 @@ function AddMovieWatchlist({ movie, size, children }) {
   }, [movie.id]);
 
   return (
-    <div>
-      <button
-        onClick={handleToggleWatchlist}
-        className={`${styles.btn} ${
-          isInWatchlistState ? styles.addedToWatchlist : ""
-        }`}
-      >
-        {children}
-        {isInWatchlistState ? (
-          <BsBookmarkCheck size={size} color="green" />
-        ) : (
-          <BsBookmarkPlus size={size} color="white" />
-        )}
-      </button>
-    </div>
+    <button
+      onClick={handleToggleWatchlist}
+      className={`${style === "btnIcon" ? styles.btnIcon : styles.btn}  ${
+        isInWatchlistState ? styles.addedToWatchlist : ""
+      }`}
+    >
+      {children}
+      {isInWatchlistState ? (
+        <BsBookmarkCheck size={size} color="green" />
+      ) : (
+        <BsBookmarkPlus size={size} color="white" />
+      )}
+    </button>
   );
 }
 

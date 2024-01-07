@@ -76,11 +76,10 @@ function SingleMovie() {
                 ""
               )}
               <div className={styles.linkAdd}>
-                <div className={styles.addBtn}>
-                  <AddMovieWatchlist movie={movie} size={20}>
-                    Watchlist
-                  </AddMovieWatchlist>
-                </div>
+                <AddMovieWatchlist movie={movie} size={20} style={"btn"}>
+                  Watchlist
+                </AddMovieWatchlist>
+
                 <Link
                   to={`https://www.youtube.com/results?search_query=${movie.title}+trailer`}
                   target="_blank"

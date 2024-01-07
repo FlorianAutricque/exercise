@@ -14,7 +14,7 @@ function truncateString(str, maxLength) {
   return "";
 }
 
-function MovieCard({ movie, watchlist }) {
+function MovieCard({ movie, watchlist, style }) {
   const truncatedTitle = movie
     ? truncateString(movie.title || movie.name, 21)
     : "";
@@ -52,7 +52,7 @@ function MovieCard({ movie, watchlist }) {
                   {watchlist ? (
                     ""
                   ) : (
-                    <AddMovieWatchlist movie={movie} size={14} />
+                    <AddMovieWatchlist movie={movie} size={14} style={style} />
                   )}
                   &nbsp; &nbsp;
                   <VoteAverage movie={movie} />
@@ -80,7 +80,15 @@ function MovieCard({ movie, watchlist }) {
               {date ? date.slice(0, 4) : ""}
 
               <div className={styles.dateRatingAdd}>
-                {watchlist ? "" : <AddMovieWatchlist movie={movie} size={14} />}
+                {watchlist ? (
+                  ""
+                ) : (
+                  <AddMovieWatchlist
+                    movie={movie}
+                    size={14}
+                    style={"btnIcon"}
+                  />
+                )}
                 &nbsp; &nbsp;
                 <VoteAverage movie={movie} />
               </div>

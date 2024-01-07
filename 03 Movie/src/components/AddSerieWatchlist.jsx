@@ -12,7 +12,7 @@ import styles from "./AddMovieWatchlist.module.css";
 
 import { toast } from "react-hot-toast";
 
-function AddSerieWatchlist({ serie, size, children }) {
+function AddSerieWatchlist({ serie, size, children, style }) {
   const [isInWatchlistState, setIsInWatchlistState] = useState(
     isInWatchlistSerie(serie.id)
   );
@@ -37,7 +37,7 @@ function AddSerieWatchlist({ serie, size, children }) {
     <div>
       <button
         onClick={handleToggleWatchlist}
-        className={`${styles.btn} ${
+        className={`${style === "btnIcon" ? styles.btnIcon : styles.btn} ${
           isInWatchlistState ? styles.addedToWatchlist : ""
         }`}
       >

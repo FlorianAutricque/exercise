@@ -41,6 +41,7 @@
 
 .linkToTrailer:hover {
   transform: scale(1.07);
+  transition: 0.2s;
 }
 
 .linkAdd {
@@ -51,7 +52,7 @@
   z-index: 10;
 }
 
-.addBtn {
+/* .addBtn {
   text-decoration: none;
   color: white;
   background-color: #45454593;
@@ -64,11 +65,12 @@
   border-radius: 15px;
   cursor: pointer;
   gap: 2rem;
-}
+} */
 
-.addBtn:hover {
+/* .addBtn:hover {
   transform: scale(1.07);
-}
+  transition: 0.2s;
+} */
 
 .textSimilarGenre {
   text-align: center;

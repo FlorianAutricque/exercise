@@ -10,7 +10,9 @@ function SearchbarTop({ onSearch }) {
   function handleChange(e) {
     e.preventDefault();
 
-    navigate(`/searched-all?query=${encodeURIComponent(value)}`);
+    value
+      ? navigate(`/searched-all?query=${encodeURIComponent(value)}`)
+      : !navigate;
 
     onSearch(value);
   }
