@@ -73,7 +73,6 @@ function FetchData() {
 
   function onSubmitLocation(enteredLocation) {
     setLocation(enteredLocation);
-    console.log("Location after setting:", location);
 
     setShow(true);
     fetchData();

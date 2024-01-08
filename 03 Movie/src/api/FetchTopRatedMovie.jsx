@@ -56,7 +56,6 @@ function FetchTopRatedMovie() {
         if (!res.ok) throw new Error("Network response error");
 
         const data = await res.json();
-        console.log(data.results);
 
         setTopRatedMovie(data.results);
       } catch (error) {

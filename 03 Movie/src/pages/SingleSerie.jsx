@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import FormatDay from "../helpers/FormatDay";
 import VoteAverage from "../components/VoteAverage";
@@ -38,7 +38,7 @@ function SingleSerie() {
         }
 
         const data = await response.json();
-        console.log(data);
+
         setSerie(data);
       } catch (error) {
         console.error("Error fetching serie details:", error);

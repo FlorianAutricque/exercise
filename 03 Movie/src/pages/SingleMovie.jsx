@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import FormatDay from "../helpers/FormatDay";
 import VoteAverage from "../components/VoteAverage";
@@ -38,7 +38,7 @@ function SingleMovie() {
         }
 
         const data = await response.json();
-        console.log(data);
+
         setMovie(data);
       } catch (error) {
         console.error("Error fetching movie details:", error);

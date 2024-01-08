@@ -44,7 +44,6 @@ function Header({ isHomepage }) {
         const randomImage = data.results[randomIndex];
 
         setImageHeader(randomImage);
-        console.log(randomImage);
       } catch (error) {
         setError(error);
       } finally {
