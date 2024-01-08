@@ -4,10 +4,14 @@ import MovieCard from "../components/MovieCard";
 import styles from "./MoviesContainerStyle.module.css";
 import Spinner from "../components/Spinner";
 
+import NextPrevious from "../components/NextPrevious";
+
 function ListMoviesSearched({ searchValue, mediaType }) {
   const [movie, setMovie] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
 
@@ -25,7 +29,7 @@ function ListMoviesSearched({ searchValue, mediaType }) {
         };
 
         const res = await fetch(
-          `https://api.themoviedb.org/3/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=1`,
+          `https://api.themoviedb.org/3/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=${page}`,
           // `https://api.themoviedb.org/3/search/${mediaType}?query=${searchValue}&include_adult=false&language=en-US&page=1`,
           // `https://api.themoviedb.org/3/search/tv?query=${searchValue}&include_adult=false&language=en-US&page=1`,
           // `https://api.themoviedb.org/3/search/multi?query=${searchValue}&include_adult=false&language=en-US&page=1`,
@@ -38,6 +42,7 @@ function ListMoviesSearched({ searchValue, mediaType }) {
         const data = await res.json();
 
         setMovie(data.results);
+        setTotalPages(data.total_pages);
       } catch (error) {
         setError(error);
       } finally {
@@ -46,7 +51,8 @@ function ListMoviesSearched({ searchValue, mediaType }) {
     }
 
     fetchAllMovies();
-  }, [accessKey, searchValue, mediaType]);
+  }, [accessKey, searchValue, mediaType, page]);
+
   return (
     <div>
       {isLoading ? (
@@ -71,6 +77,8 @@ function ListMoviesSearched({ searchValue, mediaType }) {
               </React.Fragment>
             ))}
           </div>
+
+          <NextPrevious page={page} setPage={setPage} totalPages={totalPages} />
         </>
       )}
     </div>

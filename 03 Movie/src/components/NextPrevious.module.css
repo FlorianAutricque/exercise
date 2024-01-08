@@ -1,0 +1,11 @@
+.nextPrevious {
+  display: flex;
+  gap: 3rem;
+  margin-left: 1rem;
+  margin-top: 2rem;
+}
+
+.buttonPrevNext {
+  border: none;
+  color: rgb(227, 227, 227);
+}

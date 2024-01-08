@@ -3,11 +3,14 @@ import MovieCard from "../components/MovieCard";
 
 import styles from "./MoviesContainerStyle.module.css";
 import Spinner from "../components/Spinner";
+import NextPrevious from "../components/NextPrevious";
 
 function ListAllSearch({ searchValue, mediaType }) {
   const [serie, setSerie] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
 
@@ -28,7 +31,7 @@ function ListAllSearch({ searchValue, mediaType }) {
           // `https://api.themoviedb.org/3/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=1`,
           // `https://api.themoviedb.org/3/search/${mediaType}?query=${searchValue}&include_adult=false&language=en-US&page=1`,
           // `https://api.themoviedb.org/3/search/tv?query=${searchValue}&include_adult=false&language=en-US&page=1`,
-          `https://api.themoviedb.org/3/search/multi?query=${searchValue}&include_adult=false&language=en-US&page=1`,
+          `https://api.themoviedb.org/3/search/multi?query=${searchValue}&include_adult=false&language=en-US&page=${page}`,
 
           options
         );
@@ -38,6 +41,7 @@ function ListAllSearch({ searchValue, mediaType }) {
         const data = await res.json();
 
         setSerie(data.results);
+        setTotalPages(data.total_pages);
       } catch (error) {
         setError(error);
       } finally {
@@ -46,7 +50,7 @@ function ListAllSearch({ searchValue, mediaType }) {
     }
 
     fetchAll();
-  }, [accessKey, searchValue, mediaType]);
+  }, [accessKey, searchValue, mediaType, page]);
 
   return (
     <div>
@@ -76,6 +80,7 @@ function ListAllSearch({ searchValue, mediaType }) {
                 </React.Fragment>
               ))}
           </div>
+          <NextPrevious page={page} setPage={setPage} totalPages={totalPages} />
         </>
       )}
     </div>
