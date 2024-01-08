@@ -6,10 +6,9 @@ import VoteAverage from "./VoteAverage";
 
 import FormatDay from "../helpers/FormatDay";
 
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AddMovieWatchlist from "./AddMovieWatchlist";
 import Spinner from "./Spinner";
-import Modal from "./Modal";
 
 function Header({ isHomepage }) {
   const [imageHeader, setImageHeader] = useState([]);
