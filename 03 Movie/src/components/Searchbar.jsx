@@ -11,9 +11,11 @@ function Searchbar({ onSearch, mediaType }) {
     e.preventDefault();
 
     {
-      mediaType === "movie"
-        ? navigate(`/searched-movies?query=${encodeURIComponent(value)}`)
-        : navigate(`/searched-series?query=${encodeURIComponent(value)}`);
+      value
+        ? mediaType === "movie"
+          ? navigate(`/searched-movies?query=${encodeURIComponent(value)}`)
+          : navigate(`/searched-series?query=${encodeURIComponent(value)}`)
+        : !navigate;
     }
     onSearch(value);
   }
