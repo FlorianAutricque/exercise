@@ -47,7 +47,7 @@ function Watchlist() {
     toast.error("Serie removed from watchlist");
   }
   return (
-    <>
+    <div className={styles.x}>
       <h2 className={styles.seriesMovies}>Your Watchlist</h2>
       <h3>
         <BiMoviePlay /> &nbsp;Movies
@@ -110,7 +110,7 @@ function Watchlist() {
           Add some series to your watchlist
         </p>
       )}
-    </>
+    </div>
   );
 }
 

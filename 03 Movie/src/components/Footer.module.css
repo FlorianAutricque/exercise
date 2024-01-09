@@ -1,0 +1,17 @@
+.container {
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 1rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: abo;
+  bottom: 0;
+  width: 100%;
+}
+
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
