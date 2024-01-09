@@ -44,3 +44,11 @@
 
   align-items: center;
 }
+
+@media screen and (max-width: 464px) {
+  .moviesInsideCarousel {
+    display: flex;
+    align-items: center;
+    justify-content: initial;
+  }
+}

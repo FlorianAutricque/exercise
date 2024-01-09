@@ -33,3 +33,20 @@
 .cardBelow {
   width: 11.8rem;
 }
+
+@media screen and (max-width: 464px) {
+  .movieCardContainer {
+    width: 5rem;
+  }
+
+  .movieCardContainer img {
+    height: 13rem;
+    width: 8rem;
+  }
+
+  .dateRatingAdd {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+  }
+}
