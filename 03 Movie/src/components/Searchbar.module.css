@@ -3,8 +3,6 @@
   height: fit-content;
   position: relative;
 
-  /* width: 10rem; */
-  /* height: 100vh;  */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,8 +15,7 @@
   height: 33px;
   width: 56px;
   border-style: none;
-  /* padding: 10px; */
-  /* font-size: 18px; */
+
   letter-spacing: 2px;
   outline: none;
   border-radius: 25px;
@@ -27,9 +24,10 @@
   padding-right: 40px;
   color: #fff;
 }
+
 .inputSearch::placeholder {
   color: rgba(255, 255, 255, 0.5);
-  /* font-size: 18px; */
+
   letter-spacing: 2px;
   font-weight: 50;
 }
@@ -37,7 +35,7 @@
   width: 35px;
   height: 35px;
   border-style: none;
-  /* font-size: 20px; */
+
   font-weight: bold;
   outline: none;
   cursor: pointer;
