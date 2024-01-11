@@ -40,7 +40,9 @@ function MovieCard({ movie, watchlist, style }) {
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.title}
                 />
-                <p key={truncatedTitle}>{truncatedTitle}</p>
+                <p className={styles.truncatedTitle} key={truncatedTitle}>
+                  {truncatedTitle}
+                </p>
               </div>
             </div>
             {/* </NavLink> */}
@@ -72,7 +74,9 @@ function MovieCard({ movie, watchlist, style }) {
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                 alt={movie.title}
               />
-              <p key={truncatedTitle}>{truncatedTitle}</p>
+              <p className={styles.truncatedTitle} key={truncatedTitle}>
+                {truncatedTitle}
+              </p>
             </div>
           </NavLink>
           <div className={styles.cardBelow}>
