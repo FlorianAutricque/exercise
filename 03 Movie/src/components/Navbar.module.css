@@ -56,10 +56,11 @@
     left: 100;
     right: 0;
 
-    background-image: linear-gradient(to bottom right, #674646f9, #212628b5);
+    /* background-image: linear-gradient(to bottom right, #7b7979f9, #212628b5); */
+    background-color: #151419ea;
 
     z-index: 1;
-    height: 100vh;
+    height: 20vh;
     transition: top 3s ease-in-out;
   }
 
