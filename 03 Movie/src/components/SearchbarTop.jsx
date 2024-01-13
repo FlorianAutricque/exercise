@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import styles from "./Searchbar.module.css";
 import { IoSearch } from "react-icons/io5";
 
-function SearchbarTop({ onSearch }) {
+function SearchbarTop({ onSearch, onSubmit }) {
   const [value, setValue] = useState("");
   const navigate = useNavigate();
 
@@ -11,6 +11,7 @@ function SearchbarTop({ onSearch }) {
     e.preventDefault();
 
     setValue("");
+    onSubmit();
 
     value
       ? navigate(`/searched-all?query=${encodeURIComponent(value)}`)

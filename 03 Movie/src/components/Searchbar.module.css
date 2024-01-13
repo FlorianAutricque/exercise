@@ -67,3 +67,13 @@
 .searchIcon {
   background-color: transparent;
 }
+
+@media (max-width: 800px) {
+  .searchbox {
+    margin-right: 0;
+  }
+
+  .inputSearch:focus {
+    width: 220px;
+  }
+}

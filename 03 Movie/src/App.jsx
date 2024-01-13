@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        {/* <Navbar /> */}
+        <Navbar />
         <Routes>
           <Route index element={<Homepage />} />
           <Route path="watchlist" element={<Watchlist />} />

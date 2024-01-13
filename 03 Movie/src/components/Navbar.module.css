@@ -1,3 +1,8 @@
+/* Navbar.module.css */
+
+.navbarContainer {
+}
+
 .navbarItems {
   list-style: none;
 
@@ -16,13 +21,55 @@
   gap: 5rem;
 }
 
+.logo {
+  padding: 5px;
+}
+
 .logo a img {
   text-decoration: none;
   height: 2rem;
+}
+
+.hamburgerMenu {
+  display: none;
+  cursor: pointer;
+}
+
+.responsiveContent {
+  display: flex;
+  gap: 5rem;
 }
 
 .watchlist a {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 2px;
+}
+
+@media (max-width: 800px) {
+  .hamburgerMenu {
+    display: block;
+  }
+
+  .responsiveContent {
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+    top: 60px;
+    left: 100;
+    right: 0;
+
+    background-image: linear-gradient(to bottom right, #27292bef, #454849e8);
+
+    z-index: 1;
+    height: 100vh;
+    transition: top 3s ease-in-out;
+  }
+
+  .responsiveContent.active {
+    display: flex;
+    left: 0;
+  }
 }
