@@ -9,7 +9,7 @@ function GenreTitle({ genre, serie }) {
     <h2 className={styles.containerGenreTitle}>
       {serie ? <BiCameraMovie /> : <BiMoviePlay />}
       &nbsp;
-      {genreName} {serie ? "Series" : "Movies"}
+      {genreName} {serie ? "" : ""}
     </h2>
   );
 }

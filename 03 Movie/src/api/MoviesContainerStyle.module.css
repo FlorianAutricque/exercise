@@ -36,13 +36,14 @@
   /* position: fixed; */
   /* bottom: 20px;
   right: 20px; */
-  z-index: 1000;
+  /* z-index: 1; */
 }
 
 .titleBtnUpContainer {
   display: flex;
 
   align-items: center;
+  z-index: inherit;
 }
 
 @media screen and (max-width: 500px) {

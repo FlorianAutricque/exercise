@@ -10,6 +10,7 @@ import styles from "./SingleMovie.module.css";
 import MovieGenreSingleMovie from "../components/MovieGenreSingleMovie";
 import FetchSeriesGenre from "../api/FetchSeriesGenre";
 import Modal from "../components/Modal";
+import Spinner from "../components/Spinner";
 
 function SingleSerie() {
   const { id } = useParams();
@@ -100,7 +101,7 @@ function SingleSerie() {
             </div>
           </div>
 
-          <h2 className={styles.textSimilarGenre}>Movies of similar genre</h2>
+          <h2 className={styles.textSimilarGenre}>Series of similar genre</h2>
           {serie.genres && serie.genres.length > 0 ? (
             serie.genres.map((genre, index) => (
               <FetchSeriesGenre
@@ -118,7 +119,7 @@ function SingleSerie() {
           )}
         </div>
       ) : (
-        <p>Loading...</p>
+        <Spinner />
       )}
     </div>
   );

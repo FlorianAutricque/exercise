@@ -1,3 +1,6 @@
 .ratingMovie {
   color: #deb04d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

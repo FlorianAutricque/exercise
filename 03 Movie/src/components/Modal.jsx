@@ -43,7 +43,10 @@ function Modal({ queryTrailer }) {
       </button>
 
       {modal && (
-        <div className={styles.modalContainer} onClick={modalClose}>
+        <div
+          className={`${styles.modalContainer} ${styles.landscapeMode}`}
+          onClick={modalClose}
+        >
           <div className={styles.modalContent}>
             <span className={styles.closeButton} onClick={modalClose}>
               &times;
@@ -55,7 +58,7 @@ function Modal({ queryTrailer }) {
                   width="560"
                   height="315"
                   src={`https://www.youtube.com/embed/${videoId}`}
-                  allowfullscreen
+                  allowFullScreen
                 ></iframe>
               )}
             </div>

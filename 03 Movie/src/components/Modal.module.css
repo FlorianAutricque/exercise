@@ -1,5 +1,4 @@
 .modalContainer {
-  /* display: none; */
   position: fixed;
   top: 0;
   left: 0;
@@ -20,12 +19,26 @@
   font-size: 3rem;
 }
 
-.youtubeFrame iframe {
+/* .youtubeFrame iframe {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   margin-top: 10%;
+} */
+
+.youtubeFrame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.youtubeFrame iframe {
+  margin: 0, auto;
+  margin-top: 3.5rem;
+  /* max-width: 90%;
+  max-height: 90%; */
 }
 .linkToTrailer {
   text-decoration: none;
@@ -45,4 +58,19 @@
 .linkToTrailer:hover {
   transform: scale(1.07);
   transition: 0.2s;
+}
+
+@media (max-width: 900px) {
+  .youtubeFrame iframe {
+    /* position: absolute;
+    top: 25%;
+    margin-left: -4rem;
+
+    transform: rotate(90deg); */
+  }
+
+  .landscapeMode .youtubeFrame iframe {
+    /* transform: rotate(90deg); */
+    /* width: 90vh; */
+  }
 }

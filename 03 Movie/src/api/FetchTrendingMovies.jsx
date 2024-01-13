@@ -85,7 +85,7 @@ function FetchTrendingMovies() {
           <Carousel
             responsive={responsive}
             autoPlay={true}
-            autoPlaySpeed={500000}
+            autoPlaySpeed={5000}
             infinite={true}
             removeArrowOnDeviceType={["tablet", "mobile"]}
             // centerMode={true}
