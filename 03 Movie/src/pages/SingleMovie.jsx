@@ -10,6 +10,7 @@ import AddMovieWatchlist from "../components/AddMovieWatchlist";
 import styles from "./SingleMovie.module.css";
 import MovieGenreSingleMovie from "../components/MovieGenreSingleMovie";
 import Modal from "../components/Modal";
+import Spinner from "../components/Spinner";
 
 function SingleMovie() {
   const { id } = useParams();
@@ -81,14 +82,6 @@ function SingleMovie() {
                   Watchlist
                 </AddMovieWatchlist>
 
-                {/* <Link
-                  to={`https://www.youtube.com/results?search_query=${movie.title}+trailer`}
-                  target="_blank"
-                  className={styles.linkToTrailer}
-                >
-                  Trailer
-                </Link> */}
-
                 <Modal queryTrailer={movie.title} />
               </div>
             </div>
@@ -108,7 +101,7 @@ function SingleMovie() {
           )}
         </div>
       ) : (
-        <p>Loading...</p>
+        <Spinner />
       )}
     </div>
   );

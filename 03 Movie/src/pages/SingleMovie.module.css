@@ -5,7 +5,7 @@
 
 .movieContainer {
   display: flex;
-  /* align-items: center; */
+
   justify-content: center;
   gap: 4rem;
   margin: 3rem 10rem 0 10rem;
@@ -25,25 +25,6 @@
   gap: 1rem;
 }
 
-/* .linkToTrailer {
-  text-decoration: none;
-  color: white;
-  background-color: #c63534;
-  list-style-type: none;
-  width: 8rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
-  cursor: pointer;
-}
-
-.linkToTrailer:hover {
-  transform: scale(1.07);
-  transition: 0.2s;
-} */
-
 .linkAdd {
   display: flex;
   align-items: center;
@@ -52,30 +33,20 @@
   z-index: 10;
 }
 
-/* .addBtn {
-  text-decoration: none;
-  color: white;
-  background-color: #45454593;
-  list-style-type: none;
-  width: 8rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 15px;
-  cursor: pointer;
-  gap: 2rem;
-} */
-
-/* .addBtn:hover {
-  transform: scale(1.07);
-  transition: 0.2s;
-} */
-
 .textSimilarGenre {
   text-align: center;
 }
 
 .overview {
   line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+  .movieContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+  }
 }
