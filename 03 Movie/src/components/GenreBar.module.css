@@ -5,7 +5,6 @@
   display: flex;
 
   align-items: center;
-  /* justify-content: center; */
 }
 
 .btnSelect {
@@ -18,8 +17,12 @@
   .containerGenreBar {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+
     align-items: center;
-    /* justify-content: center; */
+
     gap: 1rem;
+
+    padding-left: 0;
   }
 }
