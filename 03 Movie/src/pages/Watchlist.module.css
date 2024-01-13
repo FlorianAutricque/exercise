@@ -45,3 +45,29 @@ h3 {
 .x {
   height: 100vh;
 }
+
+@media (max-width: 800px) {
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-left: -2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .removeWatchlist {
+    position: absolute;
+    bottom: 10rem;
+    left: 0.65rem;
+    z-index: 1000;
+  }
+}
+/* @media (max-width: 479px) {
+  .removeWatchlist {
+    position: fixed;
+    bottom: 10rem;
+    left: 10rem;
+    z-index: 1000;
+  }
+} */
