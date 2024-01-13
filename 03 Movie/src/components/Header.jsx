@@ -61,56 +61,69 @@ function Header({ isHomepage }) {
         ) : error ? (
           <p>Error: {error.message}</p>
         ) : (
-          <div
-            className={`${styles.container} ${isHomepage && styles.homepage}`}
-          >
-            <div className={styles.overlay}></div>
+          <>
+            <div
+              className={`${styles.container} ${isHomepage && styles.homepage}`}
+            >
+              <div className={styles.overlay}></div>
 
-            <img
-              src={`https://image.tmdb.org/t/p/original${imageHeader.backdrop_path}`}
-              alt={imageHeader.title}
-              className={styles.imageHeader}
-            />
-            <div className={styles.text}>
-              <span className={styles.lineHeader}>
-                <VoteAverage movie={imageHeader} /> &nbsp; &nbsp;| &nbsp; &nbsp;
-                <p>
-                  {imageHeader.release_date &&
-                    FormatDay(imageHeader.release_date)}
-                </p>{" "}
-                <div className={styles.dateRatingAdd}>&nbsp; &nbsp;</div>
-              </span>
-              <h1>{imageHeader.title}</h1>
+              <img
+                src={`https://image.tmdb.org/t/p/original${imageHeader.backdrop_path}`}
+                alt={imageHeader.title}
+                className={styles.imageHeader}
+              />
+              <div className={styles.text}>
+                <span className={styles.lineHeader}>
+                  <VoteAverage movie={imageHeader} /> &nbsp; &nbsp;| &nbsp;
+                  &nbsp;
+                  <p>
+                    {imageHeader.release_date &&
+                      FormatDay(imageHeader.release_date)}
+                  </p>{" "}
+                  <div className={styles.dateRatingAdd}>&nbsp; &nbsp;</div>
+                </span>
+                <h1>{imageHeader.title}</h1>
 
-              <p>{imageHeader.overview}</p>
+                <p>{imageHeader.overview}</p>
+              </div>
             </div>
-          </div>
+            <div className={styles.linkHeader}>
+              <div className={styles2.linkAdd}>
+                <div className={styles2.addBtn}>
+                  <AddMovieWatchlist movie={imageHeader} size={20}>
+                    Watchlist
+                  </AddMovieWatchlist>
+                </div>
+
+                <NavLink
+                  key={imageHeader.id}
+                  to={imageHeader.title ? `/movie/${imageHeader.id}` : ""}
+                  className={styles.linkToTrailer}
+                >
+                  More infos
+                </NavLink>
+              </div>
+            </div>
+          </>
         )}
 
-        <div className={styles.linkHeader}>
+        {/* <div className={styles.linkHeader}>
           <div className={styles2.linkAdd}>
-            <div className={styles2.addBtn}>
-              <AddMovieWatchlist movie={imageHeader} size={20}>
-                Watchlist
-              </AddMovieWatchlist>
-            </div>
+          <div className={styles2.addBtn}>
+          <AddMovieWatchlist movie={imageHeader} size={20}>
+          Watchlist
+          </AddMovieWatchlist>
+          </div>
 
-            <NavLink
-              key={imageHeader.id}
-              to={imageHeader.title ? `/movie/${imageHeader.id}` : ""}
+          <NavLink
+          key={imageHeader.id}
+          to={imageHeader.title ? `/movie/${imageHeader.id}` : ""}
               className={styles.linkToTrailer}
             >
               More infos
             </NavLink>
-            {/* <Link
-              to={`https://www.youtube.com/results?search_query=${imageHeader.title}+trailer`}
-              target="_blank"
-              className={styles2.linkToTrailer}
-            >
-              Trailer
-            </Link> */}
           </div>
-        </div>
+        </div>*/}
       </div>
     </div>
   );

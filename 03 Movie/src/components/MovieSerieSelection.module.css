@@ -46,3 +46,10 @@
 .activeButton {
   color: white;
 }
+
+@media (max-width: 800px) {
+  .buttonSerieMovie {
+    margin-top: 3rem;
+    gap: 5rem;
+  }
+}

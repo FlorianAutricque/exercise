@@ -3,6 +3,8 @@
   width: 100%;
   height: 550px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .overlay {
@@ -72,4 +74,13 @@
 .linkToTrailer:hover {
   transform: scale(1.07);
   transition: 0.2s;
+}
+
+@media (max-width: 800px) {
+  .linkHeader {
+    position: relative;
+    bottom: 0;
+    left: 50%;
+    margin-top: 25rem;
+  }
 }
