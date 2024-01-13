@@ -31,7 +31,9 @@ function SerieCard({ serie, watchlist }) {
               src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`}
               alt={serie.name}
             />
-            <p key={truncatedTitle}>{truncatedTitle}</p>
+            <p key={truncatedTitle} className={styles.truncatedTitle}>
+              {truncatedTitle}
+            </p>
           </div>
           {/* </NavLink> */}
           <div className={styles.cardBelow}>
@@ -64,7 +66,9 @@ function SerieCard({ serie, watchlist }) {
                 src={`https://image.tmdb.org/t/p/w500${serie.poster_path}`}
                 alt={serie.name}
               />
-              <p key={truncatedTitle}>{truncatedTitle}</p>
+              <p key={truncatedTitle} className={styles.truncatedTitle}>
+                {truncatedTitle}
+              </p>
             </div>
           </NavLink>
           <div className={styles.cardBelow}>
