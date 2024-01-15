@@ -11,6 +11,7 @@ import MovieGenreSingleMovie from "../components/MovieGenreSingleMovie";
 import FetchSeriesGenre from "../api/FetchSeriesGenre";
 import Modal from "../components/Modal";
 import Spinner from "../components/Spinner";
+import Footer from "../components/Footer";
 
 function SingleSerie() {
   const { id } = useParams();
@@ -89,14 +90,6 @@ function SingleSerie() {
                   </AddSerieWatchlist>
                 </div>
                 <Modal queryTrailer={serie.name} />
-
-                {/* <Link
-                  to={`https://www.youtube.com/results?search_query=${serie.name}+trailer`}
-                  target="_blank"
-                  className={styles.linkToTrailer}
-                >
-                  Trailer
-                </Link> */}
               </div>
             </div>
           </div>
@@ -121,6 +114,7 @@ function SingleSerie() {
       ) : (
         <Spinner />
       )}
+      <Footer />
     </div>
   );
 }

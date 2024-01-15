@@ -14,6 +14,7 @@ import { BiMoviePlay } from "react-icons/bi";
 import { BiCameraMovie } from "react-icons/bi";
 
 import { toast } from "react-hot-toast";
+import Footer from "../components/Footer";
 
 function Watchlist() {
   const [watchlist, setWatchlist] = useState(getWatchlist());
@@ -110,6 +111,7 @@ function Watchlist() {
           Add some series to your watchlist
         </p>
       )}
+      <Footer />
     </div>
   );
 }

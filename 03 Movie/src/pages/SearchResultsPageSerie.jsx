@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import ListSeriesSearched from "../api/ListSeriesSearched";
+import Footer from "../components/Footer";
 
 function SearchResultsPageSerie({ mediaType }) {
   const location = useLocation();
@@ -9,6 +10,7 @@ function SearchResultsPageSerie({ mediaType }) {
   return (
     <div>
       <ListSeriesSearched searchValue={searchValue} mediaType={mediaType} />
+      <Footer />
     </div>
   );
 }

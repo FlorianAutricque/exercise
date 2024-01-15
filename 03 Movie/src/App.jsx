@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar";
 
 import SingleMovie from "./pages/SingleMovie";
 import SingleSerie from "./pages/SingleSerie";
-import Footer from "./components/Footer";
+
 import SearchResultsPageMovie from "./pages/SearchResultsPageMovie";
 import SearchResultsPageSerie from "./pages/SearchResultsPageSerie";
 import SearchResultsPageAll from "./pages/SearchResultsPageAll";
@@ -31,7 +31,6 @@ function App() {
 
           <Route path="*" element={<PageNotFound />} />
         </Routes>
-        <Footer />
       </BrowserRouter>
       <Toaster
         position="top-center"

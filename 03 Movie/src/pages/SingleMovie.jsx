@@ -11,6 +11,7 @@ import styles from "./SingleMovie.module.css";
 import MovieGenreSingleMovie from "../components/MovieGenreSingleMovie";
 import Modal from "../components/Modal";
 import Spinner from "../components/Spinner";
+import Footer from "../components/Footer";
 
 function SingleMovie() {
   const { id } = useParams();
@@ -103,6 +104,7 @@ function SingleMovie() {
       ) : (
         <Spinner />
       )}
+      <Footer />
     </div>
   );
 }
