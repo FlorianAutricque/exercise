@@ -1,9 +1,9 @@
 .firstDay {
-  display: flex;
+  /* display: flex; */
   align-items: center;
   justify-content: center;
   padding: 1rem;
-  gap: 1rem;
+  /* gap: 1rem; */
 }
 
 .firstDay span {
@@ -14,10 +14,19 @@
 
 .firstDayDateTemp {
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-left: -1rem;
+  margin-top: -2rem;
 }
 
 .day {
   background-color: #343841ef;
   border-radius: 10px;
   padding: 4px;
+  text-align: center;
+  width: 10rem;
+  margin-top: 3rem;
 }

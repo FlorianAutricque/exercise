@@ -37,4 +37,7 @@
 .imageLandingPage {
   height: 500px;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.696);
+
+  object-fit: cover;
+  width: 90%;
 }

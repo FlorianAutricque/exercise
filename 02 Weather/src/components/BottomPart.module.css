@@ -1,13 +1,41 @@
 .containerWeather {
   position: absolute;
-  display: flex;
+  /* display: flex; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
-  bottom: 0;
-  width: 70%;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #364156cc;
+  top: 176px;
+  width: 90%;
+  left: 55%;
+
   color: white;
   gap: 1rem;
+  background-color: #364156cc;
+  padding-top: 2rem;
+}
+
+.mainContainerWeather {
+  display: flex;
+  flex-direction: column;
+
+  transform: translateX(-50%);
+  background-color: #364156cc;
+}
+
+.FirstDay {
+  position: absolute;
+  /* display: flex; */
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  /* top: 227px; */
+  width: 90%;
+  left: 55%;
+
+  color: white;
+  gap: 1rem;
+  background-color: #364156cc;
+  /* padding-top: 2rem; */
 }

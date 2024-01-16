@@ -3,6 +3,12 @@ html {
   background-image: url("./img/imageBG.webp");
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: center center;
   max-height: 100vh;
   overflow: auto;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar {
+  display: none;
 }

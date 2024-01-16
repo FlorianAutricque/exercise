@@ -2,13 +2,13 @@
   position: absolute;
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  top: -25px;
+  /* align-items: center; */
+  top: -155px;
   z-index: 1;
   width: 70%;
   left: 50%;
   transform: translateX(-50%);
-  gap: 11rem;
+  gap: 2rem;
 }
 
 .mainContainerTop {

@@ -13,8 +13,6 @@ function MainPage({
   location,
   onSubmitLocation,
 }) {
-  console.log("Location in MainPage:", location);
-
   return (
     <div className={styles.mainContainer}>
       {isLoading ? (

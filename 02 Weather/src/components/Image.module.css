@@ -1,5 +1,5 @@
 .image {
-  width: 100%;
+  width: 90%;
   margin: auto;
   max-width: 100%;
   max-height: none;
@@ -8,18 +8,19 @@
   z-index: 1;
 }
 
-.containerImage {
+/* .containerImage {
   margin-top: 3rem;
   margin-bottom: 3rem;
   overflow: hidden;
   height: 460px;
+
   width: 70%;
   min-width: 700px;
 
   margin: auto;
 
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.696);
-}
+} */
 
 .errorText {
   display: flex;

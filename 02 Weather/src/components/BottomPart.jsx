@@ -5,10 +5,13 @@ import styles from "./BottomPart.module.css";
 
 function BottomPart({ weather }) {
   return (
-    <div className={styles.containerWeather}>
-      <FirstDay weather={weather} />
-
-      <RestOfWeek weather={weather} />
+    <div className={styles.mainContainerWeather}>
+      <div className={styles.FirstDay}>
+        <FirstDay weather={weather} />
+      </div>
+      <div className={styles.containerWeather}>
+        <RestOfWeek weather={weather} />
+      </div>
     </div>
   );
 }

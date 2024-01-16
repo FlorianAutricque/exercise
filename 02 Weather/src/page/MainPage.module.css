@@ -9,6 +9,7 @@
 
 .mainContainerImageWeather {
   position: relative;
+  top: -10rem;
 }
 
 .containerError {
