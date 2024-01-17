@@ -18,7 +18,7 @@ function MainPage({
       {isLoading ? (
         <Spinner />
       ) : (
-        <div>
+        <div className={styles.x}>
           <TopPart
             weather={weather}
             location={location}

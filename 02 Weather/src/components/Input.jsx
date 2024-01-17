@@ -6,7 +6,7 @@ function Input({ location, setLocation, onSubmitLocation }) {
     onSubmitLocation(location);
   }
   return (
-    <form onSubmit={handleFormSubmit}>
+    <form onSubmit={handleFormSubmit} className={styles.x}>
       <input
         type="text"
         value={location}

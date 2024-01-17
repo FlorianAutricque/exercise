@@ -1,19 +1,26 @@
 .input {
   background-color: #34384146;
   border: none;
-  position: fixed;
-  top: 60px;
-  right: -5px;
-  height: 2rem;
+
+  height: 3rem;
   border-radius: 20px;
   text-align: center;
-  border: 1px solid white;
-  width: 5rem;
+  border: 2px solid white;
+  width: 15rem;
+  color: white;
+  font-size: x-large;
 }
 
-.inputContainer {
-  position: fixed;
-  top: 114px;
-  right: 15px;
-  height: 2rem;
+.x {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+}
+
+@media (max-width: 600px) {
+  .input {
+    width: 8rem;
+    height: 2rem;
+    font-size: medium;
+  }
 }

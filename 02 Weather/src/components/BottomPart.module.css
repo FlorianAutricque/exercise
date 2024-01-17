@@ -1,11 +1,11 @@
 .containerWeather {
   position: absolute;
-  /* display: flex; */
+
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: center;
-  top: 176px;
+  top: 127px;
   width: 90%;
   left: 55%;
 
@@ -24,18 +24,19 @@
 }
 
 .FirstDay {
+  height: 8rem;
   position: absolute;
-  /* display: flex; */
+
   display: flex;
 
   justify-content: center;
   align-items: center;
-  /* top: 227px; */
+
   width: 90%;
   left: 55%;
 
   color: white;
   gap: 1rem;
   background-color: #364156cc;
-  /* padding-top: 2rem; */
+  font-size: x-large;
 }

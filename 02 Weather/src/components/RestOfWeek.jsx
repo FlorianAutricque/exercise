@@ -16,14 +16,19 @@ function RestOfWeek({ weather }) {
           }
           return (
             <div key={index} className={styles.containerEachDay}>
-              <p className={styles.day}>
+              <div className={styles.day}>
                 {FormatDay(weather.time[index]).toUpperCase()}
-              </p>
-              <p>{GetWeatherIcon(weather.weathercode[index], 30)}</p>
-              <span>
-                <p>{Math.round(weather.temperature_2m_min[index])}°C -</p>
-                <p>&nbsp;{Math.round(max)}°C</p>
-              </span>
+              </div>
+
+              <div>
+                <div className={styles.iconTemp}>
+                  <p>{GetWeatherIcon(weather.weathercode[index], 50)}</p>
+                  <span>
+                    <p>{Math.round(weather.temperature_2m_min[index])}°C -</p>
+                    <p>&nbsp;{Math.round(max)}°C</p>
+                  </span>
+                </div>
+              </div>
             </div>
           );
         })}

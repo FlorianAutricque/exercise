@@ -1,7 +1,6 @@
 .containerEachDay {
   text-align: center;
-  /* display: grid;
-  grid-template-columns: 1fr 1fr; */
+
   border-bottom: 1px solid #3c4556;
 }
 
@@ -9,11 +8,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: smaller;
-}
-
-.containerEachDay p {
-  font-size: x-small;
+  font-size: x-large;
 }
 
 .day {
@@ -22,4 +17,22 @@
   padding: 4px;
   width: 70%;
   margin: 0 auto;
+  font-size: x-large;
+}
+
+.iconTemp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+@media (max-width: 600px) {
+  .day {
+    font-size: small;
+  }
+
+  .containerEachDay span {
+    font-size: 18px;
+  }
 }

@@ -9,7 +9,7 @@ function TopPart({ weather, location, setLocation, onSubmitLocation }) {
     <div className={styles.mainContainerTop}>
       <div className={styles.topContainer}>
         <Infos weather={weather} />
-        <div>
+        <div className={styles.inputTitle}>
           <Title location={location} />
           <Input
             location={location}
