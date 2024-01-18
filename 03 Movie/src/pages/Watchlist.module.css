@@ -63,11 +63,3 @@ h3 {
     z-index: 1000;
   }
 }
-/* @media (max-width: 479px) {
-  .removeWatchlist {
-    position: fixed;
-    bottom: 10rem;
-    left: 10rem;
-    z-index: 1000;
-  }
-} */

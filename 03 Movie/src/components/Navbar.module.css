@@ -4,8 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* padding: 10px; */
-  /* background-color: red; */
+
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   margin-left: -1rem;
   margin-right: -1rem;
@@ -56,7 +55,6 @@
     left: 100;
     right: 0;
 
-    /* background-image: linear-gradient(to bottom right, #7b7979f9, #212628b5); */
     background-color: #151419ea;
 
     z-index: 1;

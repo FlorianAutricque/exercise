@@ -1,6 +1,6 @@
 .buttonSerieMovie {
   margin-top: 7rem;
-  /* background-color: red; */
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,6 @@
 
   cursor: pointer;
   margin-bottom: 1rem;
-  /* background-color: blue; */
 }
 
 .icon {

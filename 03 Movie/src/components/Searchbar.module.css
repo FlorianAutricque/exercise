@@ -22,7 +22,7 @@
   transition: all 0.5s ease-in-out;
   background-color: #45454593;
   padding-right: 40px;
-  color: #fff;
+  color: #e3e3e3;
 }
 
 .inputSearch::placeholder {
@@ -42,7 +42,7 @@
   border-radius: 50%;
   position: absolute;
   right: 0px;
-  color: #ffffff;
+  color: #e3e3e3;
   background-color: transparent;
   pointer-events: painted;
   background-color: #151419;

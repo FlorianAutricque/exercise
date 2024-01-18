@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  /* position: sticky; */
+
   bottom: 0;
   width: 100%;
 }

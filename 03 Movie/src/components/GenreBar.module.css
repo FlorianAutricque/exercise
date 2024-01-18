@@ -1,5 +1,5 @@
 .containerGenreBar {
-  color: white;
+  color: #e3e3e3;
   display: flex;
   gap: 3rem;
   display: flex;
@@ -9,7 +9,7 @@
 
 .btnSelect {
   border: none;
-  color: white;
+  color: #e3e3e3;
   text-align: center;
 }
 

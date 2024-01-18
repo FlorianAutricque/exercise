@@ -19,14 +19,6 @@
   font-size: 3rem;
 }
 
-/* .youtubeFrame iframe {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto;
-  margin-top: 10%;
-} */
-
 .youtubeFrame {
   display: flex;
   align-items: center;
@@ -37,12 +29,11 @@
 .youtubeFrame iframe {
   margin: 0, auto;
   margin-top: 3.5rem;
-  /* max-width: 90%;
-  max-height: 90%; */
 }
+
 .linkToTrailer {
   text-decoration: none;
-  color: white;
+  color: #e3e3e3;
   background-color: #c63534;
   list-style-type: none;
   width: 8rem;
@@ -58,19 +49,4 @@
 .linkToTrailer:hover {
   transform: scale(1.07);
   transition: 0.2s;
-}
-
-@media (max-width: 900px) {
-  .youtubeFrame iframe {
-    /* position: absolute;
-    top: 25%;
-    margin-left: -4rem;
-
-    transform: rotate(90deg); */
-  }
-
-  .landscapeMode .youtubeFrame iframe {
-    /* transform: rotate(90deg); */
-    /* width: 90vh; */
-  }
 }

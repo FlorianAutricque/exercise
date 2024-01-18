@@ -28,10 +28,7 @@ function ListSeriesSearched({ searchValue, mediaType }) {
         };
 
         const res = await fetch(
-          // `https://api.themoviedb.org/3/search/movie?query=${searchValue}&include_adult=false&language=en-US&page=1`,
-          // `https://api.themoviedb.org/3/search/${mediaType}?query=${searchValue}&include_adult=false&language=en-US&page=1`,
           `https://api.themoviedb.org/3/search/tv?query=${searchValue}&include_adult=false&language=en-US&page=${page}`,
-          // `https://api.themoviedb.org/3/search/multi?query=${searchValue}&include_adult=false&language=en-US&page=1`,
 
           options
         );
