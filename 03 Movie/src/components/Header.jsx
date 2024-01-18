@@ -10,6 +10,16 @@ import { NavLink } from "react-router-dom";
 import AddMovieWatchlist from "./AddMovieWatchlist";
 import Spinner from "./Spinner";
 
+function truncateOverview(str, maxLength) {
+  if (str) {
+    if (str.length > maxLength) {
+      return str.slice(0, maxLength - 3) + "...";
+    }
+    return str;
+  }
+  return "";
+}
+
 function Header({ isHomepage }) {
   const [imageHeader, setImageHeader] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -84,7 +94,7 @@ function Header({ isHomepage }) {
                 </span>
                 <h1>{imageHeader.title}</h1>
 
-                <p>{imageHeader.overview}</p>
+                <p>{truncateOverview(imageHeader.overview, 200)}</p>
               </div>
             </div>
             <div className={styles.linkHeader}>
