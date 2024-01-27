@@ -1,0 +1,22 @@
+.containerNavbar {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+.containerLinks {
+  display: flex;
+  gap: 2rem;
+  margin-right: 2rem;
+}
+
+.containerLinks a {
+  text-decoration: none;
+}
+
+.logo {
+  text-decoration: none;
+}
