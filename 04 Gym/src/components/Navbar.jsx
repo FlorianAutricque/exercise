@@ -27,13 +27,19 @@ function Navbar() {
             GymRat
           </Link>
 
-          <ul className={click ? styles.navMenuActive : styles.navMenu}>
+          <ul
+            className={
+              click
+                ? `${styles.navMenuActive} ${styles.navMenu}`
+                : styles.navMenu
+            }
+          >
             <li className={styles.navItem}>
               <HashLink
                 smooth
                 to="#welcome"
                 activeClassName="active"
-                className={styles.navLinks}
+                className={`${styles.navLinks} ${styles.active}`}
                 onClick={handleClick}
               >
                 <p>Welcome</p>
@@ -45,7 +51,7 @@ function Navbar() {
                 smooth
                 to="#feedbacks"
                 activeClassName="active"
-                className={styles.navLinks}
+                className={`${styles.navLinks} ${styles.active}`}
                 onClick={handleClick}
               >
                 <p>Feedbacks</p>
@@ -57,7 +63,7 @@ function Navbar() {
                 smooth
                 to="#prices"
                 activeClassName="active"
-                className={styles.navLinks}
+                className={`${styles.navLinks} ${styles.active}`}
                 onClick={handleClick}
               >
                 <p>Prices</p>
@@ -69,7 +75,7 @@ function Navbar() {
                 smooth
                 to="#offers"
                 activeClassName="active"
-                className={styles.navLinks}
+                className={`${styles.navLinks} ${styles.active}`}
                 onClick={handleClick}
               >
                 <p>Offers</p>
