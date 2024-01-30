@@ -7,6 +7,7 @@ import { FaTimes, FaBars } from "react-icons/fa";
 
 function Navbar() {
   const [click, setClick] = useState(false);
+  const [activeLink, setActiveLink] = useState(null);
 
   function scrollTop() {
     window.scrollTo({
@@ -15,8 +16,9 @@ function Navbar() {
     });
   }
 
-  function handleClick() {
+  function handleClick(link) {
     setClick(!click);
+    setActiveLink(link);
   }
 
   return (
@@ -34,56 +36,68 @@ function Navbar() {
                 : styles.navMenu
             }
           >
-            <li className={styles.navItem}>
+            <li
+              className={`${styles.navItem} ${
+                activeLink === "welcome" ? styles.active : ""
+              }`}
+            >
               <HashLink
                 smooth
                 to="#welcome"
-                activeClassName="active"
-                className={`${styles.navLinks} ${styles.active}`}
-                onClick={handleClick}
+                className={styles.navLinks}
+                onClick={() => handleClick("welcome")}
               >
                 <p>Welcome</p>
               </HashLink>
             </li>
 
-            <li className={styles.navItem}>
+            <li
+              className={`${styles.navItem} ${
+                activeLink === "feedbacks" ? styles.active : ""
+              }`}
+            >
               <HashLink
                 smooth
                 to="#feedbacks"
-                activeClassName="active"
-                className={`${styles.navLinks} ${styles.active}`}
-                onClick={handleClick}
+                className={styles.navLinks}
+                onClick={() => handleClick("feedbacks")}
               >
                 <p>Feedbacks</p>
               </HashLink>
             </li>
 
-            <li className={styles.navItem}>
+            <li
+              className={`${styles.navItem} ${
+                activeLink === "prices" ? styles.active : ""
+              }`}
+            >
               <HashLink
                 smooth
                 to="#prices"
-                activeClassName="active"
-                className={`${styles.navLinks} ${styles.active}`}
-                onClick={handleClick}
+                className={styles.navLinks}
+                onClick={() => handleClick("prices")}
               >
                 <p>Prices</p>
               </HashLink>
             </li>
 
-            <li className={styles.navItem}>
+            <li
+              className={`${styles.navItem} ${
+                activeLink === "offers" ? styles.active : ""
+              }`}
+            >
               <HashLink
                 smooth
                 to="#offers"
-                activeClassName="active"
-                className={`${styles.navLinks} ${styles.active}`}
-                onClick={handleClick}
+                className={styles.navLinks}
+                onClick={() => handleClick("offers")}
               >
                 <p>Offers</p>
               </HashLink>
             </li>
           </ul>
 
-          <div className={styles.navIcon} onClick={handleClick}>
+          <div className={styles.navIcon} onClick={() => setClick(!click)}>
             {click ? (
               <span className="icon">
                 <FaTimes />{" "}

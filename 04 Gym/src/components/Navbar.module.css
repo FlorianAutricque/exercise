@@ -53,6 +53,7 @@
   line-height: 40px;
   margin-right: 1rem;
   list-style: none;
+  border-bottom: 3px solid transparent;
 }
 
 .navItem:after {
@@ -69,7 +70,7 @@
   background: #ffdd40;
 }
 
-.navItem .active {
+.navItem.active {
   color: #ffdd40;
   border: 1px solid #ffdd40;
 }
@@ -83,7 +84,7 @@
   .navMenu {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
     border-top: 1pxsolid #312e2e;
     position: absolute;
     top: 80px;
@@ -106,7 +107,7 @@
   .navLinks {
     /* padding: 1.5rem; */
     width: 100%;
-    /* display: table; */
+    display: table;
   }
 
   /* .nav-logo .icon {
