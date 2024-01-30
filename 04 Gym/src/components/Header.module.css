@@ -1,4 +1,31 @@
+.mainContainerHeader {
+  position: relative;
+}
+
+.imageContainer {
+  position: relative;
+}
+
 .imageHeader {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  display: block;
+}
+
+.textHeader p {
+  font-size: smaller;
+}
+
+.textHeader {
+  position: absolute;
+  top: 58%;
+  right: 0%;
+  /* transform: translate(24%, -67%); */
+  transform: translateY(-50%);
+  z-index: 1;
+  color: var(--color-text);
+  background-color: var(--color-dark);
+  height: 115%;
+  width: 35%;
+  clip-path: polygon(100% 0, 100% 75%, 70% 100%, 0 75%, 0 0);
+  z-index: 100;
 }

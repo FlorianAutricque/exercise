@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #1f5156;
+  /* background-color: #1f5156; */
   height: 80px;
   display: flex;
   justify-content: center;
@@ -54,9 +54,8 @@
   transition: width 0.7s ease, background-color 0.5s ease;
 }
 
-.navItem:after:hover {
-  width: 100%;
-  background: #ffdd40;
+.navItem:hover {
+  transition: 0.2s;
 }
 
 .navItem.active .navLinks {
@@ -65,10 +64,14 @@
 
 .navIcon {
   display: none;
-  color: #f5b921;
+  color: var(--color-text-orange);
 }
 
 @media screen and (max-width: 960px) {
+  .containerNavbar {
+    display: flex;
+    align-items: center;
+  }
   .navMenu {
     display: flex;
     flex-direction: column;
@@ -89,7 +92,7 @@
     z-index: 1;
   }
   .navItem .active {
-    color: #ffdd40;
+    color: var(--color-text-orange);
     border: none;
   }
   .navLinks {
@@ -105,12 +108,12 @@
   .navIcon {
     display: block;
     position: absolute;
-    top: 50%;
+    top: 52%;
     right: 0;
     transform: translate(-100%, -50%);
     width: 2rem;
-    height: 2rem;
+
     cursor: pointer;
-    color: #ffdd40;
+    color: var(--color-text-orange);
   }
 }
