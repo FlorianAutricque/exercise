@@ -1,13 +1,26 @@
-.containerNavbar {
+.navbar {
+  background-color: #1f5156;
+  height: 80px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  position: fixed;
-  justify-content: space-between;
-  width: 100%;
-  border-bottom: 1px solid black;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
 }
 
-.containerLinks {
+.containerNavbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  max-width: 1500px;
+  position: relative;
+}
+
+/* .containerLinks {
   display: flex;
   gap: 2rem;
   margin-right: 2rem;
@@ -15,8 +28,101 @@
 
 .containerLinks a {
   text-decoration: none;
-}
+} */
 
 .logo {
   text-decoration: none;
+}
+
+.navMenu {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  margin-right: 2rem;
+}
+
+.navLinks {
+  color: #0d0c0c;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  border-bottom: 3px solid transparent;
+}
+
+.navItem {
+  line-height: 40px;
+  margin-right: 1rem;
+  list-style: none;
+}
+
+.navItem:after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: width 0.7s ease, background-color 0.5s ease;
+}
+
+.navItem:after:hover {
+  width: 100%;
+  background: #ffdd40;
+}
+
+.navItem .active {
+  color: #ffdd40;
+  border: 1px solid #ffdd40;
+}
+
+.navIcon {
+  display: none;
+  color: #f5b921;
+}
+
+@media screen and (max-width: 960px) {
+  .navMenu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-top: 1pxsolid #312e2e;
+    position: absolute;
+    top: 80px;
+    left: -110%;
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .navMenu.active {
+    background: #1f5156;
+    left: 0px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+  .navItem .active {
+    color: #ffdd40;
+    border: none;
+  }
+  .navLinks {
+    padding: 1.5rem;
+    width: 100%;
+    display: table;
+  }
+
+  /* .nav-logo .icon {
+    width: 2rem;
+    height: 2rem;
+  } */
+
+  .navIcon {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(-100%, -50%);
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    color: #ffdd40;
+  }
 }
