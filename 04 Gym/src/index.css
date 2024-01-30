@@ -1,0 +1,11 @@
+:root {
+  --color-dark: #1b1c21;
+  --color-lightDark: #23252d;
+  --color-text: rgb(232, 231, 231);
+  --color-text-orange: #9b6a3e;
+}
+
+body {
+  width: 100%;
+  margin: 0;
+}
