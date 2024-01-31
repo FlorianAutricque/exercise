@@ -1,13 +1,14 @@
 .navbar {
-  /* background-color: #1f5156; */
+  /* background: none; */
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 1.2rem;
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 20;
+  /* margin-top: -5.1rem; */
 }
 
 .containerNavbar {
@@ -19,10 +20,12 @@
   height: 80px;
   max-width: 1500px;
   position: relative;
+  margin-top: -1.8rem;
 }
 
 .logo {
   text-decoration: none;
+  height: 2rem;
 }
 
 .navMenu {
@@ -42,13 +45,12 @@
   line-height: 40px;
   margin-right: 1rem;
   list-style: none;
-  border-bottom: 3px solid transparent;
 }
 
 .navItem:after {
   content: "";
   display: block;
-  /* height: 3px; */
+
   width: 0;
   background: transparent;
   transition: width 0.7s ease, background-color 0.5s ease;
@@ -76,7 +78,7 @@
     display: flex;
     flex-direction: column;
     width: 90%;
-    border-top: 1pxsolid #312e2e;
+    border-top: 1px solid #312e2e;
     position: absolute;
     top: 80px;
     left: -110%;
@@ -89,7 +91,7 @@
     left: 0px;
     opacity: 1;
     transition: all 0.5s ease;
-    z-index: 1;
+    z-index: 1000;
   }
   .navItem .active {
     color: var(--color-text-orange);
@@ -99,11 +101,6 @@
     width: 100%;
     display: table;
   }
-
-  /* .nav-logo .icon {
-    width: 2rem;
-    height: 2rem;
-  } */
 
   .navIcon {
     display: block;

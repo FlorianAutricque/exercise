@@ -5,6 +5,8 @@ import { useState } from "react";
 
 import { FaTimes, FaBars } from "react-icons/fa";
 
+import logo from "../images/logo.png";
+
 function Navbar() {
   const [click, setClick] = useState(false);
   const [activeLink, setActiveLink] = useState(null);
@@ -25,8 +27,8 @@ function Navbar() {
     <>
       <nav className={styles.navbar}>
         <div className={styles.containerNavbar}>
-          <Link onClick={scrollTop} className={styles.logo}>
-            GymRat
+          <Link onClick={scrollTop}>
+            <img src={logo} alt="logo" className={styles.logo} />
           </Link>
 
           <ul
