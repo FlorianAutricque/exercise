@@ -3,57 +3,120 @@ import { useState } from "react";
 function CalculateBMI() {
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
-  const [unitWeight, setUnitWeight] = useState("kg");
-  const [unitHeight, setUnitHeight] = useState("cm");
+
   const [bmi, setBMI] = useState(null);
 
-  function calculateBMI() {
-    if (unitWeight === "kg" && unitHeight === "cm" && weight && height) {
+  const [feet, setFeet] = useState("");
+  const [inches, setInches] = useState("");
+
+  const [valueWeigth, setValueWeigth] = useState("kg");
+
+  const [metric, setMetric] = useState(true);
+  const [imperial, setImperial] = useState(false);
+
+  function calculateBMIKgCm() {
+    if (weight && height) {
       const heightInMeters = height / 100;
       const calculatedBMI = (weight / heightInMeters ** 2).toFixed(1);
-      setBMI(calculatedBMI);
-    } else if (
-      unitWeight === "lbs" &&
-      unitHeight === "feet" &&
-      weight &&
-      height
-    ) {
-      const calculatedBMI = ((703 * weight) / height ** 2).toFixed(1);
       setBMI(calculatedBMI);
     } else {
       setBMI(null);
     }
   }
 
+  function calculateBMILbsFeet() {
+    if (weight && feet && inches) {
+      const heightInches = feet * 12 + parseInt(inches);
+      const calculatedBMILbsFeet = (703 * (weight / heightInches ** 2)).toFixed(
+        1
+      );
+      setBMI(calculatedBMILbsFeet);
+    } else {
+      setBMI(null);
+    }
+  }
+
+  function handleMetric(e) {
+    e.preventDefault();
+    setValueWeigth("kg");
+    setMetric(true);
+    setImperial(false);
+    setWeight("");
+    setHeight("");
+    setBMI("");
+  }
+
+  function handleImperial(e) {
+    e.preventDefault();
+    setValueWeigth("lbs");
+    setImperial(true);
+    setMetric(false);
+    setWeight("");
+    setHeight("");
+    setBMI("");
+  }
+
   return (
     <form>
+      <button onClick={handleMetric}>Kg and Metric</button>
+
+      <button onClick={handleImperial}>Lbs and Imperial</button>
+
+      {/* metric and kg */}
       <p>Your Weight</p>
       <input
-        type="number"
-        placeholder={`Your weight in ${unitWeight}`}
+        type="text"
+        placeholder={`Your weight in ${valueWeigth}`}
         value={weight}
         onChange={e => setWeight(e.target.value)}
       />
-      <select value={unitWeight} onChange={e => setUnitWeight(e.target.value)}>
-        <option value="kg">kg</option>
-        <option value="lbs">lbs</option>
-      </select>
 
       <p>Your Height</p>
-      <input
-        type="number"
-        placeholder={`Your height in ${unitHeight}`}
-        value={height}
-        onChange={e => setHeight(e.target.value)}
-      />
-      <select value={unitHeight} onChange={e => setUnitHeight(e.target.value)}>
-        <option value="cm">cm</option>
-        <option value="feet">feet</option>
-      </select>
 
-      <button type="button" onClick={calculateBMI}>
-        Calculate BMI
-      </button>
+      {metric && (
+        <input
+          type="text"
+          placeholder="Your height in cm"
+          value={height}
+          onChange={e => setHeight(e.target.value)}
+        />
+      )}
+
+      {/* lbs and imperial */}
+
+      {imperial && (
+        <>
+          <input
+            type="text"
+            placeholder="Your height in feet"
+            value={feet}
+            onChange={e => setFeet(e.target.value)}
+          />
+
+          <input
+            type="text"
+            placeholder="Your heigth in inches"
+            value={inches}
+            onChange={e => setInches(e.target.value)}
+          />
+        </>
+      )}
+
+      {metric ? (
+        <button type="button" onClick={calculateBMIKgCm}>
+          Calculate BMI
+        </button>
+      ) : (
+        <button type="button" onClick={calculateBMILbsFeet}>
+          Calculate BMI
+        </button>
+      )}
+
+      {/* {imperial && (
+        <button type="button" onClick={calculateBMILbsFeet}>
+          Calculate BMI
+        </button>
+      )} */}
 
       {bmi !== null && <p>BMI is {bmi}</p>}
     </form>
