@@ -1,18 +1,27 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function CalculateBMI() {
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
-
   const [bmi, setBMI] = useState(null);
-
   const [feet, setFeet] = useState("");
   const [inches, setInches] = useState("");
-
   const [valueWeigth, setValueWeigth] = useState("kg");
-
   const [metric, setMetric] = useState(true);
   const [imperial, setImperial] = useState(false);
+  const [analyzebmi, setAnalyzebmi] = useState("");
+
+  useEffect(() => {
+    if (bmi < 18.5) {
+      setAnalyzebmi("underweigth");
+    } else if (bmi <= 18.5 < 24.9) {
+      setAnalyzebmi("normal");
+    } else if (bmi >= 25 < 29) {
+      setAnalyzebmi("overweigth");
+    } else {
+      setAnalyzebmi("obese");
+    }
+  }, [bmi]);
 
   function calculateBMIKgCm() {
     if (weight && height) {
@@ -62,7 +71,6 @@ function CalculateBMI() {
 
       <button onClick={handleImperial}>Lbs and Imperial</button>
 
-      {/* metric and kg */}
       <p>Your Weight</p>
       <input
         type="text"
@@ -81,8 +89,6 @@ function CalculateBMI() {
           onChange={e => setHeight(e.target.value)}
         />
       )}
-
-      {/* lbs and imperial */}
 
       {imperial && (
         <>
@@ -112,13 +118,13 @@ function CalculateBMI() {
         </button>
       )}
 
-      {/* {imperial && (
-        <button type="button" onClick={calculateBMILbsFeet}>
-          Calculate BMI
-        </button>
-      )} */}
-
-      {bmi ? <p>BMI is {bmi}</p> : ""}
+      {bmi ? (
+        <p>
+          BMI is {bmi} which mean that you are {analyzebmi}
+        </p>
+      ) : (
+        ""
+      )}
     </form>
   );
 }
