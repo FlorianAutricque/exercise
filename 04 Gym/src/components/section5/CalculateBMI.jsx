@@ -1,19 +1,19 @@
 import { useState } from "react";
 
 function CalculateBMI() {
-  const [weight, setWeight] = useState();
-  const [height, setHeight] = useState();
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
+  const [bmi, setBMI] = useState(null);
 
-  const calculateBMI = () => {
+  function calculateBMI() {
     if (weight && height) {
       const heightInMeters = height / 100;
-      const bmi = (weight / heightInMeters ** 2).toFixed(1);
-      return bmi;
+      const calculatedBMI = (weight / heightInMeters ** 2).toFixed(1);
+      setBMI(calculatedBMI);
+    } else {
+      setBMI(null);
     }
-    return null;
-  };
-
-  const bmi = calculateBMI();
+  }
 
   return (
     <form>
@@ -29,8 +29,11 @@ function CalculateBMI() {
         value={height}
         onChange={e => setHeight(e.target.value)}
       />
+      <button type="button" onClick={calculateBMI}>
+        Calculate BMI
+      </button>
 
-      {bmi && <p>BMI is {bmi}</p>}
+      {bmi !== null && <p>BMI is {bmi}</p>}
     </form>
   );
 }
