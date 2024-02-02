@@ -118,7 +118,7 @@ function CalculateBMI() {
         </button>
       )} */}
 
-      {bmi !== null && <p>BMI is {bmi}</p>}
+      {bmi ? <p>BMI is {bmi}</p> : ""}
     </form>
   );
 }
