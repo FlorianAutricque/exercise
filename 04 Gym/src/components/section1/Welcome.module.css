@@ -37,3 +37,7 @@
 .welcomeMessage {
   color: var(--color-orange-light);
 }
+
+.image {
+  height: 2rem;
+}
