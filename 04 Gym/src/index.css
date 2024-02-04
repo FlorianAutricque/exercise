@@ -1,6 +1,6 @@
 :root {
-  --color-dark: #1b1c21;
-  --color-lightDark: #23252d;
+  --color-dark: #18191e;
+  --color-lightDark: #23252c;
   --color-text: #e8e7e7;
   --color-text-orange: #9b6a3e;
   --color-orange-dark: #ed6045;
@@ -10,4 +10,5 @@
 body {
   width: 100%;
   margin: 0;
+  color: var(--color-text);
 }
