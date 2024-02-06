@@ -1,16 +1,17 @@
 import styles from "./Welcome.module.css";
 import Carousel from "./CarouselComponent.jsx";
+import TitleNumber from "../TitleNumber.jsx";
 
 function Welcome() {
   return (
     <div id="welcome" className={styles.mainContainer}>
       <div className={styles.container}>
         <div>
-          <div className={styles.textAboveNumber}>
-            <p className={styles.aboutGymrat}>ABOUT GYMRAT</p>
-            <h2>Welcome to your Gym</h2>
-          </div>
-          <p className={styles.number}>01</p>
+          <TitleNumber
+            title={"ABOUT GYMRAT"}
+            message={"Welcome to your Gym"}
+            number={"01"}
+          />
         </div>
 
         <div className={styles.horizontalLine}></div>

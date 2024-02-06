@@ -8,7 +8,7 @@ function CarouselComponent() {
   const images = [gym1, gym1, gym1];
   return (
     <div className={styles.container}>
-      <Carousel useKeyboardArrows={true}>
+      <Carousel useKeyboardArrows={true} centerMode={true}>
         {images.map(image => (
           <img src={image} key="image" />
         ))}
