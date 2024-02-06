@@ -1,4 +1,5 @@
 import styles from "./Welcome.module.css";
+import Carousel from "./CarouselComponent.jsx";
 
 function Welcome() {
   return (
@@ -28,6 +29,8 @@ function Welcome() {
           fitter, and happier lifestyle.
         </p>
       </div>
+
+      <Carousel />
     </div>
   );
 }
