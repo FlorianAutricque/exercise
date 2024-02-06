@@ -29,8 +29,9 @@ function Welcome() {
           fitter, and happier lifestyle.
         </p>
       </div>
-
-      <Carousel />
+      <div className={styles.containerCarousel}>
+        <Carousel />
+      </div>
     </div>
   );
 }

@@ -41,3 +41,10 @@
 .image {
   height: 2rem;
 }
+
+.containerCarousel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
