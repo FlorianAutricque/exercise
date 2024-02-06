@@ -6,9 +6,15 @@ import styles from "./CarouselComponent.module.css";
 
 function CarouselComponent() {
   const images = [gym1, gym1, gym1];
+
   return (
     <div className={styles.container}>
-      <Carousel useKeyboardArrows={true} centerMode={true}>
+      <Carousel
+        useKeyboardArrows={true}
+        showArrows={false}
+        showStatus={false}
+        showIndicators={false}
+      >
         {images.map(image => (
           <img src={image} key="image" />
         ))}

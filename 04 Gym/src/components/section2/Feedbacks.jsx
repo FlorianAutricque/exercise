@@ -1,6 +1,9 @@
 import TitleNumber from "../TitleNumber";
 import styles from "./Feedbacks.module.css";
 
+import imageClient1 from "../../images/client/client1.jpg";
+import ClientFeedback from "./ClientFeedback";
+
 function Feedbacks() {
   return (
     <div id="feedbacks" className={styles.mainContainerFeedbacks}>
@@ -10,10 +13,16 @@ function Feedbacks() {
         number={"02"}
       />
 
-      <p>ble</p>
-      <p>ble</p>
-      <p>ble</p>
-      <p>ble</p>
+      <div className={styles.horizontalLine}></div>
+
+      <ClientFeedback
+        name={"William Chuck"}
+        feedback={
+          "Fantastic gym with top-notch equipment, knowledgeable trainers, and motivating atmosphere. Highly recommend for fitness enthusiasts!"
+        }
+        rating={3}
+        image={imageClient1}
+      />
     </div>
   );
 }
