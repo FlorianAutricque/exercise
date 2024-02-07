@@ -1,4 +1,3 @@
-import React from "react";
 import styles from "./ClientFeedback.module.css";
 
 function ClientFeedback({ name, feedback, rating, image }) {
@@ -32,7 +31,7 @@ function ClientFeedback({ name, feedback, rating, image }) {
         <p>{name}</p>
         <p className={styles.client}>CLIENT</p>
         <p className={styles.feedback}>
-          <em>{feedback}</em>
+          <em>&ldquo;{feedback}&rdquo;</em>
         </p>
         <div>{renderStars()}</div>
       </div>

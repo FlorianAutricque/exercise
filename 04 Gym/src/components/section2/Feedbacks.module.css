@@ -6,25 +6,34 @@
 .horizontalLine {
   border-top: 1px solid var(--color-orange-dark);
   width: 3rem;
+  margin-bottom: 1rem;
 }
 
-.containerClient {
-  background-color: var(--color-lightDark);
+.containerFeedbacks {
   display: flex;
-  justify-content: space-around;
-
-  height: 12rem;
-  overflow: hidden;
-  width: 22rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  /* width: 45rem; */
 }
 
-.containerTextClient {
-  padding: 1rem;
+@media (max-width: 715px) {
+  .containerFeedbacks {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-.imageClient img {
-  height: 12.3rem;
-  clip-path: polygon(30% 0, 100% 0%, 100% 100%, 0% 100%);
-  object-fit: cover;
-  margin-right: -2rem;
+@media (min-width: 715px) {
+  .x {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .containerFeedbacks {
+    width: 45rem;
+  }
 }

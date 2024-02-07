@@ -5,7 +5,7 @@
 
   height: 12rem;
   overflow: hidden;
-  width: 22rem;
+  /* width: 19rem; */
 }
 
 .containerTextClient {
@@ -28,4 +28,10 @@
 .feedback {
   font-size: small;
   color: var(--color-testimonials);
+}
+
+@media (min-width: 750px) {
+  .containerClient {
+    width: 90%;
+  }
 }
