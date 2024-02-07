@@ -6,6 +6,8 @@ import AliceCarousel from "react-alice-carousel";
 
 import styles from "./CarouselFeedback.module.css";
 
+import "react-alice-carousel/lib/alice-carousel.css";
+
 function CarouselFeedback() {
   const responsive = {
     0: { items: 1 },
