@@ -9,6 +9,8 @@
   width: 15rem;
   color: white;
   font-size: x-large;
+  position: relative;
+  top: 86%;
 }
 
 .x {
