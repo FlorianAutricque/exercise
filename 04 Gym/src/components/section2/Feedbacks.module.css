@@ -13,10 +13,6 @@
   height: 10rem;
 }
 
-@media (max-width: 715px) {
-  .x {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+.containerImageGym {
+  margin-top: 3rem;
 }

@@ -29,7 +29,7 @@ function Feedbacks() {
 
       <CarouselFeedback />
 
-      <div className={styles.x}>
+      <div className={styles.containerImageGym}>
         <AliceCarousel
           responsive={responsive}
           disableButtonsControls
