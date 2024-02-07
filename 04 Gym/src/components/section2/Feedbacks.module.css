@@ -8,32 +8,3 @@
   width: 3rem;
   margin-bottom: 1rem;
 }
-
-.containerFeedbacks {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  /* width: 45rem; */
-}
-
-@media (max-width: 715px) {
-  .containerFeedbacks {
-    display: flex;
-    /* flex-direction: column; */
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media (min-width: 715px) {
-  .x {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .containerFeedbacks {
-    width: 45rem;
-  }
-}
