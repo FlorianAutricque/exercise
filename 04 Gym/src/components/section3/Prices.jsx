@@ -10,23 +10,63 @@ function Prices() {
         number={"03"}
       />
 
-      <div className={styles.containerPlans}>
-        <p>
-          <strong> $</strong>
-          <span className={styles.dollars}>4</span>/day
-        </p>
-        <br />
-        <p className={styles.periodTraining}>
-          <strong>One Day Training</strong>
-        </p>
-        <br />
-        <p>Access All Equipments</p>
-        <div className={styles.horizontalLine}></div>
-        <p>Access Spa</p>
-        <div className={styles.horizontalLine}></div>
-        <p>Access Group Class</p>
-        <div className={styles.horizontalLine}></div>
-        <p>Only During Staff Hours</p>
+      <div className={styles.containerOffers}>
+        <div className={styles.containerPlans}>
+          <p>
+            <strong> $</strong>
+            <span className={styles.dollars}>4</span>/day
+          </p>
+          <br />
+          <p className={styles.periodTraining}>
+            <strong>One Day Training</strong>
+          </p>
+          <br />
+          <p>Access All Equipments</p>
+          <div className={styles.horizontalLine}></div>
+          <p>Access Spa</p>
+          <div className={styles.horizontalLine}></div>
+          <p>Access Group Class</p>
+          <div className={styles.horizontalLine}></div>
+          <p>Only During Staff Hours</p>
+        </div>
+
+        <div className={styles.containerPlans}>
+          <p>
+            <strong> $</strong>
+            <span className={styles.dollars}>4</span>/day
+          </p>
+          <br />
+          <p className={styles.periodTraining}>
+            <strong>One Day Training</strong>
+          </p>
+          <br />
+          <p>Access All Equipments</p>
+          <div className={styles.horizontalLine}></div>
+          <p>Access Spa</p>
+          <div className={styles.horizontalLine}></div>
+          <p>Access Group Class</p>
+          <div className={styles.horizontalLine}></div>
+          <p>Only During Staff Hours</p>
+        </div>
+
+        <div className={styles.containerPlans}>
+          <p>
+            <strong> $</strong>
+            <span className={styles.dollars}>4</span>/day
+          </p>
+          <br />
+          <p className={styles.periodTraining}>
+            <strong>One Day Training</strong>
+          </p>
+          <br />
+          <p>Access All Equipments</p>
+          <div className={styles.horizontalLine}></div>
+          <p>Access Spa</p>
+          <div className={styles.horizontalLine}></div>
+          <p>Access Group Class</p>
+          <div className={styles.horizontalLine}></div>
+          <p>Only During Staff Hours</p>
+        </div>
       </div>
     </div>
   );
