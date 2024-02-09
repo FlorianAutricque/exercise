@@ -1,3 +1,30 @@
 .mainContainerPrices {
   background-color: var(--color-lightDark);
+  padding: 4rem 0 4rem 0;
+}
+
+.containerPlans {
+  border: 1px solid var(--color-testimonials);
+  width: 13rem;
+  text-align: center;
+}
+
+.horizontalLine {
+  border-top: 1px solid var(--color-testimonials);
+  width: 6rem;
+  margin-bottom: 1rem;
+  margin: 0 auto;
+}
+
+.dollars {
+  font-size: 2rem;
+}
+
+.periodTraining {
+  background-color: var(--color-dark);
+  padding: 1rem 0 1rem 0;
+}
+
+.containerPlans:hover {
+  background-color: red;
 }

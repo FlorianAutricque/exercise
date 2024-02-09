@@ -10,16 +10,22 @@ function Prices() {
         number={"03"}
       />
 
-      <div>
+      <div className={styles.containerPlans}>
         <p>
-          $<span>4</span>/day
+          <strong> $</strong>
+          <span className={styles.dollars}>4</span>/day
         </p>
-
-        <p>One Day Training</p>
-
+        <br />
+        <p className={styles.periodTraining}>
+          <strong>One Day Training</strong>
+        </p>
+        <br />
         <p>Access All Equipments</p>
+        <div className={styles.horizontalLine}></div>
         <p>Access Spa</p>
+        <div className={styles.horizontalLine}></div>
         <p>Access Group Class</p>
+        <div className={styles.horizontalLine}></div>
         <p>Only During Staff Hours</p>
       </div>
     </div>
