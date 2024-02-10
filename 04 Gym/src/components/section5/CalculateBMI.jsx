@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import TitleNumber from "../TitleNumber.jsx";
+
+import styles from "./CalculateBMI.module.css";
 
 function CalculateBMI() {
   const [weight, setWeight] = useState("");
@@ -66,66 +69,97 @@ function CalculateBMI() {
   }
 
   return (
-    <form>
-      <button onClick={handleMetric}>Kg and Metric</button>
-
-      <button onClick={handleImperial}>Lbs and Imperial</button>
-
-      <p>Your Weight</p>
-      <input
-        type="text"
-        placeholder={`Your weight in ${valueWeigth}`}
-        value={weight}
-        onChange={e => setWeight(e.target.value)}
+    <div className={styles.mainContainerBMI}>
+      <TitleNumber
+        title={"ADVANCED CALCULATOR"}
+        message={"Calculate Your BMI"}
+        number={"05"}
       />
 
-      <p>Your Height</p>
+      <div className={styles.horizontalLine}></div>
 
-      {metric && (
-        <input
-          type="text"
-          placeholder="Your height in cm"
-          value={height}
-          onChange={e => setHeight(e.target.value)}
-        />
-      )}
+      <form className={styles.containerBMI}>
+        <div className={styles.btnSelection}>
+          <button onClick={handleMetric} className={styles.btn}>
+            Kg and Metric
+          </button>
 
-      {imperial && (
-        <>
-          <input
-            type="text"
-            placeholder="Your height in feet"
-            value={feet}
-            onChange={e => setFeet(e.target.value)}
-          />
+          <button onClick={handleImperial} className={styles.btn}>
+            Lbs and Imperial
+          </button>
+        </div>
 
-          <input
-            type="text"
-            placeholder="Your heigth in inches"
-            value={inches}
-            onChange={e => setInches(e.target.value)}
-          />
-        </>
-      )}
+        <div className={styles.containerInputBtn}>
+          <div>
+            <p>Your Weight:</p>
+            <input
+              type="text"
+              placeholder={`Your weight in ${valueWeigth}`}
+              value={weight}
+              onChange={e => setWeight(e.target.value)}
+            />
 
-      {metric ? (
-        <button type="button" onClick={calculateBMIKgCm}>
-          Calculate BMI
-        </button>
-      ) : (
-        <button type="button" onClick={calculateBMILbsFeet}>
-          Calculate BMI
-        </button>
-      )}
+            <p>Your Height:</p>
 
-      {bmi ? (
-        <p>
-          BMI is {bmi} which mean that you are {analyzebmi}
-        </p>
-      ) : (
-        ""
-      )}
-    </form>
+            {metric && (
+              <input
+                type="text"
+                placeholder="Your height in cm"
+                value={height}
+                onChange={e => setHeight(e.target.value)}
+              />
+            )}
+
+            {imperial && (
+              <div>
+                <input
+                  type="text"
+                  placeholder="Your height in feet"
+                  value={feet}
+                  onChange={e => setFeet(e.target.value)}
+                  className={styles.imperialInput}
+                />
+
+                <input
+                  type="text"
+                  placeholder="Your heigth in inches"
+                  value={inches}
+                  onChange={e => setInches(e.target.value)}
+                />
+              </div>
+            )}
+          </div>
+
+          <div>
+            {metric ? (
+              <button
+                className={styles.btnCalcul}
+                type="button"
+                onClick={calculateBMIKgCm}
+              >
+                Calculate BMI
+              </button>
+            ) : (
+              <button
+                className={styles.btnCalcul}
+                type="button"
+                onClick={calculateBMILbsFeet}
+              >
+                Calculate BMI
+              </button>
+            )}
+          </div>
+        </div>
+
+        {bmi ? (
+          <p>
+            BMI is {bmi} which mean that you are {analyzebmi}
+          </p>
+        ) : (
+          ""
+        )}
+      </form>
+    </div>
   );
 }
 

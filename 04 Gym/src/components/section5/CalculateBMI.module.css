@@ -1,0 +1,78 @@
+.mainContainerBMI {
+  background-color: var(--color-lightDark);
+  padding: 4rem 2rem 2rem 2rem;
+}
+
+.containerBMI p {
+  font-size: 14px;
+  color: var(--color-text);
+}
+
+.containerBMI input {
+  height: 2rem;
+  background-color: var(--color-lightDark);
+  border: 1px solid var(--color-text);
+  color: var(--color-text);
+}
+
+.containerBMI {
+  border: solid 1px red;
+  height: 19rem;
+}
+
+.horizontalLine {
+  border-top: 1px solid var(--color-orange-dark);
+  width: 3rem;
+  margin-bottom: 1rem;
+}
+
+.btnSelection {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  background: linear-gradient(
+    to right,
+    var(--color-orange-dark),
+    var(--color-orange-light)
+  );
+
+  border: none;
+
+  border-radius: 5px;
+  padding: 0.4rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  transition: 0.2s ease-in-out;
+}
+
+.btnCalcul {
+  background: linear-gradient(
+    to right,
+    var(--color-orange-dark),
+    var(--color-orange-light)
+  );
+
+  border: none;
+
+  border-radius: 5px;
+  padding: 0.4rem;
+  cursor: pointer;
+
+  margin-top: 1rem;
+}
+
+.btnCalcul:hover {
+  transform: scale(1.05);
+  transition: 0.2s ease-in-out;
+}
+
+.imperialInput {
+  margin-bottom: 1rem;
+}
