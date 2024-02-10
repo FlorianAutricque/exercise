@@ -1,0 +1,36 @@
+.mainContainerOffers {
+  background-color: var(--color-dark);
+  padding: 4rem 2rem 2rem 2rem;
+}
+
+.imageContainer img {
+  height: 10rem;
+}
+
+.containerOffers {
+  padding-top: 2rem;
+}
+
+.horizontalLine {
+  border-top: 1px solid var(--color-orange-dark);
+  width: 3rem;
+  margin-bottom: 2rem;
+}
+
+.containerSmallerOffers {
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.containerSmallerOffers h4 {
+  margin-top: 0;
+  color: var(--color-text);
+}
+
+.containerSmallerOffers p {
+  color: var(--color-testimonials);
+  font-size: 13px;
+}
