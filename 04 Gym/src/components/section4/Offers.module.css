@@ -3,6 +3,12 @@
   padding: 4rem 2rem 2rem 2rem;
 }
 
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .imageContainer img {
   height: 10rem;
 }
