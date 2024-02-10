@@ -14,18 +14,6 @@ function CalculateBMI() {
   const [imperial, setImperial] = useState(false);
   const [analyzebmi, setAnalyzebmi] = useState("");
 
-  useEffect(() => {
-    if (bmi < 18.5) {
-      setAnalyzebmi("underweigth");
-    } else if (bmi <= 18.5 < 24.9) {
-      setAnalyzebmi("normal");
-    } else if (bmi >= 25 < 29) {
-      setAnalyzebmi("overweigth");
-    } else {
-      setAnalyzebmi("obese");
-    }
-  }, [bmi]);
-
   function calculateBMIKgCm() {
     if (weight && height) {
       const heightInMeters = height / 100;
@@ -47,6 +35,18 @@ function CalculateBMI() {
       setBMI(null);
     }
   }
+
+  useEffect(() => {
+    if (bmi < 18.5) {
+      setAnalyzebmi("underweight");
+    } else if (bmi >= 18.5 && bmi < 25) {
+      setAnalyzebmi("normal");
+    } else if (bmi >= 25 && bmi < 30) {
+      setAnalyzebmi("overweight");
+    } else {
+      setAnalyzebmi("obese");
+    }
+  }, [bmi]);
 
   function handleMetric(e) {
     e.preventDefault();
@@ -153,7 +153,8 @@ function CalculateBMI() {
 
         {bmi ? (
           <p>
-            BMI is {bmi} which mean that you are {analyzebmi}
+            BMI is <span className={styles.BMIresults}>{bmi}</span> which mean
+            that you are <span className={styles.BMIresults}>{analyzebmi}</span>
           </p>
         ) : (
           ""

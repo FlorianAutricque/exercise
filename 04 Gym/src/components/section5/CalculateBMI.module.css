@@ -16,8 +16,7 @@
 }
 
 .containerBMI {
-  border: solid 1px red;
-  height: 19rem;
+  height: 21rem;
 }
 
 .horizontalLine {
@@ -75,4 +74,8 @@
 
 .imperialInput {
   margin-bottom: 1rem;
+}
+
+.BMIresults {
+  color: var(--color-orange-dark);
 }
