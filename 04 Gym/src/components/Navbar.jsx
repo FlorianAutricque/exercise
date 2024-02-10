@@ -97,6 +97,21 @@ function Navbar() {
                 <p>Offers</p>
               </HashLink>
             </li>
+
+            <li
+              className={`${styles.navItem} ${
+                activeLink === "bmi" ? styles.active : ""
+              }`}
+            >
+              <HashLink
+                smooth
+                to="#bmi"
+                className={styles.navLinks}
+                onClick={() => handleClick("bmi")}
+              >
+                <p>BMI calculator</p>
+              </HashLink>
+            </li>
           </ul>
 
           <div className={styles.navIcon} onClick={() => setClick(!click)}>

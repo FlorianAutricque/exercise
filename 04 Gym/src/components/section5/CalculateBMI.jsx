@@ -69,7 +69,7 @@ function CalculateBMI() {
   }
 
   return (
-    <div className={styles.mainContainerBMI}>
+    <div id="bmi" className={styles.mainContainerBMI}>
       <TitleNumber
         title={"ADVANCED CALCULATOR"}
         message={"Calculate Your BMI"}
