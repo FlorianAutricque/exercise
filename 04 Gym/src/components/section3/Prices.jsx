@@ -1,7 +1,41 @@
 import styles from "./Prices.module.css";
 import TitleNumber from "../../components/TitleNumber.jsx";
+import { useEffect } from "react";
 
 function Prices() {
+  useEffect(() => {
+    const containers = document.querySelectorAll(`.${styles.containerPlans}`);
+
+    const handleScroll = () => {
+      containers.forEach(container => {
+        const bounding = container.getBoundingClientRect();
+        if (
+          bounding.top >= 0 &&
+          bounding.bottom <=
+            (window.innerHeight || document.documentElement.clientHeight)
+        ) {
+          container.classList.add(styles.hoverEffect);
+        } else {
+          container.classList.remove(styles.hoverEffect);
+        }
+      });
+    };
+
+    const applyHoverEffect = () => {
+      if (window.innerWidth <= 400) {
+        window.addEventListener("scroll", handleScroll);
+      }
+    };
+
+    applyHoverEffect();
+    window.addEventListener("resize", applyHoverEffect);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", applyHoverEffect);
+    };
+  }, []);
+
   return (
     <div id="prices" className={styles.mainContainerPrices}>
       <TitleNumber

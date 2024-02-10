@@ -45,3 +45,16 @@
   transform: scale(1.05);
   transition: 0.2s ease-in-out;
 }
+
+.hoverEffect {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+
+  .periodTraining {
+    background: linear-gradient(
+      to right,
+      var(--color-orange-dark),
+      var(--color-orange-light)
+    );
+  }
+}
