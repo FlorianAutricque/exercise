@@ -9,15 +9,22 @@
 .imageHeader {
   width: 100%;
   display: block;
+  margin-top: -5rem;
 }
 
 .textHeader p {
   font-size: smaller;
 }
 
+.titleHeader {
+  margin-top: 3rem;
+  margin-left: 0.5rem;
+  width: 80%;
+}
+
 .textHeader {
   position: absolute;
-  top: 58%;
+  top: 57%;
   right: 0%;
   /* transform: translate(24%, -67%); */
   transform: translateY(-50%);
@@ -26,7 +33,7 @@
   background-color: var(--color-dark);
   height: 115%;
   width: 47%;
-  clip-path: polygon(100% 0, 100% 75%, 70% 100%, 0 75%, 0 0);
+  clip-path: polygon(100% 0, 100% 87%, 70% 100%, 0 75%, 0 0);
   z-index: 1;
 }
 
@@ -53,4 +60,41 @@
 .socialMediaLogo {
   display: flex;
   align-items: center;
+}
+
+.btnCalcul {
+  background: linear-gradient(
+    to right,
+    var(--color-orange-dark),
+    var(--color-orange-light)
+  );
+
+  border: none;
+
+  border-radius: 5px;
+  padding: 0.4rem;
+  cursor: pointer;
+
+  margin-top: 1rem;
+}
+
+.btnCalcul:hover {
+  transform: scale(1.05);
+  transition: 0.2s ease-in-out;
+}
+
+@media (min-width: 760px) {
+  .horizontalLine {
+    border-top: 1px solid var(--color-orange-dark);
+    width: 10rem;
+    margin-top: 10rem;
+    margin-left: 2rem;
+
+    z-index: 1000;
+  }
+
+  .titleHeader {
+    font-size: xx-large;
+    margin-left: 3rem;
+  }
 }

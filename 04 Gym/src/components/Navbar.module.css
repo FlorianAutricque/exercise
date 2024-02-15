@@ -32,8 +32,8 @@
   display: flex;
   list-style: none;
   text-align: center;
-  margin-right: 2rem;
-  background-color: var(--color-dark);
+
+  /* background-color: var(--color-dark); */
 }
 
 .navLinks {
@@ -112,5 +112,11 @@
 
     cursor: pointer;
     color: var(--color-text-orange);
+  }
+}
+
+@media (min-width: 760px) {
+  .logo {
+    height: 3rem;
   }
 }

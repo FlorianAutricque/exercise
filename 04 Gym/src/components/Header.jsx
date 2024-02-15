@@ -13,11 +13,9 @@ function Header() {
         <img src={headerImage} alt="header" className={styles.imageHeader} />
       </div>
       <div className={styles.textHeader}>
-        <h2>
-          <br />
-          <br />
-          You Only Fail, <br /> If You Stop
-          <br /> Trying
+        <div className={styles.horizontalLine}></div>
+        <h2 className={styles.titleHeader}>
+          You Only Fail, If You Stop Trying
         </h2>
         <p>
           jvnrei fweeinfewiun <br />
