@@ -1,6 +1,6 @@
 .mainContainerOffers {
   background-color: var(--color-dark);
-  padding: 4rem 2rem 2rem 2rem;
+  padding: 2rem 2rem 2rem 2rem;
 }
 
 .imageContainer {
@@ -11,10 +11,11 @@
 
 .imageContainer img {
   height: 10rem;
+  margin-bottom: 2rem;
 }
 
 .containerOffers {
-  padding-top: 2rem;
+  /* padding-top: 2rem; */
 }
 
 .horizontalLine {
@@ -25,7 +26,7 @@
 
 .containerSmallerOffers {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: top;
   gap: 1rem;
   margin-bottom: 2rem;
@@ -39,4 +40,36 @@
 .containerSmallerOffers p {
   color: var(--color-testimonials);
   font-size: 13px;
+}
+
+.listOfOffers {
+}
+
+@media (min-width: 760px) {
+  .imageContainer img {
+    height: 26rem;
+    object-fit: cover;
+  }
+
+  .imageContainer {
+    display: block;
+  }
+
+  .listOfOffers {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .mainContainerOffers {
+    height: 26rem;
+    padding: 0rem 2rem 0rem 2rem;
+  }
+
+  .containerSmallerOffers {
+    margin-bottom: 1rem;
+  }
+
+  .title {
+    margin-top: 0.5rem;
+  }
 }

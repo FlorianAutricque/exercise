@@ -79,3 +79,13 @@
 .BMIresults {
   color: var(--color-orange-dark);
 }
+
+.imageContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageContainer img {
+  height: 10rem;
+}

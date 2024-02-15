@@ -3,6 +3,8 @@ import TitleNumber from "../TitleNumber.jsx";
 
 import styles from "./CalculateBMI.module.css";
 
+import imageBmi from "../../images/gym1.jpg";
+
 function CalculateBMI() {
   const [weight, setWeight] = useState("");
   const [height, setHeight] = useState("");
@@ -160,6 +162,10 @@ function CalculateBMI() {
           ""
         )}
       </form>
+
+      <div className={styles.imageContainer}>
+        <img src={imageBmi} alt="Calculate your BMI" />
+      </div>
     </div>
   );
 }
