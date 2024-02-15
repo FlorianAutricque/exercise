@@ -6,7 +6,8 @@
 .horizontalLine {
   border-top: 1px solid var(--color-orange-dark);
   width: 3rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem !important;
+  margin: 0 auto;
 }
 
 .imageGym {
