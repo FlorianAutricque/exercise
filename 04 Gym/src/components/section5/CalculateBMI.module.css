@@ -1,6 +1,6 @@
 .mainContainerBMI {
   background-color: var(--color-lightDark);
-  padding: 4rem 2rem 2rem 2rem;
+  padding: 3rem 2rem 2rem 2rem;
 }
 
 .containerBMI p {
@@ -87,5 +87,49 @@
 }
 
 .imageContainer img {
-  height: 10rem;
+  height: 12rem;
+}
+
+@media (min-width: 760px) {
+  .imageContainer img {
+    height: 26rem;
+  }
+
+  .bmiCalcul {
+    display: flex;
+    gap: 4rem;
+    justify-content: space-between;
+    margin-left: 10rem;
+  }
+
+  .mainContainerBMI {
+    height: 26rem;
+    padding: 0;
+  }
+
+  .imageContainer {
+    display: block;
+  }
+
+  .title {
+    margin-top: 0.5rem;
+    width: 32%;
+  }
+
+  .imperialSize {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .imperialInput {
+    margin-bottom: 0rem;
+  }
+
+  .x {
+    display: flex;
+  }
+
+  .btnSelection {
+    justify-content: left;
+  }
 }

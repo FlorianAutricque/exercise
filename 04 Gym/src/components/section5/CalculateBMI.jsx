@@ -72,99 +72,106 @@ function CalculateBMI() {
 
   return (
     <div id="bmi" className={styles.mainContainerBMI}>
-      <TitleNumber
-        title={"ADVANCED CALCULATOR"}
-        message={"Calculate Your BMI"}
-        number={"05"}
-      />
-
-      <div className={styles.horizontalLine}></div>
-
-      <form className={styles.containerBMI}>
-        <div className={styles.btnSelection}>
-          <button onClick={handleMetric} className={styles.btn}>
-            Kg and Metric
-          </button>
-
-          <button onClick={handleImperial} className={styles.btn}>
-            Lbs and Imperial
-          </button>
-        </div>
-
-        <div className={styles.containerInputBtn}>
-          <div>
-            <p>Your Weight:</p>
-            <input
-              type="text"
-              placeholder={`Your weight in ${valueWeigth}`}
-              value={weight}
-              onChange={e => setWeight(e.target.value)}
+      <div className={styles.bmiCalcul}>
+        <div className={styles.title}>
+          <div className={styles.x}>
+            <TitleNumber
+              title={"ADVANCED CALCULATOR"}
+              message={"Calculate Your BMI"}
+              number={"05"}
             />
+          </div>
 
-            <p>Your Height:</p>
+          <div className={styles.horizontalLine}></div>
 
-            {metric && (
-              <input
-                type="text"
-                placeholder="Your height in cm"
-                value={height}
-                onChange={e => setHeight(e.target.value)}
-              />
-            )}
+          <form className={styles.containerBMI}>
+            <div className={styles.btnSelection}>
+              <button onClick={handleMetric} className={styles.btn}>
+                Kg and Metric
+              </button>
 
-            {imperial && (
+              <button onClick={handleImperial} className={styles.btn}>
+                Lbs and Imperial
+              </button>
+            </div>
+
+            <div className={styles.containerInputBtn}>
               <div>
+                <p>Your Weight:</p>
                 <input
                   type="text"
-                  placeholder="Your height in feet"
-                  value={feet}
-                  onChange={e => setFeet(e.target.value)}
-                  className={styles.imperialInput}
+                  placeholder={`Your weight in ${valueWeigth}`}
+                  value={weight}
+                  onChange={e => setWeight(e.target.value)}
                 />
 
-                <input
-                  type="text"
-                  placeholder="Your heigth in inches"
-                  value={inches}
-                  onChange={e => setInches(e.target.value)}
-                />
+                <p>Your Height:</p>
+
+                {metric && (
+                  <input
+                    type="text"
+                    placeholder="Your height in cm"
+                    value={height}
+                    onChange={e => setHeight(e.target.value)}
+                  />
+                )}
+
+                {imperial && (
+                  <div className={styles.imperialSize}>
+                    <input
+                      type="text"
+                      placeholder="Your height in feet"
+                      value={feet}
+                      onChange={e => setFeet(e.target.value)}
+                      className={styles.imperialInput}
+                    />
+
+                    <input
+                      type="text"
+                      placeholder="Your heigth in inches"
+                      value={inches}
+                      onChange={e => setInches(e.target.value)}
+                    />
+                  </div>
+                )}
               </div>
-            )}
-          </div>
 
-          <div>
-            {metric ? (
-              <button
-                className={styles.btnCalcul}
-                type="button"
-                onClick={calculateBMIKgCm}
-              >
-                Calculate BMI
-              </button>
+              <div>
+                {metric ? (
+                  <button
+                    className={styles.btnCalcul}
+                    type="button"
+                    onClick={calculateBMIKgCm}
+                  >
+                    Calculate BMI
+                  </button>
+                ) : (
+                  <button
+                    className={styles.btnCalcul}
+                    type="button"
+                    onClick={calculateBMILbsFeet}
+                  >
+                    Calculate BMI
+                  </button>
+                )}
+              </div>
+            </div>
+
+            {bmi ? (
+              <p>
+                BMI is <span className={styles.BMIresults}>{bmi}</span> which
+                mean that you are{" "}
+                <span className={styles.BMIresults}>{analyzebmi}</span>
+              </p>
             ) : (
-              <button
-                className={styles.btnCalcul}
-                type="button"
-                onClick={calculateBMILbsFeet}
-              >
-                Calculate BMI
-              </button>
+              ""
             )}
-          </div>
+          </form>
         </div>
 
-        {bmi ? (
-          <p>
-            BMI is <span className={styles.BMIresults}>{bmi}</span> which mean
-            that you are <span className={styles.BMIresults}>{analyzebmi}</span>
-          </p>
-        ) : (
-          ""
-        )}
-      </form>
-
-      <div className={styles.imageContainer}>
-        <img src={imageBmi} alt="Calculate your BMI" />
+        <div className={styles.imageContainer}>
+          <img src={imageBmi} alt="Calculate your BMI" />
+        </div>
       </div>
     </div>
   );

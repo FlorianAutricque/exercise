@@ -10,7 +10,7 @@
 }
 
 .imageContainer img {
-  height: 10rem;
+  height: 12rem;
   margin-bottom: 2rem;
 }
 
@@ -48,11 +48,11 @@
 @media (min-width: 760px) {
   .imageContainer img {
     height: 26rem;
-    object-fit: cover;
   }
 
   .imageContainer {
     display: block;
+    width: 50%;
   }
 
   .listOfOffers {
@@ -62,14 +62,16 @@
 
   .mainContainerOffers {
     height: 26rem;
-    padding: 0rem 2rem 0rem 2rem;
+    padding: 0;
   }
 
   .containerSmallerOffers {
     margin-bottom: 1rem;
+    width: 80%;
   }
 
   .title {
     margin-top: 0.5rem;
+    width: 50%;
   }
 }

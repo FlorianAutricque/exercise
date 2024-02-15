@@ -44,6 +44,8 @@ function Prices() {
         number={"03"}
       />
 
+      <div className={styles.horizontalLineSeperation}></div>
+
       <div className={styles.containerOffers}>
         <div className={styles.containerPlans}>
           <p>
