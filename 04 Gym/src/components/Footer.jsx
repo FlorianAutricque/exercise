@@ -9,10 +9,15 @@ function Footer() {
     <div>
       <div className={styles.imageBanner}>
         <TitleNumber title={"CALL US TODAY"} message={"000 000 0000"} />
-        <p>
+        <p className={styles.textTopImage}>
           Give us a call during our staff hours or send us an email and we will
           get to you within 24 hours
         </p>
+
+        <a href="mailto:fakeemail@example.com" className={styles.mailto}>
+          Send Email
+        </a>
+
         <img src={imageBanner} alt="Image banner" />
       </div>
     </div>
