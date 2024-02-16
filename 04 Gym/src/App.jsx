@@ -6,6 +6,7 @@ import Prices from "./components/section3/Prices";
 import Offers from "./components/section4/Offers";
 import Header from "./components/Header";
 import CalculateBMI from "./components/section5/CalculateBMI";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Offers />
         <CalculateBMI />
       </Router>
+      <Footer />
     </>
   );
 }

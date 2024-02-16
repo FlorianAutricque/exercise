@@ -1,4 +1,4 @@
-import headerImage from "../images/gym1.jpg";
+import headerImage from "../images/gymbanner.jpg";
 import styles from "./Header.module.css";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";
@@ -13,14 +13,13 @@ function Header() {
         <img src={headerImage} alt="header" className={styles.imageHeader} />
       </div>
       <div className={styles.textHeader}>
-        <div className={styles.horizontalLine}></div>
         <h2 className={styles.titleHeader}>
           You Only Fail, If You Stop Trying
         </h2>
+        <div className={styles.horizontalLine}></div>
         <p>
-          jvnrei fweeinfewiun <br />
-          fweoejnfwein
-          <br /> woieijefnewoifn
+          Your ultimate fitness destination, <br />
+          helping you achieve your goals effectively.
         </p>
       </div>
       <div className={styles.socialMedia}>
