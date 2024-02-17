@@ -37,7 +37,7 @@
   position: absolute;
   top: 57%;
   right: 0%;
-  /* transform: translate(24%, -67%); */
+
   transform: translateY(-50%);
   z-index: 1;
   color: var(--color-text);
@@ -45,6 +45,13 @@
   height: 115%;
   width: 47%;
   clip-path: polygon(100% 0, 100% 88%, 70% 100%, 0 75%, 0 0);
+  border-left: 3px solid;
+  border-image: linear-gradient(
+    to bottom,
+    var(--color-orange-dark),
+    var(--color-orange-light)
+  );
+  border-image-slice: 1;
   z-index: 1;
 }
 
@@ -129,5 +136,11 @@
   .socialMediaLogo svg {
     height: 2rem;
     width: 2rem;
+  }
+
+  .textHeader p {
+    font-size: 20px;
+    margin-left: 3rem;
+    width: 70%;
   }
 }
