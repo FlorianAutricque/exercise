@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import { HashLink } from "react-router-hash-link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { FaTimes, FaBars } from "react-icons/fa";
 
@@ -10,7 +10,23 @@ import logo from "../images/logo.png";
 function Navbar() {
   const [click, setClick] = useState(false);
   const [activeLink, setActiveLink] = useState(null);
+  const [isSticky, setIsSticky] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const titleNumberElement = document.getElementById("titleNumber");
+      if (titleNumberElement) {
+        const { top } = titleNumberElement.getBoundingClientRect();
+        setIsSticky(top <= 0);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   function scrollTop() {
     window.scrollTo({
       top: 0,
@@ -25,7 +41,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className={styles.navbar}>
+      <nav className={`${styles.navbar} ${isSticky ? styles.sticky : ""}`}>
         <div className={styles.containerNavbar}>
           <Link onClick={scrollTop}>
             <img src={logo} alt="logo" className={styles.logo} />

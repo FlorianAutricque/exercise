@@ -22,7 +22,7 @@ function Header() {
           helping you achieve your goals effectively.
         </p>
       </div>
-      <div className={styles.socialMedia}>
+      <div className={styles.socialMedia} id="titleNumber">
         <span>
           <Link to="/" className={styles.socialMediaLogo}>
             <FaFacebookSquare color="var(--color-text)" />

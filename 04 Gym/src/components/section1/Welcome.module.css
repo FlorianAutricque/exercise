@@ -13,7 +13,7 @@
 }
 
 .welcomeMessage {
-  color: var(--color-orange-light);
+  color: var(--color-text-orange);
 }
 
 .image {
@@ -21,8 +21,22 @@
 }
 
 .containerCarousel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 1rem;
+}
+
+@media (min-width: 760px) {
+  .mainContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .container {
+    width: 40%;
+  }
+
+  .containerFlex {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
 }
