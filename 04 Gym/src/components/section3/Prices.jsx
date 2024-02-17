@@ -69,30 +69,30 @@ function Prices() {
         <div className={styles.containerPlans}>
           <p>
             <strong> $</strong>
-            <span className={styles.dollars}>4</span>/day
+            <span className={styles.dollars}>25</span>/month
           </p>
           <br />
           <p className={styles.periodTraining}>
-            <strong>One Day Training</strong>
+            <strong>Monthly Training</strong>
           </p>
           <br />
           <p>Access All Equipments</p>
           <div className={styles.horizontalLine}></div>
-          <p>Access Spa</p>
+          <p>No Spa Access</p>
           <div className={styles.horizontalLine}></div>
           <p>Access Group Class</p>
           <div className={styles.horizontalLine}></div>
-          <p>Only During Staff Hours</p>
+          <p>Anytime</p>
         </div>
 
         <div className={styles.containerPlans}>
           <p>
             <strong> $</strong>
-            <span className={styles.dollars}>4</span>/day
+            <span className={styles.dollars}>40</span>/month
           </p>
           <br />
           <p className={styles.periodTraining}>
-            <strong>One Day Training</strong>
+            <strong>Monthly Training</strong>
           </p>
           <br />
           <p>Access All Equipments</p>
@@ -101,7 +101,7 @@ function Prices() {
           <div className={styles.horizontalLine}></div>
           <p>Access Group Class</p>
           <div className={styles.horizontalLine}></div>
-          <p>Only During Staff Hours</p>
+          <p>Anytime</p>
         </div>
       </div>
     </div>
