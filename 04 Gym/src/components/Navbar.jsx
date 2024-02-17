@@ -2,9 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import { HashLink } from "react-router-hash-link";
 import { useState, useEffect } from "react";
-
 import { FaTimes, FaBars } from "react-icons/fa";
-
 import logo from "../images/logo.png";
 
 function Navbar() {
@@ -18,6 +16,36 @@ function Navbar() {
       if (titleNumberElement) {
         const { top } = titleNumberElement.getBoundingClientRect();
         setIsSticky(top <= 0);
+
+        const welcomeSection = document.getElementById("welcome");
+        const feedbacksSection = document.getElementById("feedbacks");
+        const pricesSection = document.getElementById("prices");
+        const offersSection = document.getElementById("offers");
+        const bmiSection = document.getElementById("bmi");
+
+        const sections = [
+          welcomeSection,
+          feedbacksSection,
+          pricesSection,
+          offersSection,
+          bmiSection,
+        ];
+
+        let activeLinkId = null;
+
+        for (let i = 0; i < sections.length; i++) {
+          if (
+            sections[i] &&
+            sections[i].offsetTop <= window.pageYOffset &&
+            sections[i].offsetTop + sections[i].offsetHeight >
+              window.pageYOffset
+          ) {
+            activeLinkId = sections[i].id;
+            break;
+          }
+        }
+
+        setActiveLink(activeLinkId);
       }
     };
 
@@ -27,6 +55,7 @@ function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   function scrollTop() {
     window.scrollTo({
       top: 0,
@@ -130,7 +159,13 @@ function Navbar() {
             </li>
           </ul>
 
-          <div className={styles.navIcon} onClick={() => setClick(!click)}>
+          <div
+            className={styles.navIcon}
+            onClick={() => {
+              setClick(!click);
+              setActiveLink("");
+            }}
+          >
             {click ? (
               <span className="icon">
                 <FaTimes />{" "}

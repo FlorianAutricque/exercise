@@ -88,16 +88,22 @@
   }
 
   .navMenuActive {
-    background: #1f5156;
+    background: linear-gradient(
+      to right,
+      var(--color-orange-dark-nav),
+      var(--color-orange-light-nav)
+    );
     left: 0px;
     opacity: 1;
     transition: all 0.5s ease;
     z-index: 1000;
   }
+
   .navItem .active {
     color: var(--color-text-orange);
     border: none;
   }
+
   .navLinks {
     width: 100%;
     display: table;
