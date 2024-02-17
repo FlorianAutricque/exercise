@@ -1,5 +1,9 @@
 import imageClient1 from "../../images/client/client1.jpg";
 import imageClient2 from "../../images/client/client2.jpg";
+import imageClient3 from "../../images/client/client3.jpg";
+import imageClient4 from "../../images/client/client4.jpg";
+import imageClient5 from "../../images/client/client5.jpg";
+import imageClient6 from "../../images/client/client6.jpg";
 import ClientFeedback from "./ClientFeedback";
 
 import AliceCarousel from "react-alice-carousel";
@@ -34,28 +38,36 @@ function CarouselFeedback() {
             image={imageClient2}
           />
           <ClientFeedback
-            name={"Chris Bum"}
+            name={"Jay Culter"}
             feedback={
-              "Excellent gym experience, friendly staff, modern facilities. Only improvement needed is more class variety."
+              "Friendly staff, motivating atmosphere, top-notch equipment, exceeded expectations!"
             }
-            rating={4}
-            image={imageClient2}
+            rating={5}
+            image={imageClient3}
           />
           <ClientFeedback
-            name={"Chris Bum"}
+            name={"Arnold Scwarzy"}
             feedback={
-              "Excellent gym experience, friendly staff, modern facilities. Only improvement needed is more class variety."
+              "Clean facilities, knowledgeable trainers, convenient location, highly recommend this gym!."
             }
             rating={4}
-            image={imageClient2}
+            image={imageClient4}
           />
           <ClientFeedback
-            name={"Chris Bum"}
+            name={"Kylian Mbappe"}
             feedback={
-              "Excellent gym experience, friendly staff, modern facilities. Only improvement needed is more class variety."
+              "Great variety of classes, supportive community, fantastic results, love it!"
             }
             rating={4}
-            image={imageClient2}
+            image={imageClient5}
+          />
+          <ClientFeedback
+            name={"Ronnie Coleman"}
+            feedback={
+              "Professional instructors, welcoming environment, effective workout plans, exceptional gym experience!"
+            }
+            rating={4}
+            image={imageClient6}
           />
         </AliceCarousel>
       </div>

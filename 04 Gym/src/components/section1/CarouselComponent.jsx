@@ -1,11 +1,14 @@
 import { Carousel } from "react-responsive-carousel";
-import gym1 from "../../images/gym1.jpg";
+import gym11 from "../../images/gym11.jpeg";
+import gym22 from "../../images/gym22.jpeg";
+import gym33 from "../../images/gym33.jpeg";
+
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 import styles from "./CarouselComponent.module.css";
 
 function CarouselComponent() {
-  const images = [gym1, gym1, gym1];
+  const images = [gym11, gym22, gym33];
 
   return (
     <div className={styles.container}>

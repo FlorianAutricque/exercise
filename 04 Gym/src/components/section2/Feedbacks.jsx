@@ -3,12 +3,20 @@ import CarouselFeedback from "./CarouselFeedback";
 import styles from "./Feedbacks.module.css";
 
 import gym1 from "../../images/gym1.jpg";
+import gym2 from "../../images/gym2.jpg";
+import gym3 from "../../images/gym3.jpg";
+import gym4 from "../../images/gym4.jpg";
+import gym5 from "../../images/gym5.jpg";
+import gym6 from "../../images/gym6.jpg";
+import gym7 from "../../images/gym7.jpg";
+import gym8 from "../../images/gym8.jpg";
+import gym9 from "../../images/gym9.jpg";
 
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
 function Feedbacks() {
-  const images = [gym1, gym1, gym1, gym1, gym1, gym1, gym1, gym1, gym1, gym1];
+  const images = [gym1, gym2, gym3, gym4, gym5, gym6, gym7, gym8, gym9];
 
   const responsive = {
     0: { items: 2 },
