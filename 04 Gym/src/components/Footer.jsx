@@ -14,12 +14,11 @@ function Footer() {
           get to you within 24 hours
         </p>
 
-        <a href="mailto:fakeemail@example.com" className={styles.mailto}>
-          Send Email
-        </a>
-
         <img src={imageBanner} alt="Image banner" />
       </div>
+      <a href="mailto:fakeemail@example.com" className={styles.mailto}>
+        Send Email
+      </a>
     </div>
   );
 }

@@ -18,7 +18,7 @@
   align-items: center;
   justify-content: center;
   z-index: 100;
-  height: 100%; /* Ensure the container takes up the full height */
+  height: 100%;
   padding: 1rem;
   box-sizing: border-box;
 }
@@ -41,7 +41,7 @@
   text-decoration: none;
 }
 
-.maitlo:hover a {
+.mailto:hover {
   transform: scale(1.05);
   transition: 0.2s ease-in-out;
 }
