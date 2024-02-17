@@ -1,4 +1,4 @@
-import imageBanner from "../images/gym1.jpg";
+import imageFooter from "../images/gymFooter.jpg";
 
 import styles from "./Footer.module.css";
 
@@ -28,7 +28,7 @@ function Footer() {
             will get to you within 24 hours
           </p>
 
-          <img src={imageBanner} alt="Image banner" />
+          <img src={imageFooter} alt="Image banner" />
         </div>
         <div className={styles.containerMailto}>
           <a href="mailto:fakeemail@example.com" className={styles.mailto}>

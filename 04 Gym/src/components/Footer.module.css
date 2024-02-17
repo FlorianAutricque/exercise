@@ -78,6 +78,7 @@
   width: 80%;
   text-align: center;
   font-size: x-small;
+  color: var(--color-text);
 }
 
 .leftPart span {
@@ -154,5 +155,6 @@
   .imageBanner img {
     height: 10rem;
     object-fit: cover;
+    object-position: center 75%;
   }
 }
