@@ -12,12 +12,17 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaYoutube } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
+import { FaLocationDot } from "react-icons/fa6";
+import { MdOutlineEmail } from "react-icons/md";
+import { FaPhoneVolume } from "react-icons/fa";
+import { TbWorldWww } from "react-icons/tb";
+
 function Footer() {
   return (
     <div>
       <div>
         <div className={styles.imageBanner}>
-          <TitleNumber title={"CALL US TODAY"} message={"000 000 0000"} />
+          <TitleNumber title={"CALL US TODAY"} message={"123 456 7890"} />
           <p className={styles.textTopImage}>
             Give us a call during our staff hours or send us an email and we
             will get to you within 24 hours
@@ -42,22 +47,46 @@ function Footer() {
             <div>
               <span>
                 <Link to="/">
-                  <FaFacebookSquare color="var(--color-text)" />
+                  <FaFacebookSquare />
                 </Link>
                 <Link to="/">
-                  <FaInstagramSquare color="var(--color-text)" />
+                  <FaInstagramSquare />
                 </Link>
                 <Link to="/">
-                  <FaXTwitter color="var(--color-text)" />
+                  <FaXTwitter />
                 </Link>
                 <Link to="/">
-                  <FaYoutube color="var(--color-text)" />
+                  <FaYoutube />
                 </Link>
               </span>
             </div>
           </div>
 
-          <div className={styles.middlePart}></div>
+          <div className={styles.middlePart}>
+            <h3>Quick Contact</h3>
+            <div className={styles.contactInfos}>
+              <span>
+                <FaLocationDot color="var(--color-orange-dark)" /> 1234 Fake
+                Street, Faketown, Canada
+              </span>
+              <span>
+                <MdOutlineEmail color="var(--color-orange-dark)" />{" "}
+                fakeemail@example.com
+              </span>
+              <span>
+                <FaPhoneVolume color="var(--color-orange-dark)" /> 123 456 7890
+              </span>
+              <span>
+                <TbWorldWww color="var(--color-orange-dark)" />{" "}
+                https://gymrat.com
+              </span>
+            </div>
+          </div>
+        </div>
+        <div className={styles.lineEnd}></div>
+
+        <div className={styles.copyright}>
+          <p>© COPYRIGHT ALL RIGHTS RESERVED</p>
         </div>
       </div>
     </div>
