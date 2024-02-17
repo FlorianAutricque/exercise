@@ -5,7 +5,7 @@
 
 .imageBanner {
   position: relative;
-  height: 10rem;
+  height: 100%;
 }
 
 .textTopImage {
@@ -21,6 +21,7 @@
   height: 100%;
   padding: 1rem;
   box-sizing: border-box;
+  margin-top: -1rem;
 }
 
 .mailto {
@@ -39,9 +40,45 @@
   cursor: pointer;
   color: var(--color-text);
   text-decoration: none;
+  margin-top: -8rem;
 }
 
 .mailto:hover {
   transform: scale(1.05);
   transition: 0.2s ease-in-out;
+}
+
+.containerMailto {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottomFooter {
+  background-color: var(--color-dark);
+  margin-top: -1rem;
+  padding-top: 3rem;
+}
+
+.leftPart img {
+  height: 2rem;
+}
+
+.leftPart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.leftPart p {
+  width: 80%;
+  text-align: center;
+}
+
+.leftPart span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }

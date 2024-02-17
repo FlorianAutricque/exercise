@@ -19,8 +19,8 @@ function App() {
         <Prices />
         <Offers />
         <CalculateBMI />
+        <Footer />
       </Router>
-      <Footer />
     </>
   );
 }
