@@ -3,7 +3,7 @@ import TitleNumber from "../TitleNumber.jsx";
 
 import styles from "./CalculateBMI.module.css";
 
-import imageBmi from "../../images/gym1.jpg";
+import imageBmi from "../../images/gymBMI.webp";
 
 function CalculateBMI() {
   const [weight, setWeight] = useState("");

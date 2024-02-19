@@ -1,9 +1,9 @@
-import imageClient1 from "../../images/client/client1.jpg";
-import imageClient2 from "../../images/client/client2.jpg";
-import imageClient3 from "../../images/client/client3.jpg";
-import imageClient4 from "../../images/client/client4.jpg";
-import imageClient5 from "../../images/client/client5.jpg";
-import imageClient6 from "../../images/client/client6.jpg";
+import imageClient1 from "../../images/client/client1.webp";
+import imageClient2 from "../../images/client/client2.webp";
+import imageClient3 from "../../images/client/client3.webp";
+import imageClient4 from "../../images/client/client4.webp";
+import imageClient5 from "../../images/client/client5.webp";
+import imageClient6 from "../../images/client/client6.webp";
 import ClientFeedback from "./ClientFeedback";
 
 import AliceCarousel from "react-alice-carousel";

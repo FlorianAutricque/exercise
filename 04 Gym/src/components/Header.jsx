@@ -1,4 +1,4 @@
-import headerImage from "../images/gymbanner.jpg";
+import headerImage from "../images/gymBanner.webp";
 import styles from "./Header.module.css";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaInstagramSquare } from "react-icons/fa";

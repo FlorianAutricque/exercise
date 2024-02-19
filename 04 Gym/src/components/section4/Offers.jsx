@@ -1,4 +1,4 @@
-import gymOffers from "../../images/gymOffers.jpg";
+import gymOffers from "../../images/gymOffers.webp";
 import styles from "./Offers.module.css";
 import TitleNumber from "../TitleNumber.jsx";
 

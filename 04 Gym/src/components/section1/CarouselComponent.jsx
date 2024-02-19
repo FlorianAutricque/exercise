@@ -1,7 +1,7 @@
 import { Carousel } from "react-responsive-carousel";
-import gym11 from "../../images/gym11.jpeg";
-import gym22 from "../../images/gym22.jpeg";
-import gym33 from "../../images/gym33.jpeg";
+import gym11 from "../../images/gym11.webp";
+import gym22 from "../../images/gym22.webp";
+import gym33 from "../../images/gym33.webp";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 

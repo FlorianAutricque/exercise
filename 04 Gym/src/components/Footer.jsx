@@ -1,4 +1,4 @@
-import imageFooter from "../images/gymFooter.jpg";
+import imageFooter from "../images/gymFooter.webp";
 
 import styles from "./Footer.module.css";
 
