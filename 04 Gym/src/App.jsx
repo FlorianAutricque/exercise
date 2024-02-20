@@ -7,6 +7,7 @@ import Offers from "./components/section4/Offers";
 import Header from "./components/Header";
 import CalculateBMI from "./components/section5/CalculateBMI";
 import Footer from "./components/Footer";
+import News from "./components/section6/News";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Prices />
         <Offers />
         <CalculateBMI />
+        <News />
         <Footer />
       </Router>
     </>

@@ -22,6 +22,7 @@ function Navbar() {
         const pricesSection = document.getElementById("prices");
         const offersSection = document.getElementById("offers");
         const bmiSection = document.getElementById("bmi");
+        const newsSection = document.getElementById("news");
 
         const sections = [
           welcomeSection,
@@ -29,6 +30,7 @@ function Navbar() {
           pricesSection,
           offersSection,
           bmiSection,
+          newsSection,
         ];
 
         let activeLinkId = null;
@@ -155,6 +157,21 @@ function Navbar() {
                 onClick={() => handleClick("bmi")}
               >
                 <p>BMI calculator</p>
+              </HashLink>
+            </li>
+
+            <li
+              className={`${styles.navItem} ${
+                activeLink === "news" ? styles.active : ""
+              }`}
+            >
+              <HashLink
+                smooth
+                to="#news"
+                className={styles.navLinks}
+                onClick={() => handleClick("news")}
+              >
+                <p>News</p>
               </HashLink>
             </li>
           </ul>
