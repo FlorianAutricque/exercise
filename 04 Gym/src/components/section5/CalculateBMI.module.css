@@ -91,20 +91,26 @@
 }
 
 @media (min-width: 760px) {
+  .imageContainer {
+    width: 50%;
+  }
+
   .imageContainer img {
     height: 26rem;
+    width: 100%;
   }
 
   .bmiCalcul {
     display: flex;
-    gap: 4rem;
-    justify-content: space-between;
-    margin-left: 10rem;
+    /* gap: 4rem; */
+    justify-content: space-around;
+    /* margin-left: 10rem; */
   }
 
   .mainContainerBMI {
     height: 26rem;
     padding: 0;
+    /* display: flex; */
   }
 
   .imageContainer {
@@ -113,7 +119,11 @@
 
   .title {
     margin-top: 0.5rem;
-    width: 32%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   .imperialSize {
@@ -125,7 +135,7 @@
     margin-bottom: 0rem;
   }
 
-  .x {
+  .title2 {
     display: flex;
   }
 
