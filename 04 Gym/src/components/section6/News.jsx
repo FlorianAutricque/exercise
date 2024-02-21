@@ -1,6 +1,6 @@
 import TitleNumber from "../TitleNumber.jsx";
-
 import styles from "./News.module.css";
+import NewsBox from "./NewsBox.jsx";
 
 function News() {
   return (
@@ -12,6 +12,8 @@ function News() {
       />
 
       <div className={styles.horizontalLine}></div>
+
+      <NewsBox />
     </div>
   );
 }

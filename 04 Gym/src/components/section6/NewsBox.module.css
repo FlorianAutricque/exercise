@@ -1,0 +1,34 @@
+.containerNews {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+
+  width: 14rem;
+  background-color: var(--color-lightDark);
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.containerNews img {
+}
+
+.infosNews {
+  padding: 2rem;
+}
+
+.likesAuthor {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.likesAuthor {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.iconLiked {
+  color: var(--color-orange-dark);
+}

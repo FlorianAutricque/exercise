@@ -1,6 +1,9 @@
 .mainContainerNews {
   background-color: var(--color-dark);
-  height: 20rem;
+  height: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .horizontalLine {
