@@ -22,7 +22,9 @@ function Footer() {
     <div>
       <div>
         <div className={styles.imageBanner}>
-          <TitleNumber title={"CALL US TODAY"} message={"123 456 7890"} />
+          <div className={styles.titleFooter}>
+            <TitleNumber title={"CALL US TODAY"} message={"123 456 7890"} />
+          </div>
           <p className={styles.textTopImage}>
             Give us a call during our staff hours or send us an email and we
             will get to you within 24 hours
