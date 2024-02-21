@@ -10,6 +10,7 @@
 .horizontalLine {
   border-top: 1px solid var(--color-orange-dark);
   width: 3rem;
+  margin: 0 auto;
 }
 
 .welcomeMessage {
