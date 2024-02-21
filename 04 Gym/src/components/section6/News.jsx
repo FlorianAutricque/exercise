@@ -18,8 +18,8 @@ function News() {
       <NewsBox
         image={news1}
         altImage={"Yoga and Pilate"}
-        title={" YOGA AND PILATE"}
-        textTitle={"Yoga and Pilates promote wellness"}
+        title={"YOGA AND PILATE"}
+        textTitle={"Yoga and Pilates Classes"}
         text={
           "Discover the joy of mindful movement through yoga and pilates classes."
         }
@@ -29,13 +29,11 @@ function News() {
 
       <NewsBox
         image={news1}
-        altImage={"Yoga and Pilate"}
-        title={" YOGA AND PILATE"}
-        textTitle={"Yoga and Pilates promote wellness"}
-        text={
-          "Discover the joy of mindful movement through yoga and pilates classes."
-        }
-        author={"Flo"}
+        altImage={"Training and equipments"}
+        title={"TRAINING AND EQUIPMENTS"}
+        textTitle={"New Equipments In Your Gym"}
+        text={"Discover and use our new gym equipments."}
+        author={"Coach Carter"}
         numberLikes={94}
       />
 
