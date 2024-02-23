@@ -6,6 +6,7 @@
   align-items: center;
 
   padding-bottom: 2rem;
+  padding-top: 2rem;
 }
 
 .horizontalLine {
@@ -13,4 +14,12 @@
   width: 3rem;
   margin-bottom: 1rem;
   margin: 0 auto;
+}
+
+@media (min-width: 760px) {
+  .newboxContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+  }
 }

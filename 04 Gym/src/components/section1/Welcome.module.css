@@ -1,5 +1,4 @@
 .mainContainer {
-  padding-top: 3rem;
   background-color: var(--color-lightDark);
 }
 
@@ -30,9 +29,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 3rem;
   }
   .container {
     width: 40%;
+  }
+
+  .title {
+    margin-top: -1rem;
   }
 
   .containerFlex {

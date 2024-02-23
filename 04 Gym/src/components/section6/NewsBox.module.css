@@ -9,6 +9,10 @@
   border-bottom: 1.5px solid var(--color-orange-dark);
 }
 
+.containerNews img {
+  height: 10rem;
+}
+
 .infosNews {
   padding: 2rem;
 }
@@ -21,6 +25,7 @@
 .likesAuthor {
   display: flex;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .icon {
@@ -36,10 +41,11 @@
   font-size: 10px;
 }
 
-p {
+.infosNews p {
   font-size: 12px;
 }
 
 .author {
   font-size: 10px;
+  margin-top: 3px;
 }

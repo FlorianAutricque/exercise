@@ -7,7 +7,7 @@ function Welcome() {
     <div id="welcome" className={styles.mainContainer}>
       <div className={styles.containerFlex}>
         <div className={styles.container}>
-          <div>
+          <div className={styles.title}>
             <TitleNumber
               title={"ABOUT GYMRAT"}
               message={"Welcome to your Gym"}
