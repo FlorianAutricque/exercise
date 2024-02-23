@@ -58,7 +58,7 @@
 }
 
 .bottomFooter {
-  background-color: var(--color-dark);
+  background-color: var(--color-lightDark);
   margin-top: -1rem;
   padding-top: 3rem;
 }
