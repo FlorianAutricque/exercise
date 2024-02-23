@@ -2,7 +2,9 @@ import TitleNumber from "../TitleNumber.jsx";
 import styles from "./News.module.css";
 import NewsBox from "./NewsBox.jsx";
 
-import news1 from "../../images/gym1.webp";
+import news1 from "../../images/yoga.webp";
+import news2 from "../../images/equipment.webp";
+import news3 from "../../images/pt.webp";
 
 function News() {
   return (
@@ -28,7 +30,7 @@ function News() {
       />
 
       <NewsBox
-        image={news1}
+        image={news2}
         altImage={"Training and equipments"}
         title={"TRAINING AND EQUIPMENTS"}
         textTitle={"New Equipments In Your Gym"}
@@ -38,12 +40,12 @@ function News() {
       />
 
       <NewsBox
-        image={news1}
-        altImage={"Yoga and Pilate"}
-        title={" YOGA AND PILATE"}
-        textTitle={"Yoga and Pilates promote wellness"}
+        image={news3}
+        altImage={"New coach"}
+        title={"NEW COACH"}
+        textTitle={"Meet our new gym coach; Tony"}
         text={
-          "Discover the joy of mindful movement through yoga and pilates classes."
+          "Tony, our new coach, specializes in weight loss and muscle gain."
         }
         author={"Flo"}
         numberLikes={78}

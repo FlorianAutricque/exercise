@@ -6,9 +6,7 @@
   width: 14rem;
   background-color: var(--color-lightDark);
   box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.5);
-}
-
-.containerNews img {
+  border-bottom: 1.5px solid var(--color-orange-dark);
 }
 
 .infosNews {
@@ -31,4 +29,17 @@
 
 .iconLiked {
   color: var(--color-orange-dark);
+}
+
+.title {
+  color: var(--color-orange-light);
+  font-size: 10px;
+}
+
+p {
+  font-size: 12px;
+}
+
+.author {
+  font-size: 10px;
 }

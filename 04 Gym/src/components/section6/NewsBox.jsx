@@ -23,7 +23,7 @@ function NewsBox({
     <div className={styles.containerNews}>
       <img src={image} alt={altImage} />
       <div className={styles.infosNews}>
-        <div>{title}</div>
+        <div className={styles.title}>{title}</div>
         <h3>{textTitle}</h3>
         <p>{text}</p>
         <div className={styles.likesAuthor}>
@@ -31,12 +31,11 @@ function NewsBox({
             <AiFillLike
               onClick={handleLike}
               className={`${liked ? styles.iconLiked : styles.icon}`}
-              // disabled={liked}
             />
             &nbsp;
             {likes}
           </span>
-          |<div>{author}</div>
+          |<div className={styles.author}>{author}</div>
         </div>
       </div>
     </div>
