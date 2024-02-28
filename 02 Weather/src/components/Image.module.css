@@ -2,7 +2,7 @@
   width: 90%;
   margin: auto;
   max-width: 100%;
-  max-height: none;
+  height: 20rem;
   display: block;
   object-fit: cover;
   z-index: 1;
