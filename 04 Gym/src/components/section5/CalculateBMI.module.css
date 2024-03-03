@@ -39,12 +39,13 @@
     var(--color-orange-dark),
     var(--color-orange-light)
   );
-
+  color: var(--color-text);
   border: none;
 
   border-radius: 5px;
   padding: 0.4rem;
   cursor: pointer;
+  transition: 0.2s ease-in-out;
 }
 
 .btn:hover {
@@ -58,12 +59,13 @@
     var(--color-orange-dark),
     var(--color-orange-light)
   );
-
+  color: var(--color-text);
   border: none;
 
   border-radius: 5px;
   padding: 0.4rem;
   cursor: pointer;
+  transition: 0.2s ease-in-out;
 
   margin-top: 1rem;
 }
