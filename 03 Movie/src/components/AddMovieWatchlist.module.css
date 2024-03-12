@@ -19,11 +19,13 @@
   border-radius: 15px;
   cursor: pointer;
   gap: 1rem;
+
+  transition: ease-in-out 0.2s;
 }
 
 .btn:hover {
   transform: scale(1.07);
-  transition: 0.2s;
+  transition: ease-in-out 0.2s;
 }
 
 .btnIcon {

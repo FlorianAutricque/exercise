@@ -69,11 +69,13 @@
   border-radius: 15px;
   cursor: pointer;
   font-size: 13.3333px;
+
+  transition: ease-in-out 0.2s;
 }
 
 .linkToTrailer:hover {
   transform: scale(1.07);
-  transition: 0.2s;
+  transition: ease-in-out 0.2s;
 }
 
 @media (max-width: 800px) {
