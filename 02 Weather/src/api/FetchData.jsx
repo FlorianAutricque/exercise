@@ -49,7 +49,7 @@ function FetchData() {
     try {
       const query = location;
 
-      const apiUrl = `https://api.unsplash.com/search/photos?query=${query}`;
+      const apiUrl = `https://api.unsplash.com/search/photos?query=${query}&orientation=landscape`;
 
       const response = await fetch(apiUrl, {
         headers: {
