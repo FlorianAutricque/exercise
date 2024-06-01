@@ -5,12 +5,24 @@ body {
   color: rgb(227, 227, 227);
   background-color: #151419;
   font-family: "roboto";
+  font-size: 16px !important;
 }
 
 h2 {
   color: rgb(227, 227, 227);
+  margin-left: 2rem;
 }
 
 * {
   font-family: "roboto";
+}
+
+html {
+  overflow-x: hidden;
+}
+
+@media (max-width: 760px) {
+  h2 {
+    margin-left: 1rem;
+  }
 }

@@ -27,23 +27,6 @@
   justify-content: center;
 }
 
-.btnUp {
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.titleBtnUpContainer {
-  display: flex;
-
-  align-items: center;
-  z-index: inherit;
-}
-
 @media screen and (max-width: 500px) {
   .moviesInsideCarousel {
     display: flex;
