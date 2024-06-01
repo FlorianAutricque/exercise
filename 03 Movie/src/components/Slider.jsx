@@ -9,8 +9,6 @@ import React from "react";
 
 import { Navigation } from "swiper/modules";
 
-import styles from "./Slider.module.css";
-
 function Slider({ fetch, children }) {
   useEffect(() => {
     new Swiper(".swiper-container", {
