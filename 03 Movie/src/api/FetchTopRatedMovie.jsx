@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 
 import { FaStar } from "react-icons/fa";
 
-import styles from "./MoviesContainerStyle.module.css";
+import styles from "./StylesAPI.module.css";
 
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import MovieCard from "../components/MovieCard";
 import Spinner from "../components/Spinner";
+
+import Slider from "../components/Slider";
 
 function FetchTopRatedMovie() {
   const [topRatedMovie, setTopRatedMovie] = useState([]);
@@ -16,24 +17,6 @@ function FetchTopRatedMovie() {
   const [error, setError] = useState("");
 
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
-
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5,
-      slidesToSlide: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 710 },
-      items: 3,
-      slidesToSlide: 3,
-    },
-    mobile: {
-      breakpoint: { max: 710, min: 0 },
-      items: 2,
-      slidesToSlide: 2,
-    },
-  };
 
   useEffect(() => {
     async function FetchTopRatedMovie() {
@@ -69,7 +52,7 @@ function FetchTopRatedMovie() {
   }, [accessKey]);
 
   return (
-    <div>
+    <div className={styles.containerAPI}>
       {isLoading ? (
         <Spinner />
       ) : error ? (
@@ -83,22 +66,15 @@ function FetchTopRatedMovie() {
             &nbsp;Top Rated Movies
           </h2>
 
-          <Carousel
-            responsive={responsive}
-            autoPlay={true}
-            autoPlaySpeed={5000}
-            infinite={true}
-            removeArrowOnDeviceType={["tablet", "mobile"]}
-            // centerMode={true}
-          >
+          <Slider fetch={topRatedMovie}>
             {topRatedMovie.map(movie => (
               <React.Fragment key={movie.id}>
-                <div className={styles.moviesInsideCarousel}>
+                <div className={`swiper-slide ${styles.hoverEffect}`}>
                   <MovieCard movie={movie} />
                 </div>
               </React.Fragment>
             ))}
-          </Carousel>
+          </Slider>
         </>
       )}
     </div>

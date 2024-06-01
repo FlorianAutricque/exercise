@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
 
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import styles from "./MoviesContainerStyle.module.css";
+import styles from "./StylesAPI.module.css";
 import GenreTitle from "../components/GenreTitle";
 
 import { FaRegArrowAltCircleUp } from "react-icons/fa";
 import Spinner from "../components/Spinner";
+import Slider from "../components/Slider";
 
 function FetchMoviesGenre({ defaultGenre }) {
   const [genreMovies, setGenreMovies] = useState([]);
@@ -16,24 +16,6 @@ function FetchMoviesGenre({ defaultGenre }) {
   const [error, setError] = useState("");
 
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
-
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5,
-      slidesToSlide: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 710 },
-      items: 3,
-      slidesToSlide: 3,
-    },
-    mobile: {
-      breakpoint: { max: 710, min: 0 },
-      items: 2,
-      slidesToSlide: 2,
-    },
-  };
 
   useEffect(() => {
     async function fetchMoviesGenre() {
@@ -109,7 +91,7 @@ function FetchMoviesGenre({ defaultGenre }) {
   }
 
   return (
-    <div>
+    <div className={styles.containerAPI}>
       {isLoading ? (
         <Spinner />
       ) : error ? (
@@ -128,14 +110,7 @@ function FetchMoviesGenre({ defaultGenre }) {
             </span>
 
             <div>
-              <Carousel
-                responsive={responsive}
-                autoPlay={true}
-                autoPlaySpeed={5000}
-                infinite={true}
-                removeArrowOnDeviceType={["tablet", "mobile"]}
-                // centerMode={true}
-              >
+              <Slider fetch={genreMovies}>
                 {genreMovies
                   .filter(
                     movie =>
@@ -143,12 +118,12 @@ function FetchMoviesGenre({ defaultGenre }) {
                   )
                   .map(movie => (
                     <React.Fragment key={movie.id}>
-                      <div className={styles.moviesInsideCarousel}>
+                      <div className={`swiper-slide ${styles.hoverEffect}`}>
                         <MovieCard movie={movie} />
                       </div>
                     </React.Fragment>
                   ))}
-              </Carousel>
+              </Slider>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@ function truncateString(str, maxLength) {
 
 function MovieCard({ movie, watchlist, style }) {
   const truncatedTitle = movie
-    ? truncateString(movie.title || movie.name, 21)
+    ? truncateString(movie.title || movie.name, 15)
     : "";
 
   const date = movie.release_date || movie.first_air_date;

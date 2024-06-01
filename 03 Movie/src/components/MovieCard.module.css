@@ -34,6 +34,14 @@
   width: 11.8rem;
 }
 
+.truncatedTitle {
+  width: 9rem;
+}
+
+.dateRatingAdd {
+  padding: 0 0.3rem 0 0.3rem;
+}
+
 @media screen and (max-width: 475px) {
   .movieCardContainer {
     width: 5rem;

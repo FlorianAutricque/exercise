@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 
 import { IoMdTrendingUp } from "react-icons/io";
 
-import styles from "./MoviesContainerStyle.module.css";
-
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import SerieCard from "../components/SerieCard";
 import Spinner from "../components/Spinner";
+import Slider from "../components/Slider";
+
+import styles from "./StylesAPI.module.css";
 
 function FetchTrendingSeries() {
   const [trendingSeries, setTrendingSeries] = useState([]);
@@ -15,24 +15,6 @@ function FetchTrendingSeries() {
   const [error, setError] = useState("");
 
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
-
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5,
-      slidesToSlide: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 710 },
-      items: 3,
-      slidesToSlide: 3,
-    },
-    mobile: {
-      breakpoint: { max: 710, min: 0 },
-      items: 2,
-      slidesToSlide: 2,
-    },
-  };
 
   useEffect(() => {
     async function fetchTrendingSeries() {
@@ -68,7 +50,7 @@ function FetchTrendingSeries() {
   }, [accessKey]);
 
   return (
-    <div>
+    <div className={styles.containerAPI}>
       {isLoading ? (
         <Spinner />
       ) : error ? (
@@ -77,27 +59,20 @@ function FetchTrendingSeries() {
         <p>No trending movies found</p>
       ) : (
         <>
-          <h2 className={styles.trendingMovies}>
+          <h2>
             <IoMdTrendingUp />
             &nbsp;Trending Series
           </h2>
 
-          <Carousel
-            responsive={responsive}
-            autoPlay={true}
-            autoPlaySpeed={5000}
-            infinite={true}
-            removeArrowOnDeviceType={["tablet", "mobile"]}
-            // centerMode={true}
-          >
+          <Slider fetch={trendingSeries}>
             {trendingSeries.map(serie => (
               <React.Fragment key={serie.id}>
-                <div className={styles.moviesInsideCarousel}>
+                <div className={`swiper-slide ${styles.hoverEffect}`}>
                   <SerieCard serie={serie} />
                 </div>
               </React.Fragment>
             ))}
-          </Carousel>
+          </Slider>
         </>
       )}
     </div>

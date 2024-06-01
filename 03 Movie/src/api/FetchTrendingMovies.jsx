@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from "react";
 import MovieCard from "../components/MovieCard";
+import Spinner from "../components/Spinner";
+
+import styles from "./StylesAPI.module.css";
 
 import { IoMdTrendingUp } from "react-icons/io";
-
-import styles from "./MoviesContainerStyle.module.css";
-
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
-import Spinner from "../components/Spinner";
+import Slider from "../components/Slider";
 
 function FetchTrendingMovies() {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -15,24 +13,6 @@ function FetchTrendingMovies() {
   const [error, setError] = useState("");
 
   const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
-
-  const responsive = {
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5,
-      slidesToSlide: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 710 },
-      items: 3,
-      slidesToSlide: 3,
-    },
-    mobile: {
-      breakpoint: { max: 710, min: 0 },
-      items: 2,
-      slidesToSlide: 2,
-    },
-  };
 
   useEffect(() => {
     async function fetchTrendingMovies() {
@@ -58,7 +38,7 @@ function FetchTrendingMovies() {
 
         setTrendingMovies(data.results);
       } catch (error) {
-        setError(error);
+        setError(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -68,36 +48,30 @@ function FetchTrendingMovies() {
   }, [accessKey]);
 
   return (
-    <div>
+    <div className={styles.containerAPI}>
       {isLoading ? (
         <Spinner />
       ) : error ? (
-        <p>Error: {error.message}</p>
+        <p>Error: {error}</p>
       ) : trendingMovies.length === 0 ? (
         <p>No trending movies found</p>
       ) : (
         <>
-          <h2 className={styles.trendingMovies}>
+          <h2>
             <IoMdTrendingUp />
             &nbsp;Trending Movies
           </h2>
-
-          <Carousel
-            responsive={responsive}
-            autoPlay={true}
-            autoPlaySpeed={5000}
-            infinite={true}
-            removeArrowOnDeviceType={["tablet", "mobile"]}
-            // centerMode={true}
-          >
-            {trendingMovies.map(movie => (
-              <React.Fragment key={movie.id}>
-                <div className={styles.moviesInsideCarousel}>
-                  <MovieCard movie={movie} />
-                </div>
-              </React.Fragment>
+          <Slider fetch={trendingMovies}>
+            {trendingMovies.map((movie, index) => (
+              <>
+                <React.Fragment key={movie.id || index}>
+                  <div className={`swiper-slide ${styles.hoverEffect}`}>
+                    <MovieCard movie={movie} />
+                  </div>
+                </React.Fragment>
+              </>
             ))}
-          </Carousel>
+          </Slider>
         </>
       )}
     </div>
