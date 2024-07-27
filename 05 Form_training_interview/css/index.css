@@ -95,6 +95,24 @@ textarea {
   transition: ease-in-out 0.3s;
 }
 
+/* ERROR MESSAGE */
+.error__message {
+  color: red;
+  display: none;
+}
+.error__message--email {
+  color: red;
+  display: none;
+}
+.error__message--textarea {
+  color: red;
+  display: none;
+}
+.error__message--phone {
+  color: red;
+  display: none;
+}
+
 /* SUCCESS FORM */
 
 .success__container {

@@ -14,7 +14,6 @@
       <form action="" class="form">
         <div class="input__halfscreen__container">
           <input
-            id="input"
             type="text"
             placeholder="First Name"
             class="input input__halfscreen"
@@ -29,12 +28,14 @@
         </div>
         <div class="input__halfscreen__container">
           <input
+            id="email"
             type="email"
             placeholder="Email"
             class="input input__halfscreen"
             required
           />
           <input
+            id="phone"
             type="text"
             placeholder="Phone"
             class="input input__halfscreen"
@@ -48,14 +49,27 @@
           required
         />
         <textarea
-          name=""
-          id=""
+          minlength="10"
           placeholder="Type your message here"
           class="input input__fullscreen input__fullscreen--background-two"
           required
         ></textarea>
         <button id="submitBtn" class="btn">Submit</button>
       </form>
+
+      <!-- ERROR MESSAGE -->
+      <p id="errorMessage" class="error__message">
+        All the fields are required! Please fulfill all the inputs
+      </p>
+      <p id="errorMessageEmail" class="error__message--email">
+        Enter a valid email format
+      </p>
+      <p id="errorMessageTextarea" class="error__message--textarea">
+        Text must be longer than 10 characters
+      </p>
+      <p id="errorMessagePhone" class="error__message--phone">
+        Phone can only be numbers
+      </p>
     </div>
     <div id="successContainer" class="success__container">
       <h1>Form has been submitted successfully</h1>
