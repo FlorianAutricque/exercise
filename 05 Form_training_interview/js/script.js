@@ -1,15 +1,26 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("btn");
-  const text = document.getElementById("test");
+  const submitBtn = document.getElementById("submitBtn");
+  const returnBtn = document.getElementById("returnBtn");
+  const mainContainer = document.getElementById("mainContainer");
+  const successContainer = document.getElementById("successContainer");
+  const input = document.getElementById("input");
 
-  const handleClick = () => {
-    // text.style.color = "blue";
-    text.classList.toggle("test");
-  };
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (input.value == "") {
+      alert("error");
+      return false;
+    }
 
-  const x = () => {
-    btn.addEventListener("click", handleClick);
-  };
+    mainContainer.style.display = "none";
+    successContainer.style.display = "block";
+  }
+  submitBtn.addEventListener("click", handleSubmit);
 
-  x();
+  function handleReturn(e) {
+    e.preventDefault();
+    mainContainer.style.display = "block";
+    successContainer.style.display = "none";
+  }
+  returnBtn.addEventListener("click", handleReturn);
 });

@@ -8,8 +8,59 @@
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
-    <h1 class="test" id="test">hello world</h1>
-    <button id="btn">click</button>
+    <div id="mainContainer" class="main__container">
+      <h1 class="" id="test">Get In Touch</h1>
+
+      <form action="" class="form">
+        <div class="input__halfscreen__container">
+          <input
+            id="input"
+            type="text"
+            placeholder="First Name"
+            class="input input__halfscreen"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Last Name"
+            class="input input__halfscreen"
+            required
+          />
+        </div>
+        <div class="input__halfscreen__container">
+          <input
+            type="email"
+            placeholder="Email"
+            class="input input__halfscreen"
+            required
+          />
+          <input
+            type="text"
+            placeholder="Phone"
+            class="input input__halfscreen"
+            required
+          />
+        </div>
+        <input
+          type="text"
+          placeholder="Address"
+          class="input input__fullscreen input__fullscreen--background-one"
+          required
+        />
+        <textarea
+          name=""
+          id=""
+          placeholder="Type your message here"
+          class="input input__fullscreen input__fullscreen--background-two"
+          required
+        ></textarea>
+        <button id="submitBtn" class="btn">Submit</button>
+      </form>
+    </div>
+    <div id="successContainer" class="success__container">
+      <h1>Form has been submitted successfully</h1>
+      <button id="returnBtn" class="btn">Return</button>
+    </div>
 
     <script src="js/script.js"></script>
   </body>
