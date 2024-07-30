@@ -2,11 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnShowMore = document.getElementById("btnShowMore");
   const text = document.getElementById("text");
 
-  const btnSubmit = document.getElementById("btnSubmit");
   const inputField = document.getElementById("inputField");
-  const newEl = document.getElementById("newEl");
+  const btnSubmitInput = document.getElementById("btnSubmitInput");
+  const newTask = document.getElementById("newTask");
 
-  // Show more text
+  // SHOW MORE text
   const originalText = text.textContent;
   const truncatedText = truncate(text.textContent, 40);
 
@@ -23,42 +23,39 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleShow() {
     if (text.textContent === truncatedText) {
       text.textContent = originalText;
-      btn.innerHTML = "Show less";
+      btnShowMore.innerHTML = "Show less";
     } else {
       text.textContent = truncatedText;
-      btn.innerHTML = "Show more";
+      btnShowMore.innerHTML = "Show more";
     }
   }
 
   btnShowMore.addEventListener("click", handleShow);
-  // End show more text
 
-  // Todo list
-
-  function handleTask() {
+  // TODO LIST
+  function handleNewTask() {
     const task = inputField.value;
-    //i used trim to remove whitespace in the input
+
+    //trim to delete whitespace
     if (task.trim() !== "") {
       //NEW EL
       const listItem = document.createElement("li");
       listItem.textContent = task;
+      //DELETE BTN
+      const deleteTask = document.createElement("button");
+      deleteTask.innerHTML = "X";
 
-      //BUTTON DELETE
-      const btnDelete = document.createElement("button");
-      btnDelete.innerHTML = "X";
-      btnDelete.addEventListener("click", function () {
-        newEl.removeChild(listItem);
+      deleteTask.addEventListener("click", function () {
+        newTask.removeChild(listItem);
       });
 
-      //I used appenChild to add an element dynamically to the webpage
-      listItem.appendChild(btnDelete);
+      //appendChild to add dynamically an el to the web page
+      listItem.appendChild(deleteTask);
+      newTask.appendChild(listItem);
 
-      newEl.appendChild(listItem);
-
-      //field empty after every input
       inputField.value = "";
     }
   }
 
-  btnSubmit.addEventListener("click", handleTask);
+  btnSubmitInput.addEventListener("click", handleNewTask);
 });
