@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const btnShowMore = document.getElementById("btnShowMore");
+  const btn = document.getElementById("btnShowMore");
   const text = document.getElementById("text");
 
   const originalText = text.textContent;
-  const truncatedText = truncate(originalText, 40);
+  const truncatedText = truncate(text.textContent, 40);
 
   function truncate(str, maxLength) {
     if (str.length >= maxLength) {
@@ -15,15 +15,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   text.textContent = truncatedText;
 
-  function handleShowMoreText() {
+  function handleShow() {
     if (text.textContent === truncatedText) {
       text.textContent = originalText;
-      btnShowMore.textContent = "Show less";
+      btn.innerHTML = "Show less";
     } else {
       text.textContent = truncatedText;
-      btnShowMore.textContent = "Show more";
+      btn.innerHTML = "Show more";
     }
   }
 
-  btnShowMore.addEventListener("click", handleShowMoreText);
+  btn.addEventListener("click", handleShow);
 });
