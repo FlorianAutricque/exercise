@@ -1,0 +1,52 @@
+.task {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+
+  gap: 1rem;
+}
+
+.task li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 3rem; */
+  border: 1px solid red;
+}
+
+.container__checkbox-delete {
+  display: flex;
+  gap: 1rem;
+}
+
+/* CONTAINER PRIORITY */
+
+.container__priority {
+}
+
+/* BTN PRIORITY LEVEL */
+
+.btn__priorityLevel {
+  border: none;
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.btn__priorityLevel--red {
+  background: red;
+}
+
+.btn__priorityLevel--orange {
+  background: orange;
+}
+
+.btn__priorityLevel--yellow {
+  background: yellow;
+}
+
+.btn__priorityLevel--green {
+  background: green;
+}
