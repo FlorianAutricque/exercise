@@ -10,8 +10,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* gap: 3rem; */
-  border: 1px solid red;
+
+  border: 1px solid black;
 }
 
 .container__checkbox-delete {
@@ -36,17 +36,49 @@
 }
 
 .btn__priorityLevel--red {
-  background: red;
+  background: red !important;
+}
+
+.btn__priorityLevel--red--clicked {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 0, 0, 0.789),
+    rgb(255, 99, 71)
+  );
 }
 
 .btn__priorityLevel--orange {
-  background: orange;
+  background: orange !important ;
+}
+
+.btn__priorityLevel--orange--clicked {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 69, 0, 0.789),
+    rgb(255, 165, 0)
+  );
 }
 
 .btn__priorityLevel--yellow {
-  background: yellow;
+  background: yellow !important;
+}
+
+.btn__priorityLevel--yellow--clicked {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 0, 0.789),
+    rgb(255, 255, 224)
+  );
 }
 
 .btn__priorityLevel--green {
-  background: green;
+  background: green !important;
+}
+
+.btn__priorityLevel--green--clicked {
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 255, 0, 0.789),
+    rgb(0, 255, 127)
+  );
 }

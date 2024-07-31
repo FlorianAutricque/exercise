@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
     //NEW EL
     const listItem = document.createElement("li");
 
-    const containerDiv = document.createElement("div");
-    containerDiv.classList.add("container__checkbox-delete");
+    const containerDivCheckboxDelete = document.createElement("div");
+    containerDivCheckboxDelete.classList.add("container__checkbox-delete");
 
     const arrowPriority = document.createElement("button");
     arrowPriority.innerHTML = "v";
@@ -67,13 +67,29 @@ document.addEventListener("DOMContentLoaded", () => {
     containerPriority.style.display = "none";
 
     const btnRed = document.createElement("button");
-    btnRed.classList.add("btn__priorityLevel--red", "btn__priorityLevel");
+    btnRed.classList.add(
+      "btn__priorityLevel--red--clicked",
+      "btn__priorityLevel--red",
+      "btn__priorityLevel"
+    );
     const btnOrange = document.createElement("button");
-    btnOrange.classList.add("btn__priorityLevel--orange", "btn__priorityLevel");
+    btnOrange.classList.add(
+      "btn__priorityLevel--orange--clicked",
+      "btn__priorityLevel--orange",
+      "btn__priorityLevel"
+    );
     const btnYellow = document.createElement("button");
-    btnYellow.classList.add("btn__priorityLevel--yellow", "btn__priorityLevel");
+    btnYellow.classList.add(
+      "btn__priorityLevel--yellow--clicked",
+      "btn__priorityLevel--yellow",
+      "btn__priorityLevel"
+    );
     const btnGreen = document.createElement("button");
-    btnGreen.classList.add("btn__priorityLevel--green", "btn__priorityLevel");
+    btnGreen.classList.add(
+      "btn__priorityLevel--green--clicked",
+      "btn__priorityLevel--green",
+      "btn__priorityLevel"
+    );
 
     containerPriority.appendChild(btnRed);
     containerPriority.appendChild(btnOrange);
@@ -113,16 +129,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     arrowPriority.addEventListener("click", handleShowPriority);
 
+    //ADD PRIORITY
+
+    function updatePriority(button) {
+      const priorityClass = button.classList[0];
+      listItem.className = "";
+      listItem.classList.add(priorityClass);
+      handleShowPriority();
+      saveToLocalStorage();
+    }
+
+    // Event listeners for priority buttons
+    btnRed.addEventListener("click", () => updatePriority(btnRed));
+    btnOrange.addEventListener("click", () => updatePriority(btnOrange));
+    btnYellow.addEventListener("click", () => updatePriority(btnYellow));
+    btnGreen.addEventListener("click", () => updatePriority(btnGreen));
+
     //APPEND
     //appendChild to add dynamically an el to the web page
     listItem.textContent = task.text;
 
-    containerDiv.appendChild(markDone);
-    containerDiv.appendChild(removeTask);
-    containerDiv.appendChild(containerArrowPriority);
+    containerDivCheckboxDelete.appendChild(markDone);
+    containerDivCheckboxDelete.appendChild(removeTask);
+    containerDivCheckboxDelete.appendChild(containerArrowPriority);
 
     //Append the container div
-    listItem.appendChild(containerDiv);
+    listItem.appendChild(containerDivCheckboxDelete);
 
     return listItem;
   }
