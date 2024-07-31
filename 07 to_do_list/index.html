@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1>To Do List</h1>
-    <div>
+    <div class="container__song">
       <p id="text">
         Today I don't feel like doing anything <br />
         I just wanna lay in my bed<br />
@@ -24,13 +24,13 @@
         Cause in my castle I'm the freaking man<br /><br />
         But I got To Do stuff, so here is my TO DO LIST
       </p>
-
-      <button id="btnShowMore">Show more</button>
+      <button class="btn btn__showMore" id="btnShowMore">Show more</button>
     </div>
 
-    <input id="inputField" type="text" placeholder="What do you want to do ?" />
-    <button id="btnSubmitInput">Submit</button>
-
+    <div class="container__input__submit">
+      <input id="inputField" type="text" placeholder="What do I have to do ?" />
+      <button class="btn btn__submitInput" id="btnSubmitInput">Submit</button>
+    </div>
     <p class="task" id="newTask"></p>
 
     <script src="js/script.js"></script>

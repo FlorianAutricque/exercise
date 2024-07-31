@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // TODO LIST
 
+  //LOCALSTORAGE
   function saveToLocalStorage() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
@@ -42,8 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
   function getFromLocalStorage() {
     const storedTasks = localStorage.getItem("tasks");
     tasks = storedTasks ? JSON.parse(storedTasks) : [];
-    tasks.forEach(taskText => {
-      const listItem = createElement(taskText);
+    tasks.forEach(task => {
+      const listItem = createElement(task);
       newTask.appendChild(listItem);
     });
   }
@@ -51,6 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
   function createElement(task) {
     //NEW EL
     const listItem = document.createElement("li");
+    if (task.priority) {
+      listItem.classList.add(task.priority);
+    }
 
     const containerDivCheckboxDelete = document.createElement("div");
     containerDivCheckboxDelete.classList.add("container__checkbox-delete");
@@ -101,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //CHECKBOX
     const markDone = document.createElement("input");
+    markDone.classList.add("checkbox__markDone");
     markDone.type = "checkbox";
     markDone.checked = task.completed;
     markDone.addEventListener("change", function () {
@@ -110,7 +115,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //DELETE TASK
     const removeTask = document.createElement("button");
-    removeTask.innerHTML = "X";
+    removeTask.innerHTML = "x";
     removeTask.addEventListener("click", function () {
       newTask.removeChild(listItem);
       tasks = tasks.filter(t => t.text != task.text);
@@ -133,8 +138,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updatePriority(button) {
       const priorityClass = button.classList[0];
+      console.log("Updating priority to:", priorityClass);
       listItem.className = "";
       listItem.classList.add(priorityClass);
+      task.priority = priorityClass;
+
       handleShowPriority();
       saveToLocalStorage();
     }
@@ -162,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleTask() {
     const taskText = inputField.value.trim();
     if (taskText !== "") {
-      const task = { text: taskText, completed: false };
+      const task = { text: taskText, completed: false, priority: "" };
       const listItem = createElement(task);
       tasks.push(task);
       newTask.appendChild(listItem);
