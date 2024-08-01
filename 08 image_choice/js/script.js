@@ -1,14 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const category = "nature";
-  const url = `https://api.api-ninjas.com/v1/randomimage?category=${category}`;
-  const API_KEY = "h393mcOzOkKkWXqLeULfyA==H0CmchWfJ9xCfOHG";
-
   const btnRefresh = document.getElementById("btnRefresh");
   const btnLike = document.getElementById("btnLike");
   const btnDislike = document.getElementById("btnDislike");
   const total = document.getElementById("total");
   const totalLike = document.getElementById("totalLike");
   const totalDislike = document.getElementById("totalDislike");
+
+  const categoryOptions = document.getElementsByName("category")[0];
+
+  const category = categoryOptions.value;
+  const url = `https://api.api-ninjas.com/v1/randomimage?category=${category}`;
+  const API_KEY = "h393mcOzOkKkWXqLeULfyA==H0CmchWfJ9xCfOHG";
+
+  console.log(category);
 
   //LOCALSTORAGE
   let sum = 0;
@@ -30,6 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
     totalLike.textContent = "Total likes: " + likes;
     totalDislike.textContent = "Total dislikes: " + dislikes;
   }
+
+  //SELECT CATEGORY
+  categoryOptions.addEventListener("change", () => {
+    handleClickReloadPage();
+  });
 
   //BUTTON RELOAD TO NEW IMAGE
   function handleClickReloadPage() {
@@ -66,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function handleCalculLikeDislike(x) {
     sum += x;
     total.textContent = "Total: " + sum;
-    // handleClickReloadPage();
+    handleClickReloadPage();
     saveToLocalStorage();
   }
 
@@ -78,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnLike.addEventListener("click", () => {
     likes++;
     totalLike.textContent = "Total likes: " + likes;
-    // handleClickReloadPage();
+    handleClickReloadPage();
     saveToLocalStorage();
   });
 
@@ -87,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnDislike.addEventListener("click", () => {
     dislikes++;
     totalDislike.textContent = "Total dislikes: " + dislikes;
-    // handleClickReloadPage();
+    handleClickReloadPage();
   });
 
   getFromLocalStorage();
