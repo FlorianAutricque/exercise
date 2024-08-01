@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const url = `https://api.api-ninjas.com/v1/randomimage?category=${category}`;
   const API_KEY = "h393mcOzOkKkWXqLeULfyA==H0CmchWfJ9xCfOHG";
 
-  console.log(category);
-
   //LOCALSTORAGE
   let sum = 0;
   let likes = 0;
