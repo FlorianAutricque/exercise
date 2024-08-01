@@ -10,6 +10,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalLike = document.getElementById("totalLike");
   const totalDislike = document.getElementById("totalDislike");
 
+  //LOCALSTORAGE
+  let sum = 0;
+  let likes = 0;
+  let dislikes = 0;
+
+  function saveToLocalStorage() {
+    localStorage.setItem("sum", sum);
+    localStorage.setItem("likes", likes);
+    localStorage.setItem("dislikes", dislikes);
+  }
+
+  function getFromLocalStorage() {
+    sum = parseInt(localStorage.getItem("sum")) || 0;
+    likes = parseInt(localStorage.getItem("likes")) || 0;
+    dislikes = parseInt(localStorage.getItem("dislikes")) || 0;
+
+    total.textContent = "Total: " + sum;
+    totalLike.textContent = "Total likes: " + likes;
+    totalDislike.textContent = "Total dislikes: " + dislikes;
+  }
+
   //BUTTON RELOAD TO NEW IMAGE
   function handleClickReloadPage() {
     window.location.reload();
@@ -41,26 +62,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //LIKE DISLIKE
   //TOTAL
-  let sum = 0;
 
   function handleCalculLikeDislike(x) {
     sum += x;
     total.textContent = "Total: " + sum;
+    // handleClickReloadPage();
+    saveToLocalStorage();
   }
+
   btnLike.addEventListener("click", () => handleCalculLikeDislike(1));
   btnDislike.addEventListener("click", () => handleCalculLikeDislike(-1));
 
   //LIKE
-  let like = 0;
+
   btnLike.addEventListener("click", () => {
-    like++;
-    totalLike.textContent = "Total like: " + like;
+    likes++;
+    totalLike.textContent = "Total likes: " + likes;
+    // handleClickReloadPage();
+    saveToLocalStorage();
   });
 
   //DISLIKE
-  let dislike = 0;
+
   btnDislike.addEventListener("click", () => {
-    dislike--;
-    totalDislike.textContent = "Total dislike: " + dislike;
+    dislikes++;
+    totalDislike.textContent = "Total dislikes: " + dislikes;
+    // handleClickReloadPage();
   });
+
+  getFromLocalStorage();
 });
