@@ -79,7 +79,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (choice === "like") {
       likes++;
       totalLike.textContent = "Total likes: " + likes;
-      modalLike();
+      if (likes === 6) {
+        modalLike();
+        return;
+      }
     } else if ((choice = "dislike")) {
       dislikes++;
       totalDislike.textContent = "Total dislikes: " + dislikes;
@@ -95,9 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //LIKE GIF
   function modalLike() {
-    if (likes === 4) {
-      containerImageLike.style.display = "block";
-    }
+    containerImageLike.style.display = "block";
   }
 
   //CLOSE MODAL LIKE
