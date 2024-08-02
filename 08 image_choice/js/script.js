@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const blob = await res.blob();
       const imgURL = URL.createObjectURL(blob);
       const imgEl = document.createElement("img");
+      imgEl.classList.add("image__blob");
       imgEl.src = imgURL;
 
       document.body.appendChild(imgEl);
