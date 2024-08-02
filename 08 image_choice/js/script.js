@@ -50,6 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // FETCH RANDOM IMAGE
   async function fetchData() {
     try {
+      const defaultImgEl = document.createElement("img");
+      defaultImgEl.classList.add("image__blob");
+      defaultImgEl.src = "img/waiting.gif";
+      document.body.appendChild(defaultImgEl);
+
       const res = await fetch(url, {
         method: "GET",
         headers: { "X-Api-Key": API_KEY, Accept: "image/jpg" },
@@ -60,9 +65,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       const blob = await res.blob();
       const imgURL = URL.createObjectURL(blob);
-      const imgEl = document.createElement("img");
-      imgEl.classList.add("image__blob");
-      imgEl.src = imgURL;
+
+      defaultImgEl.src = imgURL;
 
       document.body.appendChild(imgEl);
     } catch (error) {
