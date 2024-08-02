@@ -6,6 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const totalLike = document.getElementById("totalLike");
   const totalDislike = document.getElementById("totalDislike");
 
+  const containerImageLike = document.getElementById("containerImageLike");
+  const btnCloseModalLike = document.getElementById("btnCloseModalLike");
+
   const categoryOptions = document.getElementsByName("category")[0];
 
   const category = categoryOptions.value;
@@ -38,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
     handleClickReloadPage();
   });
 
-  //BUTTON RELOAD TO NEW IMAGE
+  //BUTTON RELOAD FOR NEW IMAGE
   function handleClickReloadPage() {
     window.location.reload();
   }
@@ -70,32 +73,39 @@ document.addEventListener("DOMContentLoaded", () => {
   //LIKE DISLIKE
   //TOTAL
 
-  function handleCalculLikeDislike(x) {
+  function handleCalculLikeDislike(x, choice) {
     sum += x;
     total.textContent = "Total: " + sum;
+    if (choice === "like") {
+      likes++;
+      totalLike.textContent = "Total likes: " + likes;
+      modalLike();
+    } else if ((choice = "dislike")) {
+      dislikes++;
+      totalDislike.textContent = "Total dislikes: " + dislikes;
+    }
     handleClickReloadPage();
     saveToLocalStorage();
   }
 
-  btnLike.addEventListener("click", () => handleCalculLikeDislike(1));
-  btnDislike.addEventListener("click", () => handleCalculLikeDislike(-1));
+  btnLike.addEventListener("click", () => handleCalculLikeDislike(1, "like"));
+  btnDislike.addEventListener("click", () =>
+    handleCalculLikeDislike(-1, "dislike")
+  );
 
-  //LIKE
+  //LIKE GIF
+  function modalLike() {
+    if (likes === 4) {
+      containerImageLike.style.display = "block";
+    }
+  }
 
-  btnLike.addEventListener("click", () => {
-    likes++;
-    totalLike.textContent = "Total likes: " + likes;
-    handleClickReloadPage();
-    saveToLocalStorage();
-  });
+  //CLOSE MODAL LIKE
+  function closeModalLike() {
+    containerImageLike.style.display = "none";
+  }
 
-  //DISLIKE
-
-  btnDislike.addEventListener("click", () => {
-    dislikes++;
-    totalDislike.textContent = "Total dislikes: " + dislikes;
-    handleClickReloadPage();
-  });
+  btnCloseModalLike.addEventListener("click", closeModalLike);
 
   getFromLocalStorage();
 });
