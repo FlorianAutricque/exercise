@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     likes = parseInt(localStorage.getItem("likes")) || 0;
     dislikes = parseInt(localStorage.getItem("dislikes")) || 0;
 
-    total.textContent = "Total: " + sum;
+    total.textContent = "TOTAL: " + sum;
     totalLike.textContent = "Total likes: " + likes;
     totalDislike.textContent = "Total dislikes: " + dislikes;
   }
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function handleCalculLikeDislike(x, choice) {
     sum += x;
-    total.textContent = "Total: " + sum;
+    total.textContent = "TOTAL: " + sum;
     if (choice === "like") {
       likes++;
       totalLike.textContent = "Total likes: " + likes;
