@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const category = categoryOptions.value;
   const url = `https://api.api-ninjas.com/v1/randomimage?category=${category}`;
   const API_KEY = "h393mcOzOkKkWXqLeULfyA==H0CmchWfJ9xCfOHG";
+  console.log(category);
 
   //LOCALSTORAGE
   let sum = 0;
@@ -72,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       defaultImgEl.src = imgURL;
 
-      document.body.appendChild(imgEl);
+      document.body.appendChild(defaultImgEl);
     } catch (error) {
       console.log(error);
     }
