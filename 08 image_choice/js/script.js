@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const containerImageLike = document.getElementById("containerImageLike");
   const btnCloseModalLike = document.getElementById("btnCloseModalLike");
+  const containerLikeDislike = document.getElementById("containerLikeDislike");
+  const containerCategory = document.getElementById("containerCategory");
 
   const categoryOptions = document.getElementsByName("category")[0];
 
@@ -48,9 +50,11 @@ document.addEventListener("DOMContentLoaded", () => {
   btnRefresh.addEventListener("click", handleClickReloadPage);
 
   // FETCH RANDOM IMAGE
+  let defaultImgEl;
+
   async function fetchData() {
     try {
-      const defaultImgEl = document.createElement("img");
+      defaultImgEl = document.createElement("img");
       defaultImgEl.classList.add("image__blob");
       defaultImgEl.src = "img/waiting.gif";
       document.body.appendChild(defaultImgEl);
@@ -103,12 +107,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //LIKE GIF
   function modalLike() {
+    if (defaultImgEl) {
+      defaultImgEl.style.display = "none";
+      containerLikeDislike.style.display = "none";
+      btnRefresh.style.display = "none";
+      containerCategory.style.display = "none";
+      total.style.display = "none";
+      totalLike.style.display = "none";
+      totalDislike.style.display = "none";
+    }
     containerImageLike.style.display = "block";
   }
 
   //CLOSE MODAL LIKE
   function closeModalLike() {
     containerImageLike.style.display = "none";
+    defaultImgEl.style.display = "block";
+    containerLikeDislike.style.display = "flex";
+    btnRefresh.style.display = "block";
+    containerCategory.style.display = "flex";
+    total.style.display = "block";
+    totalLike.style.display = "block";
+    totalDislike.style.display = "block";
   }
 
   btnCloseModalLike.addEventListener("click", closeModalLike);
