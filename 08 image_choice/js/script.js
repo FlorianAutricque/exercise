@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const category = categoryOptions.value;
   const url = `https://api.api-ninjas.com/v1/randomimage?category=${category}`;
   const API_KEY = "h393mcOzOkKkWXqLeULfyA==H0CmchWfJ9xCfOHG";
-  console.log(category);
 
   //LOCALSTORAGE
   let sum = 0;
@@ -40,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //SELECT CATEGORY
-  categoryOptions.addEventListener("change", () => {
+  categoryOptions.addEventListener("blur", () => {
     handleClickReloadPage();
   });
 
