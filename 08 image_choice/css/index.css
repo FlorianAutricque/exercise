@@ -192,8 +192,8 @@ h2 {
   position: relative;
   z-index: 1000;
   top: 10rem;
-  height: 3rem;
-  width: 3rem;
+  height: 2rem;
+  width: 2rem;
   border-radius: 50%;
   background-color: #fe05e1;
   border: none;
@@ -240,6 +240,7 @@ h2 {
   transform: rotate(7deg);
   left: 5rem;
   top: 34rem;
+  width: 10rem;
 }
 
 .container__category {
@@ -249,7 +250,7 @@ h2 {
   margin-bottom: -4rem;
 
   position: relative;
-  top: 15.3rem;
+  top: 14.8rem;
 }
 
 @media (min-width: 760px) {
