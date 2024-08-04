@@ -296,9 +296,3 @@ h2 {
   height: 2rem;
   font-family: "Exo";
 }
-
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
