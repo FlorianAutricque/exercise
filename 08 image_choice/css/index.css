@@ -175,6 +175,7 @@ h2 {
   height: 15rem;
   z-index: 10;
   border-radius: 40px;
+  z-index: 1000;
 
   margin-top: 6rem;
 
@@ -184,6 +185,7 @@ h2 {
 
 .btn__refresh {
   position: relative;
+  z-index: 1000;
   top: 26rem;
   height: 3rem;
   width: 3rem;
@@ -201,6 +203,7 @@ h2 {
 .btn__like,
 .btn__dislike {
   position: relative;
+  z-index: 1000;
 
   font-family: "Mr Dafoe";
   font-size: 2rem;
