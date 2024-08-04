@@ -111,7 +111,7 @@ h2 {
   color: white;
   text-shadow: 0 0 0.05em #fff, 0 0 0.2em #fe05e1, 0 0 0.3em #fe05e1;
   transform: rotate(-7deg);
-  margin-bottom: -5rem;
+  margin-bottom: -8rem;
 }
 
 @media (min-width: 760px) {
@@ -161,6 +161,8 @@ h2 {
 
 .total {
   font-size: 20px;
+  position: relative;
+  top: 7rem;
 }
 
 .container__like__dislike {
@@ -170,7 +172,7 @@ h2 {
   gap: 2rem;
 
   position: relative;
-  top: 3rem;
+  top: 7rem;
 }
 
 .image__blob {
@@ -178,8 +180,9 @@ h2 {
   z-index: 10;
   border-radius: 40px;
   z-index: 1000;
-
-  margin-top: 6rem;
+  position: relative;
+  top: 5.5rem;
+  margin-top: 5rem;
 
   border: 3px solid white;
   box-shadow: 0 0 0.05em #fff, 0 0 0.2em #fe05e1, 0 0 0.3em #fe05e1;
@@ -188,7 +191,7 @@ h2 {
 .btn__refresh {
   position: relative;
   z-index: 1000;
-  top: 26rem;
+  top: 10rem;
   height: 3rem;
   width: 3rem;
   border-radius: 50%;
@@ -202,9 +205,17 @@ h2 {
   background-position: center;
 }
 
+.container__btn__like__dislike {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 38rem;
+}
+
 .btn__like,
 .btn__dislike {
-  position: relative;
+  /* position: relative; */
   z-index: 1000;
 
   font-family: "Mr Dafoe";
@@ -227,7 +238,7 @@ h2 {
 
 .btn__dislike {
   transform: rotate(7deg);
-  left: 6rem;
+  left: 5rem;
   top: 34rem;
 }
 
@@ -238,7 +249,7 @@ h2 {
   margin-bottom: -4rem;
 
   position: relative;
-  top: 15.8rem;
+  top: 15.3rem;
 }
 
 @media (min-width: 760px) {
