@@ -138,7 +138,7 @@ h2 {
     );
   background-size: 30px 30px;
   width: 200vw;
-  height: 300vh;
+  height: 400vh;
   position: absolute;
   bottom: -120vh;
   transform: rotateX(-100deg);
@@ -227,7 +227,7 @@ h2 {
 
 .btn__dislike {
   transform: rotate(7deg);
-  left: 7rem;
+  left: 6rem;
   top: 34rem;
 }
 
