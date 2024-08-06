@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //SELECT CATEGORY
-  categoryOptions.addEventListener("blur", () => {
+  categoryOptions.addEventListener("change", () => {
     handleClickReloadPage();
   });
 
