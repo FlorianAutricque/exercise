@@ -53,7 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // BUTTON RELOAD FOR NEW IMAGE
   function handleClickReloadPage() {
     saveToLocalStorage();
-    window.location.reload();
+    // window.location.reload();
+    fetchData();
   }
   btnRefresh.addEventListener("click", handleClickReloadPage);
 
@@ -63,10 +64,13 @@ document.addEventListener("DOMContentLoaded", () => {
   async function fetchData() {
     try {
       const url = `https://api.api-ninjas.com/v1/randomimage?category=${category}`;
-      defaultImgEl = document.createElement("img");
-      defaultImgEl.classList.add("image__blob");
+      if (!defaultImgEl) {
+        defaultImgEl = document.createElement("img");
+        defaultImgEl.classList.add("image__blob");
+        defaultImgEl.id = "imageBlob";
+        document.body.appendChild(defaultImgEl);
+      }
       defaultImgEl.src = "img/waiting.gif";
-      document.body.appendChild(defaultImgEl);
 
       const res = await fetch(url, {
         method: "GET",
@@ -81,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       defaultImgEl.src = imgURL;
 
-      document.body.appendChild(defaultImgEl);
+      // imageBlob.appendChild(defaultImgEl);
     } catch (error) {
       console.log(error);
     }
@@ -103,7 +107,8 @@ document.addEventListener("DOMContentLoaded", () => {
       dislikes++;
       totalDislike.textContent = "Total dislikes: " + dislikes;
     }
-    handleClickReloadPage();
+    // handleClickReloadPage();
+    fetchData();
     saveToLocalStorage();
   }
 
