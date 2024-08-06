@@ -13,11 +13,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const categoryOptions = document.getElementsByName("category")[0];
 
-  const category = categoryOptions.value;
-  const url = `https://api.api-ninjas.com/v1/randomimage?category=${category}`;
+  let category = categoryOptions.value;
   const API_KEY = "h393mcOzOkKkWXqLeULfyA==H0CmchWfJ9xCfOHG";
 
-  //LOCALSTORAGE
+  // LOCALSTORAGE
   let sum = 0;
   let likes = 0;
   let dislikes = 0;
@@ -26,25 +25,34 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.setItem("sum", sum);
     localStorage.setItem("likes", likes);
     localStorage.setItem("dislikes", dislikes);
+    localStorage.setItem("category", category);
   }
 
   function getFromLocalStorage() {
     sum = parseInt(localStorage.getItem("sum")) || 0;
     likes = parseInt(localStorage.getItem("likes")) || 0;
     dislikes = parseInt(localStorage.getItem("dislikes")) || 0;
+    const storedCategory = localStorage.getItem("category");
+
+    if (storedCategory) {
+      categoryOptions.value = storedCategory;
+      category = storedCategory;
+    }
 
     total.textContent = "TOTAL: " + sum;
     totalLike.textContent = "Total likes: " + likes;
     totalDislike.textContent = "Total dislikes: " + dislikes;
   }
 
-  //SELECT CATEGORY
+  // SELECT CATEGORY
   categoryOptions.addEventListener("change", () => {
+    category = categoryOptions.value;
     handleClickReloadPage();
   });
 
-  //BUTTON RELOAD FOR NEW IMAGE
+  // BUTTON RELOAD FOR NEW IMAGE
   function handleClickReloadPage() {
+    saveToLocalStorage();
     window.location.reload();
   }
   btnRefresh.addEventListener("click", handleClickReloadPage);
@@ -54,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   async function fetchData() {
     try {
+      const url = `https://api.api-ninjas.com/v1/randomimage?category=${category}`;
       defaultImgEl = document.createElement("img");
       defaultImgEl.classList.add("image__blob");
       defaultImgEl.src = "img/waiting.gif";
@@ -79,9 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   fetchData();
 
-  //LIKE DISLIKE
-  //TOTAL
-
+  // LIKE DISLIKE
   function handleCalculLikeDislike(x, choice) {
     sum += x;
     total.textContent = "TOTAL: " + sum;
@@ -92,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
         modalLike();
         return;
       }
-    } else if ((choice = "dislike")) {
+    } else if (choice === "dislike") {
       dislikes++;
       totalDislike.textContent = "Total dislikes: " + dislikes;
     }
@@ -105,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     handleCalculLikeDislike(-1, "dislike")
   );
 
-  //LIKE GIF
+  // LIKE GIF
   function modalLike() {
     if (defaultImgEl) {
       defaultImgEl.style.display = "none";
@@ -119,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     containerImageLike.style.display = "block";
   }
 
-  //CLOSE MODAL LIKE
+  // CLOSE MODAL LIKE
   function closeModalLike() {
     containerImageLike.style.display = "none";
     defaultImgEl.style.display = "block";
