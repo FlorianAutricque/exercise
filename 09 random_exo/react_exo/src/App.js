@@ -1,77 +1,101 @@
-/////////////////////DATA FORM SUBMISSION ///////////////////////////
 import { useState } from "react";
-
+////////////////STOPWATCH/TIMER ///////////////////////
 function App() {
-  const data = {
-    username: "",
-    fullname: "",
-    age: "",
-  };
-
-  const [show, setShow] = useState(false);
-  const [values, setValues] = useState(data);
-
-  const handleShowData = e => {
-    e.preventDefault();
-    setShow(true);
-  };
-
-  const handleChangeInputData = e => {
-    const { name, value } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
-  };
-
-  return (
-    <div>
-      <form>
-        <p>USERNAME:</p>
-        <input
-          type="text"
-          placeholder="Username"
-          value={values.username}
-          name="username"
-          onChange={handleChangeInputData}
-        />
-
-        <p>FULLNAME:</p>
-        <input
-          type="text"
-          placeholder="Fullname"
-          value={values.fullname}
-          name="fullname"
-          onChange={handleChangeInputData}
-        />
-
-        <p>AGE:</p>
-        <input
-          type="number"
-          placeholder="Age"
-          value={values.age}
-          name="age"
-          onChange={handleChangeInputData}
-        />
-
-        <button onClick={handleShowData}>Submit</button>
-      </form>
-
-      {show && (
-        <div>
-          <h3>Request Sent to DB with below request data:</h3>
-          <ul>
-            <li>Username: {values.username}</li>
-            <li>Fullname: {values.fullname}</li>
-            <li>Age: {values.age}</li>
-          </ul>
-        </div>
-      )}
-    </div>
-  );
+  return <div>Hi</div>;
 }
 
 export default App;
+
+/////////////SHOW HIDE TEXT ////////////////////////////////////
+// function App() {
+//   const [show, setShow] = useState(false);
+
+//   const handleShow = () => {
+//     setShow(!show);
+//   };
+//   return (
+//     <div>
+//       <button onClick={handleShow}>{show ? "Hide" : "Show"}</button>
+
+//       {show && <h3>Welcome</h3>}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+/////////////////////DATA FORM SUBMISSION ///////////////////////////
+// function App() {
+//   const data = {
+//     username: "",
+//     fullname: "",
+//     age: "",
+//   };
+
+//   const [show, setShow] = useState(false);
+//   const [values, setValues] = useState(data);
+
+//   const handleShowData = e => {
+//     e.preventDefault();
+//     setShow(true);
+//   };
+
+//   const handleChangeInputData = e => {
+//     const { name, value } = e.target;
+//     setValues({
+//       ...values,
+//       [name]: value,
+//     });
+//   };
+
+//   return (
+//     <div>
+//       <form>
+//         <p>USERNAME:</p>
+//         <input
+//           type="text"
+//           placeholder="Username"
+//           value={values.username}
+//           name="username"
+//           onChange={handleChangeInputData}
+//         />
+
+//         <p>FULLNAME:</p>
+//         <input
+//           type="text"
+//           placeholder="Fullname"
+//           value={values.fullname}
+//           name="fullname"
+//           onChange={handleChangeInputData}
+//         />
+
+//         <p>AGE:</p>
+//         <input
+//           type="number"
+//           placeholder="Age"
+//           value={values.age}
+//           name="age"
+//           onChange={handleChangeInputData}
+//         />
+
+//         <button onClick={handleShowData}>Submit</button>
+//       </form>
+
+//       {show && (
+//         <div>
+//           <h3>Request Sent to DB with below request data:</h3>
+//           <ul>
+//             <li>Username: {values.username}</li>
+//             <li>Fullname: {values.fullname}</li>
+//             <li>Age: {values.age}</li>
+//           </ul>
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default App;
 
 ////////////////////////TODO LIST REACT /////////////////////////////
 
