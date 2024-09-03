@@ -1,50 +1,89 @@
 import { useEffect, useState } from "react";
-////////////////STOPWATCH/TIMER ///////////////////////
+//////////// MAX COUNT /////////////////////////////////
+
 function App() {
-  const [time, setTime] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
+  const [count, setCount] = useState(0);
+  const [timer, setTimer] = useState(10);
 
   useEffect(() => {
-    let interval;
-    if (isRunning) {
-      interval = setInterval(() => setTime(time + 1));
-    }
+    const interval = setInterval(() => {
+      setTimer(prevTimer => {
+        if (prevTimer <= 0) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prevTimer - 1;
+      });
+    }, 1000);
+
     return () => clearInterval(interval);
-  }, [time, isRunning]);
+  }, []);
 
-  const hours = Math.floor(time / 360000);
-  const minutes = Math.floor((time % 360000) / 6000);
-  const seconds = Math.floor((time % 6000) / 100);
-
-  const start = () => {
-    setIsRunning(true);
-  };
-
-  const stop = () => {
-    setIsRunning(false);
-  };
-
-  const reset = () => {
-    setTime(0);
+  const handleCount = () => {
+    setCount(count + 1);
   };
 
   return (
     <div>
-      <h2>Timer</h2>
+      <h2>Number of clicks before times end</h2>
 
-      <p>
-        {hours}:{minutes.toString().padStart(2, "0")}:
-        {seconds.toString().padStart(2, "0")}
-      </p>
+      <h3>{count}</h3>
 
-      <button onClick={start}>Start</button>
-      <button onClick={stop}>Stop</button>
-      <button onClick={reset}>Reset</button>
+      <p>Time left: {timer}</p>
+      {timer === 0 ? "" : <button onClick={handleCount}>+</button>}
     </div>
   );
 }
 
 export default App;
+
+////////////////STOPWATCH/TIMER ///////////////////////
+// function App() {
+//   const [time, setTime] = useState(0);
+//   const [isRunning, setIsRunning] = useState(false);
+
+//   useEffect(() => {
+//     let interval;
+//     if (isRunning) {
+//       interval = setInterval(() => setTime(time + 1));
+//     }
+//     return () => clearInterval(interval);
+//   }, [time, isRunning]);
+
+//   const hours = Math.floor(time / 360000);
+//   const minutes = Math.floor((time % 360000) / 6000);
+//   const seconds = Math.floor((time % 6000) / 100);
+
+//   const start = () => {
+//     setIsRunning(true);
+//   };
+
+//   const stop = () => {
+//     setIsRunning(false);
+//   };
+
+//   const reset = () => {
+//     setTime(0);
+//   };
+
+//   return (
+//     <div>
+
+//       <h2>Timer</h2>
+
+//       <p>
+//         {hours}:{minutes.toString().padStart(2, "0")}:
+//         {seconds.toString().padStart(2, "0")}
+//       </p>
+
+//       <button onClick={start}>Start</button>
+//       <button onClick={stop}>Stop</button>
+//       <button onClick={reset}>Reset</button>
+//     </div>
+//   );
+// }
+
+// export default App;
 
 /////////////SHOW HIDE TEXT ////////////////////////////////////
 // function App() {
