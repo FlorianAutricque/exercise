@@ -1,7 +1,47 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 ////////////////STOPWATCH/TIMER ///////////////////////
 function App() {
-  return <div>Hi</div>;
+  const [time, setTime] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
+
+  useEffect(() => {
+    let interval;
+    if (isRunning) {
+      interval = setInterval(() => setTime(time + 1));
+    }
+    return () => clearInterval(interval);
+  }, [time, isRunning]);
+
+  const hours = Math.floor(time / 360000);
+  const minutes = Math.floor((time % 360000) / 6000);
+  const seconds = Math.floor((time % 6000) / 100);
+
+  const start = () => {
+    setIsRunning(true);
+  };
+
+  const stop = () => {
+    setIsRunning(false);
+  };
+
+  const reset = () => {
+    setTime(0);
+  };
+
+  return (
+    <div>
+      <h2>Timer</h2>
+
+      <p>
+        {hours}:{minutes.toString().padStart(2, "0")}:
+        {seconds.toString().padStart(2, "0")}
+      </p>
+
+      <button onClick={start}>Start</button>
+      <button onClick={stop}>Stop</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
 }
 
 export default App;
