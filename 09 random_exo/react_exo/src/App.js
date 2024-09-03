@@ -1,25 +1,118 @@
-import logo from './logo.svg';
-import './App.css';
+/////////////////////DATA FORM SUBMISSION ///////////////////////////
+import { useState } from "react";
 
 function App() {
+  const data = {
+    username: "",
+    fullname: "",
+    age: "",
+  };
+
+  const [show, setShow] = useState(false);
+  const [values, setValues] = useState(data);
+
+  const handleShowData = e => {
+    e.preventDefault();
+    setShow(true);
+  };
+
+  const handleChangeInputData = e => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <form>
+        <p>USERNAME:</p>
+        <input
+          type="text"
+          placeholder="Username"
+          value={values.username}
+          name="username"
+          onChange={handleChangeInputData}
+        />
+
+        <p>FULLNAME:</p>
+        <input
+          type="text"
+          placeholder="Fullname"
+          value={values.fullname}
+          name="fullname"
+          onChange={handleChangeInputData}
+        />
+
+        <p>AGE:</p>
+        <input
+          type="number"
+          placeholder="Age"
+          value={values.age}
+          name="age"
+          onChange={handleChangeInputData}
+        />
+
+        <button onClick={handleShowData}>Submit</button>
+      </form>
+
+      {show && (
+        <div>
+          <h3>Request Sent to DB with below request data:</h3>
+          <ul>
+            <li>Username: {values.username}</li>
+            <li>Fullname: {values.fullname}</li>
+            <li>Age: {values.age}</li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
 
 export default App;
+
+////////////////////////TODO LIST REACT /////////////////////////////
+
+// import { useState } from "react";
+
+// function App() {
+//   const [items, setItems] = useState("");
+//   const [allItems, setAllItems] = useState([]);
+
+//   const handleAddItem = e => {
+//     setItems(e.target.value);
+//   };
+
+//   const addNewItem = () => {
+//     const newItem = { id: Date.now(), name: items };
+//     const updatedListItems = [...allItems, newItem];
+//     setAllItems(updatedListItems);
+//   };
+
+//   const deleteItem = itemId => {
+//     const updatedListAfterDelete = allItems.filter(item => item.id !== itemId);
+//     setAllItems(updatedListAfterDelete);
+//   };
+
+//   return (
+//     <div>
+//       <h3>Todo list</h3>
+
+//       <input type="text" value={items} onChange={handleAddItem} />
+//       <button onClick={addNewItem}>Add</button>
+
+//       <ul>
+//         {allItems.map(item => (
+//           <li key={item.id}>
+//             <p>{item.name}</p>
+//             <button onClick={() => deleteItem(item.id)}> X</button>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+
+// export default App;
