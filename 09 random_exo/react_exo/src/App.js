@@ -25,7 +25,7 @@ function App() {
 
   return (
     <div>
-      <h2>Number of clicks before times end</h2>
+      <h2>Number of clicks before times end:</h2>
 
       <h3>{count}</h3>
 
