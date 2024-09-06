@@ -1,41 +1,48 @@
 import { useEffect, useState } from "react";
-//////////// MAX COUNT /////////////////////////////////
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [timer, setTimer] = useState(10);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer(prevTimer => {
-        if (prevTimer <= 0) {
-          clearInterval(interval);
-          return 0;
-        }
-        return prevTimer - 1;
-      });
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  const handleCount = () => {
-    setCount(count + 1);
-  };
-
-  return (
-    <div>
-      <h2>Number of clicks before times end:</h2>
-
-      <h3>{count}</h3>
-
-      <p>Time left: {timer}</p>
-      {timer === 0 ? "" : <button onClick={handleCount}>+</button>}
-    </div>
-  );
+  return <div>hi</div>;
 }
 
 export default App;
+
+//////////// MAX COUNT /////////////////////////////////
+
+// function App() {
+//   const [count, setCount] = useState(0);
+//   const [timer, setTimer] = useState(10);
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setTimer(prevTimer => {
+//         if (prevTimer <= 0) {
+//           clearInterval(interval);
+//           return 0;
+//         }
+//         return prevTimer - 1;
+//       });
+//     }, 1000);
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   const handleCount = () => {
+//     setCount(count + 1);
+//   };
+
+//   return (
+//     <div>
+//       <h2>Number of clicks before times end:</h2>
+
+//       <h3>{count}</h3>
+
+//       <p>Time left: {timer}</p>
+//       {timer === 0 ? "" : <button onClick={handleCount}>+</button>}
+//     </div>
+//   );
+// }
+
+// export default App;
 
 ////////////////STOPWATCH/TIMER ///////////////////////
 // function App() {
