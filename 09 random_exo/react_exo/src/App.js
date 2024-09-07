@@ -1,4 +1,48 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
+
+import React, { useState, useContext, useRef } from "react";
+
+const ThemeContext = React.createContext("dark");
+
+function Comp1() {
+  const { theme, h1 } = useContext(ThemeContext);
+
+  return (
+    <div>
+      <h1 ref={h1}>Current Theme: {theme}</h1>
+    </div>
+  );
+}
+
+function Comp2() {
+  const { setTheme } = useContext(ThemeContext);
+  return (
+    <div>
+      <button onClick={() => setTheme("light")}>Light</button>
+      <button onClick={() => setTheme("dark")}>Dark</button>
+    </div>
+  );
+}
+
+export default function App() {
+  const [theme, setTheme] = useState("light");
+  const h1 = useRef();
+
+  if (theme === "light") {
+    document.body.style.backgroundColor = "white";
+    h1.current.style.color = "black";
+  } else {
+    document.body.style.backgroundColor = "black";
+    h1.current.style.color = "white";
+  }
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme, h1 }} className="App">
+      <Comp1 />
+      <Comp2 />
+    </ThemeContext.Provider>
+  );
+}
 
 ////////////fetch////////////
 // function useFetch(url) {
