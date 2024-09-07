@@ -1,43 +1,92 @@
 import { useEffect, useState } from "react";
 
-///count max ////
 function App() {
-  const [count, setCount] = useState(0);
-  const [time, setTime] = useState(3);
+  const [time, setTime] = useState(0);
+  const [isRunning, setIsRunning] = useState(false);
 
   useEffect(() => {
-    const timeLeft = setInterval(() => {
-      setTime(prevTime => {
-        if (prevTime === 0) {
-          clearInterval(time);
-          return 0;
-        } else {
-          return prevTime - 1;
-        }
-      });
-    }, 1000);
+    let intervalId;
+    if (isRunning) {
+      intervalId = setInterval(() => setTime(time + 1), 10);
+    }
 
-    return () => clearInterval(timeLeft);
-  }, [time]);
+    return () => clearInterval(intervalId);
+  }, [time, isRunning]);
+
+  const minutes = Math.floor((time % 360000) / 6000);
+  const seconds = Math.floor((time % 6000) / 100);
+  const milliseconds = time % 100;
+
+  const startTimer = () => {
+    setIsRunning(true);
+  };
+
+  const stopTimer = () => {
+    setIsRunning(false);
+  };
+
+  const resetTimer = () => {
+    setIsRunning(false);
+    setTime(0);
+  };
 
   return (
     <div>
-      <h2>No of clicks until timer expires</h2>
-      <div>
-        {count}
+      <h1>Timer</h1>
 
-        <p>Time left: {time} seconds</p>
-        {time === 0 ? (
-          ""
-        ) : (
-          <button onClick={() => setCount(count + 1)}>+</button>
-        )}
-      </div>
+      <span>
+        {minutes.toString().padStart(2, "0")} mins{" "}
+        {seconds.toString().padStart(2, "0")} secs{" "}
+        {milliseconds.toString().padStart(2, "0")} ms
+      </span>
+      <br />
+      <button onClick={startTimer}>Start</button>
+      <button onClick={stopTimer}>Stop</button>
+      <button onClick={resetTimer}>Reset</button>
     </div>
   );
 }
 
 export default App;
+
+///count max ////
+// function App() {
+//   const [count, setCount] = useState(0);
+//   const [time, setTime] = useState(3);
+
+//   useEffect(() => {
+//     const timeLeft = setInterval(() => {
+//       setTime(prevTime => {
+//         if (prevTime === 0) {
+//           clearInterval(time);
+//           return 0;
+//         } else {
+//           return prevTime - 1;
+//         }
+//       });
+//     }, 1000);
+
+//     return () => clearInterval(timeLeft);
+//   }, [time]);
+
+//   return (
+//     <div>
+//       <h2>No of clicks until timer expires</h2>
+//       <div>
+//         {count}
+
+//         <p>Time left: {time} seconds</p>
+//         {time === 0 ? (
+//           ""
+//         ) : (
+//           <button onClick={() => setCount(count + 1)}>+</button>
+//         )}
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default App;
 
 //////////// MAX COUNT /////////////////////////////////
 
