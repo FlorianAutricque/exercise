@@ -1,53 +1,124 @@
 import { useEffect, useState } from "react";
 
-function App() {
-  const [time, setTime] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
+function useFetch(url) {
+  const [data, setData] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    let intervalId;
-    if (isRunning) {
-      intervalId = setInterval(() => setTime(time + 1), 10);
-    }
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(url);
+        if (!res.ok) {
+          throw new Error("error");
+        }
 
-    return () => clearInterval(intervalId);
-  }, [time, isRunning]);
+        const data = await res.json();
+        setData(data);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const minutes = Math.floor((time % 360000) / 6000);
-  const seconds = Math.floor((time % 6000) / 100);
-  const milliseconds = time % 100;
+    fetchData();
+  }, [url]);
 
-  const startTimer = () => {
-    setIsRunning(true);
+  return { loading, data, error };
+}
+
+export default function App() {
+  const postIds = [1, 2, 3, 4, 5, 6, 7, 8];
+  const [index, setIndex] = useState(0);
+
+  const {
+    loading,
+    data: post,
+    error,
+  } = useFetch(`https://jsonplaceholder.typicode.com/posts/${postIds[index]}`);
+
+  const incrementIndex = () => {
+    setIndex(i => (i === postIds.length - 1 ? i : i + 1));
   };
 
-  const stopTimer = () => {
-    setIsRunning(false);
-  };
+  if (loading === true) {
+    return <p>Loading</p>;
+  }
 
-  const resetTimer = () => {
-    setIsRunning(false);
-    setTime(0);
-  };
+  if (error) {
+    return (
+      <>
+        <p>{error}</p>
+        <button onClick={incrementIndex}>Next Post</button>
+      </>
+    );
+  }
 
   return (
-    <div>
-      <h1>Timer</h1>
-
-      <span>
-        {minutes.toString().padStart(2, "0")} mins{" "}
-        {seconds.toString().padStart(2, "0")} secs{" "}
-        {milliseconds.toString().padStart(2, "0")} ms
-      </span>
-      <br />
-      <button onClick={startTimer}>Start</button>
-      <button onClick={stopTimer}>Stop</button>
-      <button onClick={resetTimer}>Reset</button>
+    <div className="App">
+      <h1>{post.title}</h1>
+      <p>{post.body}</p>
+      {error && <p>{error}</p>}
+      {index === postIds.length - 1 ? (
+        <p>No more posts existss ....</p>
+      ) : (
+        <button onClick={incrementIndex}>Next Post</button>
+      )}
     </div>
   );
 }
 
-export default App;
+///////timer//////////////
+// function App() {
+//   const [time, setTime] = useState(0);
+//   const [isRunning, setIsRunning] = useState(false);
+
+//   useEffect(() => {
+//     let intervalId;
+//     if (isRunning) {
+//       intervalId = setInterval(() => setTime(time + 1), 10);
+//     }
+
+//     return () => clearInterval(intervalId);
+//   }, [time, isRunning]);
+
+//   const minutes = Math.floor((time % 360000) / 6000);
+//   const seconds = Math.floor((time % 6000) / 100);
+//   const milliseconds = time % 100;
+
+//   const startTimer = () => {
+//     setIsRunning(true);
+//   };
+
+//   const stopTimer = () => {
+//     setIsRunning(false);
+//   };
+
+//   const resetTimer = () => {
+//     setIsRunning(false);
+//     setTime(0);
+//   };
+
+//   return (
+//     <div>
+//       <h1>Timer</h1>
+
+//       <span>
+//         {minutes.toString().padStart(2, "0")} mins{" "}
+//         {seconds.toString().padStart(2, "0")} secs{" "}
+//         {milliseconds.toString().padStart(2, "0")} ms
+//       </span>
+//       <br />
+//       <button onClick={startTimer}>Start</button>
+//       <button onClick={stopTimer}>Stop</button>
+//       <button onClick={resetTimer}>Reset</button>
+//     </div>
+//   );
+// }
+
+// export default App;
 
 ///count max ////
 // function App() {
