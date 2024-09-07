@@ -1,74 +1,75 @@
 import { useEffect, useState } from "react";
 
-function useFetch(url) {
-  const [data, setData] = useState();
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+////////////fetch////////////
+// function useFetch(url) {
+//   const [data, setData] = useState();
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setLoading(true);
-        const res = await fetch(url);
-        if (!res.ok) {
-          throw new Error("error");
-        }
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       try {
+//         setLoading(true);
+//         const res = await fetch(url);
+//         if (!res.ok) {
+//           throw new Error("error");
+//         }
 
-        const data = await res.json();
-        setData(data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    };
+//         const data = await res.json();
+//         setData(data);
+//       } catch (error) {
+//         setError(error.message);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
 
-    fetchData();
-  }, [url]);
+//     fetchData();
+//   }, [url]);
 
-  return { loading, data, error };
-}
+//   return { loading, data, error };
+// }
 
-export default function App() {
-  const postIds = [1, 2, 3, 4, 5, 6, 7, 8];
-  const [index, setIndex] = useState(0);
+// export default function App() {
+//   const postIds = [1, 2, 3, 4, 5, 6, 7, 8];
+//   const [index, setIndex] = useState(0);
 
-  const {
-    loading,
-    data: post,
-    error,
-  } = useFetch(`https://jsonplaceholder.typicode.com/posts/${postIds[index]}`);
+//   const {
+//     loading,
+//     data: post,
+//     error,
+//   } = useFetch(`https://jsonplaceholder.typicode.com/posts/${postIds[index]}`);
 
-  const incrementIndex = () => {
-    setIndex(i => (i === postIds.length - 1 ? i : i + 1));
-  };
+//   const incrementIndex = () => {
+//     setIndex(i => (i === postIds.length - 1 ? i : i + 1));
+//   };
 
-  if (loading === true) {
-    return <p>Loading</p>;
-  }
+//   if (loading === true) {
+//     return <p>Loading</p>;
+//   }
 
-  if (error) {
-    return (
-      <>
-        <p>{error}</p>
-        <button onClick={incrementIndex}>Next Post</button>
-      </>
-    );
-  }
+//   if (error) {
+//     return (
+//       <>
+//         <p>{error}</p>
+//         <button onClick={incrementIndex}>Next Post</button>
+//       </>
+//     );
+//   }
 
-  return (
-    <div className="App">
-      <h1>{post.title}</h1>
-      <p>{post.body}</p>
-      {error && <p>{error}</p>}
-      {index === postIds.length - 1 ? (
-        <p>No more posts existss ....</p>
-      ) : (
-        <button onClick={incrementIndex}>Next Post</button>
-      )}
-    </div>
-  );
-}
+//   return (
+//     <div className="App">
+//       <h1>{post.title}</h1>
+//       <p>{post.body}</p>
+//       {error && <p>{error}</p>}
+//       {index === postIds.length - 1 ? (
+//         <p>No more posts existss ....</p>
+//       ) : (
+//         <button onClick={incrementIndex}>Next Post</button>
+//       )}
+//     </div>
+//   );
+// }
 
 ///////timer//////////////
 // function App() {
