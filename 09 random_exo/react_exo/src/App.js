@@ -1,7 +1,40 @@
 import { useEffect, useState } from "react";
 
+///count max ////
 function App() {
-  return <div>hi</div>;
+  const [count, setCount] = useState(0);
+  const [time, setTime] = useState(3);
+
+  useEffect(() => {
+    const timeLeft = setInterval(() => {
+      setTime(prevTime => {
+        if (prevTime === 0) {
+          clearInterval(time);
+          return 0;
+        } else {
+          return prevTime - 1;
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(timeLeft);
+  }, [time]);
+
+  return (
+    <div>
+      <h2>No of clicks until timer expires</h2>
+      <div>
+        {count}
+
+        <p>Time left: {time} seconds</p>
+        {time === 0 ? (
+          ""
+        ) : (
+          <button onClick={() => setCount(count + 1)}>+</button>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default App;
