@@ -1,16 +1,41 @@
+.mainContainer {
+  width: 10rem;
+}
+
 .container {
   display: flex;
   gap: 5px;
+  width: 100%;
 }
 
-.containerNumber {
+.containerNumbers {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 5px;
+  width: 70%;
 }
 
 .containerOperators {
   display: flex;
   flex-direction: column;
   gap: 5px;
+  width: 30%;
+}
+
+.containerResult {
+  border: 1px solid black;
+  height: 1rem;
+  margin-bottom: 5px;
+}
+
+.containerControl {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-around;
+  gap: 5px;
+  width: 100%;
+}
+
+.equals {
+  width: 5rem;
 }

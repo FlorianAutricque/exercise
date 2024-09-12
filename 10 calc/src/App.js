@@ -1,87 +1,96 @@
 import { useState } from "react";
 
 function App() {
+  const [result, setResult] = useState(null);
   const [value, setValue] = useState("");
-  const [total, setTotal] = useState(0);
-  const [operator, setOperator] = useState("");
+  const [op, setOp] = useState("");
 
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-  const op = ["+", "-", "/", "*"];
+  const operators = ["+", "-", "*", "/"];
 
   const handleNumber = num => {
     setValue(prev => prev + num);
   };
 
-  const calculation = value => {
-    switch (operator) {
+  const handleSlice = () => {
+    setValue(value.slice(0, -1));
+  };
+
+  const handleDel = () => {
+    setResult(null);
+    setValue("");
+    setOp("");
+  };
+
+  const calculation = numClicked => {
+    switch (op) {
       case "+":
-        setTotal(prevTotal => prevTotal + value);
+        setResult(prevNum => prevNum + numClicked);
         break;
       case "-":
-        setTotal(prevTotal => prevTotal - value);
+        setResult(prevNum => prevNum - numClicked);
         break;
       case "*":
-        setTotal(prevTotal => prevTotal * value);
+        setResult(prevNum => prevNum * numClicked);
         break;
       case "/":
-        setTotal(prevTotal => prevTotal / value);
+        setResult(prevNum => prevNum / numClicked);
         break;
       default:
-        setTotal(value);
+        setResult(numClicked);
     }
   };
 
-  const handleOperator = operatorSign => {
+  const handleOperator = operator => {
     if (value) {
       calculation(Number(value));
       setValue("");
     }
-    setOperator(operatorSign);
+    setOp(operator);
   };
 
-  const handleEquals = () => {
+  const handleResult = () => {
     if (value) {
       calculation(Number(value));
     }
-  };
-
-  const handleClear = () => {
     setValue("");
-    setTotal(0);
+    setOp("");
   };
 
-  const handleBack = () => {
-    setValue(value.slice(0, -1));
-  };
+  let numbers = [];
+  for (let index = 0; index < 10; index++) {
+    numbers.push(
+      <button key={index} value={value} onClick={() => handleNumber(index)}>
+        {index}
+      </button>
+    );
+  }
 
   return (
-    <div>
+    <div className="mainContainer">
+      <div className="containerResult">{result}</div>
+      <div className="containerResult">{value}</div>
       <div className="container">
-        <div className="containerNumber">
-          {numbers.map(num => (
-            <button value={value} onClick={() => handleNumber(num)}>
-              {num}
-            </button>
-          ))}
-        </div>
+        <div className="containerNumbers">{numbers}</div>
 
         <div className="containerOperators">
-          {op.map(operatorSign => (
+          {operators.map((operator, index) => (
             <button
+              key={index}
               value={operator}
-              onClick={() => handleOperator(operatorSign)}
+              onClick={() => handleOperator(operator)}
             >
-              {operatorSign}
+              {operator}
             </button>
           ))}
         </div>
       </div>
-      <button onClick={handleEquals}>=</button>
-      <button onClick={handleClear}>DEL</button>
-      <button onClick={handleBack}>BACK</button>
-      <p>value: {value}</p>
-      <p>Results: {total}</p>
-      <p>op: {operator}</p>
+      <div className="containerControl">
+        <button onClick={handleDel}>DEL</button>
+        <button onClick={handleSlice}>BACK</button>
+        <button className="equals" onClick={handleResult}>
+          =
+        </button>
+      </div>
     </div>
   );
 }
