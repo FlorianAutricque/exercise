@@ -386,15 +386,15 @@ export default function App() {
 // import { useState } from "react";
 
 // function App() {
-//   const [items, setItems] = useState("");
+//   const [item, setItem] = useState("");
 //   const [allItems, setAllItems] = useState([]);
 
 //   const handleAddItem = e => {
-//     setItems(e.target.value);
+//     setItem(e.target.value);
 //   };
 
 //   const addNewItem = () => {
-//     const newItem = { id: Date.now(), name: items };
+//     const newItem = { id: Date.now(), name: item };
 //     const updatedListItems = [...allItems, newItem];
 //     setAllItems(updatedListItems);
 //   };
@@ -408,7 +408,7 @@ export default function App() {
 //     <div>
 //       <h3>Todo list</h3>
 
-//       <input type="text" value={items} onChange={handleAddItem} />
+//       <input type="text" value={item} onChange={handleAddItem} />
 //       <button onClick={addNewItem}>Add</button>
 
 //       <ul>
