@@ -1,38 +1,88 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [items, setItems] = useState([]);
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  const operators = ["+", "-", "/", "*"];
+
+  const [total, setTotal] = useState(0);
+  const [op, setOp] = useState("");
   const [value, setValue] = useState("");
 
-  const handleChange = e => {
-    setValue(e.target.value);
+  const calculate = value => {
+    switch (op) {
+      case "+":
+        setTotal(prev => prev + value);
+
+        break;
+
+      case "-":
+        setTotal(prev => prev - value);
+
+        break;
+
+      case "/":
+        setTotal(prev => prev / value);
+
+        break;
+
+      case "*":
+        setTotal(prev => prev * value);
+
+        break;
+
+      default:
+        setTotal(value);
+    }
   };
 
-  const handleNewItem = () => {
-    const newItem = { id: Date.now(), name: value };
-    const updatedList = [...items, newItem];
-    setItems(updatedList);
+  const handleNumber = num => {
+    setValue(prev => prev + num);
   };
 
-  const deleteItem = id => {
-    const updatedListDelete = items.filter(items => items.id !== id);
-    setItems(updatedListDelete);
+  const handleCalculate = () => {
+    if (value) {
+      calculate(Number(value));
+    }
   };
+
+  const handleOperatorSign = operatorSign => {
+    if (value) {
+      calculate(Number(value));
+      setValue("");
+    }
+    setOp(operatorSign);
+    console.log(op);
+  };
+
+  const handleDelete = () => {
+    setValue("");
+    setTotal(0);
+  };
+
+  const back = () => {
+    setValue(value.slice(0, -1));
+  };
+
   return (
     <div>
-      <h1>Todo list</h1>
+      {numbers.map(num => (
+        <button value={value} onClick={() => handleNumber(num)}>
+          {num}
+        </button>
+      ))}
 
-      <input type="text" value={value} onChange={handleChange} />
-      <button onClick={handleNewItem}>Add to the list</button>
+      {operators.map(o => (
+        <button value={op} onClick={() => handleOperatorSign(o)}>
+          {o}
+        </button>
+      ))}
 
-      <ul>
-        {items.map(item => (
-          <>
-            <li key={item.id}>{item.name}</li>
-            <button onClick={() => deleteItem(item.id)}>delete</button>
-          </>
-        ))}
-      </ul>
+      <button onClick={handleCalculate}>=</button>
+      <button onClick={handleDelete}>del</button>
+      <button onClick={back}>back</button>
+
+      <p>Total: {total}</p>
+      <p>Total: {value}</p>
     </div>
   );
 }
