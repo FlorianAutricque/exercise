@@ -1,24 +1,116 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [color, setColor] = useState("blue");
+  const [items, setItems] = useState([]);
+  const [value, setValue] = useState("");
 
-  const click = () => {
-    setColor(prev => (prev === "blue" ? "red" : "blue"));
+  const handleChange = e => {
+    setValue(e.target.value);
   };
 
-  useEffect(() => {
-    document.body.style.backgroundColor = color;
-  }, [color]);
+  const handleNewItem = () => {
+    const newItem = { id: Date.now(), name: value };
+    const updatedList = [...items, newItem];
+    setItems(updatedList);
+  };
 
+  const deleteItem = id => {
+    const updatedListDelete = items.filter(items => items.id !== id);
+    setItems(updatedListDelete);
+  };
   return (
     <div>
-      <button onClick={() => click()}>click</button>
+      <h1>Todo list</h1>
+
+      <input type="text" value={value} onChange={handleChange} />
+      <button onClick={handleNewItem}>Add to the list</button>
+
+      <ul>
+        {items.map(item => (
+          <>
+            <li key={item.id}>{item.name}</li>
+            <button onClick={() => deleteItem(item.id)}>delete</button>
+          </>
+        ))}
+      </ul>
     </div>
   );
 }
 
 export default App;
+
+// function App() {
+//   const data = {
+//     name: "",
+//     surname: "",
+//     job: "",
+//   };
+
+//   const [values, setValues] = useState(data);
+
+//   const handleChange = e => {
+//     const { name, value } = e.target;
+//     setValues({ ...values, [name]: value });
+//   };
+
+//   const handleSubmit = e => {
+//     e.preventDefault();
+//     console.log(values);
+//   };
+//   return (
+//     <div>
+//       <form className="container">
+//         <p>Name:</p>
+//         <input
+//           type="text"
+//           value={values.name}
+//           name="name"
+//           onChange={handleChange}
+//         />
+
+//         <p>Surname:</p>
+//         <input
+//           type="text"
+//           value={values.surname}
+//           name="surname"
+//           onChange={handleChange}
+//         />
+
+//         <p>Job:</p>
+//         <input
+//           type="text"
+//           value={values.job}
+//           name="job"
+//           onChange={handleChange}
+//         />
+
+//         <button onClick={handleSubmit}>Submit</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// function App() {
+//   const [color, setColor] = useState("blue");
+
+//   const click = () => {
+//     setColor(prev => (prev === "blue" ? "red" : "blue"));
+//   };
+
+//   useEffect(() => {
+//     document.body.style.backgroundColor = color;
+//   }, [color]);
+
+//   return (
+//     <div>
+//       <button onClick={() => click()}>click</button>
+//     </div>
+//   );
+// }
+
+// export default App;
 
 ////////////fetch////////////
 // function useFetch(url) {
