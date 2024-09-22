@@ -109,21 +109,23 @@ function App() {
   //afficher message qui dit bravo
   //compteur de cout
 
+  const [count, setCount] = useState(0);
+  const [newArray, setNewArray] = useState([]);
+
   const [randomWord, setRandomWord] = useState(() =>
     words[Math.floor(Math.random() * words.length)].toUpperCase()
   );
 
   const splitedWord = randomWord.split("");
-
-  const [newArray, setNewArray] = useState([]);
+  const alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split("");
 
   useEffect(() => {
     setNewArray(new Array(randomWord.length).fill(false));
   }, [randomWord.length]);
 
-  const alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase().split("");
-
   const handleClickAlphabet = (al, e) => {
+    setCount(count + 1);
+
     if (!randomWord.includes(al)) {
       console.log("no bueno");
       return;
@@ -139,7 +141,6 @@ function App() {
   return (
     <div className="flex justify-center flex-col gap-[4rem]">
       <div className="flex justify-center gap-2 mt-10">
-        {/* split coupe la chaine de caractere a un endroit precis */}
         {splitedWord.map((letter, index) => (
           <p
             className="border bg-slate-400 w-8 h-8 flex items-center justify-center"
@@ -157,10 +158,23 @@ function App() {
             onClick={e => handleClickAlphabet(al, e)}
             className="border w-8 h-8 hover:bg-cyan-400"
             key={index}
+            disabled={count > 20}
           >
             {al}
           </button>
         ))}
+      </div>
+
+      <div> count: {count || 0}</div>
+
+      <div>
+        {newArray.every(i => i === true) ? (
+          <p>Congratulations</p>
+        ) : count > 20 ? (
+          <p>You lost</p>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
