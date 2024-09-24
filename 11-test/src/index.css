@@ -18,6 +18,16 @@ h1 {
   font-size: 30px;
 }
 
+p {
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+p span {
+  color: rgb(59, 174, 174);
+  font-weight: bold;
+}
+
 .mainContainerGame {
   width: 16rem;
   display: flex;
@@ -46,6 +56,11 @@ h1 {
   width: 5rem;
 
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 50px;
 }
 
 .row1,
