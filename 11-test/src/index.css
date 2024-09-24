@@ -6,4 +6,68 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  background-color: #eee;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.mainContainerGame {
+  width: 16rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.containerGame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgb(70, 69, 69);
+  border-radius: 5px;
+
+  width: 100%;
+}
+
+.box {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 2px;
+  background-color: rgb(146, 158, 199);
+  height: 5rem;
+  width: 5rem;
+
+  cursor: pointer;
+}
+
+.row1,
+.row2,
+.row3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reset {
+  background-color: rgb(59, 174, 174);
+  padding: 1rem;
+  border-radius: 35px;
+  margin-top: 1rem;
+  letter-spacing: 2px;
+
+  transition: 0.3s ease-in-out;
+}
+
+.reset:hover {
+  color: #eae9e9;
+  transform: scale(1.05);
+  transition: 0.3s ease-in-out;
 }
