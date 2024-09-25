@@ -1,3 +1,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input input {
+  border: 1px solid black;
+}
+
+.progressBar {
+  border-radius: 20px;
+  background-color: #706e6e;
+
+  width: 20rem;
+}
