@@ -1,0 +1,15 @@
+.container_form {
+  display: flex;
+  flex-direction: column;
+  width: 30rem;
+  gap: 1rem;
+}
+
+.container_data {
+  display: none;
+  flex-direction: column;
+}
+
+.error {
+  color: red;
+}
