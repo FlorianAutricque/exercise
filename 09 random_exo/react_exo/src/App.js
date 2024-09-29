@@ -1,93 +1,156 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
-  const operators = ["+", "-", "/", "*"];
+  const [count, setCount] = useState(0);
+  const [time, setTime] = useState(10);
 
-  const [total, setTotal] = useState(0);
-  const [op, setOp] = useState("");
-  const [value, setValue] = useState("");
-
-  const calculate = value => {
-    switch (op) {
-      case "+":
-        setTotal(prev => prev + value);
-
-        break;
-
-      case "-":
-        setTotal(prev => prev - value);
-
-        break;
-
-      case "/":
-        setTotal(prev => prev / value);
-
-        break;
-
-      case "*":
-        setTotal(prev => prev * value);
-
-        break;
-
-      default:
-        setTotal(value);
-    }
-  };
-
-  const handleNumber = num => {
-    setValue(prev => prev + num);
-  };
-
-  const handleCalculate = () => {
-    if (value) {
-      calculate(Number(value));
-    }
-  };
-
-  const handleOperatorSign = operatorSign => {
-    if (value) {
-      calculate(Number(value));
-      setValue("");
-    }
-    setOp(operatorSign);
-    console.log(op);
-  };
-
-  const handleDelete = () => {
-    setValue("");
-    setTotal(0);
-  };
-
-  const back = () => {
-    setValue(value.slice(0, -1));
-  };
+  useEffect(() => {
+    setInterval(() => {
+      if (time === 0) {
+        return;
+      }
+      setTime(time - 1);
+    }, 1000);
+  }, [time]);
 
   return (
     <div>
-      {numbers.map(num => (
-        <button value={value} onClick={() => handleNumber(num)}>
-          {num}
-        </button>
-      ))}
+      <h3>Nb of click until timer expires</h3>
+      <h1>{count}</h1>
 
-      {operators.map(o => (
-        <button value={op} onClick={() => handleOperatorSign(o)}>
-          {o}
-        </button>
-      ))}
+      <p>Time left: {time} seconds</p>
 
-      <button onClick={handleCalculate}>=</button>
-      <button onClick={handleDelete}>del</button>
-      <button onClick={back}>back</button>
-
-      <p>Total: {total}</p>
-      <p>Total: {value}</p>
+      {time === 0 ? "" : <button onClick={() => setCount(count + 1)}>+</button>}
     </div>
   );
 }
 
 export default App;
+
+// function App() {
+//   const [value, setValue] = useState("");
+//   const [items, setItems] = useState([]);
+
+//   const handleItem = () => {
+//     const newItem = { id: Date.now(), name: value };
+//     setItems([...items, newItem]);
+//   };
+
+//   const deleteItem = itemId => {
+//     const updatedList = items.filter(item => item.id !== itemId);
+//     setItems(updatedList);
+//   };
+
+//   return (
+//     <div>
+//       <input
+//         type="text"
+//         value={value}
+//         onChange={e => setValue(e.target.value)}
+//       />
+//       <button onClick={handleItem}>add</button>
+//       <ul>
+//         {items.map(item => (
+//           <li key={item.id}>
+//             <p>{item.name}</p>
+//             <button onClick={() => deleteItem(item.id)}>Del</button>
+//           </li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+// function App() {
+//   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+//   const operators = ["+", "-", "/", "*"];
+
+//   const [total, setTotal] = useState(0);
+//   const [op, setOp] = useState("");
+//   const [value, setValue] = useState("");
+
+//   const calculate = value => {
+//     switch (op) {
+//       case "+":
+//         setTotal(prev => prev + value);
+
+//         break;
+
+//       case "-":
+//         setTotal(prev => prev - value);
+
+//         break;
+
+//       case "/":
+//         setTotal(prev => prev / value);
+
+//         break;
+
+//       case "*":
+//         setTotal(prev => prev * value);
+
+//         break;
+
+//       default:
+//         setTotal(value);
+//     }
+//   };
+
+//   const handleNumber = num => {
+//     setValue(prev => prev + num);
+//   };
+
+//   const handleCalculate = () => {
+//     if (value) {
+//       calculate(Number(value));
+//     }
+//   };
+
+//   const handleOperatorSign = operatorSign => {
+//     if (value) {
+//       calculate(Number(value));
+//       setValue("");
+//     }
+//     setOp(operatorSign);
+//     console.log(op);
+//   };
+
+//   const handleDelete = () => {
+//     setValue("");
+//     setTotal(0);
+//   };
+
+//   const back = () => {
+//     setValue(value.slice(0, -1));
+//   };
+
+//   return (
+//     <div>
+//       {numbers.map(num => (
+//         <button value={value} onClick={() => handleNumber(num)}>
+//           {num}
+//         </button>
+//       ))}
+
+//       {operators.map(o => (
+//         <button value={op} onClick={() => handleOperatorSign(o)}>
+//           {o}
+//         </button>
+//       ))}
+
+//       <button onClick={handleCalculate}>=</button>
+//       <button onClick={handleDelete}>del</button>
+//       <button onClick={back}>back</button>
+
+//       <p>Total: {total}</p>
+//       <p>Total: {value}</p>
+//     </div>
+//   );
+// }
+
+// export default App;
 
 // function App() {
 //   const data = {
