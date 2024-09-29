@@ -51,3 +51,39 @@ const y = [
 
 const b = y.reduce((acc, cur) => acc + Number(cur.nbBalls), 0);
 console.log(b);
+
+const words = [
+  { name: "abricot", price: 10 },
+  { name: "prune", price: 20 },
+  { name: "apple", price: 12 },
+  { name: "banana", price: 40 },
+  { name: "orange", price: 5.5 },
+];
+
+const sortedWords = words.sort((a, b) => {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+});
+
+const sortedPrice = words.sort((a, b) => {
+  if (a.price < b.price) {
+    return -1;
+  }
+  if (a.price > b.price) {
+    return 1;
+  }
+  return 0;
+});
+
+const top3 = sortedPrice.slice(0, 3);
+
+console.log(sortedWords);
+console.log("//////////////////");
+console.log(sortedPrice);
+
+console.log(top3);
