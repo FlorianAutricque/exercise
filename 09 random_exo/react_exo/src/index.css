@@ -8,3 +8,17 @@
   gap: 0.5rem;
   width: 15rem;
 }
+
+.containerPercentage {
+  width: 30rem;
+  background-color: grey;
+  border-radius: 20px;
+  z-index: -1;
+}
+
+.innerContainer {
+  background-color: pink;
+  border-radius: 20px;
+  z-index: 100;
+  text-align: center;
+}

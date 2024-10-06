@@ -1,31 +1,60 @@
 import { useEffect, useState } from "react";
 
-function App() {
-  const [count, setCount] = useState(0);
-  const [time, setTime] = useState(10);
+////////////PROGRESS BAR/////////////
 
-  useEffect(() => {
-    setInterval(() => {
-      if (time === 0) {
-        return;
-      }
-      setTime(time - 1);
-    }, 1000);
-  }, [time]);
+function App() {
+  const [value, setValue] = useState(10);
 
   return (
     <div>
-      <h3>Nb of click until timer expires</h3>
-      <h1>{count}</h1>
-
-      <p>Time left: {time} seconds</p>
-
-      {time === 0 ? "" : <button onClick={() => setCount(count + 1)}>+</button>}
+      <div className="containerPercentage">
+        <div className="innerContainer" style={{ width: `${value}%` }}>
+          {value}%
+        </div>
+      </div>
+      <p>Input Percentage:</p>
+      <input
+        type="number"
+        value={value}
+        onChange={e => setValue(e.target.value)}
+        disabled={value >= 100}
+      />
     </div>
   );
 }
 
 export default App;
+
+////////////COUNTER////////////
+
+// function App() {
+//   const [count, setCount] = useState(0);
+//   const [time, setTime] = useState(10);
+
+//   useEffect(() => {
+//     setInterval(() => {
+//       if (time === 0) {
+//         return;
+//       }
+//       setTime(time - 1);
+//     }, 1000);
+//   }, [time]);
+
+//   return (
+//     <div>
+//       <h3>Nb of click until timer expires</h3>
+//       <h1>{count}</h1>
+
+//       <p>Time left: {time} seconds</p>
+
+//       {time === 0 ? "" : <button onClick={() => setCount(count + 1)}>+</button>}
+//     </div>
+//   );
+// }
+
+// export default App;
+
+//////////TODOLIST////////////////
 
 // function App() {
 //   const [value, setValue] = useState("");
@@ -62,6 +91,8 @@ export default App;
 // }
 
 // export default App;
+
+////////////////CALC/////////////////////
 
 // function App() {
 //   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
@@ -152,6 +183,8 @@ export default App;
 
 // export default App;
 
+/////////SUBMISSION FORM////////////////
+
 // function App() {
 //   const data = {
 //     name: "",
@@ -204,6 +237,8 @@ export default App;
 // }
 
 // export default App;
+
+/////////////////BACKGORUND COLOR//////////////
 
 // function App() {
 //   const [color, setColor] = useState("blue");
