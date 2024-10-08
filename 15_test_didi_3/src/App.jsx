@@ -1,39 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  // faire un input ou mettre la dob - done
-  // faire un calcul pour voir de combien je suis vieux
+  const [image, setImage] = useState("");
 
-  //date dans js = nbre, nbre de ms entre une date et une autre date.
+  const x = Number.parseInt(Math.random() * 100);
+  console.log(x);
 
-  const [date, setDate] = useState(new Date("01/01/1999"));
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch(`https://picsum.photos/id/${x}/200/300`);
+        if (!res.ok) {
+          throw new Error("Something went wrong!");
+        }
 
-  const todayDate = new Date();
-
-  const diff = todayDate - date;
-
-  const y = diff / (24 * 3600 * 1000 * 365);
-
-  const diff2 = y - Number.parseInt(y);
-  const m = diff2 * 12;
-
-  const diff3 = m - Number.parseInt(m);
-  const d = diff3 * 30;
+        const data = await res.url;
+        setImage(data);
+      } catch (error) {
+        console.log(error.message);
+      }
+    }
+    fetchData();
+  }, []);
 
   return (
     <div>
-      <input
-        type="date"
-        value={date}
-        onChange={e => setDate(new Date(e.target.value))}
-      />
+      <h1>Fetch</h1>
 
-      <div>
-        <h3>
-          Your age is: {Number.parseInt(y)} year - {Number.parseInt(m)} months -{" "}
-          {Number.parseInt(d)} days
-        </h3>
-      </div>
+      <img src={image} alt="" />
     </div>
   );
 }
