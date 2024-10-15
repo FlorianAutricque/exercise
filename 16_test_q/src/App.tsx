@@ -39,6 +39,7 @@ function App() {
         throw new Error("Failed to add the task");
       }
 
+      // respect la structure todo/////////////////
       const createdTask: Todo = await res.json(); // Assuming the API returns the created task
       setData(prevData => [...prevData, createdTask]); // Update state with the new task
       setDescription(""); // Clear the description input field
