@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import Todo from "../types/Types";
+import { Todo } from "../types/Types";
 
 function GetTasks(
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,

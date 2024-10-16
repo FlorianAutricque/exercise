@@ -4,6 +4,7 @@ interface ModalUpdateProps {
   setDescription: React.Dispatch<React.SetStateAction<string>>;
   completed: boolean;
   setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+  setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function ModalUpdate({
@@ -12,6 +13,7 @@ function ModalUpdate({
   setDescription,
   completed,
   setCompleted,
+  setShow,
 }: ModalUpdateProps) {
   return (
     <div>
@@ -33,6 +35,8 @@ function ModalUpdate({
           />
         </label>
         <button type="submit">Update task</button>
+
+        <button onClick={() => setShow(false)}>Close</button>
       </form>
     </div>
   );

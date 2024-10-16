@@ -1,0 +1,58 @@
+.mainContainerNavbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.containerLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.containerLinks li {
+  list-style: none;
+}
+
+.containerLinks a {
+  text-decoration: none;
+  color: black;
+}
+
+/* change color when active/clicked */
+.active {
+  color: red !important;
+}
+
+.hamburger {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .containerLinks {
+    display: none;
+    flex-direction: column;
+
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: rgb(137, 121, 121);
+
+    width: 100%;
+    height: 100vh;
+
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .showMenu {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}

@@ -123,6 +123,7 @@ function Homepage({ data, setData }: CompletedProps) {
           setDescription={setDescription}
           completed={completed}
           setCompleted={setCompleted}
+          setShow={setShow}
         />
       )}
     </div>
