@@ -10,7 +10,6 @@ async function CreateTask(
   const url = "https://todos.simpleapi.dev/api/todos?apikey=";
 
   const newTask: Omit<Todo, "id"> = {
-    // Create a new task without the id
     description: description,
     completed: completed,
     meta: {},

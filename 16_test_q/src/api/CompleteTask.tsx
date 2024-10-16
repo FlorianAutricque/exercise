@@ -1,9 +1,8 @@
-// CompleteTask.ts
 import Todo from "../types/Types";
 
 const CompleteTask = async (
   id: number,
-  description: string, // Add description parameter
+  description: string,
   completed: boolean,
   setData: React.Dispatch<React.SetStateAction<Todo[]>>,
   setError: React.Dispatch<React.SetStateAction<string>>

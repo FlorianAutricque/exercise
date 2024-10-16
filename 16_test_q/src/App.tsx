@@ -3,8 +3,8 @@ import CreateTask from "./api/CreateTask";
 import Todo from "./types/Types";
 import DeleteTask from "./api/DeleteTask";
 import GetTasks from "./api/GetTasks";
-import UpdateTask from "./api/UpdateTask"; // Make sure to import the update function
-import CompleteTask from "./api/CompleteTask";
+import UpdateTask from "./api/UpdateTask";
+import ModalUpdate from "./components/ModalUpdate";
 
 function App() {
   const [data, setData] = useState<Todo[]>([]);
@@ -13,7 +13,7 @@ function App() {
   const [description, setDescription] = useState<string>("");
   const [completed, setCompleted] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
-  const [currentTaskId, setCurrentTaskId] = useState<number | null>(null); // For the current task to update
+  const [currentTaskId, setCurrentTaskId] = useState<number | null>(null);
 
   // Get all the tasks
   GetTasks(setIsLoading, setData, setError);
@@ -43,7 +43,14 @@ function App() {
     setData(updatedTasks);
 
     // Call CompleteTask with the item description
-    await CompleteTask(
+    // await CompleteTask(
+    //   item.id,
+    //   item.description,
+    //   !item.completed,
+    //   setData,
+    //   setError
+    // );
+    await UpdateTask(
       item.id,
       item.description,
       !item.completed,
@@ -109,27 +116,13 @@ function App() {
         ))}
       </ul>
       {show && (
-        <div>
-          <h1>Update Task</h1>
-          <form onSubmit={handleUpdate}>
-            <label>Description:</label>
-            <input
-              type="text"
-              value={description}
-              onChange={e => setDescription(e.target.value)}
-              required
-            />
-            <label>
-              Completed:
-              <input
-                type="checkbox"
-                checked={completed}
-                onChange={() => setCompleted(!completed)} // Toggle completion
-              />
-            </label>
-            <button type="submit">Update task</button>
-          </form>
-        </div>
+        <ModalUpdate
+          handleUpdate={handleUpdate}
+          description={description}
+          setDescription={setDescription}
+          completed={completed}
+          setCompleted={setCompleted}
+        />
       )}
     </div>
   );
