@@ -1,8 +1,11 @@
-interface Todo {
+export interface Todo {
   id: number;
   description: string;
   completed: boolean;
   meta: Record<string, unknown>;
 }
 
-export default Todo;
+export interface CompletedProps {
+  data: Todo[];
+  setData: React.Dispatch<React.SetStateAction<Todo[]>>;
+}
