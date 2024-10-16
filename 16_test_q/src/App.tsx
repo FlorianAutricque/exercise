@@ -1,113 +1,72 @@
-import { useEffect, useState } from "react";
-
-// Define the type for a Todo item
-interface Todo {
-  id: number; // Adjust according to your API response structure
-  description: string;
-  completed: boolean;
-  meta: Record<string, unknown>; // Adjust based on the expected structure of meta
-}
+import { useState } from "react";
+import CreateTask from "./api/CreateTask";
+import Todo from "./types/Types";
+import DeleteTask from "./api/DeleteTask";
+import GetTasks from "./api/GetTasks";
+import UpdateTask from "./api/UpdateTask"; // Make sure to import the update function
 
 function App() {
-  const [data, setData] = useState<Todo[]>([]); // State for storing todos
-  const [error, setError] = useState<string>(""); // State for error messages
-  const [isLoading, setIsLoading] = useState<boolean>(false); // Loading state
-  const [description, setDescription] = useState<string>(""); // State for description input
-  const [completed, setCompleted] = useState<boolean>(false); // State for completion flag
+  const [data, setData] = useState<Todo[]>([]);
+  const [error, setError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [description, setDescription] = useState<string>("");
+  const [completed, setCompleted] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(false);
+  const [currentTaskId, setCurrentTaskId] = useState<number | null>(null); // For the current task to update
 
-  const accesKey = import.meta.env.VITE_REACT_APP_API_KEY;
-  const url = "https://todos.simpleapi.dev/api/todos?apikey=";
+  // Get all the tasks
+  GetTasks(setIsLoading, setData, setError);
 
+  // Create/Add a new task
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    const newTask: Omit<Todo, "id"> = {
-      // Create a new task without the id
-      description: description,
-      completed: completed,
-      meta: {},
-    };
-
-    try {
-      const res = await fetch(`${url}${accesKey}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newTask),
-      });
-
-      if (!res.ok) {
-        throw new Error("Failed to add the task");
-      }
-
-      // respect la structure todo/////////////////
-      const createdTask: Todo = await res.json(); // Assuming the API returns the created task
-      setData(prevData => [...prevData, createdTask]); // Update state with the new task
-      setDescription(""); // Clear the description input field
-      setCompleted(false); // Reset the completion flag
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError("Something went wrong");
-      }
-    }
+    await CreateTask(description, completed, setData, setError);
+    setDescription("");
+    setCompleted(false);
   };
 
+  // Delete a task
   const deleteItem = async (itemId: number) => {
-    try {
-      const res = await fetch(
-        `https://todos.simpleapi.dev/api/todos/${itemId}?apikey=${accesKey}`,
-        {
-          method: "DELETE",
-        }
-      );
-
-      if (!res.ok) {
-        throw new Error("Failed to delete the task");
-      }
-
-      const updatedList = data.filter(item => item.id !== itemId);
-      setData(updatedList);
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        setError(err.message);
-      } else {
-        setError("Something went wrong");
-      }
-    }
+    DeleteTask(data, setData, setError, itemId);
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true);
-        const res = await fetch(`${url}${accesKey}`);
+  // Complete a task
+  const handleComplete = async (id: number) => {
+    const updatedTasks = data.map(item =>
+      item.id === id ? { ...item, completed: !item.completed } : item
+    );
+    setData(updatedTasks);
+  };
 
-        if (!res.ok) {
-          throw new Error("Something went wrong 🫠");
-        }
+  // Show update form
+  const handleShow = (item: Todo) => {
+    setShow(!show);
+    setCurrentTaskId(item.id);
+    setDescription(item.description);
+    setCompleted(item.completed);
+  };
 
-        const data: Todo[] = await res.json();
-        setData(data); // Set fetched data to state
-      } catch (err: unknown) {
-        if (err instanceof Error) {
-          setError(err.message);
-        } else {
-          setError("Something went wrong");
-        }
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchData();
-  }, [accesKey]);
+  // Handle task update
+  const handleUpdate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (currentTaskId !== null) {
+      await UpdateTask(
+        currentTaskId,
+        description,
+        completed,
+        setData,
+        setError
+      ); // Call update with description and completed
+      setShow(false); // Hide the update form after updating
+      setDescription(""); // Reset the input
+      setCurrentTaskId(null); // Reset current task ID
+    }
+  };
 
   return (
     <div>
       {isLoading ? <p>Loading ...</p> : ""}
-      {error && <p style={{ color: "red" }}>{error}</p>}{" "}
-      {/* Display error message */}
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <form onSubmit={handleSubmit}>
         <label>Description:</label>
         <input
@@ -116,24 +75,48 @@ function App() {
           onChange={e => setDescription(e.target.value)}
           required
         />
-        <label>
-          <input
-            type="checkbox"
-            checked={completed}
-            onChange={e => setCompleted(e.target.checked)}
-          />
-          Completed
-        </label>
         <button type="submit">Add task</button>
       </form>
       <ul>
         {data.map(item => (
           <li key={item.id}>
-            {item.description} {item.completed ? "(Completed)" : ""}
+            {item.description}
+            <label>
+              <input
+                type="checkbox"
+                checked={item.completed}
+                onChange={() => handleComplete(item.id)}
+              />
+              {item.completed ? "done" : "not done"}
+            </label>
             <button onClick={() => deleteItem(item.id)}>DEL</button>
+            <button onClick={() => handleShow(item)}>MOD</button>
           </li>
         ))}
       </ul>
+      {show && (
+        <div>
+          <h1>Update Task</h1>
+          <form onSubmit={handleUpdate}>
+            <label>Description:</label>
+            <input
+              type="text"
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+              required
+            />
+            <label>
+              Completed:
+              <input
+                type="checkbox"
+                checked={completed}
+                onChange={() => setCompleted(!completed)} // Toggle completion
+              />
+            </label>
+            <button type="submit">Update task</button>
+          </form>
+        </div>
+      )}
     </div>
   );
 }
