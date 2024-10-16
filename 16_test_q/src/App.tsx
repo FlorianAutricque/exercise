@@ -4,6 +4,7 @@ import Todo from "./types/Types";
 import DeleteTask from "./api/DeleteTask";
 import GetTasks from "./api/GetTasks";
 import UpdateTask from "./api/UpdateTask"; // Make sure to import the update function
+import CompleteTask from "./api/CompleteTask";
 
 function App() {
   const [data, setData] = useState<Todo[]>([]);
@@ -31,11 +32,24 @@ function App() {
   };
 
   // Complete a task
-  const handleComplete = async (id: number) => {
-    const updatedTasks = data.map(item =>
-      item.id === id ? { ...item, completed: !item.completed } : item
+
+  const handleComplete = async (item: Todo) => {
+    // Toggle completion locally first
+    const updatedTasks = data.map(task =>
+      task.id === item.id ? { ...task, completed: !task.completed } : task
     );
+
+    // Update the state
     setData(updatedTasks);
+
+    // Call CompleteTask with the item description
+    await CompleteTask(
+      item.id,
+      item.description,
+      !item.completed,
+      setData,
+      setError
+    );
   };
 
   // Show update form
@@ -85,7 +99,7 @@ function App() {
               <input
                 type="checkbox"
                 checked={item.completed}
-                onChange={() => handleComplete(item.id)}
+                onChange={() => handleComplete(item)}
               />
               {item.completed ? "done" : "not done"}
             </label>
