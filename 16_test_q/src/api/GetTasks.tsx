@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Todo } from "../types/Types";
+import { Todo, ApiTodo } from "../types/Types";
 
 function GetTasks(
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
@@ -19,8 +19,16 @@ function GetTasks(
           throw new Error("Something went wrong 🫠");
         }
 
-        const data: Todo[] = await res.json();
-        setData(data);
+        const data: ApiTodo[] = await res.json();
+        setData(
+          data.map(todo => ({
+            ...todo,
+            completed: todo.completed === 1,
+            meta: {
+              createdAt: new Date(todo.meta.createdAt),
+            },
+          }))
+        );
       } catch (err: unknown) {
         if (err instanceof Error) {
           setError(err.message);

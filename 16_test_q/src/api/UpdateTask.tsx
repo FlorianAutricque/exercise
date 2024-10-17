@@ -5,6 +5,7 @@ async function UpdateTask(
   id: number,
   description: string,
   completed: boolean,
+  createdAt: Date,
   setData: React.Dispatch<React.SetStateAction<Todo[]>>,
   setError: React.Dispatch<React.SetStateAction<string>>
 ) {
@@ -20,6 +21,7 @@ async function UpdateTask(
       body: JSON.stringify({
         description,
         completed: completed ? 1 : 0,
+        meta: { createdAt },
       }),
     });
 

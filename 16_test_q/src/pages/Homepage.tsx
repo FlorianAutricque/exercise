@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { z } from "zod";
 import CreateTask from "../api/CreateTask";
-import { Todo, CompletedProps } from "../types/Types";
+import type { Todo, CompletedProps } from "../types/Types";
 import DeleteTask from "../api/DeleteTask";
 import GetTasks from "../api/GetTasks";
 import UpdateTask from "../api/UpdateTask";
@@ -18,8 +18,8 @@ function Homepage({
 }: CompletedProps) {
   const [description, setDescription] = useState<string>("");
   const [completed, setCompleted] = useState<boolean>(false);
+  const [selectedTask, setSelectedTask] = useState<Todo | null>(null);
   const [show, setShow] = useState<boolean>(false);
-  const [currentTaskId, setCurrentTaskId] = useState<number | null>(null);
 
   //ZOD VALIDATION
   const taskSchema = z.object({
@@ -43,7 +43,6 @@ function Homepage({
       await CreateTask(description, completed, setData, setError);
       setDescription("");
       setCompleted(false);
-
       setError("");
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -68,6 +67,7 @@ function Homepage({
       item.id,
       item.description,
       !item.completed,
+      item.meta.createdAt,
       setData,
       setError
     );
@@ -76,9 +76,9 @@ function Homepage({
   // SHOW THE UPDATE FORM/MODAL
   const handleShow = (item: Todo) => {
     setShow(!show);
-    setCurrentTaskId(item.id);
-    setDescription(item.description);
-    setCompleted(item.completed);
+    // setDescription(item.description);
+    // setCompleted(item.completed);
+    setSelectedTask(item);
   };
 
   /*FUCNTION HANDLE UPDATE:
@@ -93,48 +93,37 @@ function Homepage({
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (currentTaskId !== null) {
-      try {
-        const updateSchema = z.object({
-          description: z
-            .string()
-            .min(10, "Description must be at least 10 characters long.")
-            .optional(),
-          completed: z.boolean().optional(),
-        });
+    if (!selectedTask) return;
+    try {
+      const updateSchema = z.object({
+        description: z
+          .string()
+          .min(10, "Description must be at least 10 characters long."),
+        completed: z.boolean(),
+        createdAt: z.date(),
+      });
 
-        const validatedData = updateSchema.parse({ description, completed });
+      updateSchema.parse({
+        description: selectedTask.description,
+        completed: selectedTask.completed,
+        createdAt: selectedTask.meta.createdAt,
+      });
 
-        type UpdateData = {
-          description?: string;
-          completed?: boolean;
-        };
+      await UpdateTask(
+        selectedTask.id,
+        selectedTask.description,
+        selectedTask.completed,
+        selectedTask.meta.createdAt,
+        setData,
+        setError
+      );
 
-        const updateData: UpdateData = {};
-        if (validatedData.description !== undefined) {
-          updateData.description = validatedData.description;
-          setError("");
-        }
-        if (validatedData.completed !== undefined) {
-          updateData.completed = validatedData.completed;
-          setError("");
-        }
-
-        await UpdateTask(
-          currentTaskId,
-          updateData.description ?? "",
-          updateData.completed ?? false,
-          setData,
-          setError
-        );
-
-        setShow(false);
-        setDescription("");
-        setCurrentTaskId(null);
-      } catch (error) {
-        if (error instanceof z.ZodError) {
-          setError(error.errors.map(err => err.message).join(", "));
-        }
+      setError("");
+      setShow(false);
+      setSelectedTask(null);
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setError(error.errors.map(err => toast.error(err.message)).join(", "));
       }
     }
   };
@@ -187,13 +176,11 @@ function Homepage({
         ))}
       </ul>
 
-      {show && (
+      {show && !!selectedTask && (
         <ModalUpdate
           handleUpdate={handleUpdate}
-          description={description}
-          setDescription={setDescription}
-          completed={completed}
-          setCompleted={setCompleted}
+          task={selectedTask}
+          setTask={setSelectedTask}
           setShow={setShow}
         />
       )}

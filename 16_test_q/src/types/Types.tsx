@@ -7,6 +7,15 @@ export interface Todo {
   };
 }
 
+export interface ApiTodo {
+  id: number;
+  description: string;
+  completed: number;
+  meta: {
+    createdAt: Date;
+  };
+}
+
 export interface CompletedProps {
   data: Todo[];
   setData: React.Dispatch<React.SetStateAction<Todo[]>>;

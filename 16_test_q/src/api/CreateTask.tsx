@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { Todo } from "../types/Types";
+import { Todo, ApiTodo } from "../types/Types";
 
 async function CreateTask(
   description: string,
@@ -10,9 +10,9 @@ async function CreateTask(
   const accesKey = import.meta.env.VITE_REACT_APP_API_KEY;
   const url = "https://todos.simpleapi.dev/api/todos?apikey=";
 
-  const newTask: Omit<Todo, "id"> = {
+  const newTask: Omit<ApiTodo, "id"> = {
     description: description,
-    completed: completed,
+    completed: completed ? 1 : 0,
     meta: { createdAt: new Date() },
   };
 
@@ -28,8 +28,17 @@ async function CreateTask(
     }
 
     // respect la structure todo/////////////////
-    const createdTask: Todo = await res.json();
-    setData(prevData => [...prevData, createdTask]);
+    const createdTask: ApiTodo = await res.json();
+    setData(prevData => [
+      ...prevData,
+      {
+        ...createdTask,
+        completed: createdTask.completed === 1,
+        meta: {
+          createdAt: new Date(createdTask.meta.createdAt),
+        },
+      },
+    ]);
     toast.success("New task added");
   } catch (err: unknown) {
     if (err instanceof Error) {

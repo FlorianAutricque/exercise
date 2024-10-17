@@ -1,18 +1,16 @@
+import type { Todo } from "../types/Types";
+
 interface ModalUpdateProps {
   handleUpdate: (e: React.FormEvent) => void;
-  description: string;
-  setDescription: React.Dispatch<React.SetStateAction<string>>;
-  completed: boolean;
-  setCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+  task: Todo;
+  setTask: React.Dispatch<React.SetStateAction<Todo | null>>;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function ModalUpdate({
   handleUpdate,
-  description,
-  setDescription,
-  completed,
-  setCompleted,
+  task,
+  setTask,
   setShow,
 }: ModalUpdateProps) {
   return (
@@ -22,16 +20,16 @@ function ModalUpdate({
         <label>Description:</label>
         <input
           type="text"
-          value={description}
-          onChange={e => setDescription(e.target.value)}
+          value={task.description}
+          onChange={e => setTask({ ...task, description: e.target.value })}
           required
         />
         <label>
           Completed:
           <input
             type="checkbox"
-            checked={completed}
-            onChange={() => setCompleted(!completed)}
+            checked={task.completed}
+            onChange={() => setTask({ ...task, completed: !task.completed })}
           />
         </label>
         <button type="submit">Update task</button>

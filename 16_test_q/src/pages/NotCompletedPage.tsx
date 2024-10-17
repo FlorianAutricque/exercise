@@ -25,6 +25,7 @@ function NotCompletedPage({
       item.id,
       item.description,
       !item.completed,
+      item.meta.createdAt,
       setData,
       setError
     );
@@ -40,7 +41,7 @@ function NotCompletedPage({
         <Spinner />
       ) : (
         <ul>
-          {notCompletedTasks && data.length > 0 ? (
+          {notCompletedTasks.length > 0 ? (
             notCompletedTasks.map(item => (
               <div key={item.id}>
                 <li>{item.description}</li>
