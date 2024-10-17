@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { z } from "zod";
 import CreateTask from "../api/CreateTask";
 import { Todo, CompletedProps } from "../types/Types";
 import DeleteTask from "../api/DeleteTask";
@@ -16,9 +17,18 @@ function Homepage({
 }: CompletedProps) {
   const [description, setDescription] = useState<string>("");
   const [completed, setCompleted] = useState<boolean>(false);
-
+  const [createdAt, setCreatedAt] = useState<Date>(new Date());
   const [show, setShow] = useState<boolean>(false);
   const [currentTaskId, setCurrentTaskId] = useState<number | null>(null);
+
+  //ZOD VALIDATION
+  const taskSchema = z.object({
+    description: z
+      .string()
+      .min(10, "Description must be at least 10 characters long."),
+    completed: z.boolean(),
+    createdAt: z.date(),
+  });
 
   // Get all the tasks
   GetTasks(setIsLoading, setData, setError);
@@ -26,9 +36,19 @@ function Homepage({
   // Create/Add a new task
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await CreateTask(description, completed, setData, setError);
-    setDescription("");
-    setCompleted(false);
+    try {
+      taskSchema.parse({ description, completed, createdAt });
+
+      await CreateTask(description, completed, setData, setError);
+      setDescription("");
+      setCompleted(false);
+      setCreatedAt(new Date());
+      setError("");
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        setError(error.errors.map(err => err.message).join(", "));
+      }
+    }
   };
 
   // Delete a task
@@ -103,7 +123,7 @@ function Homepage({
             <p>{item.description}</p>
             <p>
               <strong>Created At: </strong>
-              {new Date(item.meta.createdAt).toLocaleDateString()}
+              {new Date(item.meta.createdAt).toLocaleString()}
             </p>
             <label>
               <input
