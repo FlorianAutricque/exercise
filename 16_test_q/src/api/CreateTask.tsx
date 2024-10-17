@@ -12,7 +12,7 @@ async function CreateTask(
   const newTask: Omit<Todo, "id"> = {
     description: description,
     completed: completed,
-    meta: {},
+    meta: { createdAt: new Date() },
   };
 
   try {

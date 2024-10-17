@@ -47,14 +47,6 @@ function Homepage({
     // Update the state
     setData(updatedTasks);
 
-    // Call CompleteTask with the item description
-    // await CompleteTask(
-    //   item.id,
-    //   item.description,
-    //   !item.completed,
-    //   setData,
-    //   setError
-    // );
     await UpdateTask(
       item.id,
       item.description,
@@ -108,7 +100,11 @@ function Homepage({
       <ul>
         {data.map(item => (
           <li key={item.id}>
-            {item.description}
+            <p>{item.description}</p>
+            <p>
+              <strong>Created At: </strong>
+              {new Date(item.meta.createdAt).toLocaleDateString()}
+            </p>
             <label>
               <input
                 type="checkbox"

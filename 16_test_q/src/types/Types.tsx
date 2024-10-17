@@ -2,7 +2,10 @@ export interface Todo {
   id: number;
   description: string;
   completed: boolean;
-  meta: Record<string, unknown>;
+  meta: {
+    createdAt: Date;
+    [key: string]: unknown;
+  };
 }
 
 export interface CompletedProps {
