@@ -1,15 +1,7 @@
 .mainContainerNavbar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem;
-}
-
-.containerLinks {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 2rem;
 }
 
 .containerLinks li {
@@ -18,41 +10,24 @@
 
 .containerLinks a {
   text-decoration: none;
-  color: black;
 }
 
-/* change color when active/clicked */
+.containerLinks {
+  padding: 0 2rem 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  border: 1px solid black;
+  border-radius: 25px;
+}
+
+.linkBorder {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  padding: 1rem 2rem 1rem 2rem;
+}
+
 .active {
-  color: red !important;
-}
-
-.hamburger {
-  display: none;
-}
-
-@media (max-width: 760px) {
-  .containerLinks {
-    display: none;
-    flex-direction: column;
-
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: rgb(137, 121, 121);
-
-    width: 100%;
-    height: 100vh;
-
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease-in-out;
-  }
-
-  .showMenu {
-    display: flex;
-  }
-
-  .hamburger {
-    display: block;
-  }
+  background-color: red;
 }
