@@ -17,8 +17,8 @@ export interface ApiTodo {
 }
 
 export interface CompletedProps {
-  data: Todo[];
-  setData: React.Dispatch<React.SetStateAction<Todo[]>>;
+  todos: Todo[];
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
   error: string;
   setError: React.Dispatch<React.SetStateAction<string>>;
   isLoading: boolean;

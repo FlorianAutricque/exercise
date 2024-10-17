@@ -1,32 +1,32 @@
-import GetTasks from "../api/GetTasks";
-import UpdateTask from "../api/UpdateTask";
+import GetTasks from "../api/GetTodos";
+import UpdateTask from "../api/UpdateTodo";
 import Spinner from "../components/Spinner";
 import { CompletedProps, Todo } from "../types/Types";
 
 function NotCompletedPage({
-  data,
-  setData,
+  todos,
+  setTodos,
   error,
   setError,
   isLoading,
   setIsLoading,
 }: CompletedProps) {
-  GetTasks(setIsLoading, setData, setError);
+  GetTasks(setIsLoading, setTodos, setError);
 
-  const notCompletedTasks = data.filter(item => !item.completed);
+  const notCompletedTasks = todos.filter(todo => !todo.completed);
 
-  const handleComplete = async (item: Todo) => {
-    const updatedTasks = data.map(task =>
-      task.id === item.id ? { ...task, completed: !task.completed } : task
+  const handleComplete = async (todo: Todo) => {
+    const updatedTasks = todos.map(task =>
+      task.id === todo.id ? { ...task, completed: !task.completed } : task
     );
-    setData(updatedTasks);
+    setTodos(updatedTasks);
 
     await UpdateTask(
-      item.id,
-      item.description,
-      !item.completed,
-      item.meta.createdAt,
-      setData,
+      todo.id,
+      todo.description,
+      !todo.completed,
+      todo.meta.createdAt,
+      setTodos,
       setError
     );
   };
@@ -42,16 +42,16 @@ function NotCompletedPage({
       ) : (
         <ul>
           {notCompletedTasks.length > 0 ? (
-            notCompletedTasks.map(item => (
-              <div key={item.id}>
-                <li>{item.description}</li>
+            notCompletedTasks.map(todo => (
+              <div key={todo.id}>
+                <li>{todo.description}</li>
                 <label>
                   <input
                     type="checkbox"
-                    checked={item.completed}
-                    onChange={() => handleComplete(item)}
+                    checked={todo.completed}
+                    onChange={() => handleComplete(todo)}
                   />
-                  {item.completed ? "done" : "not done"}
+                  {todo.completed ? "done" : "not done"}
                 </label>
               </div>
             ))

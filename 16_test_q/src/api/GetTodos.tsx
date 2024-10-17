@@ -3,25 +3,25 @@ import { Todo, ApiTodo } from "../types/Types";
 
 function GetTasks(
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
-  setData: React.Dispatch<React.SetStateAction<Todo[]>>,
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>,
   setError: React.Dispatch<React.SetStateAction<string>>
 ) {
-  const accesKey = import.meta.env.VITE_REACT_APP_API_KEY;
-  const url = "https://todos.simpleapi.dev/api/todos?apikey=";
+  const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
+  const baseUrl = import.meta.env.VITE_REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setIsLoading(true);
-        const res = await fetch(`${url}${accesKey}`);
+        const res = await fetch(`${baseUrl}/todos?apikey=${accessKey}`);
 
         if (!res.ok) {
-          throw new Error("Something went wrong 🫠");
+          throw new Error("Something went wrong");
         }
 
-        const data: ApiTodo[] = await res.json();
-        setData(
-          data.map(todo => ({
+        const todos: ApiTodo[] = await res.json();
+        setTodos(
+          todos.map(todo => ({
             ...todo,
             completed: todo.completed === 1,
             meta: {
@@ -41,7 +41,7 @@ function GetTasks(
     };
 
     fetchData();
-  }, [accesKey, setData, setError, setIsLoading]);
+  }, [accessKey, baseUrl, setTodos, setError, setIsLoading]);
 
   return;
 }

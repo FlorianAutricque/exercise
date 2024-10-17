@@ -9,7 +9,7 @@ import { Todo } from "./types/Types";
 import { Toaster } from "react-hot-toast";
 
 function App() {
-  const [data, setData] = useState<Todo[]>([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -22,8 +22,8 @@ function App() {
             index
             element={
               <Homepage
-                data={data}
-                setData={setData}
+                todos={todos}
+                setTodos={setTodos}
                 error={error}
                 setError={setError}
                 isLoading={isLoading}
@@ -35,8 +35,8 @@ function App() {
             path="/completed"
             element={
               <CompletedPage
-                data={data}
-                setData={setData}
+                todos={todos}
+                setTodos={setTodos}
                 error={error}
                 setError={setError}
                 isLoading={isLoading}
@@ -48,8 +48,8 @@ function App() {
             path="/not-completed"
             element={
               <NotCompletedPage
-                data={data}
-                setData={setData}
+                todos={todos}
+                setTodos={setTodos}
                 error={error}
                 setError={setError}
                 isLoading={isLoading}

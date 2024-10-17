@@ -1,18 +1,18 @@
-import GetTasks from "../api/GetTasks";
+import GetTasks from "../api/GetTodos";
 import Spinner from "../components/Spinner";
 import { CompletedProps } from "../types/Types";
 
 function CompletedPage({
-  data,
-  setData,
+  todos,
+  setTodos,
   error,
   setError,
   isLoading,
   setIsLoading,
 }: CompletedProps) {
-  GetTasks(setIsLoading, setData, setError);
+  GetTasks(setIsLoading, setTodos, setError);
 
-  const completedTasks = data.filter(item => item.completed);
+  const completedTasks = todos.filter(todo => todo.completed);
 
   return (
     <>
@@ -25,8 +25,8 @@ function CompletedPage({
       ) : (
         <ul>
           {completedTasks.length > 0 ? (
-            completedTasks.map(item => (
-              <li key={item.id}>{item.description}</li>
+            completedTasks.map(todo => (
+              <li key={todo.id}>{todo.description}</li>
             ))
           ) : (
             <p>There are no tasks completed yet</p>

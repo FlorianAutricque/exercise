@@ -2,18 +2,18 @@ import toast from "react-hot-toast";
 import { Todo } from "../types/Types";
 
 async function UpdateTask(
-  id: number,
+  todoId: number,
   description: string,
   completed: boolean,
   createdAt: Date,
-  setData: React.Dispatch<React.SetStateAction<Todo[]>>,
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>,
   setError: React.Dispatch<React.SetStateAction<string>>
 ) {
-  const accesKey = import.meta.env.VITE_REACT_APP_API_KEY;
-  const url = `https://todos.simpleapi.dev/api/todos/${id}?apikey=${accesKey}`;
+  const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
+  const baseUrl = import.meta.env.VITE_REACT_APP_API_BASE_URL;
 
   try {
-    const res = await fetch(url, {
+    const res = await fetch(`${baseUrl}/todos/${todoId}?apikey=${accessKey}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -29,9 +29,9 @@ async function UpdateTask(
       throw new Error("Failed to update task");
     }
 
-    setData(prevData =>
-      prevData.map(item =>
-        item.id === id ? { ...item, description, completed } : item
+    setTodos(prevData =>
+      prevData.map(todo =>
+        todo.id === todoId ? { ...todo, description, completed } : todo
       )
     );
     toast.success("Task successfully updated");

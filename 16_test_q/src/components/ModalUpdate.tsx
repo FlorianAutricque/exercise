@@ -1,14 +1,14 @@
 import type { Todo } from "../types/Types";
 
 interface ModalUpdateProps {
-  handleUpdate: (e: React.FormEvent) => void;
+  handleUpdateTodo: (e: React.FormEvent) => void;
   task: Todo;
   setTask: React.Dispatch<React.SetStateAction<Todo | null>>;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function ModalUpdate({
-  handleUpdate,
+  handleUpdateTodo,
   task,
   setTask,
   setShow,
@@ -16,7 +16,7 @@ function ModalUpdate({
   return (
     <div>
       <h1>Update Task</h1>
-      <form onSubmit={handleUpdate}>
+      <form onSubmit={handleUpdateTodo}>
         <label>Description:</label>
         <input
           type="text"

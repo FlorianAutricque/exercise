@@ -4,23 +4,23 @@ import { Todo, ApiTodo } from "../types/Types";
 async function CreateTask(
   description: string,
   completed: boolean,
-  setData: React.Dispatch<React.SetStateAction<Todo[]>>,
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>,
   setError: React.Dispatch<React.SetStateAction<string>>
 ) {
-  const accesKey = import.meta.env.VITE_REACT_APP_API_KEY;
-  const url = "https://todos.simpleapi.dev/api/todos?apikey=";
+  const accessKey = import.meta.env.VITE_REACT_APP_API_KEY;
+  const baseUrl = import.meta.env.VITE_REACT_APP_API_BASE_URL;
 
-  const newTask: Omit<ApiTodo, "id"> = {
+  const newTodo: Omit<ApiTodo, "id"> = {
     description: description,
     completed: completed ? 1 : 0,
     meta: { createdAt: new Date() },
   };
 
   try {
-    const res = await fetch(`${url}${accesKey}`, {
+    const res = await fetch(`${baseUrl}/todos?apikey=${accessKey}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(newTask),
+      body: JSON.stringify(newTodo),
     });
 
     if (!res.ok) {
@@ -28,14 +28,14 @@ async function CreateTask(
     }
 
     // respect la structure todo/////////////////
-    const createdTask: ApiTodo = await res.json();
-    setData(prevData => [
+    const createdTodo: ApiTodo = await res.json();
+    setTodos(prevData => [
       ...prevData,
       {
-        ...createdTask,
-        completed: createdTask.completed === 1,
+        ...createdTodo,
+        completed: createdTodo.completed === 1,
         meta: {
-          createdAt: new Date(createdTask.meta.createdAt),
+          createdAt: new Date(createdTodo.meta.createdAt),
         },
       },
     ]);
