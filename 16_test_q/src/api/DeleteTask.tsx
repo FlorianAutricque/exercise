@@ -1,4 +1,4 @@
-import Todo from "../types/Types";
+import { Todo } from "../types/Types";
 
 async function DeleteTask(
   data: Todo[],

@@ -1,4 +1,4 @@
-import Todo from "../types/Types";
+import { Todo } from "../types/Types";
 
 async function CreateTask(
   description: string,
@@ -14,6 +14,7 @@ async function CreateTask(
     completed: completed,
     meta: {},
   };
+
   try {
     const res = await fetch(`${url}${accesKey}`, {
       method: "POST",
@@ -32,7 +33,7 @@ async function CreateTask(
     if (err instanceof Error) {
       setError(err.message);
     } else {
-      setError("Something went wrong");
+      setError("Something went wrong with the creation of task");
     }
   }
   return;

@@ -6,10 +6,14 @@ import GetTasks from "../api/GetTasks";
 import UpdateTask from "../api/UpdateTask";
 import ModalUpdate from "../components/ModalUpdate";
 
-function Homepage({ data, setData }: CompletedProps) {
-  // const [data, setData] = useState<Todo[]>([]);
-  const [error, setError] = useState<string>("");
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+function Homepage({
+  data,
+  setData,
+  error,
+  setError,
+  isLoading,
+  setIsLoading,
+}: CompletedProps) {
   const [description, setDescription] = useState<string>("");
   const [completed, setCompleted] = useState<boolean>(false);
 
@@ -89,6 +93,7 @@ function Homepage({ data, setData }: CompletedProps) {
     <div>
       {isLoading ? <p>Loading ...</p> : ""}
       {error && <p style={{ color: "red" }}>{error}</p>}
+
       <form onSubmit={handleSubmit}>
         <label>Description:</label>
         <input
@@ -99,6 +104,7 @@ function Homepage({ data, setData }: CompletedProps) {
         />
         <button type="submit">Add task</button>
       </form>
+
       <ul>
         {data.map(item => (
           <li key={item.id}>
@@ -116,6 +122,7 @@ function Homepage({ data, setData }: CompletedProps) {
           </li>
         ))}
       </ul>
+
       {show && (
         <ModalUpdate
           handleUpdate={handleUpdate}
