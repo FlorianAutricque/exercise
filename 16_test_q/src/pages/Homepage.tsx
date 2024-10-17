@@ -17,7 +17,7 @@ function Homepage({
 }: CompletedProps) {
   const [description, setDescription] = useState<string>("");
   const [completed, setCompleted] = useState<boolean>(false);
-  const [createdAt, setCreatedAt] = useState<Date>(new Date());
+  // const [createdAt, setCreatedAt] = useState<Date>(new Date());
   const [show, setShow] = useState<boolean>(false);
   const [currentTaskId, setCurrentTaskId] = useState<number | null>(null);
 
@@ -30,19 +30,19 @@ function Homepage({
     createdAt: z.date(),
   });
 
-  // Get all the tasks
+  // GET ALL TASKS
   GetTasks(setIsLoading, setData, setError);
 
-  // Create/Add a new task
+  // CREATE/ADD A NEW TASK
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      taskSchema.parse({ description, completed, createdAt });
+      taskSchema.parse({ description, completed, createdAt: new Date() });
 
       await CreateTask(description, completed, setData, setError);
       setDescription("");
       setCompleted(false);
-      setCreatedAt(new Date());
+      // setCreatedAt(new Date());
       setError("");
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -51,20 +51,16 @@ function Homepage({
     }
   };
 
-  // Delete a task
+  // HANDLE DELETION OF TASK
   const deleteItem = async (itemId: number) => {
     DeleteTask(data, setData, setError, itemId);
   };
 
-  // Complete a task
-
+  // HANDLE COMPLETION OF TASK
   const handleComplete = async (item: Todo) => {
-    // Toggle completion locally first
     const updatedTasks = data.map(task =>
       task.id === item.id ? { ...task, completed: !task.completed } : task
     );
-
-    // Update the state
     setData(updatedTasks);
 
     await UpdateTask(
@@ -76,7 +72,7 @@ function Homepage({
     );
   };
 
-  // Show update form
+  // SHOW THE UPDATE FORM/MODAL
   const handleShow = (item: Todo) => {
     setShow(!show);
     setCurrentTaskId(item.id);
@@ -84,20 +80,61 @@ function Homepage({
     setCompleted(item.completed);
   };
 
-  // Handle task update
+  /*FUCNTION HANDLE UPDATE:
+      - Check if I'm in the current task
+      - Define a new z object with optional validation fields
+      - Parse this object with what I can modify (description and completed)
+      - Define a new type with the fact that they are optional
+      - Create new obj with the value that need to be updated. This obj has the form of UpdateData
+      - Assign validated description to UpdateData if defined/clear errors
+      - Assign validated completed to UpdateData if defined/clear errors
+      - Fetch with the UpdateTask function: update the server side (we pass the description and completed if it has been updated) */
   const handleUpdate = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (currentTaskId !== null) {
-      await UpdateTask(
-        currentTaskId,
-        description,
-        completed,
-        setData,
-        setError
-      ); // Call update with description and completed
-      setShow(false); // Hide the update form after updating
-      setDescription(""); // Reset the input
-      setCurrentTaskId(null); // Reset current task ID
+      try {
+        const updateSchema = z.object({
+          description: z
+            .string()
+            .min(10, "Description must be at least 10 characters long.")
+            .optional(),
+          completed: z.boolean().optional(),
+        });
+
+        const validatedData = updateSchema.parse({ description, completed });
+
+        type UpdateData = {
+          description?: string;
+          completed?: boolean;
+        };
+
+        const updateData: UpdateData = {};
+        if (validatedData.description !== undefined) {
+          updateData.description = validatedData.description;
+          setError("");
+        }
+        if (validatedData.completed !== undefined) {
+          updateData.completed = validatedData.completed;
+          setError("");
+        }
+
+        await UpdateTask(
+          currentTaskId,
+          updateData.description ?? "",
+          updateData.completed ?? false,
+          setData,
+          setError
+        );
+
+        setShow(false);
+        setDescription("");
+        setCurrentTaskId(null);
+      } catch (error) {
+        if (error instanceof z.ZodError) {
+          setError(error.errors.map(err => err.message).join(", "));
+        }
+      }
     }
   };
 
@@ -123,8 +160,19 @@ function Homepage({
             <p>{item.description}</p>
             <p>
               <strong>Created At: </strong>
-              {new Date(item.meta.createdAt).toLocaleString()}
+              {item.meta?.createdAt
+                ? new Date(item.meta.createdAt).toLocaleString("en-US", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    hour12: true,
+                  })
+                : "Date not available"}
             </p>
+
             <label>
               <input
                 type="checkbox"

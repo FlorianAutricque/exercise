@@ -4,7 +4,6 @@ export interface Todo {
   completed: boolean;
   meta: {
     createdAt: Date;
-    [key: string]: unknown;
   };
 }
 
