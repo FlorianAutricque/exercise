@@ -1,4 +1,5 @@
 import GetTasks from "../api/GetTasks";
+import Spinner from "../components/Spinner";
 import { CompletedProps } from "../types/Types";
 
 function CompletedPage({
@@ -19,15 +20,19 @@ function CompletedPage({
 
       {error ? <p>there is an error</p> : ""}
 
-      {isLoading ? <p>Loading...</p> : ""}
-
-      <ul>
-        {completedTasks.length > 0 ? (
-          completedTasks.map(item => <li key={item.id}>{item.description}</li>)
-        ) : (
-          <p>There are no tasks completed yet</p>
-        )}
-      </ul>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <ul>
+          {completedTasks.length > 0 ? (
+            completedTasks.map(item => (
+              <li key={item.id}>{item.description}</li>
+            ))
+          ) : (
+            <p>There are no tasks completed yet</p>
+          )}
+        </ul>
+      )}
     </>
   );
 }

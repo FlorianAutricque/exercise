@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { Todo } from "../types/Types";
 
 async function UpdateTask(
@@ -31,13 +32,14 @@ async function UpdateTask(
         item.id === id ? { ...item, description, completed } : item
       )
     );
+    toast.success("Task successfully updated");
   } catch (err) {
     if (err instanceof Error) {
       setError(err.message);
     } else {
       setError("Something went wrong while updating the task");
     }
-    console.log(err);
+    toast.error("Task not updated");
   }
 }
 

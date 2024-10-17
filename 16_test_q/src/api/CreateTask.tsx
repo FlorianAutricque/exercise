@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { Todo } from "../types/Types";
 
 async function CreateTask(
@@ -29,12 +30,14 @@ async function CreateTask(
     // respect la structure todo/////////////////
     const createdTask: Todo = await res.json();
     setData(prevData => [...prevData, createdTask]);
+    toast.success("New task added");
   } catch (err: unknown) {
     if (err instanceof Error) {
       setError(err.message);
     } else {
       setError("Something went wrong with the creation of task");
     }
+    toast.error("Error adding new task");
   }
   return;
 }

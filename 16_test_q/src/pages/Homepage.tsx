@@ -6,18 +6,18 @@ import DeleteTask from "../api/DeleteTask";
 import GetTasks from "../api/GetTasks";
 import UpdateTask from "../api/UpdateTask";
 import ModalUpdate from "../components/ModalUpdate";
+import Spinner from "../components/Spinner";
+import toast from "react-hot-toast";
 
 function Homepage({
   data,
   setData,
-  error,
   setError,
   isLoading,
   setIsLoading,
 }: CompletedProps) {
   const [description, setDescription] = useState<string>("");
   const [completed, setCompleted] = useState<boolean>(false);
-  // const [createdAt, setCreatedAt] = useState<Date>(new Date());
   const [show, setShow] = useState<boolean>(false);
   const [currentTaskId, setCurrentTaskId] = useState<number | null>(null);
 
@@ -36,17 +36,18 @@ function Homepage({
   // CREATE/ADD A NEW TASK
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     try {
       taskSchema.parse({ description, completed, createdAt: new Date() });
 
       await CreateTask(description, completed, setData, setError);
       setDescription("");
       setCompleted(false);
-      // setCreatedAt(new Date());
+
       setError("");
     } catch (error) {
       if (error instanceof z.ZodError) {
-        setError(error.errors.map(err => err.message).join(", "));
+        setError(error.errors.map(err => toast.error(err.message)).join(", "));
       }
     }
   };
@@ -140,8 +141,7 @@ function Homepage({
 
   return (
     <div>
-      {isLoading ? <p>Loading ...</p> : ""}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {isLoading ? <Spinner /> : ""}
 
       <form onSubmit={handleSubmit}>
         <label>Description:</label>
@@ -168,7 +168,7 @@ function Homepage({
                     day: "numeric",
                     hour: "2-digit",
                     minute: "2-digit",
-                    hour12: true,
+                    hour12: false,
                   })
                 : "Date not available"}
             </p>
