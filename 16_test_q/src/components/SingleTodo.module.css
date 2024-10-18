@@ -13,13 +13,19 @@
   word-break: break-all;
 }
 
-.containerSingleTodo span {
+.containerSingleTodo .containerCheckTodoUpdateDelete {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
   margin-left: 0.6rem;
   margin-right: 0.6rem;
+}
+
+.checkboxAndTodo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .btnDeleteUpdate {

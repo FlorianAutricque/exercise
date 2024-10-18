@@ -1,4 +1,8 @@
 import type { Todo } from "../types/Types";
+import styles from "./ModalUpdate.module.css";
+import stylesCheckbox from "./SingleTodo.module.css";
+
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 interface ModalUpdateProps {
   handleUpdateTodo: (e: React.FormEvent) => void;
@@ -14,8 +18,13 @@ function ModalUpdate({
   setShow,
 }: ModalUpdateProps) {
   return (
-    <div>
-      <h1>Update Task</h1>
+    <div className={styles.mainContainerUpdate}>
+      <div className={styles.containerTitleClose}>
+        <h3>Update Todo</h3>
+        <button onClick={() => setShow(false)} className="btn">
+          <IoIosCloseCircleOutline size={20} />
+        </button>
+      </div>
       <form onSubmit={handleUpdateTodo}>
         <label>Description:</label>
         <input
@@ -24,17 +33,19 @@ function ModalUpdate({
           onChange={e => setTask({ ...task, description: e.target.value })}
           required
         />
-        <label>
-          Completed:
+
+        <label className={stylesCheckbox.containerCheckbox}>
           <input
             type="checkbox"
             checked={task.completed}
             onChange={() => setTask({ ...task, completed: !task.completed })}
           />
+          <span className={stylesCheckbox.checkmark}></span>
         </label>
-        <button type="submit">Update task</button>
 
-        <button onClick={() => setShow(false)}>Close</button>
+        <button type="submit" className="btn">
+          Update
+        </button>
       </form>
     </div>
   );

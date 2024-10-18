@@ -63,44 +63,46 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
           todo.completed ? styles.completed : styles.notCompleted
         }`}
       >
-        <span>
-          <label className={styles.containerCheckbox}>
-            <input
-              type="checkbox"
-              checked={todo.completed}
-              onChange={() => handleComplete(todo)}
-            />
-            <span className={styles.checkmark}></span>
-          </label>
+        <div className={styles.containerCheckTodoUpdateDelete}>
+          <div className={styles.checkboxAndTodo}>
+            <label className={styles.containerCheckbox}>
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => handleComplete(todo)}
+              />
+              <span className={styles.checkmark}></span>
+            </label>
 
-          {todo.description.length > 15 ? (
-            <>
-              <p className={styles.todoStr}>
-                {showStr
-                  ? capitalizeFirstLetter(todo.description)
-                  : capitalizeFirstLetter(truncated)}
-              </p>
-              <button
-                onClick={() => setShowStr(!showStr)}
-                className={styles.btnMoreLess}
-              >
-                {showStr ? "-" : "+"}
-              </button>
-            </>
-          ) : (
-            <p>{capitalizeFirstLetter(todo.description)}</p>
-          )}
+            {todo.description.length > 15 ? (
+              <>
+                <p className={styles.todoStr}>
+                  {showStr
+                    ? capitalizeFirstLetter(todo.description)
+                    : capitalizeFirstLetter(truncated)}
+                </p>
+                <button
+                  onClick={() => setShowStr(!showStr)}
+                  className={styles.btnMoreLess}
+                >
+                  {showStr ? "-" : "+"}
+                </button>
+              </>
+            ) : (
+              <p>{capitalizeFirstLetter(todo.description)}</p>
+            )}
+          </div>
 
           <div className={styles.btnDeleteUpdate}>
-            <button onClick={() => handleDelete(todo.id)} className="btn">
-              <ImBin size={20} />
-            </button>
-
             <button onClick={() => handleShow(todo)} className="btn">
               <MdOutlineSystemUpdateAlt size={20} />
             </button>
+
+            <button onClick={() => handleDelete(todo.id)} className="btn">
+              <ImBin size={20} />
+            </button>
           </div>
-        </span>
+        </div>
 
         <p className={styles.createAt}>
           {todo.meta?.createdAt
