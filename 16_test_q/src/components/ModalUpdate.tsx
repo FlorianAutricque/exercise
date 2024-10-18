@@ -6,15 +6,15 @@ import { IoIosCloseCircleOutline } from "react-icons/io";
 
 interface ModalUpdateProps {
   handleUpdateTodo: (e: React.FormEvent) => void;
-  task: Todo;
-  setTask: React.Dispatch<React.SetStateAction<Todo | null>>;
+  selectedTodo: Todo;
+  setSelectedTodo: React.Dispatch<React.SetStateAction<Todo | null>>;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function ModalUpdate({
   handleUpdateTodo,
-  task,
-  setTask,
+  selectedTodo,
+  setSelectedTodo,
   setShow,
 }: ModalUpdateProps) {
   return (
@@ -25,25 +25,33 @@ function ModalUpdate({
           <IoIosCloseCircleOutline size={20} />
         </button>
       </div>
+
       <form onSubmit={handleUpdateTodo}>
-        <label>Description:</label>
-        <input
-          type="text"
-          value={task.description}
-          onChange={e => setTask({ ...task, description: e.target.value })}
-          required
-        />
+        <div className={styles.containerModalTodoCheckbox}>
+          <label className={stylesCheckbox.containerCheckbox}>
+            <input
+              type="checkbox"
+              checked={selectedTodo.completed}
+              onChange={() =>
+                setSelectedTodo({
+                  ...selectedTodo,
+                  completed: !selectedTodo.completed,
+                })
+              }
+            />
+            <span className={stylesCheckbox.checkmark}></span>
+          </label>
 
-        <label className={stylesCheckbox.containerCheckbox}>
           <input
-            type="checkbox"
-            checked={task.completed}
-            onChange={() => setTask({ ...task, completed: !task.completed })}
+            type="text"
+            value={selectedTodo.description}
+            onChange={e =>
+              setSelectedTodo({ ...selectedTodo, description: e.target.value })
+            }
           />
-          <span className={stylesCheckbox.checkmark}></span>
-        </label>
+        </div>
 
-        <button type="submit" className="btn">
+        <button type="submit" className={`btn ${styles.btnModal}`}>
           Update
         </button>
       </form>

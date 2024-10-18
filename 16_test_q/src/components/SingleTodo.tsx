@@ -120,12 +120,14 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
       </li>
 
       {show && !!selectedTodo && (
-        <ModalUpdate
-          handleUpdateTodo={handleUpdateTodo}
-          task={selectedTodo}
-          setTask={setSelectedTodo}
-          setShow={setShow}
-        />
+        <div className={styles.modalUpdate}>
+          <ModalUpdate
+            handleUpdateTodo={handleUpdateTodo}
+            selectedTodo={selectedTodo}
+            setSelectedTodo={setSelectedTodo}
+            setShow={setShow}
+          />
+        </div>
       )}
     </>
   );

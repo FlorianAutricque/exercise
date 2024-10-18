@@ -1,5 +1,13 @@
 .mainContainerUpdate {
-  border: 1px solid red;
+  position: fixed; /* Keep modal fixed */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the modal */
+  z-index: 200; /* Ensure it's above the overlay */
+  background-color: white; /* Set a background color */
+  padding: 20px; /* Add padding */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+  border-radius: 8px; /* Round corners */
 }
 
 .containerTitleClose {
@@ -7,4 +15,15 @@
   align-items: center;
   justify-content: space-between;
   margin-left: 1rem;
+  margin-top: -1rem;
+}
+
+.containerModalTodoCheckbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.btnModal {
+  width: 100%;
 }
