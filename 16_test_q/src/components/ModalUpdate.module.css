@@ -3,7 +3,9 @@
   align-items: center;
   justify-content: space-between;
   margin-left: 1rem;
-  margin-top: -1rem;
+  margin-top: -4rem;
+
+  width: 100%;
 }
 
 .containerModalTodoCheckbox {
@@ -14,4 +16,36 @@
 
 .btnModal {
   width: 100%;
+}
+
+.mainContainerUpdate {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+
+  width: 40%;
+  height: 40%;
+}
+
+.innerContainerModal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  gap: 3rem;
+}
+
+@media (max-width: 760px) {
+  .mainContainerUpdate {
+    width: 60%;
+  }
 }

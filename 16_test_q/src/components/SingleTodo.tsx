@@ -119,14 +119,17 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
       </li>
 
       {show && !!selectedTodo && (
-        <div className={styles.modalUpdate}>
-          <ModalUpdate
-            handleUpdateTodo={handleUpdateTodo}
-            selectedTodo={selectedTodo}
-            setSelectedTodo={setSelectedTodo}
-            setShow={setShow}
-          />
-        </div>
+        <>
+          <div className={styles.overlay}></div>
+          <div className={styles.modalUpdate}>
+            <ModalUpdate
+              handleUpdateTodo={handleUpdateTodo}
+              selectedTodo={selectedTodo}
+              setSelectedTodo={setSelectedTodo}
+              setShow={setShow}
+            />
+          </div>
+        </>
       )}
     </>
   );
