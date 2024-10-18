@@ -6,7 +6,6 @@ import type { CompletedProps } from "../types/Types";
 function CompletedPage({
   todos,
   setTodos,
-  error,
   setError,
   isLoading,
   setIsLoading,
@@ -17,29 +16,29 @@ function CompletedPage({
 
   return (
     <>
-      <h1>Completed Page</h1>
-
-      {error ? <p>there is an error</p> : ""}
+      <h3>Completed Tasks</h3>
 
       {isLoading ? (
         <Spinner />
       ) : (
-        <ul>
-          {completedTasks.length > 0 ? (
-            completedTasks.map(todo => (
-              <div key={todo.id}>
-                <SingleTodo
-                  todo={todo}
-                  todos={todos}
-                  setTodos={setTodos}
-                  setError={setError}
-                />
-              </div>
-            ))
-          ) : (
-            <p>There are no tasks completed yet</p>
-          )}
-        </ul>
+        <div className="containerTodos">
+          <ul>
+            {completedTasks.length > 0 ? (
+              completedTasks.map(todo => (
+                <div key={todo.id}>
+                  <SingleTodo
+                    todo={todo}
+                    todos={todos}
+                    setTodos={setTodos}
+                    setError={setError}
+                  />
+                </div>
+              ))
+            ) : (
+              <p>There are no tasks completed yet</p>
+            )}
+          </ul>
+        </div>
       )}
     </>
   );

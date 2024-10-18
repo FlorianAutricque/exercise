@@ -6,6 +6,7 @@ import { ImBin } from "react-icons/im";
 import ModalUpdate from "./ModalUpdate";
 
 import { MdOutlineSystemUpdateAlt } from "react-icons/md";
+import truncatedString from "../utils/truncatedString";
 
 interface SingleTodoProps {
   todo: Todo;
@@ -17,6 +18,7 @@ interface SingleTodoProps {
 function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
   const [show, setShow] = useState<boolean>(false);
   const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
+  const [showStr, setShowStr] = useState<boolean>(false);
 
   // // SHOW THE UPDATE FORM/MODAL
   const handleShow = (todo: Todo) => {
@@ -51,6 +53,8 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
+  const truncated = truncatedString(todo.description, 15);
+
   return (
     <>
       <li
@@ -69,17 +73,35 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
             <span className={styles.checkmark}></span>
           </label>
 
-          <p>{capitalizeFirstLetter(todo.description)}</p>
+          {todo.description.length > 15 ? (
+            <>
+              <p className={styles.todoStr}>
+                {showStr
+                  ? capitalizeFirstLetter(todo.description)
+                  : capitalizeFirstLetter(truncated)}
+              </p>
+              <button
+                onClick={() => setShowStr(!showStr)}
+                className={styles.btnMoreLess}
+              >
+                {showStr ? "-" : "+"}
+              </button>
+            </>
+          ) : (
+            <p>{capitalizeFirstLetter(todo.description)}</p>
+          )}
 
           <div className={styles.btnDeleteUpdate}>
             <button onClick={() => handleDelete(todo.id)} className="btn">
               <ImBin size={20} />
             </button>
+
             <button onClick={() => handleShow(todo)} className="btn">
               <MdOutlineSystemUpdateAlt size={20} />
             </button>
           </div>
         </span>
+
         <p className={styles.createAt}>
           {todo.meta?.createdAt
             ? new Date(todo.meta.createdAt).toLocaleString("en-US", {

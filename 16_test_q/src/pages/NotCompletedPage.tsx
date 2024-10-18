@@ -7,7 +7,6 @@ import type { CompletedProps } from "../types/Types";
 function NotCompletedPage({
   todos,
   setTodos,
-  error,
   setError,
   isLoading,
   setIsLoading,
@@ -18,29 +17,29 @@ function NotCompletedPage({
 
   return (
     <>
-      <h1>Not completed page</h1>
-
-      {error ? <p>there is an error</p> : ""}
+      <h3>Not Completed Tasks</h3>
 
       {isLoading ? (
         <Spinner />
       ) : (
-        <ul>
-          {notCompletedTasks.length > 0 ? (
-            notCompletedTasks.map(todo => (
-              <div key={todo.id}>
-                <SingleTodo
-                  todo={todo}
-                  todos={todos}
-                  setTodos={setTodos}
-                  setError={setError}
-                />
-              </div>
-            ))
-          ) : (
-            <p>There is no task to do</p>
-          )}
-        </ul>
+        <div className="containerTodos">
+          <ul>
+            {notCompletedTasks.length > 0 ? (
+              notCompletedTasks.map(todo => (
+                <div key={todo.id}>
+                  <SingleTodo
+                    todo={todo}
+                    todos={todos}
+                    setTodos={setTodos}
+                    setError={setError}
+                  />
+                </div>
+              ))
+            ) : (
+              <p>There is no task to do</p>
+            )}
+          </ul>
+        </div>
       )}
     </>
   );

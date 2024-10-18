@@ -50,18 +50,20 @@ function Homepage({
       {isLoading ? (
         <Spinner />
       ) : (
-        <ul>
-          {todos.map(todo => (
-            <div key={todo.id}>
-              <SingleTodo
-                todo={todo}
-                todos={todos}
-                setTodos={setTodos}
-                setError={setError}
-              />
-            </div>
-          ))}
-        </ul>
+        <div className="containerTodos">
+          <ul>
+            {todos.map(todo => (
+              <div key={todo.id}>
+                <SingleTodo
+                  todo={todo}
+                  todos={todos}
+                  setTodos={setTodos}
+                  setError={setError}
+                />
+              </div>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

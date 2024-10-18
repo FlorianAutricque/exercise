@@ -3,6 +3,14 @@
   border: 1px solid rgb(96, 95, 95);
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f7;
+  padding-top: 0.8rem;
+  max-width: 400px;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: hidden;
+  word-break: break-all;
 }
 
 .containerSingleTodo span {
@@ -21,21 +29,29 @@
   gap: 0.3rem;
 }
 
+/* SHOW MORE SHOW LESS */
+.btnMoreLess {
+  border: none;
+  background: none;
+  font-size: x-small;
+  cursor: pointer;
+}
+
 /* CREATED AT */
 .createAt {
   font-size: small;
   text-align: right;
   margin-right: 0.4rem;
-  color: #8b8b8b;
+  color: var(--color-createdAt);
 }
 
 /* COMPLETED */
 .completed {
-  border-left: 6px solid green;
+  border-left: 6px solid var(--color-completed);
 }
 
 .notCompleted {
-  border-left: 6px solid red;
+  border-left: 6px solid var(--color-not-completed);
 }
 
 /* CHECKBOX */
@@ -52,17 +68,21 @@
 .checkmark {
   width: 20px;
   height: 20px;
-  border: 2px solid #007bff;
+  border: 2px solid var(--color-main);
   border-radius: 50%;
   position: relative;
   margin-right: 10px;
-  background-color: white;
+  background-color: #eee;
   transition: background-color 0.2s, border-color 0.2s;
 }
 
+.checkmark:hover {
+  background-color: var(--color-main);
+}
+
 .containerCheckbox input:checked + .checkmark {
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: var(--color-main);
+  border-color: var(--color-main);
 }
 
 .containerCheckbox input:checked + .checkmark::after {

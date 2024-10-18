@@ -1,6 +1,8 @@
 .mainContainerNavbar {
   display: flex;
   justify-content: center;
+  width: 100%;
+  overflow: hidden;
 }
 
 .containerLinks {
@@ -8,10 +10,11 @@
   align-items: stretch;
   justify-content: space-between;
   gap: 0 !important;
-  border: 1px solid black;
+  border: 1.5px solid var(--color-main);
   border-radius: 25px;
   padding: 0;
-  width: 100%;
+  margin: 0;
+  width: 70%;
 }
 
 .containerLinks li {
@@ -23,6 +26,7 @@
   display: block;
   text-decoration: none;
   text-align: center;
+  color: rgb(14, 14, 14);
 }
 
 .linkBorderHome {
@@ -31,8 +35,9 @@
 }
 
 .linkBorderDone {
-  border-left: 1px solid black;
-  border-right: 1px solid black;
+  border-left: 1px solid var(--color-main);
+  border-right: 1px solid var(--color-main);
+  height: 100%;
   padding: 1rem;
 }
 
@@ -42,5 +47,17 @@
 }
 
 .activeLinkBorder {
-  background-color: red;
+  background: linear-gradient(to right, #cabef6, #d3d7f1);
+}
+
+@media (max-width: 500px) {
+  .containerLinks {
+    width: 100%;
+  }
+
+  .linkBorderNotDone,
+  .linkBorderDone,
+  .linkBorderHome {
+    padding: 1rem 0rem;
+  }
 }

@@ -16,6 +16,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
+        <h2>To Do List</h2>
         <Navbar />
         <Routes>
           <Route
@@ -24,7 +25,6 @@ function App() {
               <Homepage
                 todos={todos}
                 setTodos={setTodos}
-                error={error}
                 setError={setError}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
@@ -37,7 +37,6 @@ function App() {
               <CompletedPage
                 todos={todos}
                 setTodos={setTodos}
-                error={error}
                 setError={setError}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
@@ -50,7 +49,6 @@ function App() {
               <NotCompletedPage
                 todos={todos}
                 setTodos={setTodos}
-                error={error}
                 setError={setError}
                 isLoading={isLoading}
                 setIsLoading={setIsLoading}
