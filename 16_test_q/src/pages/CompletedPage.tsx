@@ -27,14 +27,14 @@ function CompletedPage({
         <ul>
           {completedTasks.length > 0 ? (
             completedTasks.map(todo => (
-              <>
+              <div key={todo.id}>
                 <SingleTodo
                   todo={todo}
                   todos={todos}
                   setTodos={setTodos}
                   setError={setError}
                 />
-              </>
+              </div>
             ))
           ) : (
             <p>There are no tasks completed yet</p>

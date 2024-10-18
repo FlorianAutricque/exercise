@@ -58,7 +58,8 @@ export const updateTodo = async (
   selectedTodo: Todo | null,
   setTodos: React.Dispatch<React.SetStateAction<Todo[]>>,
   setError: React.Dispatch<React.SetStateAction<string>>,
-  setShow: React.Dispatch<React.SetStateAction<boolean>>
+  setShow: React.Dispatch<React.SetStateAction<boolean>>,
+  setSelectedTodo: React.Dispatch<React.SetStateAction<Todo | null>>
 ) => {
   if (!selectedTodo) return;
   try {
@@ -79,6 +80,7 @@ export const updateTodo = async (
 
     setError("");
     setShow(false);
+    setSelectedTodo(null);
   } catch (error) {
     if (error instanceof z.ZodError) {
       setError(error.errors.map(err => toast.error(err.message)).join(", "));

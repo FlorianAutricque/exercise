@@ -1,7 +1,11 @@
-import { completeTodo, deleteTodo } from "../hooks/todoFunctions";
+import { useState } from "react";
+import { completeTodo, deleteTodo, updateTodo } from "../hooks/todoFunctions";
 import type { Todo } from "../types/Types";
 import styles from "./SingleTodo.module.css";
 import { ImBin } from "react-icons/im";
+import ModalUpdate from "./ModalUpdate";
+
+import { MdOutlineSystemUpdateAlt } from "react-icons/md";
 
 interface SingleTodoProps {
   todo: Todo;
@@ -11,6 +15,15 @@ interface SingleTodoProps {
 }
 
 function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
+  const [show, setShow] = useState<boolean>(false);
+  const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
+
+  // // SHOW THE UPDATE FORM/MODAL
+  const handleShow = (todo: Todo) => {
+    setShow(!show);
+    setSelectedTodo(todo);
+  };
+
   //HANDLE DELETE
   const handleDelete = async (todoId: number) => {
     await deleteTodo(todoId, todos, setTodos, setError);
@@ -21,42 +34,76 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
     await completeTodo(todo, todos, setTodos, setError);
   };
 
+  //HANDLE UPDATE
+  const handleUpdateTodo = async (e: React.FormEvent) => {
+    e.preventDefault();
+    await updateTodo(
+      selectedTodo,
+      setTodos,
+      setError,
+      setShow,
+      setSelectedTodo
+    );
+  };
+
+  //CAPITALIZE FIRST LETTER
   function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   return (
-    <li key={todo.id} className={styles.containerSingleTodo}>
-      <span>
-        <label className={styles.containerCheckbox}>
-          <input
-            type="checkbox"
-            checked={todo.completed}
-            onChange={() => handleComplete(todo)}
-          />
-          <span className={styles.Checkmark}></span>
-        </label>
+    <>
+      <li
+        key={todo.id}
+        className={`${styles.containerSingleTodo} ${
+          todo.completed ? styles.completed : styles.notCompleted
+        }`}
+      >
+        <span>
+          <label className={styles.containerCheckbox}>
+            <input
+              type="checkbox"
+              checked={todo.completed}
+              onChange={() => handleComplete(todo)}
+            />
+            <span className={styles.checkmark}></span>
+          </label>
 
-        <p>{capitalizeFirstLetter(todo.description)}</p>
-      </span>
-      <p>
-        <strong>Created At: </strong>
-        {todo.meta?.createdAt
-          ? new Date(todo.meta.createdAt).toLocaleString("en-US", {
-              weekday: "long",
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
-              hour12: false,
-            })
-          : "Date not available"}
-      </p>
-      <button onClick={() => handleDelete(todo.id)} className="btn">
-        <ImBin size={32} />
-      </button>
-    </li>
+          <p>{capitalizeFirstLetter(todo.description)}</p>
+
+          <div className={styles.btnDeleteUpdate}>
+            <button onClick={() => handleDelete(todo.id)} className="btn">
+              <ImBin size={20} />
+            </button>
+            <button onClick={() => handleShow(todo)} className="btn">
+              <MdOutlineSystemUpdateAlt size={20} />
+            </button>
+          </div>
+        </span>
+        <p className={styles.createAt}>
+          {todo.meta?.createdAt
+            ? new Date(todo.meta.createdAt).toLocaleString("en-US", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "2-digit",
+                minute: "2-digit",
+                hour12: false,
+              })
+            : "Date not available"}
+        </p>
+      </li>
+
+      {show && !!selectedTodo && (
+        <ModalUpdate
+          handleUpdateTodo={handleUpdateTodo}
+          task={selectedTodo}
+          setTask={setSelectedTodo}
+          setShow={setShow}
+        />
+      )}
+    </>
   );
 }
 
