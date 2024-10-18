@@ -8,15 +8,23 @@ function Navbar() {
         <li>
           <NavLink
             to="/"
-            className={({ isActive }) => (isActive ? styles.active : "")}
+            className={({ isActive }) =>
+              `${styles.linkBorderHome} ${
+                isActive ? styles.activeLinkBorder : ""
+              }`
+            }
           >
             Home
           </NavLink>
         </li>
-        <li className={styles.linkBorder}>
+        <li>
           <NavLink
             to="/completed"
-            className={({ isActive }) => (isActive ? styles.active : "")}
+            className={({ isActive }) =>
+              `${styles.linkBorderDone} ${
+                isActive ? styles.activeLinkBorder : ""
+              }`
+            }
           >
             Done
           </NavLink>
@@ -24,7 +32,11 @@ function Navbar() {
         <li>
           <NavLink
             to="/not-completed"
-            className={({ isActive }) => (isActive ? styles.active : "")}
+            className={({ isActive }) =>
+              `${styles.linkBorderNotDone} ${
+                isActive ? styles.activeLinkBorder : ""
+              }`
+            }
           >
             Not Done
           </NavLink>

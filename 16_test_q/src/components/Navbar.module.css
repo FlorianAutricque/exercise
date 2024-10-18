@@ -1,33 +1,45 @@
 .mainContainerNavbar {
   display: flex;
-  align-items: center;
   justify-content: center;
+}
+
+.containerLinks {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 0;
+  width: 100%;
 }
 
 .containerLinks li {
   list-style: none;
+  flex: 1;
 }
 
 .containerLinks a {
+  display: block;
   text-decoration: none;
+  text-align: center;
 }
 
-.containerLinks {
-  padding: 0 2rem 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  border: 1px solid black;
-  border-radius: 25px;
+.linkBorderHome {
+  border-radius: 25px 0 0 25px;
+  padding: 1rem;
 }
 
-.linkBorder {
+.linkBorderDone {
   border-left: 1px solid black;
   border-right: 1px solid black;
-  padding: 1rem 2rem 1rem 2rem;
+  padding: 1rem;
 }
 
-.active {
+.linkBorderNotDone {
+  border-radius: 0 25px 25px 0;
+  padding: 1rem;
+}
+
+.activeLinkBorder {
   background-color: red;
 }

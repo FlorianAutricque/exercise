@@ -10,6 +10,11 @@ import Spinner from "../components/Spinner";
 import toast from "react-hot-toast";
 import { taskSchema } from "../validation/taskSchema";
 
+import styles from "./Homepage.module.css";
+
+import { IoMdAdd } from "react-icons/io";
+import SingleTodo from "../components/SingleTodo";
+
 function Homepage({
   todos,
   setTodos,
@@ -74,14 +79,7 @@ function Homepage({
   };
 
   /*FUCNTION HANDLE UPDATE:
-      - Check if I'm in the current task
-      - Define a new z object with optional validation fields
-      - Parse this object with what I can modify (description and completed)
-      - Define a new type with the fact that they are optional
-      - Create new obj with the value that need to be updated. This obj has the form of Updatetodos
-      - Assign validated description to Updatetodos if defined/clear errors
-      - Assign validated completed to Updatetodos if defined/clear errors
-      - Fetch with the UpdateTask function: update the server side (we pass the description and completed if it has been updated) */
+   */
   const handleUpdateTodo = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -116,47 +114,27 @@ function Homepage({
     <div>
       {isLoading ? <Spinner /> : ""}
 
-      <form onSubmit={handleCreateTodo}>
-        <label>Description:</label>
+      <form onSubmit={handleCreateTodo} className={styles.containerForm}>
         <input
           type="text"
           value={description}
           onChange={e => setDescription(e.target.value)}
           required
+          placeholder="Add Todo"
         />
-        <button type="submit">Add task</button>
+        <button type="submit" className="btn">
+          <IoMdAdd size={32} />
+        </button>
       </form>
 
-      <ul>
+      <ul className={styles.containerAllTodos}>
         {todos.map(todo => (
-          <li key={todo.id}>
-            <p>{todo.description}</p>
-            <p>
-              <strong>Created At: </strong>
-              {todo.meta?.createdAt
-                ? new Date(todo.meta.createdAt).toLocaleString("en-US", {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                    hour12: false,
-                  })
-                : "Date not available"}
-            </p>
-
-            <label>
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => handleComplete(todo)}
-              />
-              {todo.completed ? "done" : "not done"}
-            </label>
-            <button onClick={() => deleteTodo(todo.id)}>DEL</button>
-            <button onClick={() => handleShow(todo)}>MOD</button>
-          </li>
+          <SingleTodo
+            todo={todo}
+            handleComplete={handleComplete}
+            deleteTodo={deleteTodo}
+            handleShow={handleShow}
+          />
         ))}
       </ul>
 
