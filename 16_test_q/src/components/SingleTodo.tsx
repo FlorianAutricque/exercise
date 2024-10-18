@@ -52,7 +52,6 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
   function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-
   const truncated = truncatedString(todo.description, 15);
 
   return (

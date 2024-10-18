@@ -103,9 +103,6 @@
   transform: rotate(45deg);
 }
 
-.modalUpdate {
-}
-
 @media (max-width: 800px) {
   .containerSingleTodo {
     width: 100%;

@@ -22,8 +22,12 @@ function NotCompletedPage({
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="containerTodos">
-          <ul>
+        <div className="mainContainerTodos">
+          <ul
+            className={`containerTodos ${
+              notCompletedTasks.length === 1 ? "containerTodosIfOne" : ""
+            }`}
+          >
             {notCompletedTasks.length > 0 ? (
               notCompletedTasks.map(todo => (
                 <div key={todo.id}>

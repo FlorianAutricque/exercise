@@ -21,8 +21,12 @@ function CompletedPage({
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="containerTodos">
-          <ul>
+        <div className="mainContainerTodos">
+          <ul
+            className={`containerTodos ${
+              completedTasks.length === 1 ? "containerTodosIfOne" : ""
+            }`}
+          >
             {completedTasks.length > 0 ? (
               completedTasks.map(todo => (
                 <div key={todo.id}>

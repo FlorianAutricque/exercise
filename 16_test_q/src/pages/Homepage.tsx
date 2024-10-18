@@ -46,8 +46,12 @@ function Homepage({
       {isLoading ? (
         <Spinner />
       ) : (
-        <div className="containerTodos">
-          <ul>
+        <div className="mainContainerTodos">
+          <ul
+            className={`containerTodos ${
+              todos.length === 1 ? "containerTodosIfOne" : ""
+            }`}
+          >
             {todos.map(todo => (
               <div key={todo.id}>
                 <SingleTodo
