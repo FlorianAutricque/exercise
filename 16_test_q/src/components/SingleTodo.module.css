@@ -1,0 +1,49 @@
+.containerSingleTodo {
+  list-style: none;
+  border: 1px solid green;
+}
+
+.containerSingleTodo span {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-left: 1rem;
+}
+
+.containerCheckbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.containerCheckbox input {
+  display: none;
+}
+
+.Checkmark {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #007bff;
+  border-radius: 50%;
+  position: relative;
+  margin-right: 10px;
+  background-color: white;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.containerCheckbox input:checked + .Checkmark {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.containerCheckbox input:checked + .Checkmark::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}

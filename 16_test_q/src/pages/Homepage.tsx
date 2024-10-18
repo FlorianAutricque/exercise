@@ -8,12 +8,8 @@ import styles from "./Homepage.module.css";
 
 import { IoMdAdd } from "react-icons/io";
 import SingleTodo from "../components/SingleTodo";
-import {
-  // deleteTodo,
-  createTodo,
-  // completeTodo,
-  updateTodo,
-} from "../hooks/todoFunctions";
+import { MdOutlineSystemUpdateAlt } from "react-icons/md";
+import { createTodo, updateTodo } from "../hooks/todoFunctions";
 
 function Homepage({
   todos,
@@ -38,16 +34,6 @@ function Homepage({
     setCompleted(false);
   };
 
-  // //HANDLE DELETE
-  // const handleDelete = async (todoId: number) => {
-  //   await deleteTodo(todoId, todos, setTodos, setError);
-  // };
-
-  // // HANDLE COMPLETION OF TASK
-  // const handleComplete = async (todo: Todo) => {
-  //   await completeTodo(todo, todos, setTodos, setError);
-  // };
-
   // // SHOW THE UPDATE FORM/MODAL
   const handleShow = (todo: Todo) => {
     setShow(!show);
@@ -63,8 +49,6 @@ function Homepage({
 
   return (
     <div>
-      {isLoading ? <Spinner /> : ""}
-
       <form onSubmit={handleCreate} className={styles.containerForm}>
         <input
           type="text"
@@ -78,32 +62,25 @@ function Homepage({
         </button>
       </form>
 
-      <ul className={styles.containerAllTodos}>
-        {todos.map(todo => (
-          <div>
-            <SingleTodo
-              todo={todo}
-              todos={todos}
-              setTodos={setTodos}
-              setError={setError}
-              // show={show}
-              // setShow={setShow}
-              // setSelectedTodo={setSelectedTodo}
-            />
-            <button onClick={() => handleShow(todo)}>MOD</button>
-            {/* <label>
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => handleComplete(todo)}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <ul>
+          {todos.map(todo => (
+            <div>
+              <SingleTodo
+                todo={todo}
+                todos={todos}
+                setTodos={setTodos}
+                setError={setError}
               />
-              {todo.completed ? "done" : "not done"}
-            </label>
-            <button onClick={() => handleDelete(todo.id)}>DEL</button>
-            <button onClick={() => handleShow(todo)}>MOD</button> */}
-          </div>
-        ))}
-      </ul>
+              <button onClick={() => handleShow(todo)} className="btn">
+                <MdOutlineSystemUpdateAlt />
+              </button>
+            </div>
+          ))}
+        </ul>
+      )}
 
       {show && !!selectedTodo && (
         <ModalUpdate

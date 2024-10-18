@@ -1,26 +1,16 @@
 import { completeTodo, deleteTodo } from "../hooks/todoFunctions";
 import type { Todo } from "../types/Types";
-import styles from "./SignelTodo.module.css";
+import styles from "./SingleTodo.module.css";
+import { ImBin } from "react-icons/im";
 
 interface SingleTodoProps {
   todo: Todo;
-  todos: Todo[]; // Array of todos for handling updates
-  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>; // Function to update the todos
-  setError: React.Dispatch<React.SetStateAction<string>>; // Function to set error messages
-  // show: boolean; // State to control the visibility of the update form/modal
-  // setShow: React.Dispatch<React.SetStateAction<boolean>>; // Function to toggle the show state
-  // setSelectedTodo: React.Dispatch<React.SetStateAction<Todo | null>>;
+  todos: Todo[];
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>;
+  setError: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function SingleTodo({
-  todo,
-  todos,
-  setTodos,
-  setError,
-}: // show,
-// setShow,
-// setSelectedTodo,
-SingleTodoProps) {
+function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
   //HANDLE DELETE
   const handleDelete = async (todoId: number) => {
     await deleteTodo(todoId, todos, setTodos, setError);
@@ -31,14 +21,24 @@ SingleTodoProps) {
     await completeTodo(todo, todos, setTodos, setError);
   };
 
-  // SHOW THE UPDATE FORM/MODAL
-  // const handleShow = (todo: Todo) => {
-  //   setShow(!show);
-  //   setSelectedTodo(todo);
-  // };
+  function capitalizeFirstLetter(string: string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
   return (
     <li key={todo.id} className={styles.containerSingleTodo}>
-      <p>{todo.description}</p>
+      <span>
+        <label className={styles.containerCheckbox}>
+          <input
+            type="checkbox"
+            checked={todo.completed}
+            onChange={() => handleComplete(todo)}
+          />
+          <span className={styles.Checkmark}></span>
+        </label>
+
+        <p>{capitalizeFirstLetter(todo.description)}</p>
+      </span>
       <p>
         <strong>Created At: </strong>
         {todo.meta?.createdAt
@@ -53,15 +53,9 @@ SingleTodoProps) {
             })
           : "Date not available"}
       </p>
-      <label>
-        <input
-          type="checkbox"
-          checked={todo.completed}
-          onChange={() => handleComplete(todo)}
-        />
-        {todo.completed ? "done" : "not done"}
-      </label>
-      <button onClick={() => handleDelete(todo.id)}>DEL</button>
+      <button onClick={() => handleDelete(todo.id)} className="btn">
+        <ImBin size={32} />
+      </button>
     </li>
   );
 }

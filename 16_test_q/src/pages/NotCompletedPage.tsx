@@ -1,8 +1,8 @@
 import GetTasks from "../api/GetTodos";
-import UpdateTask from "../api/UpdateTodo";
+
 import SingleTodo from "../components/SingleTodo";
 import Spinner from "../components/Spinner";
-import { CompletedProps, Todo } from "../types/Types";
+import type { CompletedProps } from "../types/Types";
 
 function NotCompletedPage({
   todos,
@@ -15,22 +15,6 @@ function NotCompletedPage({
   GetTasks(setIsLoading, setTodos, setError);
 
   const notCompletedTasks = todos.filter(todo => !todo.completed);
-
-  const handleComplete = async (todo: Todo) => {
-    const updatedTasks = todos.map(task =>
-      task.id === todo.id ? { ...task, completed: !task.completed } : task
-    );
-    setTodos(updatedTasks);
-
-    await UpdateTask(
-      todo.id,
-      todo.description,
-      !todo.completed,
-      todo.meta.createdAt,
-      setTodos,
-      setError
-    );
-  };
 
   return (
     <>
@@ -51,14 +35,6 @@ function NotCompletedPage({
                   setTodos={setTodos}
                   setError={setError}
                 />
-                {/* <label>
-                  <input
-                    type="checkbox"
-                    checked={todo.completed}
-                    onChange={() => handleComplete(todo)}
-                  />
-                  {todo.completed ? "done" : "not done"}
-                </label> */}
               </div>
             ))
           ) : (

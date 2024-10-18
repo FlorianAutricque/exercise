@@ -7,6 +7,13 @@ h2 {
   text-align: center;
 }
 
+ul {
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
 .btn {
   background-color: aqua;
   padding: 0.4rem;
@@ -18,4 +25,10 @@ h2 {
 
 .btn:hover {
   color: red !important;
+}
+
+@media (min-width: 760px) {
+  ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
