@@ -1,19 +1,41 @@
+import { completeTodo, deleteTodo } from "../hooks/todoFunctions";
 import type { Todo } from "../types/Types";
 import styles from "./SignelTodo.module.css";
 
 interface SingleTodoProps {
   todo: Todo;
-  handleComplete: (todo: Todo) => void;
-  deleteTodo: (todoId: number) => void;
-  handleShow: (todo: Todo) => void;
+  todos: Todo[]; // Array of todos for handling updates
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>; // Function to update the todos
+  setError: React.Dispatch<React.SetStateAction<string>>; // Function to set error messages
+  // show: boolean; // State to control the visibility of the update form/modal
+  // setShow: React.Dispatch<React.SetStateAction<boolean>>; // Function to toggle the show state
+  // setSelectedTodo: React.Dispatch<React.SetStateAction<Todo | null>>;
 }
 
 function SingleTodo({
   todo,
-  handleComplete,
-  deleteTodo,
-  handleShow,
-}: SingleTodoProps) {
+  todos,
+  setTodos,
+  setError,
+}: // show,
+// setShow,
+// setSelectedTodo,
+SingleTodoProps) {
+  //HANDLE DELETE
+  const handleDelete = async (todoId: number) => {
+    await deleteTodo(todoId, todos, setTodos, setError);
+  };
+
+  // HANDLE COMPLETION OF TASK
+  const handleComplete = async (todo: Todo) => {
+    await completeTodo(todo, todos, setTodos, setError);
+  };
+
+  // SHOW THE UPDATE FORM/MODAL
+  // const handleShow = (todo: Todo) => {
+  //   setShow(!show);
+  //   setSelectedTodo(todo);
+  // };
   return (
     <li key={todo.id} className={styles.containerSingleTodo}>
       <p>{todo.description}</p>
@@ -31,7 +53,6 @@ function SingleTodo({
             })
           : "Date not available"}
       </p>
-
       <label>
         <input
           type="checkbox"
@@ -40,8 +61,7 @@ function SingleTodo({
         />
         {todo.completed ? "done" : "not done"}
       </label>
-      <button onClick={() => deleteTodo(todo.id)}>DEL</button>
-      <button onClick={() => handleShow(todo)}>MOD</button>
+      <button onClick={() => handleDelete(todo.id)}>DEL</button>
     </li>
   );
 }

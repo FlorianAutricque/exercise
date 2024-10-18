@@ -1,4 +1,6 @@
+import DeleteTask from "../api/DeleteTodo";
 import GetTasks from "../api/GetTodos";
+import SingleTodo from "../components/SingleTodo";
 import Spinner from "../components/Spinner";
 import { CompletedProps } from "../types/Types";
 
@@ -14,6 +16,11 @@ function CompletedPage({
 
   const completedTasks = todos.filter(todo => todo.completed);
 
+  // HANDLE DELETION OF TASK
+  const deleteTodo = async (todoId: number) => {
+    DeleteTask(todos, setTodos, setError, todoId);
+  };
+
   return (
     <>
       <h1>Completed Page</h1>
@@ -26,7 +33,10 @@ function CompletedPage({
         <ul>
           {completedTasks.length > 0 ? (
             completedTasks.map(todo => (
-              <li key={todo.id}>{todo.description}</li>
+              <>
+                <SingleTodo todo={todo} />
+                <button onClick={() => deleteTodo(todo.id)}>DEL</button>
+              </>
             ))
           ) : (
             <p>There are no tasks completed yet</p>

@@ -16,7 +16,6 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <h2>To Do List</h2>
         <Navbar />
         <Routes>
           <Route

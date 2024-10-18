@@ -1,5 +1,6 @@
 import GetTasks from "../api/GetTodos";
 import UpdateTask from "../api/UpdateTodo";
+import SingleTodo from "../components/SingleTodo";
 import Spinner from "../components/Spinner";
 import { CompletedProps, Todo } from "../types/Types";
 
@@ -44,15 +45,20 @@ function NotCompletedPage({
           {notCompletedTasks.length > 0 ? (
             notCompletedTasks.map(todo => (
               <div key={todo.id}>
-                <li>{todo.description}</li>
-                <label>
+                <SingleTodo
+                  todo={todo}
+                  todos={todos}
+                  setTodos={setTodos}
+                  setError={setError}
+                />
+                {/* <label>
                   <input
                     type="checkbox"
                     checked={todo.completed}
                     onChange={() => handleComplete(todo)}
                   />
                   {todo.completed ? "done" : "not done"}
-                </label>
+                </label> */}
               </div>
             ))
           ) : (

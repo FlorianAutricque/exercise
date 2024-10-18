@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { z } from "zod";
-import CreateTask from "../api/CreateTodo";
 import type { Todo, CompletedProps } from "../types/Types";
-import DeleteTask from "../api/DeleteTodo";
 import GetTasks from "../api/GetTodos";
-import UpdateTask from "../api/UpdateTodo";
 import ModalUpdate from "../components/ModalUpdate";
 import Spinner from "../components/Spinner";
-import toast from "react-hot-toast";
-import { taskSchema } from "../validation/taskSchema";
 
 import styles from "./Homepage.module.css";
 
 import { IoMdAdd } from "react-icons/io";
 import SingleTodo from "../components/SingleTodo";
+import {
+  // deleteTodo,
+  createTodo,
+  // completeTodo,
+  updateTodo,
+} from "../hooks/todoFunctions";
 
 function Homepage({
   todos,
@@ -31,90 +31,41 @@ function Homepage({
   GetTasks(setIsLoading, setTodos, setError);
 
   // CREATE/ADD A NEW TASK
-  const handleCreateTodo = async (e: React.FormEvent) => {
+  const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    try {
-      taskSchema.parse({ description, completed, createdAt: new Date() });
-
-      await CreateTask(description, completed, setTodos, setError);
-      setDescription("");
-      setCompleted(false);
-      setError("");
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        setError(error.errors.map(err => toast.error(err.message)).join(", "));
-      }
-    }
+    await createTodo(description, completed, setTodos, setError);
+    setDescription("");
+    setCompleted(false);
   };
 
-  // HANDLE DELETION OF TASK
-  const deleteTodo = async (todoId: number) => {
-    DeleteTask(todos, setTodos, setError, todoId);
-  };
+  // //HANDLE DELETE
+  // const handleDelete = async (todoId: number) => {
+  //   await deleteTodo(todoId, todos, setTodos, setError);
+  // };
 
-  // HANDLE COMPLETION OF TASK
-  const handleComplete = async (todo: Todo) => {
-    const updatedTasks = todos.map(task =>
-      task.id === todo.id ? { ...task, completed: !task.completed } : task
-    );
-    setTodos(updatedTasks);
+  // // HANDLE COMPLETION OF TASK
+  // const handleComplete = async (todo: Todo) => {
+  //   await completeTodo(todo, todos, setTodos, setError);
+  // };
 
-    await UpdateTask(
-      todo.id,
-      todo.description,
-      !todo.completed,
-      todo.meta.createdAt,
-      setTodos,
-      setError
-    );
-  };
-
-  // SHOW THE UPDATE FORM/MODAL
+  // // SHOW THE UPDATE FORM/MODAL
   const handleShow = (todo: Todo) => {
     setShow(!show);
-    // setDescription(todo.description);
-    // setCompleted(todo.completed);
     setSelectedTodo(todo);
   };
 
-  /*FUCNTION HANDLE UPDATE:
-   */
+  //HANDLE UPDATE
   const handleUpdateTodo = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!selectedTodo) return;
-    try {
-      taskSchema.parse({
-        description: selectedTodo.description,
-        completed: selectedTodo.completed,
-        createdAt: selectedTodo.meta.createdAt,
-      });
-
-      await UpdateTask(
-        selectedTodo.id,
-        selectedTodo.description,
-        selectedTodo.completed,
-        selectedTodo.meta.createdAt,
-        setTodos,
-        setError
-      );
-
-      setError("");
-      setShow(false);
-      setSelectedTodo(null);
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        setError(error.errors.map(err => toast.error(err.message)).join(", "));
-      }
-    }
+    await updateTodo(selectedTodo, setTodos, setError, setShow);
+    setSelectedTodo(null);
   };
 
   return (
     <div>
       {isLoading ? <Spinner /> : ""}
 
-      <form onSubmit={handleCreateTodo} className={styles.containerForm}>
+      <form onSubmit={handleCreate} className={styles.containerForm}>
         <input
           type="text"
           value={description}
@@ -129,12 +80,28 @@ function Homepage({
 
       <ul className={styles.containerAllTodos}>
         {todos.map(todo => (
-          <SingleTodo
-            todo={todo}
-            handleComplete={handleComplete}
-            deleteTodo={deleteTodo}
-            handleShow={handleShow}
-          />
+          <div>
+            <SingleTodo
+              todo={todo}
+              todos={todos}
+              setTodos={setTodos}
+              setError={setError}
+              // show={show}
+              // setShow={setShow}
+              // setSelectedTodo={setSelectedTodo}
+            />
+            <button onClick={() => handleShow(todo)}>MOD</button>
+            {/* <label>
+              <input
+                type="checkbox"
+                checked={todo.completed}
+                onChange={() => handleComplete(todo)}
+              />
+              {todo.completed ? "done" : "not done"}
+            </label>
+            <button onClick={() => handleDelete(todo.id)}>DEL</button>
+            <button onClick={() => handleShow(todo)}>MOD</button> */}
+          </div>
         ))}
       </ul>
 
