@@ -6,7 +6,7 @@
   background-color: #f7f7f7;
   padding-top: 0.8rem;
   max-width: 400px;
-  width: 100%;
+  width: 20rem;
   word-wrap: break-word;
   overflow-wrap: break-word;
   overflow: hidden;
@@ -95,4 +95,10 @@
   border: solid white;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
+}
+
+@media (max-width: 800px) {
+  .containerSingleTodo {
+    width: 100%;
+  }
 }
