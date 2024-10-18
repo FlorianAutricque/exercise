@@ -1,14 +1,10 @@
 import { useState } from "react";
 import type { CompletedProps } from "../types/Types";
 import GetTasks from "../api/GetTodos";
-
 import Spinner from "../components/Spinner";
-
 import styles from "./Homepage.module.css";
-
 import { IoMdAdd } from "react-icons/io";
 import SingleTodo from "../components/SingleTodo";
-
 import { createTodo } from "../hooks/todoFunctions";
 
 function Homepage({
@@ -33,7 +29,7 @@ function Homepage({
   };
 
   return (
-    <div>
+    <div className={styles.mainContainerHomepage}>
       <form onSubmit={handleCreate} className={styles.containerForm}>
         <input
           type="text"

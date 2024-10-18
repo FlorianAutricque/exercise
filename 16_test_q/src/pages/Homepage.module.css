@@ -1,7 +1,9 @@
-.containerAllTodos {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+.mainContainerHomepage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
 }
 
 .containerForm {
@@ -9,8 +11,9 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-
   margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 30%;
 }
 
 .containerForm input {
@@ -30,8 +33,8 @@
   border: 1px solid green;
 }
 
-@media (min-width: 760px) {
-  .containerAllTodos {
-    grid-template-columns: repeat(2, 1fr);
+@media (max-width: 800px) {
+  .containerForm {
+    width: 80%;
   }
 }

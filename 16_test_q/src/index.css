@@ -20,6 +20,7 @@ h3 {
 
 ul {
   padding: 0;
+  margin: 0;
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
@@ -45,6 +46,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
 }
 
 @media (min-width: 760px) {
