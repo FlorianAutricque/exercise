@@ -20,6 +20,12 @@ function GetTasks(
         }
 
         const todos: ApiTodo[] = await res.json();
+
+        /*CONVERSTION NUMBER TO BOOLEAN
+        - API returns completed as a number (1 = true, 0 = false)
+        - Convertion to a boolean
+        - createdAt field is converted from a string to a Date object
+      */
         setTodos(
           todos.map(todo => ({
             ...todo,

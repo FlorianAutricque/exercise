@@ -29,6 +29,10 @@ async function UpdateTask(
       throw new Error("Failed to update task");
     }
 
+    /* EXPLANATIONS:
+      - Map over the current list of todos (prevData)
+      - Check each todo, to see if the todo's id matches the todoId of the task being updated
+      - Creations of a new object with the updated description and completed status */
     setTodos(prevData =>
       prevData.map(todo =>
         todo.id === todoId ? { ...todo, description, completed } : todo

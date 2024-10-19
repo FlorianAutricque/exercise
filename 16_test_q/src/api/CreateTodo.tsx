@@ -27,7 +27,12 @@ async function CreateTask(
       throw new Error("Failed to add the task");
     }
 
-    // respect la structure todo/////////////////
+    /*EXPLANATIONS:
+    Convertion of the completed field from number to boolean (API returns a number)
+      - Copy of current todos
+      - Creation new object and allow override of the completed propreties (conversion)
+      - Completed field converted from a number (1/0) to a boolean (true/false).
+    */
     const createdTodo: ApiTodo = await res.json();
     setTodos(prevData => [
       ...prevData,
