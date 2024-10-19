@@ -16,12 +16,12 @@ async function DeleteTask(
     });
 
     if (!res.ok) {
-      throw new Error("Failed to delete the task");
+      throw new Error("Failed to delete the todo");
     }
 
     const updatedList = todos.filter(todo => todo.id !== todoId);
     setTodos(updatedList);
-    toast.success("Task successfully deleted");
+    toast.success("Todo successfully deleted");
   } catch (err: unknown) {
     if (err instanceof Error) {
       setError(err.message);
@@ -29,7 +29,7 @@ async function DeleteTask(
       setError("Something went wrong");
     }
 
-    toast.error("Failed to delete task");
+    toast.error("Failed to delete todo");
   }
   return;
 }

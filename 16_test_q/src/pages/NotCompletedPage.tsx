@@ -17,7 +17,7 @@ function NotCompletedPage({
 
   return (
     <>
-      <h3>Not Completed Tasks</h3>
+      <h3>Not Completed Todos</h3>
 
       {isLoading ? (
         <Spinner />
@@ -25,7 +25,7 @@ function NotCompletedPage({
         <div className="mainContainerTodos">
           <ul
             className={`containerTodos ${
-              notCompletedTasks.length === 1 ? "containerTodosIfOne" : ""
+              notCompletedTasks.length <= 1 ? "containerTodosIfOne" : ""
             }`}
           >
             {notCompletedTasks.length > 0 ? (
@@ -40,7 +40,7 @@ function NotCompletedPage({
                 </div>
               ))
             ) : (
-              <p>There is no task to do</p>
+              <p>There is no todos not done</p>
             )}
           </ul>
         </div>

@@ -5,6 +5,7 @@ import UpdateTask from "../api/UpdateTodo";
 import { taskSchema } from "../validation/taskSchema";
 import toast from "react-hot-toast";
 import type { Todo } from "../types/Types";
+import DeleteAllCompletedTodos from "../api/DeleteAllCompletedTodos";
 
 export const createTodo = async (
   description: string,
@@ -31,6 +32,14 @@ export const deleteTodo = async (
   setError: React.Dispatch<React.SetStateAction<string>>
 ) => {
   await DeleteTask(todos, setTodos, setError, todoId);
+};
+
+export const deleteAllCompletedTodos = async (
+  todos: Todo[],
+  setTodos: React.Dispatch<React.SetStateAction<Todo[]>>,
+  setError: React.Dispatch<React.SetStateAction<string>>
+) => {
+  await DeleteAllCompletedTodos(todos, setTodos, setError);
 };
 
 export const completeTodo = async (

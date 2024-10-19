@@ -1,6 +1,7 @@
 import GetTasks from "../api/GetTodos";
 import SingleTodo from "../components/SingleTodo";
 import Spinner from "../components/Spinner";
+import { deleteAllCompletedTodos } from "../hooks/todoFunctions";
 import type { CompletedProps } from "../types/Types";
 
 function CompletedPage({
@@ -14,9 +15,14 @@ function CompletedPage({
 
   const completedTasks = todos.filter(todo => todo.completed);
 
+  //DELETE ALL COMPLETED TODOS
+  const handleDeleteCompletedTodos = async () => {
+    await deleteAllCompletedTodos(todos, setTodos, setError);
+  };
+
   return (
     <>
-      <h3>Completed Tasks</h3>
+      <h3>Completed Todos</h3>
 
       {isLoading ? (
         <Spinner />
@@ -24,7 +30,7 @@ function CompletedPage({
         <div className="mainContainerTodos">
           <ul
             className={`containerTodos ${
-              completedTasks.length === 1 ? "containerTodosIfOne" : ""
+              completedTasks.length <= 1 ? "containerTodosIfOne" : ""
             }`}
           >
             {completedTasks.length > 0 ? (
@@ -39,9 +45,20 @@ function CompletedPage({
                 </div>
               ))
             ) : (
-              <p>There are no tasks completed yet</p>
+              <p>There is no todos completed yet</p>
             )}
           </ul>
+
+          {completedTasks.length > 0 ? (
+            <button
+              onClick={handleDeleteCompletedTodos}
+              className="btn btn--delete"
+            >
+              Delete all completed todos
+            </button>
+          ) : (
+            ""
+          )}
         </div>
       )}
     </>
