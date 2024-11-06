@@ -5,7 +5,6 @@ import styles from "./SingleTodo.module.css";
 import { ImBin } from "react-icons/im";
 
 import "rodal/lib/rodal.css";
-
 import Rodal from "rodal";
 
 import { GrDocumentUpdate } from "react-icons/gr";
@@ -145,21 +144,6 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
             : "Date not available"}
         </p>
       </li>
-
-      {/* {show && !!selectedTodo && (
-        // <>
-        //   <div className={styles.overlay}></div>
-        //   <div className={styles.modalUpdate}>
-        //     <ModalUpdate
-        //       handleUpdateTodo={handleUpdateTodo}
-        //       selectedTodo={selectedTodo}
-        //       setSelectedTodo={setSelectedTodo}
-        //       setShow={setShow}
-        //     />
-        //   </div>
-        // </>
-        <Rodal>test</Rodal>
-      )} */}
     </>
   );
 }

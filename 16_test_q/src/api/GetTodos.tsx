@@ -16,7 +16,7 @@ function GetTasks(
         const res = await fetch(`${baseUrl}/todos?apikey=${accessKey}`);
 
         if (!res.ok) {
-          throw new Error("Something went wrong");
+          throw new Error("Something went wrong fetching the todos");
         }
 
         const todos: ApiTodo[] = await res.json();
@@ -39,7 +39,7 @@ function GetTasks(
         if (err instanceof Error) {
           setError(err.message);
         } else {
-          setError("Something went wrong");
+          setError("Something went wrong getting the todos, try again later");
         }
       } finally {
         setIsLoading(false);
