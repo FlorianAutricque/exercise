@@ -70,10 +70,3 @@ function Homepage({
 }
 
 export default Homepage;
-
-// changé modal pour faire un truc plus beau
-
-// integrer tilwind css
-// librarire de composant pour faire le modal par exemple
-// pas refecth les todos lors du changement de page
-// faire la creation sur leur repo
