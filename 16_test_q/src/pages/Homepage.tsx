@@ -71,10 +71,8 @@ function Homepage({
 
 export default Homepage;
 
-// autre icone btn edition
-// faire des carrés plus large
 // changé modal pour faire un truc plus beau
-// pas de vanilla css
+
 // integrer tilwind css
 // librarire de composant pour faire le modal par exemple
 // pas refecth les todos lors du changement de page

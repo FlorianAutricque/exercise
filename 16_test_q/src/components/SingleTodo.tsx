@@ -5,7 +5,7 @@ import styles from "./SingleTodo.module.css";
 import { ImBin } from "react-icons/im";
 import ModalUpdate from "./ModalUpdate";
 
-import { MdOutlineSystemUpdateAlt } from "react-icons/md";
+import { GrDocumentUpdate } from "react-icons/gr";
 import truncatedString from "../utils/truncatedString";
 
 interface SingleTodoProps {
@@ -52,7 +52,7 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
   function capitalizeFirstLetter(string: string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
-  const truncated = truncatedString(todo.description, 15);
+  const truncated = truncatedString(todo.description, 25);
 
   return (
     <>
@@ -73,7 +73,7 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
               <span className={styles.checkmark}></span>
             </label>
 
-            {todo.description.length > 15 ? (
+            {todo.description.length > 25 ? (
               <>
                 <p className={styles.todoStr}>
                   {showStr
@@ -94,7 +94,7 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
 
           <div className={styles.btnDeleteUpdate}>
             <button onClick={() => handleShow(todo)} className="btn">
-              <MdOutlineSystemUpdateAlt size={20} />
+              <GrDocumentUpdate size={20} />
             </button>
 
             <button onClick={() => handleDelete(todo.id)} className="btn">
