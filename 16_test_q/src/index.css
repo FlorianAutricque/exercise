@@ -29,6 +29,17 @@ h3 {
   gap: 2rem;
 }
 
+/* MODAL */
+.rodal-dialog {
+  width: 400px !important;
+}
+
+@media (max-width: 760px) {
+  .rodal-dialog {
+    width: 80% !important;
+  }
+}
+
 /* BUTTON */
 .btn {
   background-color: var(--color-main);
