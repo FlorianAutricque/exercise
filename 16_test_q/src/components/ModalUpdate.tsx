@@ -14,45 +14,43 @@ function ModalUpdate({
   setSelectedTodo,
 }: ModalUpdateProps) {
   return (
-    <div className={styles.mainContainerUpdate}>
-      <div className={styles.innerContainerModal}>
-        <div className={styles.containerTitleClose}>
-          <h3>Update Todo</h3>
-        </div>
+    <div className={styles.innerContainerModal}>
+      <div className={styles.containerTitleClose}>
+        <h3>Update Todo</h3>
+      </div>
 
-        <form onSubmit={handleUpdateTodo}>
-          <div className={styles.containerModalTodoCheckbox}>
-            <label className={stylesCheckbox.containerCheckbox}>
-              <input
-                type="checkbox"
-                checked={selectedTodo.completed}
-                onChange={() =>
-                  setSelectedTodo({
-                    ...selectedTodo,
-                    completed: !selectedTodo.completed,
-                  })
-                }
-              />
-              <span className={stylesCheckbox.checkmark}></span>
-            </label>
-
+      <form onSubmit={handleUpdateTodo} className={styles.containerFormUpdate}>
+        <div className={styles.containerModalTodoCheckbox}>
+          <label className={stylesCheckbox.containerCheckbox}>
             <input
-              type="text"
-              value={selectedTodo.description}
-              onChange={e =>
+              type="checkbox"
+              checked={selectedTodo.completed}
+              onChange={() =>
                 setSelectedTodo({
                   ...selectedTodo,
-                  description: e.target.value,
+                  completed: !selectedTodo.completed,
                 })
               }
             />
-          </div>
+            <span className={stylesCheckbox.checkmark}></span>
+          </label>
 
-          <button type="submit" className={`btn ${styles.btnModal}`}>
-            Update
-          </button>
-        </form>
-      </div>
+          <input
+            type="text"
+            value={selectedTodo.description}
+            onChange={e =>
+              setSelectedTodo({
+                ...selectedTodo,
+                description: e.target.value,
+              })
+            }
+          />
+        </div>
+
+        <button type="submit" className={`btn ${styles.btnModal}`}>
+          Update
+        </button>
+      </form>
     </div>
   );
 }

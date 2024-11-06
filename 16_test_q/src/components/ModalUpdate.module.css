@@ -9,26 +9,34 @@
 .containerModalTodoCheckbox {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-bottom: 1rem;
+  width: 90%;
+}
+
+.containerModalTodoCheckbox input {
+  padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 100%;
+}
+
+.containerModalTodoCheckbox input:focus {
+  outline: none;
+  border: 2px solid var(--color-main);
+}
+
+.containerFormUpdate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 90%;
 }
 
 .btnModal {
   width: 100%;
-}
-
-.mainContainerUpdate {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 200;
-  background-color: white;
-  padding: 20px;
-
-  border-radius: 8px;
-
-  width: 40%;
-  height: 40%;
+  padding: 1rem !important;
 }
 
 .innerContainerModal {
@@ -38,12 +46,5 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-
-  gap: 3rem;
-}
-
-@media (max-width: 760px) {
-  .mainContainerUpdate {
-    width: 60%;
-  }
+  padding-top: 1rem;
 }
