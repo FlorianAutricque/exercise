@@ -3,10 +3,14 @@ import { completeTodo, deleteTodo, updateTodo } from "../hooks/todoFunctions";
 import type { Todo } from "../types/Types";
 import styles from "./SingleTodo.module.css";
 import { ImBin } from "react-icons/im";
-import ModalUpdate from "./ModalUpdate";
+
+import "rodal/lib/rodal.css";
+
+import Rodal from "rodal";
 
 import { GrDocumentUpdate } from "react-icons/gr";
 import truncatedString from "../utils/truncatedString";
+import ModalUpdate from "./ModalUpdate";
 
 interface SingleTodoProps {
   todo: Todo;
@@ -24,6 +28,12 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
   const handleShow = (todo: Todo) => {
     setShow(!show);
     setSelectedTodo(todo);
+  };
+
+  // Close the modal
+  const hideModal = () => {
+    setShow(false);
+    setSelectedTodo(null);
   };
 
   //HANDLE DELETE
@@ -97,6 +107,24 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
               <GrDocumentUpdate size={20} />
             </button>
 
+            <Rodal
+              visible={show}
+              onClose={hideModal}
+              width={400}
+              height={200}
+              animation="slideDown"
+            >
+              {!!selectedTodo && (
+                <>
+                  <ModalUpdate
+                    handleUpdateTodo={handleUpdateTodo}
+                    selectedTodo={selectedTodo}
+                    setSelectedTodo={setSelectedTodo}
+                  />
+                </>
+              )}
+            </Rodal>
+
             <button onClick={() => handleDelete(todo.id)} className="btn">
               <ImBin size={20} />
             </button>
@@ -118,19 +146,20 @@ function SingleTodo({ todo, todos, setTodos, setError }: SingleTodoProps) {
         </p>
       </li>
 
-      {show && !!selectedTodo && (
-        <>
-          <div className={styles.overlay}></div>
-          <div className={styles.modalUpdate}>
-            <ModalUpdate
-              handleUpdateTodo={handleUpdateTodo}
-              selectedTodo={selectedTodo}
-              setSelectedTodo={setSelectedTodo}
-              setShow={setShow}
-            />
-          </div>
-        </>
-      )}
+      {/* {show && !!selectedTodo && (
+        // <>
+        //   <div className={styles.overlay}></div>
+        //   <div className={styles.modalUpdate}>
+        //     <ModalUpdate
+        //       handleUpdateTodo={handleUpdateTodo}
+        //       selectedTodo={selectedTodo}
+        //       setSelectedTodo={setSelectedTodo}
+        //       setShow={setShow}
+        //     />
+        //   </div>
+        // </>
+        <Rodal>test</Rodal>
+      )} */}
     </>
   );
 }
