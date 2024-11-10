@@ -81,3 +81,9 @@ h3 {
     align-items: center;
   }
 }
+
+/* ERROR */
+
+.errorMessage {
+  display: none;
+}

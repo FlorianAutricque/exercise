@@ -10,6 +10,7 @@ import { Toaster } from "react-hot-toast";
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([]);
+
   const [error, setError] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -17,6 +18,7 @@ function App() {
     <>
       <BrowserRouter>
         <h2>To Do List</h2>
+        {error && <div className="errorMessage">{error}</div>}
         <Navbar />
         <Routes>
           <Route
