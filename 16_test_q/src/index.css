@@ -6,6 +6,9 @@
   --color-createdAt: #8b8b8b;
   --color-completed: #115e11;
   --color-not-completed: #991f1f;
+
+  --color-gradient-1: #8f73f6;
+  --color-gradient-2: #d3d7f1;
 }
 
 body {
@@ -19,6 +22,19 @@ body {
 h2,
 h3 {
   text-align: center;
+}
+
+.mainTitle {
+  background: linear-gradient(
+    to right,
+    var(--color-gradient-1),
+    var(--color-gradient-2)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-size: 2rem;
+  margin-top: -0.7rem;
 }
 
 .containerTodos {

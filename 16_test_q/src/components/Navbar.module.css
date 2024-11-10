@@ -46,7 +46,7 @@
 }
 
 .activeLinkBorder {
-  background: linear-gradient(to right, #cabef6, #d3d7f1);
+  background: linear-gradient(to right, #cabef6, var(--color-gradient-2));
 }
 
 @media (max-width: 500px) {

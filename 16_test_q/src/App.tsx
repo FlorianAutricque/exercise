@@ -17,7 +17,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <h2>To Do List</h2>
+        <h2 className="mainTitle">To Do List</h2>
         {error && <div className="errorMessage">{error}</div>}
         <Navbar />
         <Routes>
