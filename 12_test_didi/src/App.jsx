@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Spotlight from "./Spotlight";
 
 function App() {
   const [value, setValue] = useState(10);
@@ -33,6 +34,8 @@ function App() {
       </div>
 
       <button onClick={reset}>Reset</button>
+
+      <Spotlight />
     </div>
   );
 }
