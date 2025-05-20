@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav ul {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav li {
+  list-style: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+
+  border-radius: 5px;
+}
+
+.nav li:hover {
+  transform: scale(1.05);
+  color: #67735f;
+}
+
+/* LANGUE SELECTION */
+.lang-select {
+  border: none;
+  cursor: pointer;
+  background: none;
+}
+
+/* LIENS A DROITE*/
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* LIENS GAUCHE*/
+.nav-left {
+  margin-left: 6rem;
+}
+
+/* LOGO SECTION*/
+.logo-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  padding: 1rem;
+}
+
+/* LOGO IMAGE*/
+.logo-section img {
+  height: 8rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* CONTAINER NAV*/
+.container-nav {
+  display: flex;
+  gap: 8.5rem;
+  justify-items: center;
+  align-items: center;
+  margin-top: -6rem;
+}
+
+/* RESPONSIVE */
+
+/* BURGER */
+.burger-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  z-index: 20;
+}
+
+.burger span {
+  width: 30px;
+  height: 3px;
+  background-color: #333;
+  transition: 0.3s ease;
+  border-radius: 2px;
+}
+
+.burger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 7px);
+}
+
+.burger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -7px);
+}
+
+@media (max-width: 1145px) {
+  .container-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: -1rem;
+    display: none;
+    transition: all 0.3s ease;
+    background-color: #67735f;
+    width: 100%;
+    padding: 2rem;
+  }
+
+  .container-nav.show {
+    display: flex;
+  }
+
+  .nav-left,
+  .nav-right {
+    margin: 0;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .nav-right {
+    flex-direction: column;
+  }
+
+  .logo-section {
+    justify-content: space-between;
+  }
+
+  .nav li:hover {
+    transform: none;
+    color: inherit;
+  }
+}
